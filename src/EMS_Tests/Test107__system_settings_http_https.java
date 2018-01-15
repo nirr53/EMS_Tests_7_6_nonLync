@@ -167,7 +167,7 @@ public class Test107__system_settings_http_https {
   // Open Web Admin of device
   private void openWebAdminDevice(String prefix) {
 	  
-	  // Reset device
+	  // Open Web Admin
 	  testFuncs.myDebugPrinting("Open Web Admin of device", testVars.logerVars.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);

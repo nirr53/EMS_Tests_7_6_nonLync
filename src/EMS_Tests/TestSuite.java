@@ -137,7 +137,8 @@ import org.junit.runners.Suite;
 	Test128__template_exisiting_configuration_and_ph.class			,
 	Test129__export_private_template_placeholder.class				,
 	Test130__tenant_site_speicel_characters.class					,
-	Test131__delete_device_tests.class
+	Test131__delete_device_tests.class								,
+	Test132__timeout.class
 
 })
 

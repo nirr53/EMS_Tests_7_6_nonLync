@@ -721,7 +721,7 @@ public class GlobalFuncs {
 	  public void selectMultipleUsers(WebDriver driver, String prefix, String expNumber) {
 		    		
 		myDebugPrinting("selectMultipleUsers() - prefix - " + prefix + " expNumber - " + expNumber, testVars.logerVars.NORMAL);
-		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 7000);
+		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 10000);
 		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 10000);
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
@@ -2092,6 +2092,7 @@ public class GlobalFuncs {
 	  public void mySendKeys(WebDriver driver, By byType, String currUsr, int timeOut) {
 		  
 		  driver.findElement(byType).clear();
+		  myWait(1000);
 		  driver.findElement(byType).sendKeys(currUsr);
 		  myWait(timeOut);
 	  }

@@ -92,7 +92,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_sbc_conf", "Proxy DHCP Options Configuration");
 	  
 	  // Step 1 - Edit SBC proxy configuration template
-	  testFuncs.myDebugPrinting("Step 1 - Step 1 - Edit SBC proxy configuration template");
+	  testFuncs.myDebugPrinting("Step 1 - Edit SBC proxy configuration template");
 	  editSBCproxyConfigurationTemplate(driver, strForEdit);
 	  
 	  // Step 2 - Restore SBC proxy configuration template
