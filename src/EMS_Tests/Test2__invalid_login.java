@@ -100,7 +100,7 @@ public class Test2__invalid_login {
 	  testFuncs.myDebugPrinting("1. title - "   	    + title  			 ,testVars.logerVars.MINOR);
       driver.get("https://" + testVars.getUrl());
       
-      // Speicel login for IE browser
+      // Special login for IE browser
       if (brwType.equals("IE") && title.equals("WebDriver") && httpStr.equals("https://")) {
     	  
     	  driver.findElement(By.xpath("//a[@id='overridelink']")).click();

@@ -120,8 +120,8 @@ public class Test108__alarms_tests {
 	testFuncs.searchAlarm(driver, "Description", alertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create an alarm with different special characters
-	testFuncs.myDebugPrinting("Step 2 - Create an alarm with differnt speicel characterss");	
-	String alertPrefix2 = "speicelCharcaters_";
+	testFuncs.myDebugPrinting("Step 2 - Create an alarm with differnt special characterss");	
+	String alertPrefix2 = "specialCharcaters_";
 	String []alertsForSearch2 = {alertPrefix2 + "!#$/" + "_"  + Id,
 								 alertPrefix2 + "=?^`" + "_"  + Id,
 								 alertPrefix2 + "{|}~" + "_"  + Id,

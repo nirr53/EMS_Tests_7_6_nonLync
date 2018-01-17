@@ -142,7 +142,7 @@ public class Test5__add_user_tests {
 	  testFuncs.searchStr(driver, prefix + "1_" + Id + "@" + testVars.getDomain() + " Finished");
     
 	  // Close session
-	  driver.quit();
+//	  driver.quit();
 	  System.clearProperty("webdriver.chrome.driver");
 	  System.clearProperty("webdriver.ie.driver");
 	  String verificationErrorString = verificationErrors.toString(); 

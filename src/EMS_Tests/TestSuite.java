@@ -110,7 +110,7 @@ import org.junit.runners.Suite;
 	Test100__Monitoring_device_actions_row.class					,
 	Test101__device_status_export_tests.class						,
 	Test102__device_status_filter_columns.class						,
-	Test103__speicel_characters_users.class							,
+	Test103__special_characters_users.class							,
 	Test105__device_status_filter_tests.class						,
 	Test106__device_status_nickname_tests.class						,
 	Test107__system_settings_http_https.class						,
@@ -133,10 +133,10 @@ import org.junit.runners.Suite;
 	Test124__multiple_devices_actions_timing.class					,
 	Test125__multiple_users_actions_timing.class					,
 	Test126__timeout.class											,
-	Test127__templates_with_speicel_characters.class				,
+	Test127__templates_with_special_characters.class				,
 	Test128__template_exisiting_configuration_and_ph.class			,
 	Test129__export_private_template_placeholder.class				,
-	Test130__tenant_site_speicel_characters.class					,
+	Test130__tenant_site_special_characters.class					,
 	Test131__delete_device_tests.class								,
 	Test132__timeout.class
 

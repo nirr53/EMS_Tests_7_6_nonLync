@@ -18,9 +18,9 @@ import org.openqa.selenium.*;
 * ----------------
 * Tests:
 * 	- Create a registered user via POST query
-* 	 1. Create an alarm that with speicel info field
-* 	 2. Create an alarm that with speicel-characters info field
-* 	 3. Create an alarm that with very long anguages info field
+* 	 1. Create an alarm that with special info field
+* 	 2. Create an alarm that with special-characters info field
+* 	 3. Create an alarm that with very long languages info field
 *  	 4. Create an alarm that with empty info field
 * 	 5. Delete all the created Alarms
 * 
@@ -103,7 +103,7 @@ public class Test119__alarms_tests4 {
 	
 	// Step 1 - Create an alarm with special info field
 	testFuncs.myDebugPrinting("Step 1 - Create an alarm with special info field");	
-	String[] alartNames = {"speicelInfoAlarm1_" + Id};
+	String[] alartNames = {"specialInfoAlarm1_" + Id};
 	String info1     = "info1_1" + Id;
 	String info2     = "info2_1" + Id;
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
@@ -124,7 +124,7 @@ public class Test119__alarms_tests4 {
 	
 	// Step 2 - Create an alarm with special-characters info field
 	testFuncs.myDebugPrinting("Step 2 - Create an alarm with special-characters info field");	
-	String[] alartNames2 = {"speicelInfoAlarm2_" + Id};
+	String[] alartNames2 = {"specialInfoAlarm2_" + Id};
 	info1 = "info1_2_!#$/=?^_`{|}~;*+'__" + Id;
 	info2 = "info1_2_!#$/=?^_`{|}~;*+'__" + Id;
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
@@ -145,7 +145,7 @@ public class Test119__alarms_tests4 {
 	
 	// Step 3 - Create an alarm with very long info field
 	testFuncs.myDebugPrinting("Step 3 - Create an alarm with very long info field");	
-	String[] alartNames3 = {"speicelInfoAlarm3_" + Id};
+	String[] alartNames3 = {"specialInfoAlarm3_" + Id};
 	info1 = "info1_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz12345678__" + Id;
 	info2 = "info2_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz12345678__" + Id;
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
@@ -166,7 +166,7 @@ public class Test119__alarms_tests4 {
 	
 	// Step 4 - Create an alarm with very empty info field
 	testFuncs.myDebugPrinting("Step 4 - Create an alarm with very empty info field");	
-	String[] alartNames4 = {"speicelInfoAlarm4_" + Id};
+	String[] alartNames4 = {"specialInfoAlarm4_" + Id};
 	info1 = "empty";
 	info2 = "empty";
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
