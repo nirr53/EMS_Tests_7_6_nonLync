@@ -19,8 +19,8 @@ import org.openqa.selenium.*;
 * Tests:
 * 	 - Add 2 registered users.
 * 	 - Add 2 unregistered users.
-* 	 1. Enter the Network Toplogy (Ips) and verify that users are displayed
-* 	 2. Enter the Network Toplogy (External Ips) and verify that source-Ips are displayed
+* 	 1. Enter the Network Topology (Ips) and verify that users are displayed
+* 	 2. Enter the Network Topology (External Ips) and verify that source-Ips are displayed
 * 
 * Results:
 * 	 1+2. Users should be displayed at Network Topology menu.
@@ -114,8 +114,8 @@ public class Test121__network_topology {
     testFuncs.verifyPostUserCreate(driver, unregPrefix, unregPrefix, false);
     String ip2 = testFuncs.readFile("ip_1.txt");    
     
-    // Step 1 - Enter the Network Toplogy (Ips) and verify that users are displayed
- 	testFuncs.myDebugPrinting("Step 1 - Enter the Network Toplogy (Ips) and verify that users are displayed");
+    // Step 1 - Enter the Network Topology (Ips) and verify that users are displayed
+ 	testFuncs.myDebugPrinting("Step 1 - Enter the Network Topology (Ips) and verify that users are displayed");
 	testFuncs.pressNetworkTopologyButton(driver);
 	String bodyText = driver.findElement(By.tagName("body")).getText();				
 	int cirCount = bodyText.length() - bodyText.replace(".", "").length();
@@ -125,8 +125,8 @@ public class Test121__network_topology {
  	testFuncs.myAssertTrue("Endpoint <" + ip1 + "> is not detected !!", bodyText.contains(ip1));
  	testFuncs.myAssertTrue("Endpoint <" + ip2 + "> is not detected !!", bodyText.contains(ip2));
 
- 	// Step 2 - Enter the Network Toplogy (External Ips) and verify that source-Ips are displayed
- 	testFuncs.myDebugPrinting("Step 2 - Enter the Network Toplogy (External Ips) and verify that source-Ips are displayed");
+ 	// Step 2 - Enter the Network Topology (External Ips) and verify that source-Ips are displayed
+ 	testFuncs.myDebugPrinting("Step 2 - Enter the Network Topology (External Ips) and verify that source-Ips are displayed");
  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div/div/button"), 3000);
 	bodyText = driver.findElement(By.tagName("body")).getText();				
 	cirCount = bodyText.length() - bodyText.replace(".", "").length();
