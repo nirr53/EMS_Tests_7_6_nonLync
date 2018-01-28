@@ -182,8 +182,7 @@ public class Test96__template_features {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[1]/button"), 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='daylight']")															 , 3000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Daylight Savings Time");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);
-	  // Nir - bug 7.4.245 7.4.17 (VI 145708)
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 9000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  

@@ -106,6 +106,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
 	
+	// Nir 28/1/18 - VI 149365
 	//	Step 1 - Verify that Add Site-Configuration-key is disabled
 	testFuncs.myDebugPrinting("Step 1 - Verify that Add Site-Configuration-key is disabled");	
 	String addSiteCfgKey = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a")).getAttribute("class");

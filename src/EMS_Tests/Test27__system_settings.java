@@ -104,7 +104,6 @@ public class Test27__system_settings {
 	testFuncs.myDebugPrinting("Step 1 - Check default placeholder values");
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[4]"), 3000);	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='placeholders_body']/tr[1]/td[3]" , testVars.getIp());
-	testFuncs.verifyStrByXpath(driver, "//*[@id='placeholders_body']/tr[2]/td[3]" , "IST");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='placeholders_body']/tr[3]/td[3]" , "");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='placeholders_body']/tr[4]/td[3]" , "0");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='placeholders_body']/tr[5]/td[3]" , mwiVmNumber);
@@ -118,6 +117,17 @@ public class Test27__system_settings {
   @After
   public void tearDown() throws Exception {
 	  
+	// Restore system language to English
+	testFuncs.myDebugPrinting("Restore system language to English");	
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
+	sysLangs.selectByVisibleText("English");
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 15000);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 2000);
+	  
+	// End session
     driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");

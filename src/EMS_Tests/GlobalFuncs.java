@@ -470,8 +470,14 @@ public class GlobalFuncs {
 		// Verify that the device was also created
 	    myDebugPrinting("Verify that the device was also created", testVars.logerVars.MINOR);
 		enterMenu(driver, "Monitor_device_status", "Devices Status");
-	    mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + dispName.trim(), 5000);
-	    driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
+	    if (username.contains("location")) {
+	    	
+			mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "mac:" + readFile("mac_1.txt"), 5000);	
+	    } else {
+	    	
+	    	mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + dispName.trim(), 5000);
+	    }
+		driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
 	    myWait(30000);
 	    if (isRegistered) { 
 	    	
@@ -483,7 +489,8 @@ public class GlobalFuncs {
 	    		}
 			    searchStr(driver, dispName.trim()); 
 			    String txt = driver.findElement(By.tagName("body")).getText();
-			    myAssertTrue("Approve button is displayed !! \ntxt - " + txt, !txt.contains("Approve"));	
+			    myAssertTrue("Approve button is displayed !! \ntxt - " + txt, !txt.contains("Approve"));
+			    
 	    	} else {
 	    		
 	    		searchStr(driver, "There are no devices that fit this search criteria");
@@ -726,7 +733,7 @@ public class GlobalFuncs {
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
 	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
-	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No device " + prefix + " found.");	
+	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No user " + prefix + " found.");	
 			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 	    	return;
 	    }
@@ -739,6 +746,39 @@ public class GlobalFuncs {
 	    } else if (Integer.parseInt(expNumber) == -1) {
 	    	
 	      	myDebugPrinting("users number is unknown ..", testVars.logerVars.MINOR);
+	    } else {
+	    	
+	    	verifyStrByXpath(driver, "//*[@id='left_total_id']", "Showing 1 to " + expNumber + " of " + expNumber);
+	    }
+	  }
+	  
+	  /**
+	  *  Select multiple devices in the Manage multiple devices menu according to a given prefix
+	  *  @param driver    - given driver
+	  *  @param prefix    - prefix for search the created devices
+	  *  @param expNumber - the expected number of devices
+	  */
+	  public void selectMultipleDevices(WebDriver driver, String prefix, String expNumber) {
+		    		
+		myDebugPrinting("selectMultipleDevices() - prefix - " + prefix + " expNumber - " + expNumber, testVars.logerVars.NORMAL);
+		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 10000);
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 10000);
+		if (Integer.parseInt(expNumber) == 0) {
+	    	
+	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
+	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No device " + prefix + " found.");	
+			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+	    	return;
+	    }
+		myClick(driver, By.xpath("//*[@id='maintable']/tbody/tr[1]/td/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td/a"), 7000);
+	    if (Integer.parseInt(expNumber) > 500) {
+	    	
+			myClick(driver, By.xpath("//*[@id='left_total_id']/a[1]"), 2000);		    
+			myClick(driver, By.xpath("//*[@id='maintable']/tbody/tr[1]/td[1]/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td/a"), 2000);
+			verifyStrByXpathContains(driver, "//*[@id='left_total_id']", "of " + expNumber + " users");	    	
+	    } else if (Integer.parseInt(expNumber) == -1) {
+	    	
+	      	myDebugPrinting("devices number is unknown ..", testVars.logerVars.MINOR);
 	    } else {
 	    	
 	    	verifyStrByXpath(driver, "//*[@id='left_total_id']", "Showing 1 to " + expNumber + " of " + expNumber);
@@ -2186,7 +2226,6 @@ public class GlobalFuncs {
 	  public void createUserViaPost(String crUserBatName, String ip, String port, String usrsNumber, String dipName, String domain, String crStatus, String phoneType, String tenant, String location) throws IOException {
 		
 	 	myDebugPrinting("crUserBatName - " + System.getProperty("user.dir") + "\\" + testVars.getCrUserBatName(), testVars.logerVars.MINOR);
-//	 	myAssertTrue("User length is above 30 !! <" + dipName + " length <" + dipName.length() + "> >", dipName.length() > 0 && dipName.length() < 30);	 	
 	 	Process process = new ProcessBuilder(System.getProperty("user.dir") + "\\" + testVars.getCrUserBatName(), 
 					 ip  	   ,
 					 port	   ,
@@ -2200,8 +2239,12 @@ public class GlobalFuncs {
 	 	BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));	    
 	 	String line;		    
 	 	while ((line = br.readLine()) != null) {
-		    	myDebugPrinting(line, testVars.logerVars.MINOR);
-		    
+		    	
+	 		myDebugPrinting(line, testVars.logerVars.MINOR);	
+	 		if (line.contains("device_create_error")) {
+	 			
+	 			myFail(dipName + " device was not create !");
+	 		}
 	 	}
 	  }  
 	  

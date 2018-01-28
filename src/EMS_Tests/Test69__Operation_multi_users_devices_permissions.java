@@ -88,8 +88,9 @@ public class Test69__Operation_multi_users_devices_permissions {
 	// Set vars
 	String prefix			= "op";
 	String nonDefTenant		= testVars.getNonDefTenant(0);
-	String defTenantUser    = prefix + "_deftenant"    + testFuncs.getId();
-	String nonDefTenantUser = prefix + "_nondeftenant" + testFuncs.getId();
+	String Id 				= testFuncs.getId();
+	String defTenantUser    = prefix + "_deftenant"    + Id;
+	String nonDefTenantUser = prefix + "_nondeftenant" + Id;
 	
 	// Login via Administrator, create a user of default Tenant with a POST query
 	testFuncs.myDebugPrinting("Login via Administrator, create a user of default Tenant with a POST query");
@@ -145,8 +146,8 @@ public class Test69__Operation_multi_users_devices_permissions {
     // Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed
   	testFuncs.myDebugPrinting("Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed");
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
-  	testFuncs.selectMultipleUsers(driver, defTenantUser   , "1");
-  	testFuncs.selectMultipleUsers(driver, nonDefTenantUser, "0");
+  	testFuncs.selectMultipleDevices(driver, defTenantUser   , "1");
+  	testFuncs.selectMultipleDevices(driver, nonDefTenantUser, "0");
   	
     // Step 4 - Enter Manage multiple users changes menu and verify that only device of default-Tenant is displayed
   	testFuncs.myDebugPrinting("Step 4 - Enter Manage multiple users changes menu and verify that only device of default-Tenant is displayed");
@@ -159,7 +160,7 @@ public class Test69__Operation_multi_users_devices_permissions {
    	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
   	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
   	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
-    testFuncs.selectMultipleUsers(driver, prefix, "2");
+    testFuncs.selectMultipleUsers(driver, Id, "2");
     Map<String, String> map = new HashMap<String, String>();
     map.put("usersPrefix"	  , prefix);
     map.put("usersNumber"	  , "2"); 
@@ -175,7 +176,7 @@ public class Test69__Operation_multi_users_devices_permissions {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

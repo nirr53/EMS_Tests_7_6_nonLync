@@ -186,6 +186,7 @@ public class Test53__Operation_tenant_multi_users_actions {
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain());
 
     // Step 7 - Verify that Delete-users action is active.
+    // Nir 28\1\18 VI 146554
   	testFuncs.myDebugPrinting("Step 7 - Verify that Delete-users action is active.");
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");

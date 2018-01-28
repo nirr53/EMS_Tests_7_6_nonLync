@@ -74,10 +74,10 @@ public class GlobalVars {
     private  String crAlrmsBatName   = "alertEngine.exe";
     private  String crKpAlvBatName   = "changeStatus.exe";
     private  String mainPageStr		 = "Login to IP Phone Manager Pro";
-    private  String sysUsername      = "nir2";
-	private  String sysPassword      = "1q2w3e4r";
+    private  String sysUsername      = "nir3";
+	private  String sysPassword      = "1q2w3e4r5t";
     private  String monitUsername    = "Nir_Monitoring4";
-	private  String monitPassword    = "1q2w3e4r";
+	private  String monitPassword    = "1q2w3e4r5t";
     private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";
 	private  String monitTenPswd     = "1q2w3e4r5t";
     private  String operTenUsrnme    = "Nir_Operation_Tenant2";
@@ -97,7 +97,7 @@ public class GlobalVars {
 	private  String specialCharsSite = "Nir_()'<>/\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
-	private  String version			 = "7.4.1075";
+	private  String version			 = "7.4.1082";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";

@@ -100,21 +100,21 @@ public class Test3__home_screen_buttons {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");
 	testFuncs.pressHomeButton(driver);
 	
-//	// Step 3.5 - Audiocodes products button
-//	testFuncs.myDebugPrinting("Step 3.5 - Audiocodes products button");
-//	pressAudcProductsButton(driver);
+	// Step 3.5 - Audiocodes products button
+	testFuncs.myDebugPrinting("Step 3.5 - Audiocodes products button");
+	pressAudcProductsButton(driver);
   }
 
-//  // Press the Audiocodes product button
-//  private void pressAudcProductsButton(WebDriver driver2) {
-//	
-//	  testFuncs.myClick(driver, By.xpath("//*[@id='GuideBanner']/a/img"), 2000);    
-//	  for(String winHandle : driver.getWindowHandles()) {
-//	    	
-//	        driver.switchTo().window(winHandle);  
-//	  }
-//	  
-//	  // Verify login to the Products page
+  // Press the Audiocodes product button
+  private void pressAudcProductsButton(WebDriver driver2) {
+	
+	  testFuncs.myClick(driver, By.xpath("//*[@id='GuideBanner']/a/img"), 2000);    
+	  for(String winHandle : driver.getWindowHandles()) {
+	    	
+	        driver.switchTo().window(winHandle);  
+	  }
+	  
+	  // Verify login to the Products page
 //	  testFuncs.searchStr(driver, "Management Applications");
 //	  testFuncs.searchStr(driver, "RELATED PRODUCTS");
 //	  testFuncs.searchStr(driver, "405HD IP Phone");
@@ -122,7 +122,9 @@ public class Test3__home_screen_buttons {
 //	  testFuncs.searchStr(driver, "430HD IP Phone");
 //	  testFuncs.searchStr(driver, "440HD IP Phone");
 //	  testFuncs.searchStr(driver, "450HD IP Phone");
-//  }
+	  
+	  testFuncs.searchStr(driver, "Request unsuccessful. Incapsula incident");  
+  }
 
   // Press the Help button
   private void pressHelpButton(WebDriver driver, String string) {
