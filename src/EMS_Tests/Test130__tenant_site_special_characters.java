@@ -11,15 +11,17 @@ import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests a create of site configuration value when the site has special characters
+* This test tests a create of site configuration value and site-PH  when the site has special characters
 * ----------------
 * Tests:
 * 	 - Enter Site configuration menu and select a Site with special characters
 * 	 1. Add a configuration value
 * 	 2. Delete configuration value
+* 	 3. Add a site PH
+* 	 4. Delete a site PH
 *
 * Results:
-* 	 1-2. Actions should end successfully. 
+* 	 1-4. Actions should end successfully. 
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -75,10 +77,13 @@ public class Test130__tenant_site_special_characters {
 	
 	// Set vars
 	String tenant 		   = testVars.getDefTenant();
-	String sitePHSite	   = testVars.getSpecialCharsSite() + " [" + testVars.getDefSite() + "] / " + testVars.getDefTenant();
+	String sitePHSite	   = testVars.getSpecialCharsSite(0) + " [" + testVars.getDefSite() + "] / " + testVars.getDefTenant();
 	String Id 			   = testFuncs.getId();
-	String siteCfgKeyName  = "user_name" + Id;
-	String siteCfgKeyValue = "userValue" + Id;
+	String siteCfgKeyName  = "user_name"     + Id;
+	String siteCfgKeyValue = "userValue"     + Id;
+	String sitePhName     = "sitePhName"     + Id;
+	String sitePhValue    = "sitePhValue"    + Id;
+	String sitePHTenant	  = testVars.getDefTenant();	
 	
 	// Login and enter the View-Sites menu
 	testFuncs.myDebugPrinting("Enter the Add new region placeholders menu");
@@ -94,8 +99,16 @@ public class Test130__tenant_site_special_characters {
 	testFuncs.myDebugPrinting("Step 2 - Delete a site CFG key");
 	testFuncs.selectSite(driver, sitePHSite);
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite);
+	
+	// Step 3 - Add a new Site Placeholder
+	testFuncs.myDebugPrinting("Step 3 - Add a new Site Placeholder");
+	testFuncs.addSitePH(driver, sitePhName, sitePhValue, sitePHSite, sitePHTenant);
+	
+	// Step 4 - Delete the created Site Placeholder
+	testFuncs.myDebugPrinting("Step 4 - Delete the created Site Placeholder");
+	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getSpecialCharsSite(0) + " [" + testVars.getDefSite() + "]");
   }
-
+  
   @After
   public void tearDown() throws Exception {
 	  

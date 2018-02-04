@@ -94,7 +94,7 @@ public class GlobalVars {
 	private  String acMacPrefix      = "00908f";	
 	private  String defTenant      	 = "Nir";
 	private  String defSite			 = "AutoDetection";
-	private  String specialCharsSite = "Nir_()'<>/\":*&^%#@!~";
+	private  String spclCrsSite      = "Nir_()'<>/\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
 	private  String version			 = "7.4.1082";
@@ -150,122 +150,122 @@ public class GlobalVars {
     *  Default method for return the url variable
     *  @return url of the system
     */
-	public String getUrl()         {  return this.url;             }
+	public String getUrl()         {  return  url;             }
 	
 	/**
     *  Default method for return the mainPageStr variable
     *  @return main string of the system
     */
-	public String getMainPageStr() { return this.mainPageStr;      }
+	public String getMainPageStr() { return  mainPageStr;      }
 	
     /**
     *  Default method for return the username variable
     *  @return username of the system for Admin
     */
-	public String getSysUsername() { return this.sysUsername; 	   }
+	public String getSysUsername() { return  sysUsername; 	   }
 	
     /**
     *  Default method for return the password variable
     *  @return password of the system for Admin
     */
-	public String getSysPassword() { return this.sysPassword;      }
+	public String getSysPassword() { return  sysPassword;      }
 	
     /**
     *  Default method for return the main-str variable
     *  @return sysStr of the system
     */
-	public String getSysMainStr() { return this.sysMainStr;        }
+	public String getSysMainStr() { return  sysMainStr;        }
 	
     /**
     *  Default method for return the main-str fail-login variable
     *  @return sysStr of the system
     */
-	public String getFailLogStr() { return this.failLogMainStr;    }
+	public String getFailLogStr() { return  failLogMainStr;    }
 	
     /**
     *  Default method for return the invalid-str variable
     *  @return sysInvalidStr of the system
     */
-	public String getSysInvalidStr() { return this.sysInvalidStr;  }
+	public String getSysInvalidStr() { return  sysInvalidStr;  }
 
     /**
     *  Default method for return the Chrome driver path
     *  @return chromeDrvPath of the system
     */
-	public String getchromeDrvPath() { 	return this.chromeDrvPath; }
+	public String getchromeDrvPath() { 	return  chromeDrvPath; }
 	
     /**
     *  Default method for return the IE driver path
     *  @return ieDrvPath of the system
     */
-	public String getIeDrvPath()     { return this.ieDrvPath;      }
+	public String getIeDrvPath()     { return  ieDrvPath;      }
 	
     /**
     *  Default method for return the path for the directory of the source files
     *  @return srcFilesPath of the system
     */
-	public String getSrcFilesPath() {  return this.srcFilesPath;   }
+	public String getSrcFilesPath() {  return  srcFilesPath;   }
 	
     /**
     *  Default method for return the System IP
     *  @return ip
     */
-	public String getIp() 			{ return this.ip;			   }
+	public String getIp() 			{ return  ip;			   }
 	
     /**
     *  Default method for return the System Port
     *  @return port
     */
-	public String getPort()        { return this.port;			   }
+	public String getPort()        { return  port;			   }
 		
     /**
     *  Default method for return the System Domain
     *  @return port
     */
-	public String getDomain() 	   { return this.domain;		   }
+	public String getDomain() 	   { return  domain;		   }
 	
     /**
     *  Default method for return the AutoIT exe  that creates a user
     *  @return crUserBatName
     */
-	public String getCrUserBatName() { return this.crUserBatName;  }
+	public String getCrUserBatName() { return  crUserBatName;  }
 	
     /**
     *  Default method for return the AutoIT exe  that sends an alarm
     *  @return crAlrmsBatName
     */
-	public String getAlarmsBatName() { return this.crAlrmsBatName;  }
+	public String getAlarmsBatName() { return  crAlrmsBatName;  }
 	
     /**
     *  Default method for return the AutoIT exe  that sends a Keep-alive packet
     *  @return crSndKpAlveBatName
     */
-	public String getKpAlveBatName() { return this.crKpAlvBatName;  }
+	public String getKpAlveBatName() { return  crKpAlvBatName;  }
 	
     /**
     *  Default method for return the AC prefix string
     *  @return acMacPrefix
     */
-	public String getAcMacPrefix()   { return this.acMacPrefix;    }
+	public String getAcMacPrefix()   { return  acMacPrefix;    }
 	
     /**
     *  Default method for return the default Tenant
     *  @return defTenant
     */
-	public String getDefTenant()    { return this.defTenant;       }
+	public String getDefTenant()    { return  defTenant;       }
 	
 	
     /**
     *  Default method for return the default Site
     *  @return defSite
     */
-	public String getDefSite()    { return this.defSite;       	   }
+	public String getDefSite()    { return  defSite;       	   }
 	
     /**
-    *  Default method for return a Site with special characters in its name
-    *  @return spCharsSite
+    *  Default method for return a Site or Tenant with special characters in its name
+    *  @return spclCrsSiteTen[i]
     */
-	public String getSpecialCharsSite()  { return this.specialCharsSite; }  
+	public String getSpecialCharsSite(int i)  { return  spclCrsSite; }  
 	
     /**
     *  Default method for return ojne of the non-default Tenants
@@ -273,44 +273,44 @@ public class GlobalVars {
     */
 	public String getNonDefTenant(int i) {
 		
-		return this.nonDefTeanants[i];
+		return  nonDefTeanants[i];
 	}	
 	
     /**
     *  Default method for return the default phone-model (used mainly for create-user-via-post method)
     *  @return defPhoneModel
     */
-	public String getDefPhoneModel() { return this.defPhoneModel;  }
+	public String getDefPhoneModel() { return  defPhoneModel;  }
 	
     /**
     *  Default method for return the version
     *  @return version
     */
-	public String getVersion()       { return this.version;        }
+	public String getVersion()       { return  version;        }
 	
     /**
     *  Default method for return the downloads path
     *  @return version
     */
-	public String getDownloadsPath() { return this.downloadsPath;  }
+	public String getDownloadsPath() { return  downloadsPath;  }
 	
     /**
     *  Default method for return the alarms export file name
     *  @return exportAlarms
     */
-	public String getAlarmsExport() { return this.exportAlarms;    }
+	public String getAlarmsExport() { return  exportAlarms;    }
 	
     /**
     *  Default method for return the prefix of the System-logs
     *  @return sysLogsPrefix
     */
-	public String getSysLogsPrefix() { return this.sysLogsPrefix; }
+	public String getSysLogsPrefix() { return  sysLogsPrefix; }
 	
     /**
     *  Default method for return the prefix of the System-logs-Activity
     *  @return sysLogsActPre
     */
-	public String getSysLogsActPre() { return this.sysLogsActPre; }
+	public String getSysLogsActPre() { return  sysLogsActPre; }
 	
     /**
     *  Default method for return a name of source file by given integer
@@ -323,37 +323,37 @@ public class GlobalVars {
 		switch (idx) {
 		
 			case "11":
-				 usedSrcFile = this.srcImpConf;
+				 usedSrcFile =  srcImpConf;
 				 break;
 			case "12.1":
-				 usedSrcFile = this.srcImpUserDvcs;
+				 usedSrcFile =  srcImpUserDvcs;
 				 break;	
 			case "12.2":
-				 usedSrcFile = this.srcImp1000Usrs;
+				 usedSrcFile =  srcImp1000Usrs;
 				 break;			 
 			case "30":
-				 usedSrcFile = this.srcConfFile;
+				 usedSrcFile =  srcConfFile;
 				 break;
 			case "31":
-				 usedSrcFile = this.srcFirmFile;
+				 usedSrcFile =  srcFirmFile;
 				 break;	 
 			case "36":
-				 usedSrcFile = this.srcBigCfgFile;
+				 usedSrcFile =  srcBigCfgFile;
 				 break;
 			case "54.1":
-				 usedSrcFile = this.srcOperImport1;
+				 usedSrcFile =  srcOperImport1;
 				 break;
 			case "54.2":
-				 usedSrcFile = this.srcOperImport2;
+				 usedSrcFile =  srcOperImport2;
 				 break;
 			case "65":
-				 usedSrcFile = this.srcLangsFile;
+				 usedSrcFile =  srcLangsFile;
 				 break;
 			case "66":
-				 usedSrcFile = this.srcSbcConfFile;
+				 usedSrcFile =  srcSbcConfFile;
 				 break;
 			case "67":
-				 usedSrcFile = this.srcDhcpCnfFile;
+				 usedSrcFile =  srcDhcpCnfFile;
 				 break;
 			default:
 				usedSrcFile = "";
@@ -367,67 +367,67 @@ public class GlobalVars {
     *  Default method for return the used browsers in the current test
     *  @return browsersList
     */
-	public Object[][] getBrowsers() 	 { return this.browsersList;   }
+	public Object[][] getBrowsers() 	 { return  browsersList;   }
 
     /**
     *  Default method for return the gecko driver path (the external driver for ff)
     *  @return ieDrvPath of the system
     */
-	public String getGeckoPath()         { return this.geckoPath;      }
+	public String getGeckoPath()         { return  geckoPath;      }
 
     /**
     *  Default method for return the Monitoring username
     *  @return monitUsername
     */
-	public String getMonitUsername()     { return this.monitUsername;  }
+	public String getMonitUsername()     { return  monitUsername;  }
 	
     /**
     *  Default method for return the Monitoring password
     *  @return monitPassword
     */
-	public String getMonitPassword()     { return this.monitPassword;  }
+	public String getMonitPassword()     { return  monitPassword;  }
 	
     /**
     *  Default method for return the Monitoring username (with Tenant permission)
     *  @return monitTenUsrnme
     */
-	public String getMonitTenUsername()  { return this.monitTenUsrnme; }
+	public String getMonitTenUsername()  { return  monitTenUsrnme; }
 	
     /**
     *  Default method for return the Monitoring password (with Tenant permission)
     *  @return monitTenPswd
     */
-	public String getMonitTenPassword()  { return this.monitTenPswd;   }
+	public String getMonitTenPassword()  { return  monitTenPswd;   }
 	
     /**
     *  Default method for return the Operation username
     *  @return operUsername
     */
-	public String getOperUsername()      { return this.operUsername;   }
+	public String getOperUsername()      { return  operUsername;   }
 	
     /**
     *  Default method for return the Operation password
     *  @return operPassword
     */
-	public String getOperPassword()      { 	return this.operPassword;  }
+	public String getOperPassword()      { 	return  operPassword;  }
 	
 	
     /**
     *  Default method for return the Operation username (with Tenant permission)
     *  @return operTenUsrnme
     */
-	public String getOperTenUsername()  { return this.operTenUsrnme; }
+	public String getOperTenUsername()  { return  operTenUsrnme; }
 	
     /**
     *  Default method for return the Operation password (with Tenant permission)
     *  @return operTenPswd
     */
-	public String getOperTenPassword()  { return this.operTenPswd;   }
+	public String getOperTenPassword()  { return  operTenPswd;   }
 	
     /**
     *  Default method for return the Sharefiles file-name
     *  @return shareFilesFileName
     */
-	public String getShareFilesName()    {  return this.shFilesFiName; }
+	public String getShareFilesName()    {  return  shFilesFiName; }
 
 }

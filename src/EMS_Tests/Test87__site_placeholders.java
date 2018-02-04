@@ -93,12 +93,12 @@ public class Test87__site_placeholders {
 	testFuncs.myDebugPrinting("Step 1 - Add a new Site Placeholder");
 	testFuncs.addSitePH(driver, sitePhName, sitePhValue, sitePHSite, sitePHTenant);
 	
-	// Step 2 - Edit the created Tenant Site
+	// Step 2 - Edit the created Site Placeholder
 	testFuncs.myDebugPrinting("Step 2 - Edit the created Site Placeholder");
 	testFuncs.editSitePH(driver, sitePhName, sitePhNewValue);
 	
-	// Step 3 - Delete the created Tenant Placeholder
-	testFuncs.myDebugPrinting("Step 3 - Delete the created Tenant Placeholder");
+	// Step 3 - Delete the created Site Placeholder
+	testFuncs.myDebugPrinting("Step 3 - Delete the created Site Placeholder");
 	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getDefSite() + " [" + testVars.getDefSite() + "]");
   }
   
