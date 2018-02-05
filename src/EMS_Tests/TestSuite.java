@@ -139,7 +139,12 @@ import org.junit.runners.Suite;
 	Test130__tenant_site_special_characters.class					,
 	Test131__delete_device_tests.class								,
 	Test132__timeout.class											,
-	Test133__delete_device_status_tests.class
+	Test133__delete_device_status_tests.class						,
+	Test134__duplicate_template_placeholders.class					,
+	Test135__duplicate_tenant_configuration_ph.class				,
+	Test136__duplicate_site_configuration_ph.class					,
+	Test137__duplicate_device_placeholders.class					,
+	Test138__duplicate_phone_firmware_files.class
 
 })
 

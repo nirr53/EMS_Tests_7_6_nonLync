@@ -1850,6 +1850,30 @@ public class GlobalFuncs {
 		  searchStr(driver, "%ITCS_" + tempPhName + "%");
 		  searchStr(driver, tempPhValue);
 		  searchStr(driver, tempPhDescription);
+	  }  
+	  
+	  /**
+	  *  Add another Template placeholder with the same name
+	  *  @param driver      	  - given driver
+	  *  @param tempName     	  - template for which we create the placeholder
+	  *  @param tempPhName   	  - name for the Template placeholder
+	  */  
+	  public void addTemplatePlaceholder(WebDriver driver, String tempName, String tempPhName) {
+		   
+		  // Add another existing Template PH
+		  myDebugPrinting("Add another existing Template PH", testVars.logerVars.NORMAL);
+		  
+		  // Select a model
+		  Select models = new Select(driver.findElement(By.xpath("//*[@id='models']")));
+		  models.selectByVisibleText(tempName);
+		  myWait(5000);
+		  
+		  // Fill data and verify error
+		  myDebugPrinting("Fill data and verify error", testVars.logerVars.MINOR);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[8]/div[2]/table/tbody/tr[1]/td/table/tbody/tr[1]/td[2]/a"), 7000);
+		  mySendKeys(driver, By.xpath("//*[@id='ph_name']") , tempPhName       , 2000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[4]/button[2]"), 7000);
+		  searchStr(driver, "Failed to save new placeholder. The name is in use.");
 	  }
 	  
 	  /**
@@ -2034,6 +2058,30 @@ public class GlobalFuncs {
 	  }
 	  
 	  /**
+	  *  Add an existing IP phone firmware
+	  *  @param driver       - given driver
+	  *  @param firmName     - name of the added firmware
+	  */
+	  public void addNewFirmware(WebDriver driver, String firmName) {
+		  	
+		  // Enter the Add-New-Firmware menu
+		  myDebugPrinting("Enter the Add-New-Firmware menu", testVars.logerVars.MINOR);
+		  myClick(driver, By.xpath("//*[@id='tbTemps']/tbody/tr[1]/td/a"), 2000);
+		  verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[1]/h3", "Add new IP Phone firmware");
+		  
+		  // Fill data
+		  myDebugPrinting("Fill data", testVars.logerVars.MINOR);
+		  mySendKeys(driver, By.xpath("//*[@id='name']")       , firmName, 2000);
+		  mySendKeys(driver, By.xpath("//*[@id='description']"), "1234"  , 2000);
+		  mySendKeys(driver, By.xpath("//*[@id='version']")    , "1234"  , 2000);
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[3]/button[1]"), 7000);
+
+		  // Verify that error prompt is displayed
+		  myDebugPrinting("Verify that error prompt is displayed", testVars.logerVars.MINOR);		  
+		  searchStr(driver, "Failed to add new IPP Phone " + firmName + " firmware.");
+	  }
+	  
+	  /**
 	  *  Edit an existing IP phone firmware
 	  *  @param driver         - given driver
 	  *  @param firmName       - name of the created firmware
@@ -2168,6 +2216,35 @@ public class GlobalFuncs {
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 		  myAssertTrue("placeholder name was not found!" , bodyText.contains("%ITCS_" + phName + "%"));
 		  myAssertTrue("placeholder value was not found!", bodyText.contains(phValue));
+	  }
+	  
+	  
+	  /**
+	  *  Add an existing device placeholder to existing registered user
+	  *  @param driver   - given driver
+	  *  @param userName - pre-create registered user
+	  *  @param phName   - placeholder name
+	  */
+	  public void addDevicePlaceholder(WebDriver driver, String userName, String phName) {
+		    
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div[2]/a"), 3000);
+		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/form/div/div[1]/h3", "Change IP Phone Device Placeholder");
+		  verifyStrByXpath(driver, "//*[@id='table_all']/thead/tr/th"						 , "Please select a device");
+		  mySendKeys(driver, By.xpath("//*[@id='table_all']/tbody/tr[1]/td[2]/div/input"), userName, 2000);
+		  driver.findElement(By.xpath("//*[@id='table_all']/tbody/tr[1]/td[2]/div/input")).sendKeys(Keys.ENTER);	    
+		  myWait(20000);		  
+		  Actions action = new Actions(driver);
+		  WebElement element=driver.findElement(By.xpath("//*[@id='devices_body']/tr/td[3]/b[1]"));
+		  action.doubleClick(element).perform();
+		  Select devKey = new Select(driver.findElement(By.xpath("//*[@id='key']")));
+		  
+		  // Verify that the already been created placeholder is not appear at Select element
+		  for (int i = 0; i < devKey.getAllSelectedOptions().size(); ++i) {
+				
+			  String currPhName = devKey.getAllSelectedOptions().get(0).getText();
+			  myDebugPrinting("currPhName - " + currPhName, testVars.logerVars.MINOR);  
+			  myAssertTrue("<" + phName + "> was detected !!", !currPhName.contains("phName"));		
+		  }
 	  }
 	  
 	  /**
@@ -2320,6 +2397,31 @@ public class GlobalFuncs {
 	  }
 	  
 	  /**
+	  *  Create an existing Tenant-PH
+	  *  @param driver     - given element
+	  *  @param tenPhName  - given Tenant-ph name
+	  *  @param tenTenant  - given Tenant for the tenant-ph
+	  */
+	  public void addTenantPH(WebDriver driver, String tenPhName, String tenTenant) {
+		  
+		// Fill data
+	    myDebugPrinting("Fill data", testVars.logerVars.NORMAL);  
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[2]/a"), 9000);
+		verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Add new placeholder");
+		Select tenId = new Select(driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/select")));
+		tenId.selectByVisibleText(tenTenant);
+		myWait(5000);
+		myDebugPrinting("tenPhName - "  + tenPhName ,testVars.logerVars.MINOR);  
+		mySendKeys(driver, By.xpath("//*[@id='ph_name']") , tenPhName , 2000);
+		mySendKeys(driver, By.xpath("//*[@id='ph_value']"), "123", 2000);
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
+		
+		// Verify that appropriate error prompt is displayed
+	    myDebugPrinting("Verify that appropriate error prompt is displayed", testVars.logerVars.NORMAL);  
+		searchStr(driver, "Failed to save new placeholder. This name is exist.");
+	  }
+	  
+	  /**
 	  *  Delete a Tenant-PH with given variables
 	  *  @param driver       - given element
 	  *  @param tenPhName    - given Tenant-ph name
@@ -2460,6 +2562,29 @@ public class GlobalFuncs {
 		searchStr(driver, sitePhValue);
 		searchStr(driver, sitePHSite);
 		searchStr(driver, siteTenant);	
+	  }
+	  
+	  
+	  /**
+	  *  Create an existing Site-PH with given variables
+	  *  @param driver      - given element
+	  *  @param sitePhName  - given Site-PH name
+	  *  @param sitePHSite  - given Site-PH site
+	  *  @param siteTenant  - given Site-PH tenant
+	  */
+	  public void addSitePH(WebDriver driver, String sitePhName, String sitePHSite, String siteTenant) {
+		  
+		// Add an existing Site-PH
+	    myDebugPrinting("Add an existing Site-PH", testVars.logerVars.NORMAL);  
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[2]/a"), 5000);	
+		verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Add new placeholder");		
+		Select siteId = new Select(driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/select")));
+		siteId.selectByVisibleText(sitePHSite);	
+		myWait(5000);	
+		mySendKeys(driver, By.xpath("//*[@id='ph_name']") , sitePhName , 2000);
+		mySendKeys(driver, By.xpath("//*[@id='ph_value']"), "1234", 2000);	
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
+		searchStr(driver, "Failed to save new placeholder. This name is exist.");	
 	  }
 	  
 	  /**
@@ -2664,6 +2789,31 @@ public class GlobalFuncs {
 	  }
 	  
 	  /**
+	  *  Add an existing site CFG key according to given data
+	  *  @param driver       - given element
+	  *  @param cfgKeyName   - given configuration name
+	  *  @param currSite     - given configuration site
+	  *  @throws IOException 
+	  */
+	  public void addNewSiteCfgKey(WebDriver driver, String cfgKeyName, String currSite) {  
+		  
+		  // Select site
+		  myDebugPrinting("Select site", testVars.logerVars.MINOR);	  
+		  selectSite(driver, currSite); 
+		  
+		  // Select key, set data and submit
+		  myDebugPrinting("Select key, set data and submit", testVars.logerVars.MINOR);	  
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , cfgKeyName  , 2000);  
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), "1234", 2000);  	  
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 3000);	
+		  
+		  // Verify that appropriate error prompt is displayed
+		  myDebugPrinting("Verify that appropriate error prompt is displayed", testVars.logerVars.MINOR);
+		  searchStr(driver, "This setting name is already in use.");
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[2]"), 3000); 
+	  }
+	  
+	  /**
 	  *  Select a site in Site configuration menu
 	  *  @param driver   - a given driver
 	  *  @param siteName - a given Site name
@@ -2827,15 +2977,15 @@ public class GlobalFuncs {
 	    }
 	}
 
-	  /**
-	  *  Verify the create /non-create of POST users
-	  *  @param driver       - given driver
-	  *  @param userNamePrefix - Prefix of user-names (same name for the device)
-	  *  @param dispNamePrefix - Prefix of display-names
-	  *  @param isRegistsred - flag for identify if a registered user was created or not
-	  *  @param usersNumber	 - users number
-	  */
-	  public void verifyPostUsersCreate(WebDriver driver, String userNamePrefix, String dispNamePrefix, boolean isRegistered, int usersNumber) {
+	/**
+	*  Verify the create /non-create of POST users
+	*  @param driver       - given driver
+	*  @param userNamePrefix - Prefix of user-names (same name for the device)
+	*  @param dispNamePrefix - Prefix of display-names
+	*  @param isRegistsred - flag for identify if a registered user was created or not
+	*  @param usersNumber	 - users number
+	*/
+	public void verifyPostUsersCreate(WebDriver driver, String userNamePrefix, String dispNamePrefix, boolean isRegistered, int usersNumber) {
 		  
 		  String username, dispName;
 		  enterMenu(driver, "Setup_Manage_users", "New User");
@@ -2863,7 +3013,7 @@ public class GlobalFuncs {
 			    } else {
 			    	
 				   verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/table/tbody/tr/td/table/tbody/tr[2]/td/font", "No users found");
-			    }
+			    } 
 		  }
 		  	
 		  enterMenu(driver, "Monitor_device_status", "Devices Status");
@@ -2900,5 +3050,110 @@ public class GlobalFuncs {
 			    
 			  } 
 		  }
+	  }
+	
+	  /**
+	  *  Delete Tenant configuration key
+	  *  @param driver      - given driver
+	  *  @param cfgKeyName  - given configuration tenant name
+	  *  @param cfgKeyValue - given configuration tenant value
+	  *  @param currTenant  - given configuration tenant
+	  */  
+	  public void deleteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) throws IOException {
+		  	  
+		  // Get idx
+		  myDebugPrinting("Get idx", testVars.logerVars.MINOR);
+		  BufferedReader r = new BufferedReader(new StringReader(driver.findElement(By.tagName("body")).getText()));
+		  String l = null;
+		  int i = 1;
+		  Boolean countLines = false;
+		  while ((l = r.readLine()) != null) {
+					
+			  myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+			  if (l.contains(cfgKeyName)) {
+						  
+				myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+				break;
+			  } else if (countLines) {
+				
+				i++;
+			  } else if (l.contains("Configuration Key Configuration Value")) {
+				countLines = true;
+			  }
+		  }
+	   
+		  // Delete key
+		  myDebugPrinting("Delete key", testVars.logerVars.MINOR);	  
+		  myClick(driver, By.xpath("//*[@id='table_keys']/tbody/tr[" + i + "]/td[3]/div/a/i"), 7000);
+		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
+		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000); 
+		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currTenant + " )");
+		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+				  
+		  // Verify delete
+		  myDebugPrinting("Verify delete", testVars.logerVars.MINOR);	  
+		  String txt = driver.findElement(By.tagName("body")).getText();
+		  myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyName));
+		  myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyValue));
+	  }
+	  
+	  /**
+	  *  Create a new  Tenant configuration key
+	  *  @param driver      - given driver
+	  *  @param cfgKeyName  - given configuration tenant name
+	  *  @param cfgKeyValue - given configuration tenant value
+	  *  @param currTenant  - given configuration tenant
+	  */
+	  public void addNewCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) {
+		  
+		  // Select tenant
+		  myDebugPrinting("Select tenant", testVars.logerVars.MINOR);	  
+		  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
+		  currentTenant.selectByVisibleText(currTenant);
+		  myWait(20000);
+		  
+		  // Select key, set data and submit
+		  myDebugPrinting("Add cfgKeyName - "  + cfgKeyName, testVars.logerVars.MINOR);	
+		  myDebugPrinting("Add cfgKeyValue - " + cfgKeyValue, testVars.logerVars.MINOR);	 
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName  , 7000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 7000);  
+		  myWait(7000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
+		  myWait(7000);
+
+		  // verify create
+		  myDebugPrinting("verify create", testVars.logerVars.MINOR);
+		  searchStr(driver, cfgKeyName);
+		  searchStr(driver, cfgKeyValue);
+		  myWait(10000);
+	  }  
+	  
+	  /**
+	  *  Create an existing Tenant configuration key
+	  *  @param driver      - given driver
+	  *  @param cfgKeyName  - given configuration tenant name
+	  */
+	  public void addNewCfgKey(WebDriver driver, String cfgKeyName, String currTenant) {
+		  
+		  // Select tenant
+		  myDebugPrinting("Select tenant", testVars.logerVars.MINOR);	  
+		  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
+		  currentTenant.selectByVisibleText(currTenant);
+		  myWait(20000);
+		  
+		  // Select key, set data and submit
+		  myDebugPrinting("Add cfgKeyName - "  + cfgKeyName, testVars.logerVars.MINOR);	
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName, 7000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), "123"	, 7000);  
+		  myWait(7000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);
+
+		  // Verify that appropriate error prompt is displayed
+		  myDebugPrinting("Verify that appropriate error prompt is displayed", testVars.logerVars.MINOR);
+		  searchStr(driver, "This setting name is already in use");
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[2]"), 7000);
 	  }
 }

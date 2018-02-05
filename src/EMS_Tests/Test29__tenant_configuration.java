@@ -1,8 +1,5 @@
 package EMS_Tests;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -92,11 +89,11 @@ public class Test29__tenant_configuration {
 
 	// Step 1 - Add a new CFG key
 	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
-    addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
     
 	// Step 2 - Delete a CFG key
 	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
-	deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+	testFuncs.deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
 	
 	// Step 3 - Copy a CFG key from other tenant
 	testFuncs.myDebugPrinting("Step 3 - Copy a CFG key from other tenant");
@@ -113,7 +110,7 @@ public class Test29__tenant_configuration {
   private void copyCFGkey(WebDriver driver, String tenWeCopyTo, String tenWeCopyFrom, String cfgKeyName, String cfgKeyValue) {
 	
 	  // Create a new CFG key on other Tenant
-	  addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenWeCopyFrom);
+	  testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenWeCopyFrom);
 	  testFuncs.myWait(10000);
 
 	  // Select a new tenant
@@ -140,77 +137,6 @@ public class Test29__tenant_configuration {
 	  // Verify copy
 	  testFuncs.searchStr(driver, cfgKeyName);
 	  testFuncs.searchStr(driver, cfgKeyValue);
-  }
-
-  // Delete a  configuration value
-  private void deleteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) throws IOException {
-	  	  
-	  // Get idx
-	  testFuncs.myDebugPrinting("Get idx", testVars.logerVars.MINOR);
-	  BufferedReader r = new BufferedReader(new StringReader(driver.findElement(By.tagName("body")).getText()));
-	  String l = null;
-	  int i = 1;
-	  Boolean countLines = false;
-	  while ((l = r.readLine()) != null) {
-				
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
-		  if (l.contains(cfgKeyName)) {
-					  
-			testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
-			break;
-		  } else if (countLines) {
-			
-			i++;
-		  } else if (l.contains("Configuration Key Configuration Value")) {
-			countLines = true;
-		  }
-	  }
-   
-	  // Delete key
-	  testFuncs.myDebugPrinting("Delete key", testVars.logerVars.MINOR);	  
-	  testFuncs.myClick(driver, By.xpath("//*[@id='table_keys']/tbody/tr[" + i + "]/td[3]/div/a/i"), 7000);
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000); 
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currTenant + " )");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
-			  
-	  // Verify delete
-	  testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.MINOR);	  
-	  String txt = driver.findElement(By.tagName("body")).getText();
-	  testFuncs.myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyName));
-	  testFuncs.myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyValue));
-  }
-
-  // Add new CFG key according to given data
-  private void addNewCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) {
-	  
-	  // Select tenant
-	  testFuncs.myDebugPrinting("Select tenant", testVars.logerVars.MINOR);	  
-	  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
-	  currentTenant.selectByVisibleText(currTenant);
-	  testFuncs.myWait(20000);
-	  
-	  // Select key, set data and submit
-	  testFuncs.myDebugPrinting("Add cfgKeyName - "  + cfgKeyName, testVars.logerVars.MINOR);	
-	  testFuncs.myDebugPrinting("Add cfgKeyValue - " + cfgKeyValue, testVars.logerVars.MINOR);	 
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName  , 7000);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 7000);  
-	  testFuncs.myWait(7000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);
-//	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currTenant + " )");
-//	  testFuncs.myWait(7000);
-//	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
-//	  testFuncs.myWait(7000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
-	  testFuncs.myWait(7000);
-
-	  // verify create
-	  testFuncs.myDebugPrinting("verify create", testVars.logerVars.MINOR);
-	  testFuncs.searchStr(driver, cfgKeyName);
-	  testFuncs.searchStr(driver, cfgKeyValue);
-	  testFuncs.myWait(10000);
   }
 
   @After
