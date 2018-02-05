@@ -78,9 +78,9 @@ public class Test133__delete_device_status_tests {
 	  
 	  // Set vars + login
 	  Map<String, String> map = new HashMap<String, String>();
-	  String prefix    = "delDevStts" + testFuncs.getId();
-	  String userName1 = prefix + "_1_";
-	  String userName2 = prefix + "_2_";
+	  String prefix    = "deldevstts" + testFuncs.getId();
+	  String userName1 = prefix + "_1";
+	  String userName2 = prefix + "_2";
 	  String usersNumber   	= "2";
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser); 
 
@@ -100,8 +100,9 @@ public class Test133__delete_device_status_tests {
 
 	  // Step 1 - Delete a user via Manage user page
 	  testFuncs.myDebugPrinting("Step 1 - Delete a user via Manage user page");
+	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	  testFuncs.searchUser(driver, userName1); 
-	  deleteUserManMenu(userName1);
+	  deleteUserManMenu(userName1 + "@" + testVars.getDomain());
 	  
 	  // Verify that device-status was also deleted
 	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", testVars.logerVars.NORMAL);
@@ -118,7 +119,7 @@ public class Test133__delete_device_status_tests {
 	  map.put("action"	 	  , "Delete Users");	  
 	  map.put("skipVerifyDelete", "true");	  
 	  testFuncs.setMultipleUsersAction(driver, map);
-	  testFuncs.searchStr(driver, userName1 + "@" + testVars.getDomain() + " Finished");
+	  testFuncs.searchStr(driver, userName2 + "@" + testVars.getDomain() + " Finished");
 	  
 	  // Verify that device-status was also deleted
 	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", testVars.logerVars.NORMAL);
@@ -134,7 +135,7 @@ public class Test133__delete_device_status_tests {
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	     
 	  testFuncs.myWait(10000);
 	  String txt = driver.findElement(By.tagName("body")).getText();			    
-	  testFuncs.myAssertTrue("Approve button is not displayed !!\ntxt - " + txt, txt.contains("Approve")); 
+	  testFuncs.myAssertTrue("Device status were found !!\ntxt - " + txt, txt.contains("There are no devices that fit this search criteria")); 
   }
 
   // Delete users via Manage-Users menu
@@ -150,7 +151,6 @@ public class Test133__delete_device_status_tests {
 	  testFuncs.searchStr(driver, "No users found");
   }
  
-
   @After
   public void tearDown() throws Exception {
 	  
