@@ -111,6 +111,7 @@ import org.junit.runners.Suite;
 	Test101__device_status_export_tests.class						,
 	Test102__device_status_filter_columns.class						,
 	Test103__special_characters_users.class							,
+	Test104__alarms_icons.class										,
 	Test105__device_status_filter_tests.class						,
 	Test106__device_status_nickname_tests.class						,
 	Test107__system_settings_http_https.class						,

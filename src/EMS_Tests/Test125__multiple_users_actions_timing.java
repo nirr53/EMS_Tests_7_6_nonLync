@@ -16,7 +16,7 @@ import org.openqa.selenium.*;
 * This test tests the timing values between actions on multiple-users-changes menu
 * ----------------
 * Tests:
-* 	- Enter Manage multiple devices changes menu.
+* 	- Enter Manage multiple users changes menu.
 * 	- Create several users using POST query.
 * 	 1. Update configuration with 5 seconds between each action
 * 	 2. Update configuration with 30 seconds between each action

@@ -25,7 +25,7 @@ import org.openqa.selenium.*;
 *    6. Delete the created users and alarms
 * 
 * Results:
-* 	  1. The alarms should be detected by their Tenant/
+* 	  1. The alarms should be detected by their Tenant.
 *   2+3. Filter should be cleared.
 *     4. No Alarm should be detected.
 *     5. Telnet menu should be opened.
