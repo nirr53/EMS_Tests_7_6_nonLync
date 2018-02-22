@@ -34,7 +34,7 @@ import org.openqa.selenium.*;
 */
 
 @RunWith(Parameterized.class)
-public class Test122__registered_unregisterd_users_number {
+public class Test122__registered_unregistered_users_number {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
@@ -43,7 +43,7 @@ public class Test122__registered_unregisterd_users_number {
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test122__registered_unregisterd_users_number(String browser) {
+  public Test122__registered_unregistered_users_number(String browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;

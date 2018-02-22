@@ -82,7 +82,7 @@ public class Test128__template_exisiting_configuration_and_ph {
   }
 
   @Test
-  public void Template_exisitng_configuration_and_ph() throws Exception {
+  public void Template_existing_configuration_and_ph() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
 	

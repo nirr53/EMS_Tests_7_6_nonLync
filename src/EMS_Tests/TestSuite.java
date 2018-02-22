@@ -129,7 +129,7 @@ import org.junit.runners.Suite;
 	Test119__alarms_tests4.class									,
 	Test120__private_placeholders.class								,
 	Test121__network_topology.class									,
-	Test122__registered_unregisterd_users_number.class				,
+	Test122__registered_unregistered_users_number.class				,
 	Test123__change_status.class									,
 	Test124__multiple_devices_actions_timing.class					,
 	Test125__multiple_users_actions_timing.class					,

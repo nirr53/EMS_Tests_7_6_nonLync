@@ -135,8 +135,8 @@ public class Test66__SBC_Proxy_Option_configuration {
   // Restore SBC configuration
   private void restoreSBCproxyConfigurationTemplate(WebDriver driver, String strForEdit) throws UnsupportedFlavorException, IOException {
 	  
-	  // Restore deafult configuration
-	  testFuncs.myDebugPrinting("Restore deafult configuration", testVars.logerVars.NORMAL);	    
+	  // Restore default configuration
+	  testFuncs.myDebugPrinting("Restore default configuration", testVars.logerVars.NORMAL);	    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[4]"), 3000);	
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Reset the Proxy DHCP Options Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to reset the Proxy DHCP option template?");

@@ -110,12 +110,12 @@ public class Test111__multiple_browsers {
 	testFuncs.searchStr(driver[1], testVars.getSysMainStr());
 	testFuncs.searchStr(driver[2], testVars.getSysMainStr());
 	
-	// Browser #1 enters the phone-firmware-files menu, browser #0 still at Manage-users manu, and browser #2 at welcome page.
+	// Browser #1 enters the phone-firmware-files menu, browser #0 still at Manage-users menu, and browser #2 at welcome page.
 	testFuncs.enterMenu(driver[1], "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
 	testFuncs.searchStr(driver[0], "New User");
 	testFuncs.searchStr(driver[2], testVars.getSysMainStr());
 	
-	// Browser #2 enters the Alarms menu,  #0 still at Manage-users manu, and browser #1 at phone-fiwmware-files menu.
+	// Browser #2 enters the Alarms menu,  #0 still at Manage-users menu, and browser #1 at phone-firmware-files menu.
 	testFuncs.enterMenu(driver[2], "Dashboard_Alarms", "Export");	
 	testFuncs.searchStr(driver[0], "New User");
 	testFuncs.searchStr(driver[1], "Phone firmware files");

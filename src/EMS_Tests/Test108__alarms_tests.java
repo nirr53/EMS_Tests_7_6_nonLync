@@ -120,7 +120,7 @@ public class Test108__alarms_tests {
 	testFuncs.searchAlarm(driver, "Description", alertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create an alarm with different special characters
-	testFuncs.myDebugPrinting("Step 2 - Create an alarm with differnt special characterss");	
+	testFuncs.myDebugPrinting("Step 2 - Create an alarm with different special characterss");	
 	String alertPrefix2 = "specialCharcaters_";
 	String []alertsForSearch2 = {alertPrefix2 + "!#$/" + "_"  + Id,
 								 alertPrefix2 + "=?^`" + "_"  + Id,
@@ -129,7 +129,7 @@ public class Test108__alarms_tests {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");
 	
 	// Create alarms with different sets of characters
-	testFuncs.myDebugPrinting("Create alarms with differnt sets of characters", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Create alarms with different sets of characters", testVars.logerVars.MINOR);
 	for (int i = 0; i < 4; ++i) {
 		
 		testFuncs.myDebugPrinting("alertsForSearch2[i] - " + alertsForSearch2[i], testVars.logerVars.MINOR);
