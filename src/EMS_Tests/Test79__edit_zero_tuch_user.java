@@ -80,7 +80,7 @@ public class Test79__edit_zero_tuch_user {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars and login
+	// Set variables and login
 	String Id           = testFuncs.getId();
 	String prefixName   = "edztusr";
 	String userName     = prefixName + Id;

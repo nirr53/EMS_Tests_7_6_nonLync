@@ -66,7 +66,7 @@ public class GlobalVars {
 	*  IE		      - name of Internet-Explorer browser
 	*/
     public   LogVars 				logerVars;
-	private  String ip               = "10.21.8.32";
+	private  String ip               = "10.21.8.35";
 	private  String port             = "8081";
 	private  String domain           = "cloudbond365b.com";
     private  String url  		     = ip + "/ipp/admin/AudioCodes_files/login.php";
@@ -74,10 +74,10 @@ public class GlobalVars {
     private  String crAlrmsBatName   = "alertEngine.exe";
     private  String crKpAlvBatName   = "changeStatus.exe";
     private  String mainPageStr		 = "Login to IP Phone Manager Pro";
-    private  String sysUsername      = "nir3";
-	private  String sysPassword      = "1q2w3e4r5t";
+    private  String sysUsername      = "acladmin";
+	private  String sysPassword      = "pass_1234";
     private  String monitUsername    = "Nir_Monitoring4";
-	private  String monitPassword    = "1q2w3e4r5t";
+	private  String monitPassword    = "1q2w3e4r5t6y";
     private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";
 	private  String monitTenPswd     = "1q2w3e4r5t";
     private  String operTenUsrnme    = "Nir_Operation_Tenant2";
@@ -94,10 +94,10 @@ public class GlobalVars {
 	private  String acMacPrefix      = "00908f";	
 	private  String defTenant      	 = "Nir";
 	private  String defSite			 = "AutoDetection";
-	private  String spclCrsSite      = "Nir_()'<>/\":*&^%#@!~";
+	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
-	private  String version			 = "7.4.1082";
+	private  String version			 = "7.4.2091";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";

@@ -83,7 +83,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id = testFuncs.getId();
 	String siteCfgKeyName  = "user_name"   + Id;
 	String siteCfgKeyValue = "userValue"   + Id;

@@ -79,7 +79,7 @@ public class Test114__different_BToE_status {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars login
+	// Set variables login
 	String Id             = testFuncs.getId();
 	String prefixName     = "BToE_user";
 	String usersNumber	  = "4";

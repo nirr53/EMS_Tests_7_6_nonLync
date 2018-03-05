@@ -18,7 +18,7 @@ import org.openqa.selenium.*;
 *    1. Verify that you cannot edit the LDAP properties
 *    2. Test the Test-LDAP button
 *    
-*    -  Logout, relogin via Monitoring-user (tenant), an enter the LDAP menu
+*    -  Logout, re-login via Monitoring-user (tenant), an enter the LDAP menu
 *    3. Verify that you cannot edit the LDAP properties
 *    4. Test the Test-LDAP button
 * 
@@ -78,7 +78,7 @@ public class Test93__Monitoring_LDAP {
 	  
 	Log.startTestCase(this.getClass().getName());	
 	
-	// Set vars
+	// Set variables
 	String ldapAddress  = String.valueOf(testFuncs.getNum(128)) + "." +
 			 			  String.valueOf(testFuncs.getNum(128)) + "." +
 			 			  String.valueOf(testFuncs.getNum(128)) + "." +

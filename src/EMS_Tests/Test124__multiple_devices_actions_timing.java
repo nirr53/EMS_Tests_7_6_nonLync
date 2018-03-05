@@ -79,7 +79,7 @@ public class Test124__multiple_devices_actions_timing {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   = "4";
 	String dispPrefix    = "tmngDvcs" + testFuncs.getId();
 	int usStartIdx 		 = 1;

@@ -76,7 +76,7 @@ public class Test134__duplicate_template_placeholders {
 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String tempName          = "Audiocodes_405";
 	String Id 			     = testFuncs.getId();
 	String tempPhName        = "myPHolderName"  	  + Id;
@@ -95,6 +95,7 @@ public class Test134__duplicate_template_placeholders {
     
 	// Step 2 - Delete a Template placeholder
 	testFuncs.myDebugPrinting("Step 2 - Delete a Template placeholder");
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
     testFuncs.deleteTemplatePlaceholder(driver, tempName, tempPhName);
   }
   

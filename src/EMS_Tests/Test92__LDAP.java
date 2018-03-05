@@ -74,7 +74,7 @@ public class Test92__LDAP {
 	  
 	Log.startTestCase(this.getClass().getName());	
 	
-	// Set vars
+	// Set variables
 	String ldapAddress  = String.valueOf(testFuncs.getNum(128)) + "." +
 			 			  String.valueOf(testFuncs.getNum(128)) + "." +
 			 			  String.valueOf(testFuncs.getNum(128)) + "." +

@@ -99,7 +99,7 @@ public class Test99__Monitoring_device_actions {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String userName     = "deviceactions" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 

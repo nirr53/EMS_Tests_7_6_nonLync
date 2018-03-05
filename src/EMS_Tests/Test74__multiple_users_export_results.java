@@ -76,7 +76,7 @@ public class Test74__multiple_users_export_results {
 	 
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String srcUserPrefix 	    = "exReltUsr";
 	  String exportFilesPrefix  = "exportData";
 	  String usersNumber   	    = "3";

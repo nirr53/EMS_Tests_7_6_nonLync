@@ -116,8 +116,8 @@ public class Test46__Monitoring_template_placeholders {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='phs1']/thead/tr/th[3]/b", "IPP Parameter");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='phs1']/thead/tr/th[4]/b", "Description");
 	
-    // Switch back to main frame, logout and reLogin via Monitoring user (tenant) and enter the Add new template placeholder menu
-	testFuncs.myDebugPrinting("Switch back to main frame, logout and reLogin via Monitoring user (tenant) and enter the Add new template placeholder menu");
+    // Switch back to main frame, logout and re-login via Monitoring user (tenant) and enter the Add new template placeholder menu
+	testFuncs.myDebugPrinting("Switch back to main frame, logout and re-login via Monitoring user (tenant) and enter the Add new template placeholder menu");
 	driver.switchTo().window((String) tabs.get(0));
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);

@@ -86,7 +86,7 @@ public class Test128__template_exisiting_configuration_and_ph {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
     Map<String, String> map = new HashMap<String, String>();   
 	String Id 			  = testFuncs.getId();
 	String tempName  = "myTmpNme_" + Id;

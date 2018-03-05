@@ -82,7 +82,7 @@ public class Test120__private_placeholders {
 	  
 	Log.startTestCase(this.getClass().getName());		
 	
-	// Set vars
+	// Set variables
 	String Id 		   = testFuncs.getId();
 	String prCfgKey	   = "private" 			+ Id;
 	String nonPrCfgKey = "non_private" 		+ Id;

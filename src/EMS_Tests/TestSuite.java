@@ -137,7 +137,7 @@ import org.junit.runners.Suite;
 	Test127__templates_with_special_characters.class				,
 	Test128__template_exisiting_configuration_and_ph.class			,
 	Test129__export_private_template_placeholder.class				,
-	Test130__tenant_site_special_characters.class					,
+	Test130__site_special_characters.class					,
 	Test131__delete_device_tests.class								,
 	Test132__timeout.class											,
 	Test133__delete_device_status_tests.class						,
@@ -145,7 +145,8 @@ import org.junit.runners.Suite;
 	Test135__duplicate_tenant_configuration_ph.class				,
 	Test136__duplicate_site_configuration_ph.class					,
 	Test137__duplicate_device_placeholders.class					,
-	Test138__duplicate_phone_firmware_files.class
+	Test138__duplicate_phone_firmware_files.class					,
+	Test139__username_length.class
 
 })
 

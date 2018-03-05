@@ -82,7 +82,7 @@ public class Test18__multiple_users_send_message_reset_device {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber      = "3";
 	int usStartIdx 		    = 1;
 	String dispPrefix       = "sMsgRsUsr" + testFuncs.getId();

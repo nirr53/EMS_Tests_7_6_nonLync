@@ -82,7 +82,7 @@ public class Test78__different_users_same_mac {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars login
+	// Set variables login
 	String Id             = testFuncs.getId();
 	String prefixName     = "sameMac";
 	String firstUsername  = prefixName + "_1_" + Id;

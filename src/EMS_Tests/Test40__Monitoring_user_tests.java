@@ -83,7 +83,7 @@ public class Test40__Monitoring_user_tests {
 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String sysUser = "system";		// This is the user default user
 	
 	// Login the system via a Monitoring user (system)

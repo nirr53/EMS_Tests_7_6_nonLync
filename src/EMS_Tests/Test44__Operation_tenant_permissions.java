@@ -74,7 +74,7 @@ public class Test44__Operation_tenant_permissions {
 	
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String bodyText;
 	  String tenant1 = testVars.getDefTenant(); 	// The default Tenant of the system
 	  String tenant2 = testVars.getNonDefTenant(0);	// Another Tenant. Non default

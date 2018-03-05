@@ -77,7 +77,7 @@ public class Test36__add_bad_template {
 	  
 	 Log.startTestCase(this.getClass().getName());
 	 
-	 // Set vars
+	 // Set variables
 	 String Id       = testFuncs.getId();
 	 String tempName = "tempName" + Id;
 	 String tempDesc = "tempDesc" + Id;

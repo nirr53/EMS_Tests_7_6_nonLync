@@ -89,7 +89,7 @@ public class Test98__device_actions_row {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 			= testFuncs.getId();
 	String userName     = "deviceactions" + Id;
 	String nickname		= "nickname" 	  + Id;

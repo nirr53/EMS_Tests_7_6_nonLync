@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi user actions via a Monitoring user (system)
+* This test tests the multiple user actions via a Monitoring user (system)
 * ----------------
 * Tests:
 * 	 - Login via Administrator, create a user with a POST query and logout
@@ -85,7 +85,7 @@ public class Test48__Monitoring_system_multi_users_actions {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserName      = "monitMultiUsrs" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("startIdx"   ,  String.valueOf(1));

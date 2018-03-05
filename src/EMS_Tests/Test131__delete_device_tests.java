@@ -79,7 +79,7 @@ public class Test131__delete_device_tests {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars + login
+	  // Set variables + login
 	  Map<String, String> map = new HashMap<String, String>();
 	  String prefix    = "delete";
 	  String id        = testFuncs.getId();

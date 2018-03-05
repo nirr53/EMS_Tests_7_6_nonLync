@@ -104,7 +104,7 @@ public class Test100__Monitoring_device_actions_row {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String userName     	= "deviceactions" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 
@@ -202,7 +202,7 @@ public class Test100__Monitoring_device_actions_row {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String userName     	= "deviceactions" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 
@@ -279,8 +279,8 @@ public class Test100__Monitoring_device_actions_row {
 	searchAndSelectDevice(driver, userName);
 	deleteDevice(userName);
 	
-    // Step 11 - Logout, relogin as Administrator and delete the created user
-  	testFuncs.myDebugPrinting("Step 11 - Logout, relogin as Administrator and delete the created user");
+    // Step 11 - Logout, re-login as Administrator and delete the created user
+  	testFuncs.myDebugPrinting("Step 11 - Logout, re-login as Administrator and delete the created user");
   	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");

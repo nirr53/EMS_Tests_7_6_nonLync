@@ -74,7 +74,7 @@ public class Test95__site_configuration_features {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String site   		  = testVars.getDefSite();
 	String tenant 		  = testVars.getDefTenant();
 	String daylightPrefix = "system/daylight_saving";

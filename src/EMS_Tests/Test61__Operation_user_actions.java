@@ -82,12 +82,12 @@ public class Test61__Operation_user_actions {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String Id         = testFuncs.getId();
 	  String userName   = "user"   + Id;
 	  String deviceName = "device" + Id;
-	  String usedTemp   = "Nir_Default_Template";
-	  String usedFirm   = "FirmwareForTenant";
+	  String usedTemp   = "NirTemplate430";
+	  String usedFirm   = "430HD";
 	  
 	  // Step 1- Login via an Operation user (system) and create a user.
 	  testFuncs.myDebugPrinting("Step 1- Login via an Operation user (system) and create a user.");
@@ -106,8 +106,8 @@ public class Test61__Operation_user_actions {
 	  testFuncs.myDebugPrinting("Step 4 - Delete user");
 	  deleteUser(driver, userName);  
 	  
-	  // Step 5 - Logout and relogin via an Operation user (system) and create a user
-	  testFuncs.myDebugPrinting("Step 5 - Logout and relogin via an Operation user (system) and create a user");
+	  // Step 5 - Logout and re-login via an Operation user (system) and create a user
+	  testFuncs.myDebugPrinting("Step 5 - Logout and re-login via an Operation user (system) and create a user");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.addUser(driver, userName, "1q2w3e$r", userName, testVars.getDefTenant());

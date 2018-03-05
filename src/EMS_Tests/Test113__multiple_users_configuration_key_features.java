@@ -86,7 +86,7 @@ public class Test113__multiple_users_configuration_key_features {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "3";
 	String Id				= testFuncs.getId();
 	int usStartIdx 		 	= 1;

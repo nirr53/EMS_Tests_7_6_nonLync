@@ -80,7 +80,7 @@ public class Test108__alarms_tests {
 	  
 	Log.startTestCase(this.getClass().getName());
 	  
-	// Set vars and login
+	// Set variables and login
 	String Id 		= testFuncs.getId();
 	String username = ("rgAlrt" + Id).toLowerCase(); 
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  

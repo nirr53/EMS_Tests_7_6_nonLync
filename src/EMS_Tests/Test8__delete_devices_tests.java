@@ -76,7 +76,7 @@ public class Test8__delete_devices_tests {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id         = testFuncs.getId();
 	String userName   = "Manual user" + Id;
 	String deviceName = "Device" + Id;

@@ -83,7 +83,7 @@ public class Test126__timeout {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars and login
+	// Set variables and login
 	String location 		= "myLocation";
 	String phoneNumber		= "+97239764713";
 	String timeoutMin		= "3";

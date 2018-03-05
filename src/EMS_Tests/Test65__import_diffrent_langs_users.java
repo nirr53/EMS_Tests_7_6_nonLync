@@ -78,7 +78,7 @@ public class Test65__import_diffrent_langs_users {
 	  
 	Log.startTestCase(this.getClass().getName());
   
-	// Set vars
+	// Set variables
 	String 	 path        		= "";
 	Map<String, String> map 	= new HashMap<String, String>();
 	String   xpathUploadField  	= "//*[@id='file_source']";  

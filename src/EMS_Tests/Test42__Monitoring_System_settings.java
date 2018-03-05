@@ -76,7 +76,7 @@ public class Test42__Monitoring_System_settings {
 	
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String[] langs = {"English", "Finnish", "French", "German", "Hebrew", "Italian", "Japanese", "Korean"};
 	  String usedLang = langs[testFuncs.getNum(langs.length -1)];
 	  testFuncs.myDebugPrinting("usedLang - " + usedLang);
@@ -95,8 +95,8 @@ public class Test42__Monitoring_System_settings {
 	  testFuncs.searchStr(driver, "Unauthorized");
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item");
 	  
-	  // Logout and relogin via an Monitoring user (system) and the enter System settings menu
-	  testFuncs.myDebugPrinting("Logout and relogin via an Monitoring user (system) and the enter System settings menu");
+	  // Logout and re-login via an Monitoring user (system) and the enter System settings menu
+	  testFuncs.myDebugPrinting("Logout and re-login via an Monitoring user (system) and the enter System settings menu");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");

@@ -79,7 +79,7 @@ public class Test77__full_search {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars + login
+	  // Set variables + login
 	  String prefix 		   = "fulsrch";
 	  String srcUserName1      = prefix + "1" + testFuncs.getId();
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);

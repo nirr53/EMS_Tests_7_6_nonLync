@@ -76,8 +76,8 @@ public class Test123__change_status {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars and login
-	testFuncs.myDebugPrinting("Set vars and login");
+	// Set variables and login
+	testFuncs.myDebugPrinting("// Set variables and login");
 	String chngSttsUsername = testFuncs.getId();
 	String location 		= "myLocation";
 	String phoneNumber		= "+97239764713";

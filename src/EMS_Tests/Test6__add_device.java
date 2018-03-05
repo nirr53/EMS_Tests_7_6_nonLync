@@ -78,7 +78,7 @@ public class Test6__add_device {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id         = testFuncs.getId();
 	String userName   = "Manual user"   + Id;
 	String deviceName = "Manual device" + Id;

@@ -80,7 +80,7 @@ public class Test17__multiple_users_update_change_configuration {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserPrefix 	= "upCgCnfUsr";
 	String usersNumber   	= "3";
 	int usStartIdx 		 	= 1;

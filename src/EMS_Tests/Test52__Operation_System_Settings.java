@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test verify that you cannot edit the System-Settings values via Operation user (Tenant) but can at  Operation user (System) .
+* This test verify that you cannot edit the System-Settings values via Operation user (Tenant) but can at Operation user (System).
 * ----------------
 * Tests:
 * 	 1. Login via an Operation user (tenant) and the enter System settings menu
@@ -78,7 +78,7 @@ public class Test52__Operation_System_Settings {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String[] langs = {"English", "Finnish", "French", "German", "Hebrew", "Italian", "Japanese", "Korean"};
 	  String usedLang = langs[testFuncs.getNum(langs.length -1)];
 	  testFuncs.myDebugPrinting("usedLang - " + usedLang);

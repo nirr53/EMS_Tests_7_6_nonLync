@@ -80,7 +80,7 @@ public class Test68__DHCP_Option_configuration_urls {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// set vars
+	// Set variables
 	String tenWithoutAnyTemp = testVars.getNonDefTenant(1);
 	String tenWithAllTemp    = testVars.getDefTenant();
 	  

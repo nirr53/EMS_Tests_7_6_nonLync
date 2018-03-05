@@ -28,7 +28,7 @@ import org.openqa.selenium.*;
 */
 
 @RunWith(Parameterized.class)
-public class Test130__tenant_site_special_characters {
+public class Test130__site_special_characters {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
@@ -37,7 +37,7 @@ public class Test130__tenant_site_special_characters {
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test130__tenant_site_special_characters(String browser) {
+  public Test130__site_special_characters(String browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -75,7 +75,7 @@ public class Test130__tenant_site_special_characters {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String tenant 		   = testVars.getDefTenant();
 	String sitePHSite	   = testVars.getSpecialCharsSite(0) + " [" + testVars.getDefSite() + "] / " + testVars.getDefTenant();
 	String Id 			   = testFuncs.getId();

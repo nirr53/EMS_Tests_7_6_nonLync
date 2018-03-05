@@ -77,7 +77,7 @@ public class Test33__import_stop_and_not_continue {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "6";
 	int usStartIdx 		 	= 1;
 	String dispPrefix   	= "stopDelUser" + testFuncs.getId();

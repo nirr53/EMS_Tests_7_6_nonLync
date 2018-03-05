@@ -77,7 +77,7 @@ public class Test87__site_placeholders {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 	          = testFuncs.getId();
 	String sitePhName     = "sitePhName"     + Id;
 	String sitePhValue    = "sitePhValue"    + Id;

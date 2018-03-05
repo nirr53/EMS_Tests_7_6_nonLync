@@ -87,7 +87,7 @@ public class Test109__alarms_tests2 {
 	  
 	Log.startTestCase(this.getClass().getName());
 	  
-	// Set vars and login
+	// Set variables and login
 	String Id = testFuncs.getId();
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");

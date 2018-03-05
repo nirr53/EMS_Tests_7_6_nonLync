@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi device actions via an Operation user (tenant)
+* This test tests the multiple device actions via an Operation user (tenant)
 * ----------------
 * Tests:
 *    - Login via Administrator, create a user with a POST query and logout
@@ -86,9 +86,9 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserName      = "opTnMltDv" + testFuncs.getId();
-	String tempName			=  "Nir_Default_Template";      // name of default template which associated with the current Operation user
+	String tempName			=  "NirTemplate420";      // name of default template which associated with the current Operation user
 	
 	// Login via Administrator, create a user with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");

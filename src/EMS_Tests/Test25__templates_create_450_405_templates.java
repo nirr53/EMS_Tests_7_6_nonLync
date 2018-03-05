@@ -79,7 +79,7 @@ public class Test25__templates_create_450_405_templates {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	int i               = 1;
 	String Id 			= testFuncs.getId();
 	String phoneTypes[] = {"405", "450HD"};	

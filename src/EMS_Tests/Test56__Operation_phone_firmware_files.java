@@ -75,7 +75,7 @@ public class Test56__Operation_phone_firmware_files {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id = testFuncs.getId();
 	String firmName     = "myFirmName"  + Id;
 	String firmDesc     = "myFirmDesc"  + Id;

@@ -81,7 +81,7 @@ public class Test26__tenant_placeholders {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 	         = testFuncs.getId();
 	String tenPhName     = "tenPhName"     + Id;
 	String tenPhValue    = "tenPhValue"    + Id;

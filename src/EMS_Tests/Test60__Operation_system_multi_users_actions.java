@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi user actions via an Operation user
+* This test tests the multiple user actions via an Operation user
 * ----------------
 * Tests:
 *    - Login via Administrator, create a user with a POST query and logout
@@ -80,7 +80,7 @@ public class Test60__Operation_system_multi_users_actions {
 	  	
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserName      = "oprsysmlusr" + testFuncs.getId();
 	
 	// Login via Administrator, create a user with a POST query and logout

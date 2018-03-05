@@ -80,7 +80,7 @@ public class Test14__search_tests {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserPrefix = "srcUser";
 	String usersNumber   = "3";
 	String Id = testFuncs.getId();

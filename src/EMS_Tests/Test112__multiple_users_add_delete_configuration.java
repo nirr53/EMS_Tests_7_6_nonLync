@@ -80,7 +80,7 @@ public class Test112__multiple_users_add_delete_configuration {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "3";
 	String Id				= testFuncs.getId();
 	int usStartIdx 		 	= 1;

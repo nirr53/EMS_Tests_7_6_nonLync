@@ -83,7 +83,7 @@ public class Test110__alarms_tests3 {
 	  
 	Log.startTestCase(this.getClass().getName());
 	  
-	// Set vars and login
+	// Set variables and login
 	String prefix = "tlntAlrt";
 	String user1  = prefix + "1_" + testFuncs.getId();
 	String user2  = prefix + "2_" + testFuncs.getId();

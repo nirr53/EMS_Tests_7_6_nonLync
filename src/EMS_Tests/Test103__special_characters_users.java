@@ -83,12 +83,12 @@ public class Test103__special_characters_users {
 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars and login
+	// Set variables and login
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	String Id             = testFuncs.getId();
 	String prefixName     = "sChars_" + Id + "_";
 	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+", "'" }; //The ' character cause bugs - known bug
-//	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+"};
+	// String suffixes[]     = {"'"};
 	
     // Step 1-8 - Create a user using POST query with !#$ characters
 	int len = suffixes.length;

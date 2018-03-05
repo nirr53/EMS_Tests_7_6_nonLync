@@ -77,7 +77,7 @@ public class Test121__network_topology {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String id 				= testFuncs.getId();
 	String usersNumber		= "1";
 	String regPrefix		= "regPrefix"   + id;

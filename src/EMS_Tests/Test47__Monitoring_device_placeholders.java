@@ -84,7 +84,7 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String srcUserName      =   "dvPHUsrTst" + testFuncs.getId();
 	  Map<String, String> map = new HashMap<String, String>();
 	  map.put("startIdx"   ,  String.valueOf(1));

@@ -82,7 +82,7 @@ public class Test96__template_features {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
     Map<String, String> map = new HashMap<String, String>();   
 	String Id 			  = testFuncs.getId();
 	String site   		  = testVars.getDefSite();
@@ -259,7 +259,7 @@ public class Test96__template_features {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

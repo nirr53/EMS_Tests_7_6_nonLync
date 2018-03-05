@@ -23,10 +23,10 @@ import org.openqa.selenium.support.ui.Select;
 * 	 5. Verify that Features menu is disabled
 *    6. Verify that Actions menu is disabled
 *    7. Verify that Add-Configuration-key button is disabled
-* 	 8. Logout, relogin as an Administrator and delete the Tenant-PH
+* 	 8. Logout, re-login as an Administrator and delete the Tenant-PH
 * 
 * Results:
-*    2-7. All the operation should be not active while we in Monitoring user.
+*    2-7. All the operations should be not active while we in Monitoring user.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -80,7 +80,7 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 	         = testFuncs.getId();
 	String tenPhName     = "tenMonitPhName"  + Id;
 	String tenPhValue    = "tenMonitPhValue" + Id;
@@ -132,8 +132,8 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	String addSitePHKey = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[2]/a")).getAttribute("class");
 	testFuncs.myAssertTrue("Add Site-PH button is active !!", addSitePHKey.contains("not-active"));
 
-	// Step 8 - Logout, relogin as an Administrator and delete the Tenant-PH
-	testFuncs.myDebugPrinting("Step 8 - Logout, relogin as an Administrator and delete the Tenant-PH");
+	// Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH
+	testFuncs.myDebugPrinting("Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH");
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
@@ -197,8 +197,8 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	String addSitePHKey = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[2]/a")).getAttribute("class");
 	testFuncs.myAssertTrue("Add Site-PH button is active !!", addSitePHKey.contains("not-active"));
 
-	// Step 8 - Logout, relogin as an Administrator and delete the Tenant-PH
-	testFuncs.myDebugPrinting("Step 8 - Logout, relogin as an Administrator and delete the Tenant-PH");
+	// Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH
+	testFuncs.myDebugPrinting("Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH");
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");

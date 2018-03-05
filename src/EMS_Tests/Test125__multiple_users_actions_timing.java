@@ -79,7 +79,7 @@ public class Test125__multiple_users_actions_timing {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   = "4";
 	String dispPrefix    = "tmngUsrs" + testFuncs.getId();
 	int usStartIdx 		 = 1;

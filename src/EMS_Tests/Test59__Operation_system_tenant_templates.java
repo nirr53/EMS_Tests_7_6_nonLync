@@ -22,7 +22,7 @@ import org.openqa.selenium.*;
 * 	 2. Edit the created template
 * 	 3. Delete the template
 * 
-* 	 - Logout, relogin via an Operation user (tenant) and enter the Phone Templates menu.
+* 	 - Logout, re-login via an Operation user (tenant) and enter the Phone Templates menu.
 * 	 4. Create a phone template.
 * 	 5. Edit the created template.
 * 	 6. Delete the template.
@@ -82,7 +82,7 @@ public class Test59__Operation_system_tenant_templates {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String Id 			  = testFuncs.getId();
 	  String phoneType    	  = "430HD";	
 	  Map<String, String> map = new HashMap<String, String>();
@@ -110,8 +110,8 @@ public class Test59__Operation_system_tenant_templates {
 	  testFuncs.myDebugPrinting("Step 3 - Delete a template");	
 	  testFuncs.deleteTemplate(driver, "my" + phoneType + "Template_" + Id);
 	  
-	  // Logout, relogin via Operation user (tenant) and enter the Phone Templates menu
-	  testFuncs.myDebugPrinting("Logout, relogin via Operation user (tenant) and enter the Phone Templates menu");
+	  // Logout, re-login via Operation user (tenant) and enter the Phone Templates menu
+	  testFuncs.myDebugPrinting("Logout, re-login via Operation user (tenant) and enter the Phone Templates menu");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");

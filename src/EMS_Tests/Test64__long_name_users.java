@@ -82,7 +82,7 @@ public class Test64__long_name_users {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars and login 
+	// Set variables and login 
     map.put("startIdx"   ,  String.valueOf(1));
     map.put("usersNumber",  "2");
     map.put("usersPrefix",  longPrefix);   

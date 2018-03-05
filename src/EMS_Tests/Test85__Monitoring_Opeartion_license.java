@@ -90,15 +90,15 @@ public class Test85__Monitoring_Opeartion_license {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[3]", "Value");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[4]", "Description"); 
 	  
-	  // Step 2 - Logout, relogin the system via Monitoring user (tenant) and verify that the system-license menu is not displayed
-	  testFuncs.myDebugPrinting("Step 2 - Logout, relogin the system via Monitoring user (tenant) and verify that the system-license menu is not displayed");  
+	  // Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify that the system-license menu is not displayed
+	  testFuncs.myDebugPrinting("Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify that the system-license menu is not displayed");  
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_System_section", "System");
 	  testFuncs.myAssertTrue("License menu is detected !!", !driver.findElement(By.tagName("body")).getText().contains("License"));
 	
-	  // Step 3 - Logout, relogin the system via Operation user (system) and verify that the system-license is displayed properly
-	  testFuncs.myDebugPrinting("Step 3 - Logout, relogin the system via Operation user (system) and verify that the system-license is displayed properly");  
+	  // Step 3 - Logout, re-login the system via Operation user (system) and verify that the system-license is displayed properly
+	  testFuncs.myDebugPrinting("Step 3 - Logout, re-login the system via Operation user (system) and verify that the system-license is displayed properly");  
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_System_license", "License Properties");
@@ -106,8 +106,8 @@ public class Test85__Monitoring_Opeartion_license {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[3]", "Value");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[4]", "Description"); 
 
-	  // Step 4 - Logout, relogin the system via Operation user (tenant) and verify that the system-license menu is not displayed
-	  testFuncs.myDebugPrinting("Step 4 - Logout, relogin the system via Operation user (tenant) and verify that the system-license menu is not displayed");  
+	  // Step 4 - Logout, re-login the system via Operation user (tenant) and verify that the system-license menu is not displayed
+	  testFuncs.myDebugPrinting("Step 4 - Logout, re-login the system via Operation user (tenant) and verify that the system-license menu is not displayed");  
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_System_section", "System");

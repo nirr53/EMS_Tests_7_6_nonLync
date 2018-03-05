@@ -14,11 +14,11 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi device actions via a Monitoring user (system)
+* This test tests the multiple device actions via a Monitoring user (system)
 * ----------------
 * Tests:
 * 	 -  Login via Administrator, create a user with a POST query and logout
-*    -  Login via a Monitoring user (system) and enter Multi-devices-changes menu
+*    -  Login via a Monitoring user (system) and enter multiple-devices-changes menu
 *    1. Verify that Delete-devices action is deactivated.
 *    2. Verify that Change-phone-type action is deactivated.
 *    3. Verify that Change-language action is deactivated.
@@ -86,7 +86,7 @@ public class Test49__Monitoring_system_multi_devices_actions {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserName      = "monitMultiDvcs" + testFuncs.getId();
 	 
 	// Login via Administrator, create a user with a POST query and logout

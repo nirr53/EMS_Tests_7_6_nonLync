@@ -17,10 +17,10 @@ import org.openqa.selenium.*;
 * ----------------
 * Tests:
 * 	 - Create a registered users using a POST query and enter the Device-Status menu.
-* 	 1. Check no-devices  , not check 'Export-all' checkbox and export the devices
-* 	 2. Check no-devices  ,  do check 'Export-all' checkbox and export the devices
-* 	 3. Check some devices, not check 'Export-all' checkbox and export the devices
-*    4. Check some devices,  do check 'Export-all' checkbox and export the devices
+* 	 1. Check no-devices  , not check 'Export-all' check-box and export the devices
+* 	 2. Check no-devices  ,  do check 'Export-all' check-box and export the devices
+* 	 3. Check some devices, not check 'Export-all' check-box and export the devices
+*    4. Check some devices,  do check 'Export-all' check-box and export the devices
 * 
 * Results:
 * 	 1. All devices should be exported to CSV file.
@@ -104,8 +104,8 @@ public class Test101__device_status_export_tests {
 				 				"myLocation");
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);   
 	
-	// Step 1 - Check no-devices, don't check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported
-	testFuncs.myDebugPrinting("Step 1 - Check no-devices, don't check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported");
+	// Step 1 - Check no-devices, don't check 'Export-all' check-box, export the devices and verify that all displayed devices are exported
+	testFuncs.myDebugPrinting("Step 1 - Check no-devices, don't check 'Export-all' check-box, export the devices and verify that all displayed devices are exported");
 	setSearch("");
 	exportDevices(downloadedFile, false);
 	String exportFileTxt = testFuncs.readFile(testVars.getDownloadsPath() + "\\" + downloadedFile); 
@@ -116,8 +116,8 @@ public class Test101__device_status_export_tests {
 	}
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile);
 	
-	// Step 2 - Check no-devices, check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported
-	testFuncs.myDebugPrinting("Step 2 - Check no-devices, check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported");  
+	// Step 2 - Check no-devices, check 'Export-all' check-box, export the devices and verify that all displayed devices are exported
+	testFuncs.myDebugPrinting("Step 2 - Check no-devices, check 'Export-all' check-box, export the devices and verify that all displayed devices are exported");  
 	setSearch("");
 	exportDevices(downloadedFile, true);
 	exportFileTxt = testFuncs.readFile(testVars.getDownloadsPath() + "\\" + downloadedFile); 
@@ -128,8 +128,8 @@ public class Test101__device_status_export_tests {
 	}
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile);
 	
-	// Step 3 - Check some devices, don't check 'Export-all' checkbox, export the devices and verify that only selected devices are exported
-	testFuncs.myDebugPrinting("Step 3 - Check some devices, don't check 'Export-all' checkbox, export the devices and verify that only selected devices are exported");  
+	// Step 3 - Check some devices, don't check 'Export-all' check-box, export the devices and verify that only selected devices are exported
+	testFuncs.myDebugPrinting("Step 3 - Check some devices, don't check 'Export-all' check-box, export the devices and verify that only selected devices are exported");  
 	setSearch(userName + "_1");
 	exportDevices(downloadedFile, false);
 	exportFileTxt = testFuncs.readFile(testVars.getDownloadsPath() + "\\" + downloadedFile); 
@@ -139,9 +139,9 @@ public class Test101__device_status_export_tests {
 	testFuncs.myAssertTrue("Device "+ userName + "_3" + " was detected !!\ntxt - " 	   + exportFileTxt, !exportFileTxt.contains(userName + "_3"));
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile);
 	
-	// Step 4 - Check some devices, check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported
+	// Step 4 - Check some devices, check 'Export-all' check-box, export the devices and verify that all displayed devices are exported
 	// Nir 9\7\17 7.4.245 - There is a bug (VI 145832) about this issue
-	testFuncs.myDebugPrinting("Check some devices, check 'Export-all' checkbox, export the devices and verify that all displayed devices are exported");  
+	testFuncs.myDebugPrinting("Check some devices, check 'Export-all' check-box, export the devices and verify that all displayed devices are exported");  
 	setSearch(userName +"_1");
 	exportDevices(downloadedFile, true);
 	exportFileTxt = testFuncs.readFile(testVars.getDownloadsPath() + "\\" + downloadedFile); 

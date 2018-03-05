@@ -78,7 +78,7 @@ public class Test16__multiple_users_changes_change_tenant {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "3";
 	int usStartIdx 		 	= 1;
 	String dispPrefix   	= "tenantUser" + testFuncs.getId();

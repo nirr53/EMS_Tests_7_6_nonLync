@@ -82,7 +82,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   = "3";
 	int usStartIdx 		 = 1;
 	String dispPrefix    = "chTmpRsDv" + testFuncs.getId();

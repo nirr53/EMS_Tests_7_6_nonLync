@@ -84,7 +84,7 @@ public class Test127__templates_with_special_characters {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 			  = testFuncs.getId();
 	String type			  = "430HD";
 	String prefixName     = "sChrsTmpNme_" + Id + "_";

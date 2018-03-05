@@ -13,7 +13,7 @@ import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests the display of users and devices at multi users/devices menus according to different permissions
+* This test tests the display of users and devices at multiple users/devices menus according to different permissions
 * ----------------
 * Tests:
 *    - Login via Administrator, create a user of default-Tenant with a POST query
@@ -85,7 +85,7 @@ public class Test69__Operation_multi_users_devices_permissions {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String prefix			= "op";
 	String nonDefTenant		= testVars.getNonDefTenant(0);
 	String Id 				= testFuncs.getId();

@@ -80,7 +80,7 @@ public class Test20__multiple_devices_send_message_delete_device {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   = "4";
 	String dispPrefix    = "sMsgDlDvUsr" + testFuncs.getId();
 	int usStartIdx 		 = 1;

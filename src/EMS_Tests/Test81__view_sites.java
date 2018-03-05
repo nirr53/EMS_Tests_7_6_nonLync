@@ -95,8 +95,8 @@ public class Test81__view_sites {
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("PASSWORD"));
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("Log In"));
 	String currUrl = driver.getCurrentUrl();
-	testFuncs.myDebugPrinting("driver.getCurrentUrl() - " + currUrl);
-	String emsUrl = "https://" + testVars.getIp() + "/web-ui-ovoc/#/login";
+	testFuncs.myDebugPrinting("currUrl - " + currUrl);
+	String emsUrl = "https://" + testVars.getIp() + "/web-ui-ovoc/#!/login";
 	testFuncs.myAssertTrue("emsUrl was not detected !! ("  + emsUrl + ")", emsUrl.contains(currUrl));
   }
   

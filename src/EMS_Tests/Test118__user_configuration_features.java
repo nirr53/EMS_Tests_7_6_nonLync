@@ -80,7 +80,7 @@ public class Test118__user_configuration_features {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "1";
 	int usStartIdx 		 	= 1;
 	String Id 				= testFuncs.getId();

@@ -78,7 +78,7 @@ public class Test76__long_location_users {
 	  
 		Log.startTestCase(this.getClass().getName());
 
-		// Set vars + login
+		// Set variables + login
 		String usersPrefix      = "location";
 		testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");

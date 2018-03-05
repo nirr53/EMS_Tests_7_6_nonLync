@@ -106,8 +106,8 @@ public class Test41__Monitoring_phone_firmware_files {
 	classTtxt = driver.findElement(By.xpath("//*[@id='tbTemps']/tbody/tr[2]/td/table/tbody/tr[" + i2 + "]/td[8]/a")).getAttribute("class");
 	testFuncs.myAssertTrue("Delete-Firmware button is active !!", classTtxt.contains("not-active"));	
 	
-    // Step 4 - Logout, relogin via a Monitoring user (tenant) and verify that the Phone firmware files menu is not displayed
-	testFuncs.myDebugPrinting("Step 4 - Logout, relogin via a Monitoring user (tenant) and enter the Phone firmware files menu");
+    // Step 4 - Logout, re-login via a Monitoring user (tenant) and verify that the Phone firmware files menu is not displayed
+	testFuncs.myDebugPrinting("Step 4 - Logout, re-login via a Monitoring user (tenant) and enter the Phone firmware files menu");
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_section", "Phones Configuration");

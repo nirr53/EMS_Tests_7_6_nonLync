@@ -24,12 +24,12 @@ import org.openqa.selenium.*;
 * 	 2. Try to edit a template
 * 	 3. Try to delete a template
 * 
-* 	 - Logout, relogin via a Moniotirng user (tenant) and enter the Phone Templates menu.
+* 	 - Logout, re-login via a Moniotirng user (tenant) and enter the Phone Templates menu.
 * 	 4. Try to add a template
 * 	 5. Try to edit a template
 * 	 6. Try to delete a template
 * 
-* 	 7. Logout, relogin as Administrator and delete the created Template
+* 	 7. Logout, re-login as Administrator and delete the created Template
 * 
 * Results:
 *   1-6. All the operations should be forbidden.
@@ -86,7 +86,7 @@ public class Test90__Monitoring_system_tenant_templates {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String Id 			  = testFuncs.getId();
 	  String tempName 		  = "my" + "420HD" + "Template_" + Id;
 	  String tempDesc 		  = "my" + "420HD" + "desc" 	 + Id;
@@ -130,8 +130,8 @@ public class Test90__Monitoring_system_tenant_templates {
 	  testFuncs.searchStr(driver, "Unauthorized");		
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item"); 
 
-	  // Logout, relogin via Monitoring user (tenant) and enter the Phone Templates menu
-	  testFuncs.myDebugPrinting("Logout, relogin via Monitoring user (tenant) and enter the Phone Templates menu");
+	  // Logout, re-login via Monitoring user (tenant) and enter the Phone Templates menu
+	  testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (tenant) and enter the Phone Templates menu");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
@@ -157,8 +157,8 @@ public class Test90__Monitoring_system_tenant_templates {
 	  testFuncs.searchStr(driver, "Unauthorized");		
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item"); 
 	  
-	  // Step 7 - Logout, relogin as Administrator and delete the created Template
-	  testFuncs.myDebugPrinting("Step 7 - Logout, relogin as Administrator and delete the created Template");
+	  // Step 7 - Logout, re-login as Administrator and delete the created Template
+	  testFuncs.myDebugPrinting("Step 7 - Logout, re-login as Administrator and delete the created Template");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");		

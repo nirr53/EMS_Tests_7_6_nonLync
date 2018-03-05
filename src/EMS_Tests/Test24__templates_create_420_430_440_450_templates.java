@@ -79,7 +79,7 @@ public class Test24__templates_create_420_430_440_450_templates {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	int i               = 1;
 	String Id 			= testFuncs.getId();
 	String phoneTypes[] = {"420HD", "430HD", "440HD"};	

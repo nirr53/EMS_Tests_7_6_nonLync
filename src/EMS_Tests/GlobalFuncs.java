@@ -733,7 +733,7 @@ public class GlobalFuncs {
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
 	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
-	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No user " + prefix + " found.");	
+	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No user found.");	
 			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 	    	return;
 	    }
@@ -766,7 +766,7 @@ public class GlobalFuncs {
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
 	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
-	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No device " + prefix + " found.");	
+	    	verifyStrByXpath(driver, "//*[@id='modalContentId']", "No device found.");	
 			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 	    	return;
 	    }
@@ -2821,9 +2821,10 @@ public class GlobalFuncs {
 	  public void selectSite(WebDriver driver, String siteName) {
 		  
 		  myDebugPrinting("Select site", testVars.logerVars.MAJOR);
+		  myDebugPrinting("siteName - " + siteName, testVars.logerVars.MINOR);
 		  Select currentSite = new Select(driver.findElement(By.xpath("//*[@id='site_id']")));
 		  currentSite.selectByVisibleText(siteName);    
-		  myWait(5000);
+		  myWait(5000); 
 	  }
 	  
 	  /**

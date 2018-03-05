@@ -81,7 +81,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String strForEdit = "ems_server/keep_alive_period=" + testFuncs.getId();
 	  String uploadStr  = "1234";
 	  testFuncs.myDebugPrinting("strForEdit - " + strForEdit, testVars.logerVars.MINOR);

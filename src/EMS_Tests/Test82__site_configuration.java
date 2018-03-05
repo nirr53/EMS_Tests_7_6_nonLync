@@ -74,7 +74,7 @@ public class Test82__site_configuration {
 	  
 	Log.startTestCase(this.getClass().getName());
 	 
-	// Set vars
+	// Set variables
 	String Id = testFuncs.getId();
 	String siteCfgKeyName  = "user_name" + Id;
 	String siteCfgKeyValue = "userValue" + Id;

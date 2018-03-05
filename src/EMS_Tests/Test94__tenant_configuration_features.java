@@ -74,7 +74,7 @@ public class Test94__tenant_configuration_features {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// set vars
+	// Set variables
 	String pinPrefix 	  = "system/pin_lock/enabled";
 	String telnetPrefix   = "management/telnet/enabled";
 	String daylightPrefix = "system/daylight_saving";

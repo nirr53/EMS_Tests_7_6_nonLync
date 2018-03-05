@@ -75,7 +75,7 @@ public class Test7__add_multiple_devices_to_same_user {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id         = testFuncs.getId();
 	String userName   = "Manual user" + Id;
 	String deviceName = "Device" + Id;

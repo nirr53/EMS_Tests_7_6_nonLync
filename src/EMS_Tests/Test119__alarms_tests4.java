@@ -80,7 +80,7 @@ public class Test119__alarms_tests4 {
 	  
 	Log.startTestCase(this.getClass().getName());
 		  
-	// Set vars and login
+	// Set variables and login
 	String Id     = testFuncs.getId();
 	String prefix = "regAlert" + Id;
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  

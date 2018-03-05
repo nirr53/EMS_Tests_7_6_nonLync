@@ -81,7 +81,7 @@ public class Test32__device_placeholders {
 	  
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String srcUserName      =   "dvPH" + testFuncs.getId();
 	  Map<String, String> map = new HashMap<String, String>();
 	  map.put("startIdx"   ,  String.valueOf(1));

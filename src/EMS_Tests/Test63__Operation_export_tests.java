@@ -15,7 +15,7 @@ import org.openqa.selenium.*;
 * This test tests an export of users when login via an Operation user.
 *  ----------------
 *  Tests:
-* 	 - Login the EMS via an Operation user.
+* 	 - Login the EMS via an Operation user (System).
 * 	 1. Enter the Export-Users-Devices menu and export users+devices
 * 	 2. Enter the Export-Configuration menu and export configuration
 * 
@@ -79,8 +79,8 @@ public class Test63__Operation_export_tests {
 	Log.startTestCase(this.getClass().getName());
 	if (!this.usedBrowser.equals(testVars.IE)) {
 
-	    // Login via an Operation user
-		testFuncs.myDebugPrinting("Login via an Operation user");
+	    // Login via an Operation user (System)
+		testFuncs.myDebugPrinting("Login via an Operation user (System)");
 		testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices

@@ -83,7 +83,7 @@ public class Test55__Operation_tenant_placeholders {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id 	         = testFuncs.getId();
 	String tenPhName     = "tenPhName"     + Id;
 	String tenPhValue    = "tenPhValue"    + Id;
@@ -123,8 +123,8 @@ public class Test55__Operation_tenant_placeholders {
 	testFuncs.myWait(2000);
 	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
 	
-	// Logout, relogin as Operation user (tenant) and enter the Tenant configuration menu
-	testFuncs.myDebugPrinting("Logout, relogin as Operation user (tenant) and enter the Tenant configuration menu");
+	// Logout, re-login as Operation user (tenant) and enter the Tenant configuration menu
+	testFuncs.myDebugPrinting("Logout, re-login as Operation user (tenant) and enter the Tenant configuration menu");
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");

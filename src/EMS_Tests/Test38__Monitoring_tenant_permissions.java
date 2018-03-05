@@ -74,7 +74,7 @@ public class Test38__Monitoring_tenant_permissions {
 	
 	  Log.startTestCase(this.getClass().getName());
 	  
-	  // Set vars
+	  // Set variables
 	  String tenant1 = testVars.getDefTenant(); 	// The default Tenant of the system
 	  String tenant2 = testVars.getNonDefTenant(0);	// Another Tenant. Non default
 	  String tenant3 = testVars.getNonDefTenant(1);	// Another Tenant. Non default

@@ -84,7 +84,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber      = "3";
 	int usStartIdx 		    = 1;
 	String dispPrefix       = "chFrmVlanMode" + testFuncs.getId();

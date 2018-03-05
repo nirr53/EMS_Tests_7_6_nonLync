@@ -85,7 +85,7 @@ public class Test97__device_actions {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String userName     = "devActions" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 

@@ -77,7 +77,7 @@ public class Test34__import_stop_continue {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String usersNumber   	= "6";
 	int usStartIdx 		 	= 1;
 	String dispPrefix   	= "stpAndCnt" + testFuncs.getId();

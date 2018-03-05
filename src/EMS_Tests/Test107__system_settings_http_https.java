@@ -85,7 +85,7 @@ public class Test107__system_settings_http_https {
 	  
 	Log.startTestCase(this.getClass().getName());
 	  
-	// Set vars and login
+	// Set variables and login
 	String userName     = "httpsTest" + testFuncs.getId();
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 

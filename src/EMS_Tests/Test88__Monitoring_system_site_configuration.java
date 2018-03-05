@@ -17,7 +17,7 @@ import org.openqa.selenium.*;
 * Tests:
 * 	 - Login via Administrator user and enter the Site configuration menu
 * 	 - Create a Site configuration value and Site-PH
-* 	 - Logout and relogin via Monitoring user (system) and enter the Site configuration menu.
+* 	 - Logout and re-login via Monitoring user (system) and enter the Site configuration menu.
 * 	 1. Try to add a new Site configuration value
 *    2. Try to delete a site configuration value
 *    3. Verify that Features menu is disabled
@@ -84,7 +84,7 @@ public class Test88__Monitoring_system_site_configuration {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String Id = testFuncs.getId();
 	String siteCfgKeyName  = "user_name"   + Id;
 	String siteCfgKeyValue = "userValue"   + Id;

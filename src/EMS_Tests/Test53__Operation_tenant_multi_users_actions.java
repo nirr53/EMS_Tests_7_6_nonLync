@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi user actions via an Operation user (Tenant)
+* This test tests the multiple user actions via an Operation user (Tenant)
 * ----------------
 * Tests:
 *    - Login via Administrator, create a user of default tenant with a POST query and logout
@@ -80,7 +80,7 @@ public class Test53__Operation_tenant_multi_users_actions {
 	  	
 	Log.startTestCase(this.getClass().getName());
 	
-	// set vars
+	// Set variables
 	String srcUserName      = "opsysmlusr" + testFuncs.getId();
 	
 	// Login via Administrator, create a user of default tenant with a POST query and logout

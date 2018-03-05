@@ -78,7 +78,7 @@ public class Test70__search_tests {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserPrefix 	= "searchTestUser";
 	String usersNumber   	= "3";
 	int usStartIdx 		 	= 1;

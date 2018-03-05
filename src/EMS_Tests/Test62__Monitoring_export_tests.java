@@ -15,7 +15,7 @@ import org.openqa.selenium.*;
 * This test tests an export of users when login via a Monitoring user.
 *  ----------------
 *  Tests:
-* 	 - Login the EMS via a Monitoring user.
+* 	 - Login the EMS via a Monitoring user (System).
 * 	 1. Enter the Export-Users-Devices menu and export users+devices
 * 	 2. Enter the Export-Configuration menu and export configuration
 * 
@@ -79,8 +79,8 @@ public class Test62__Monitoring_export_tests {
 	Log.startTestCase(this.getClass().getName());
 	if (!this.usedBrowser.equals(testVars.IE)) {
 
-	    // Login via a Monitoring user
-		testFuncs.myDebugPrinting("Login via a Monitoring user");
+	    // Login via a Monitoring user (System)
+		testFuncs.myDebugPrinting("Login via a Monitoring user (System)");
 		testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices

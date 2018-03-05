@@ -75,7 +75,7 @@ public class Test80__view_tenants {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_System_view_tenants", "Tenant List");
 		
@@ -94,8 +94,11 @@ public class Test80__view_tenants {
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("USERNAME"));
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("PASSWORD"));
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("Log In"));	
-	String emsUrl = "https://" + testVars.getIp() + "/web-ui-ovoc/#/login";
-	testFuncs.myAssertTrue("emsUrl was not detected !! ("  + emsUrl + ")", emsUrl.contains(driver.getCurrentUrl()));
+	String emsUrl = "https://" + testVars.getIp() + "/web-ui-ovoc/#!/login";	
+	String currUrl = driver.getCurrentUrl();
+	testFuncs.myDebugPrinting("emsUrl - "   + emsUrl, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("currUrl - "  + currUrl, testVars.logerVars.MINOR);
+	testFuncs.myAssertTrue("emsUrl was not detected !! ("  + emsUrl + ")", emsUrl.contains(currUrl));
   }
   
   @After

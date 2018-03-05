@@ -75,7 +75,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.1");
 	  
     // Login and enter the Phone Templates menu
@@ -94,7 +94,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.1");
 	testFuncs.myDebugPrinting("nonCfgFile - " + nonCfgFile, testVars.logerVars.MINOR);
 	

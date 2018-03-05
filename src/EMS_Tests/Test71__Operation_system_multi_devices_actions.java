@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the multi device actions via an Operation user (system)
+* This test tests the multiple device actions via an Operation user (system)
 * ----------------
 * Tests:
 *    - Login via Administrator, create a user with a POST query and logout
@@ -86,7 +86,7 @@ public class Test71__Operation_system_multi_devices_actions {
 	  
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String srcUserName      = "opssmldvc" + testFuncs.getId();
 	
 	// Login via Administrator, create a user with a POST query and logout

@@ -81,7 +81,7 @@ public class Test129__export_private_template_placeholder {
 	  
 	Log.startTestCase(this.getClass().getName());		
 	
-	// Set vars
+	// Set variables
 	String Id 		   		 = testFuncs.getId();
 	String prCfgKey	   		 = "private" 		  + Id;
 	String tempName	   		 = "my420HDTemplate_" + Id;

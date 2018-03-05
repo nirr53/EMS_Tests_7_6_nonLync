@@ -80,7 +80,7 @@ public class Test28__template_placeholders {
 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set vars
+	// Set variables
 	String tempName          = "Audiocodes_405";
 	String tempWeCopyTo      = "Audiocodes_420HD";
 	String Id 			     = testFuncs.getId();
