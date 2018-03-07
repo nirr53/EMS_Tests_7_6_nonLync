@@ -12,7 +12,7 @@ import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests a create of existing phone firmwar
+* This test tests a create of existing phone firmware
 * ----------------
 * Tests:
 * 	 - Enter the Phone firmware files menu and upload a phone firmware.

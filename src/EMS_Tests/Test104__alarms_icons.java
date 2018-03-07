@@ -82,7 +82,7 @@ public class Test104__alarms_icons {
 	  
 	Log.startTestCase(this.getClass().getName());
 	  
-	// Set vars and login
+	// Set variables and login
 	String Id 				 = testFuncs.getId();
 	String username 		 = ("alIcnTst" + Id).toLowerCase(); 
 	String []alertsForSearch = {"alert1" + "_" + Id, "alert2" + "_" + Id};	
@@ -117,11 +117,11 @@ public class Test104__alarms_icons {
 															  "2017-07-217T12:24:18"						 ,
 															  "info2"	 									 ,
 															  "info1"	 									 ,
-															  "minor");
+															  "Major");
 	// Nir 7.4.2048 14\2\18 - VI 151096
 	checkAlarmsViaIcon("1"); 
 	
-	// Step 3 - Create an alarm and check that its status updated
+	// Step 3 - Create an alarm and check that its status not updated
 	testFuncs.myDebugPrinting("Step 3 - Create an alarm and check that its status updated");
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 															  testVars.getPort()							 ,
@@ -133,7 +133,7 @@ public class Test104__alarms_icons {
 															  "info1"	 									 ,
 															  "minor");
 	// Nir 7.4.2048 14\2\18 - VI 151096
-	checkAlarmsViaIcon("2"); 
+	checkAlarmsViaIcon("1"); 
 	
 	// Step 3 - Delete all the created Alarms and check that its status updated
 	testFuncs.myDebugPrinting("Step 3 - Delete all the created Alarms and check that its status updated");
@@ -165,7 +165,7 @@ public class Test104__alarms_icons {
 	  testFuncs.myDebugPrinting("Check Alarms-Icon message-box", testVars.logerVars.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a"), 2000);
 	  testFuncs.searchStr(driver, "ALARMS");
-	  testFuncs.searchStr(driver, "Total: " +  numOfSrcAlerts +" alarm(s)");
+	  testFuncs.searchStr(driver, numOfSrcAlerts + " Major Alarm(s)");
 	  	  
 	  // Check View-All link
 	  testFuncs.myDebugPrinting("Check View-All link", testVars.logerVars.MINOR);
@@ -173,10 +173,10 @@ public class Test104__alarms_icons {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[1]/h3", "Alarms");
   }
 
-@After
+  @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -23,9 +23,9 @@ import org.openqa.selenium.*;
 * 	 4. Check the link to the Alarms page from the Dashboard button
 * 
 * Results:
-* 	 1. Reload mechanism should work successfully.
+* 	 1. Export mechanism should work successfully.
 * 	 2. Link should display the Alerts menu.
-*  	 3. Reload mechanism should work successfully.
+*  	 3. Export mechanism should work successfully.
 * 	 4. Link should display the Alerts menu.
 * 
 * @author Nir Klieman

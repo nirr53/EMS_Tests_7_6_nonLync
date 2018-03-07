@@ -14,11 +14,11 @@ import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests the actions of Device-Status menu when select only one device and login via Monitoring user(syste+tenant)
+* This test tests the actions of Device-Status menu when select only one device and login via Monitoring user(system+tenant)
 * ----------------
 * Tests:
 * 	 - Login via Administrator and create a registered user
-* 	 - Logout, re-loagin via a Monitoring-user (system) and enter the Device-Status menu.
+* 	 - Logout, re-login via a Monitoring-user (system) and enter the Device-Status menu.
 * 	 - Search the user and try the following actions via 'Actions' button when only one device is selected
 * 	 1.  Check a status via Device-status menu
 * 	 2.  Change Tenant via Device-status menu
@@ -33,7 +33,7 @@ import org.openqa.selenium.*;
 *    11. Logout, re-login as Administrator and delete the created user
 *    
 *    - Login via Administrator and create a registered user
-* 	 - Logout, re-loagin via a Monitoring-user (tenant) and enter the Device-Status menu.
+* 	 - Logout, re-login via a Monitoring-user (tenant) and enter the Device-Status menu.
 * 	 - Search the user and try the following actions via 'Actions' button when only one device is selected
 * 	 1.  Check a status via Device-status menu
 * 	 2.  Change Tenant via Device-status menu

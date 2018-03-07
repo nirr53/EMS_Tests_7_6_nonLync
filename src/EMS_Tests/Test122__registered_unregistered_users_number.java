@@ -26,7 +26,7 @@ import org.openqa.selenium.*;
 * Results:
 *    1. The status of registered users should be updated.
 *    2. The status of unregistered users should be updated.
-*    2. The status of offline users should be updated.
+*    3. The status of offline users should be updated.
 *    4. The users should be deleted successfully.
 *  
 * @author Nir Klieman

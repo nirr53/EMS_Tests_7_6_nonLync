@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests the new buttons of the top layer of the EMS-web-mannager.
+* This test tests the new buttons of the top layer of the EMS-web-manager.
 * ----------------
 * Tests:
 * 	 - Login the EMS.

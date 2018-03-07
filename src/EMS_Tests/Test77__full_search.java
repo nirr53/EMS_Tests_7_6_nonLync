@@ -19,7 +19,7 @@ import org.openqa.selenium.*;
 *  	 - Login the system via an Administrator user.
 *    - Create a user via a POST query and enter the Manage users menu.
 *    1. Search the user by its MAC address without check the Search-All option
-*    1. Search the user by its MAC address with check check the Search-All option
+*    2. Search the user by its MAC address with check check the Search-All option
 *    3. Delete the users.
 *  
 * Results:

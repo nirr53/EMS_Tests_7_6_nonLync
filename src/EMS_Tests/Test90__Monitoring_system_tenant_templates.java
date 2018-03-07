@@ -19,12 +19,12 @@ import org.openqa.selenium.*;
 * This test tests the Templates menu via Monitoring users (system+tenant)
 * ----------------
 * Tests:
-* 	 - Login via a Moniotirng user (system) and enter the Phone Templates menu.
+* 	 - Login via a Monitoring user (system) and enter the Phone Templates menu.
 * 	 1. Try to add a template
 * 	 2. Try to edit a template
 * 	 3. Try to delete a template
 * 
-* 	 - Logout, re-login via a Moniotirng user (tenant) and enter the Phone Templates menu.
+* 	 - Logout, re-login via a Monitoring user (tenant) and enter the Phone Templates menu.
 * 	 4. Try to add a template
 * 	 5. Try to edit a template
 * 	 6. Try to delete a template

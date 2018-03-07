@@ -161,7 +161,7 @@ public class Test47__Monitoring_device_placeholders {
 	  testFuncs.myAssertTrue("Delete device-PH button is not deactivated !! (" + deleteButton + ")", deleteButton.contains("not-active"));
 	  
 	  // Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user
-	  testFuncs.myDebugPrinting("Step 7 - Log off, reloagin as an Administrator and delete the created device placeholder and created user");
+	  testFuncs.myDebugPrinting("Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user");
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");  

@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
-* This test tests a create of users with special languages
+* This test tests a filter of devices
 * ----------------
 * Tests:
 * 	 - Create a user+device on default tenant using POST query

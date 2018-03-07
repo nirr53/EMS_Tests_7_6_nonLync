@@ -17,7 +17,7 @@ import org.openqa.selenium.*;
 * Tests:
 * 	 - Enter View Sites menu.
 * 	 1. Check the menu headers.
-* 	 2. Check the Change-Tenants-Via-EMS button.
+* 	 2. Check the Change-Sites-Via-EMS button.
 * 
 * Results:
 * 	 1. Headers should be displayed properly.
@@ -85,8 +85,8 @@ public class Test81__view_sites {
 	testFuncs.verifyStrByXpathContains(driver, "//*[@id='sites1']/thead/tr/th[3]", "Tenant");
 	testFuncs.verifyStrByXpathContains(driver, "//*[@id='sites1']/thead/tr/th[4]", "Subnet Mask");
 	
-    // Step 2 - Check the Change-Tenants-Via-EMS button.
-	testFuncs.myDebugPrinting("Step 2 - Check the Change-Tenants-Via-EMS button.");
+    // Step 2 - Check the Change-Sites-Via-EMS button.
+	testFuncs.myDebugPrinting("Step 2 - Check the Change-Sites-Via-EMS button.");
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/h4/a"), 3000);
 	ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
 	driver.switchTo().window((String) tabs.get(1));

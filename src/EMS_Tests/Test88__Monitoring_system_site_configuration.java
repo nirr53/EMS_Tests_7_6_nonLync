@@ -26,7 +26,7 @@ import org.openqa.selenium.*;
 * 	 6. Try to add a new Site Placeholder
 *    7. Try to edit the created Site Placeholder
 *    8. Try to delete the created Site Placeholder
-*    9. Logout, re-loagin as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH 
+*    9. Logout, re-login as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH 
 * 
 * Results:
 * 	 1-8. Via monitoring, all actions should forbidden / not-active.
