@@ -888,6 +888,11 @@ public class GlobalFuncs {
 			options.addArguments("--start-maximized");
 			return new ChromeDriver(options);
 			
+			
+			
+			
+			
+			
 		} else if (usedBrowser.equals(testVars.FF))     {
 			
 			myDebugPrinting(testVars.getGeckoPath());
@@ -3156,5 +3161,121 @@ public class GlobalFuncs {
 		  myDebugPrinting("Verify that appropriate error prompt is displayed", testVars.logerVars.MINOR);
 		  searchStr(driver, "This setting name is already in use");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[2]"), 7000);
+	  }
+	  
+	  /**
+	  *  Save configuration values
+	  *  @param driver         - given driver
+	  *  @param usersFullNames - given array of user-full-names
+	  */
+	  public void saveConfValues(WebDriver driver, String [] usersFullNames) {
+		
+		  // Save configuration
+		  myDebugPrinting("Save configuration", testVars.logerVars.MINOR);
+		  myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[4]/a"), 7000);
+		  
+		  // Check Confirm-Box
+		  myDebugPrinting("Check Confirm-Box", testVars.logerVars.MINOR);
+		  int usersNum = usersFullNames.length;
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"							 , "Save Configuration");
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[1]", "Name");
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[2]", "Result");
+		  for (int i = 1; i <= usersNum; ++i) {
+			  
+			  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[1]", usersFullNames[i-1]);
+			  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[2]", "User configuration was saved successfully");
+		  }
+		
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);	  
+	  }
+
+	  /**
+	  *  Add new configuration key according to given data
+	  *  @param driver       - given driver
+	  *  @param confValName  - given value name
+	  *  @param confValValue - given value data
+	  */
+	  public void createNewConfValue(WebDriver driver, String confValName, String confValValue) {
+		
+		  // Select 'generate configuration' action, set data and submit	
+		  myDebugPrinting("Select 'generate configuration' action, set data and submit", testVars.logerVars.MINOR);
+		  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("User configuration");
+		  myWait(3000);  
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confValName , 2000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), confValValue, 2000);
+		  myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[3]/a/span"), 3000);
+		
+		  // Verify create
+		  myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+		  searchStr(driver, confValName);
+		  searchStr(driver, confValValue);  
+	  }
+	  
+	  /**
+	  *  Add new configuration key according to given data
+	  *  @param driver       - given driver
+	  *  @param confValName  - given value name
+	  *  @param confValValue - given value data
+	  */
+	  public void deleteConfValue(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues) {
+		  	  
+		  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("Delete User configuration");
+		  myWait(3000);	
+		  myClick(driver, By.xpath("//*[@id='deletePersonalInfoTR']/td[1]/div/a"), 5000);		  
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");			  
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration to selected user(s) ?"); 
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);		  
+				  
+		  // Empty confNames and confValues
+		  verifyConfValues(driver, usersFullNames, confNames, confValues, false);
+	  }
+	  
+	  /**
+	  *  Verify the create of configuration values
+	  *  @param driver       - given driver
+	  *  @param usersFullNames  - given array of users names
+	  *  @param confNames  		- given array of configuration names
+	  *  @param confValues  	- given array of configuration values
+	  *  @param confValues  	- given Boolean value to detect if value exists
+	  */
+	  public void verifyConfValues(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues, Boolean isValuesExist) {
+		    
+		  int usersNUmber = usersFullNames.length;
+		  
+		  // Loop on all users and verify their create one after another
+		  myDebugPrinting("Loop on all users and verify their create one after another", testVars.logerVars.MINOR);	
+		  for (int i = 0; i < usersNUmber; ++i) {
+			  
+			  enterMenu(driver, "Setup_Manage_users", "New User");
+			  searchUser(driver, usersFullNames[i]);  
+			  
+			  if (isValuesExist) {
+				  
+				  myDebugPrinting("isValuesExist - TRUE", testVars.logerVars.MINOR);
+				  myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a/i"), 3000);		  		    
+			  } else {
+				  
+				  myDebugPrinting("isValuesExist - FALSE", testVars.logerVars.MINOR);
+				  myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[2]")			 , 3000);	  
+				  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[1]/a"), 3000);	
+			  }
+			  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + usersFullNames[i] + ")");
+			  
+			  // Verify delete
+			  myDebugPrinting("Verify delete", testVars.logerVars.MINOR);
+			  if (isValuesExist) {
+				  
+				  myDebugPrinting("isValuesExist - TRUE", testVars.logerVars.MINOR);	  
+				  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confNames[i]);
+				  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValues[i]);
+				  
+			  } else {
+			  
+				  myDebugPrinting("isValuesExist - FALSE", testVars.logerVars.MINOR);
+				  String txt = driver.findElement(By.tagName("body")).getText();
+				  myAssertTrue("Values was not detcted !!", !txt.contains(confNames[i]) && !txt.contains(confValues[i]));  
+			  }		  
+			  myDebugPrinting("Delete succeded !!", testVars.logerVars.MINOR);
+		  }
 	  }
 }

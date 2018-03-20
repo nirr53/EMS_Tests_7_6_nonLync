@@ -21,12 +21,13 @@ import org.openqa.selenium.support.ui.Select;
 * 	 1. Create several users using POST query.
 * 	 2. Search the users by their name.
 *    3. Search the user by its tenant
-* 	 4. Delete the users.
+*    4. Search the user by its MAC
+* 	 5. Delete the users.
 * 
 * Results:
 * 	 1.   Users should be created successfully.
-* 	 2+3. The users should be detected successfully.
-* 	 4.   Users should be deleted successfully.
+* 	 2-4. The users should be detected successfully.
+* 	   5. Users should be deleted successfully.
 *
 * @author Nir Klieman
 * @version 1.00
@@ -83,8 +84,9 @@ public class Test14__search_tests {
 	// Set variables
 	String srcUserPrefix = "srcUser";
 	String usersNumber   = "3";
-	String Id = testFuncs.getId();
-	String dispPrefix   = srcUserPrefix + Id;
+	int lim 			 = Integer.parseInt(usersNumber) + 1;
+	String dispPrefix    = srcUserPrefix + testFuncs.getId();
+	String bodyText		 = "";
 	int usStartIdx 		 = 1;
 
     // Step 1 - Create several users using POST query
@@ -101,14 +103,16 @@ public class Test14__search_tests {
 			 												 testVars.getDefTenant()    ,
 			 												 "myLocation");
 	testFuncs.verifyPostUsersCreate(driver,  dispPrefix,  dispPrefix, true, Integer.valueOf(usersNumber));	
+    String macs[] = {testFuncs.readFile("mac_1.txt"),
+    				 testFuncs.readFile("mac_2.txt"),
+    				 testFuncs.readFile("mac_3.txt")};
 
     // Step 2 - Search the user by its name
 	testFuncs.myDebugPrinting("Step 2 - Search the user by its name");
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='filterinput']"), dispPrefix, 2000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 7000);
-    String bodyText = driver.findElement(By.tagName("body")).getText();
-	int lim = Integer.parseInt(usersNumber) + 1;
+     bodyText = driver.findElement(By.tagName("body")).getText();
 	for (int i = 1; i < lim ; ++i) {
 		
 		String currUser = dispPrefix + "_" + i;
@@ -129,8 +133,21 @@ public class Test14__search_tests {
 		testFuncs.myAssertTrue("User <" + currUser + "> was not detected via search !!", bodyText.contains(currUser));
 	}
 	
-    // Step 4 - Delete the created users
-  	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
+    // Step 4 - Search the user by its MAC
+	testFuncs.myDebugPrinting("Step 4 - Search the user by its MAC");
+	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	for (int i = 1; i < lim ; ++i) {
+		
+		testFuncs.mySendKeys(driver, By.xpath("//*[@id='filterinput']"), macs[i-1], 2000);
+		testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 7000);
+	    bodyText = driver.findElement(By.tagName("body")).getText();
+		String currUser = dispPrefix + "_" + i;
+		testFuncs.myDebugPrinting("Search for MAC: " + macs[i-1], testVars.logerVars.MINOR);
+		testFuncs.myAssertTrue("User <" + currUser + "> was not detected via search !!", bodyText.contains(currUser));
+	}
+	
+    // Step 5 - Delete the created users
+  	testFuncs.myDebugPrinting("Step 5 - Delete the created users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     Map<String, String> map = new HashMap<String, String>();
     map.put("usersPrefix"	  , dispPrefix + "_");
@@ -149,7 +166,7 @@ public class Test14__search_tests {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

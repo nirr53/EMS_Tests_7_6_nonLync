@@ -146,7 +146,9 @@ import org.junit.runners.Suite;
 	Test136__duplicate_site_configuration_ph.class					,
 	Test137__duplicate_device_placeholders.class					,
 	Test138__duplicate_phone_firmware_files.class					,
-	Test139__username_length.class
+	Test139__username_length.class									,
+	Test140__empty_password_bug.class								,
+	Test141__generate_user_configuration_tests.class
 
 })
 

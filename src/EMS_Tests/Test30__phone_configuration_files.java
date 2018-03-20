@@ -7,7 +7,6 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;
 
 /**
@@ -22,7 +21,7 @@ import org.openqa.selenium.*;
 * 
 * Results:
 * 	 1. Phone configuration should be uploaded successfully.
-*	 2. Phone configuration should be downloaded successfully.
+*	 2. Phone configuration should be displayed successfully.
 * 	 3. Phone configuration should be deleted successfully.
 * 
 * @author Nir Klieman
@@ -76,6 +75,7 @@ public class Test30__phone_configuration_files {
   public void Phone_configuration_files_menu() throws Exception {
 	  
 	Log.startTestCase(this.getClass().getName());
+	String usedFile = testVars.getImportFile("30");
 	 
     // Enter the Phone configuration files menu
 	testFuncs.myDebugPrinting("Enter the Phone configuration files menu");
@@ -84,14 +84,18 @@ public class Test30__phone_configuration_files {
 	
 	// Step 1 - Upload a phone configuration file
   	testFuncs.myDebugPrinting("Step 1 - Upload a phone configuration file");
-	uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("30"), testVars.getImportFile("30"));
+	uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
 	
-//	// Step 2 - Download a phone configuration file
-// 	testFuncs.myDebugPrinting("Step 2 - Download a phone configuration file");
-//	// TODO find a solution for download problem
-// 	testFuncs.downloadConfigurationFile(driver,  testVars.getImportFile("30"));
-		
-	//	 Step 3 - Delete a phone configuration file
+	// Step 2 - Display configuration file
+ 	testFuncs.myDebugPrinting("Step 2 - Display configuration file");
+ 	String currUrl  = driver.getCurrentUrl();
+ 	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
+    driver.get("https://" + testVars.getIp() + "//configfiles//" + usedFile);
+ 	testFuncs.myWait(5000);
+ 	testFuncs.searchStr(driver, "network/lan/vlan/period=30");
+    driver.get(currUrl);
+
+	// Step 3 - Delete a phone configuration file
   	testFuncs.myDebugPrinting("Step 3 - Delete a phone configuration file");
 	deleteConfigurationFile(driver,  testVars.getImportFile("30"));
   }

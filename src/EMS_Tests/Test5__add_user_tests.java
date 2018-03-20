@@ -18,14 +18,16 @@ import org.openqa.selenium.*;
 * Tests:
 * 	 1. Add new user manually.
 * 	 2. Add a registered user.
-* 	 3. Add an unregistered user.
-* 	 4. Delete the created users
+* 	 3. Add an unregistered user
+* 	 4. Verify that configuration file is not created for unregistered user
+* 	 5. Delete the created users
 * 
 * Results:
 * 	 1. User should be added successfully.
 * 	 2. User should be added successfully and appear 'registered' in DEvice-status menu.
 * 	 3. User should be added unsuccessfully.
-* 	 4. Users should be deleted successfully.
+* 	 4. Configuration file is not created for unregistered user.
+* 	 5. Users should be deleted successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -87,6 +89,7 @@ public class Test5__add_user_tests {
 	// Set variables
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
+	String mac				= "";
 
 	// login
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
@@ -123,6 +126,13 @@ public class Test5__add_user_tests {
 			 												 "myLocation");
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "Manage Users");
     testFuncs.verifyPostUserCreate(driver, prefix + "2_" + Id, prefix + "2_" + Id, false);
+    
+    // Step 4 - Verify that configuration file is not created for unregistered user
+ 	testFuncs.myDebugPrinting("Step 4 - Verify that configuration file is not created for unregistered user");  
+    mac = testFuncs.readFile("mac_1.txt");
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), mac  , 7000);
+	testFuncs.myAssertTrue("Configuration file was detected !!", !driver.findElement(By.tagName("body")).getText().contains(mac));
   }
 
   @After

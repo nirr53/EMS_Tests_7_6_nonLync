@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
 
 /**
 * ----------------
@@ -114,27 +113,27 @@ public class Test117__user_configuration {
     // Step 1 - Try to create a new configuration key without pressing the Save button
 	testFuncs.myDebugPrinting("Step 1 - Try to create a new configuration key without pressing the Save button");
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
-	createNewConfValue(driver, confName, confValue);
+	testFuncs.createNewConfValue(driver, confName, confValue);
 	String usersFullNames[] = {dispPrefix + "_1@" + testVars.getDomain(),
 							   dispPrefix + "_2@" + testVars.getDomain(),
 							   dispPrefix + "_3@" + testVars.getDomain()};
 	String confNames[] =  {confName,  confName , confName};
 	String confValues[] = {confValue, confValue, confValue};
-	verifyConfValues(driver, usersFullNames, confNames, confValues, false);
+	testFuncs.verifyConfValues(driver, usersFullNames, confNames, confValues, false);
 	
     // Step 2 - Try to create a new configuration key with pressing the Save button
 	testFuncs.myDebugPrinting("Step 2 - Try to create a new configuration key with pressing the Save button");
 	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
-	createNewConfValue(driver, confName, confValue);
-	saveConfValues(driver, usersFullNames);
-	verifyConfValues(driver, usersFullNames, confNames, confValues, true);
+	testFuncs.createNewConfValue(driver, confName, confValue);
+	testFuncs.saveConfValues(driver, usersFullNames);
+	testFuncs.verifyConfValues(driver, usersFullNames, confNames, confValues, true);
 	
     // Step 3 - Delete configuration key
 	testFuncs.myDebugPrinting("Step 3 - Delete configuration key");
 	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
-	deleteConfValue(driver, usersFullNames, confNames, confValues);
+	testFuncs.deleteConfValue(driver, usersFullNames, confNames, confValues);
 	
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
@@ -150,102 +149,6 @@ public class Test117__user_configuration {
     testFuncs.searchStr(driver, dispPrefix + "_1@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, dispPrefix + "_2@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, dispPrefix + "_3@" + testVars.getDomain() + " Finished");
-  }
-
-  // Verify the create of configuration values
-  private void verifyConfValues(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues, Boolean isValuesExist) {
-	    
-	  int usersNUmber = usersFullNames.length;
-	  
-	  // Loop on all users and verify their create one after another
-	  testFuncs.myDebugPrinting("Loop on all users and verify their create one after another", testVars.logerVars.MINOR);	
-	  for (int i = 0; i < usersNUmber; ++i) {
-		  
-		  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
-		  testFuncs.searchUser(driver, usersFullNames[i]);  
-		  
-		  if (isValuesExist) {
-			  
-			  testFuncs.myDebugPrinting("isValuesExist - TRUE", testVars.logerVars.MINOR);
-			  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a/i"), 3000);		  		    
-		  } else {
-			  
-			  testFuncs.myDebugPrinting("isValuesExist - FALSE", testVars.logerVars.MINOR);
-			  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[2]")			 , 3000);	  
-			  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[1]/a"), 3000);	
-		  }
-		  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + usersFullNames[i] + ")");
-		  
-		  // Verify delete
-		  testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.MINOR);
-		  if (isValuesExist) {
-			  
-			  testFuncs.myDebugPrinting("isValuesExist - TRUE", testVars.logerVars.MINOR);	  
-			  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confNames[i]);
-			  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValues[i]);
-			  
-		  } else {
-		  
-			  testFuncs.myDebugPrinting("isValuesExist - FALSE", testVars.logerVars.MINOR);
-			  String txt = driver.findElement(By.tagName("body")).getText();
-			  testFuncs.myAssertTrue("Values was not detcted !!", !txt.contains(confNames[i]) && !txt.contains(confValues[i]));  
-		  }		  
-		  testFuncs.myDebugPrinting("Delete succeded !!", testVars.logerVars.MINOR);
-	  }
-
-  }
-
-  // Delete an existing configuration value according to given data
-  private void deleteConfValue(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues) {
-	  	  
-	  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("Delete User configuration");
-	  testFuncs.myWait(3000);	
-	  testFuncs.myClick(driver, By.xpath("//*[@id='deletePersonalInfoTR']/td[1]/div/a"), 5000);		  
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");			  
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration to selected user(s) ?"); 
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);		  
-			  
-	  // Empty confNames and confValues
-	  verifyConfValues(driver, usersFullNames, confNames, confValues, false);
-  }
- 
-  // Save configuration values
-  private void saveConfValues(WebDriver driver, String [] usersFullNames) {
-	
-	  // Save configuration
-	  testFuncs.myDebugPrinting("Save configuration", testVars.logerVars.MINOR);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[4]/a"), 7000);
-	  
-	  // Check Confirm-Box
-	  testFuncs.myDebugPrinting("Check Confirm-Box", testVars.logerVars.MINOR);
-	  int usersNum = usersFullNames.length;
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"							 , "Save Configuration");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[1]", "Name");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[2]", "Result");
-	  for (int i = 1; i <= usersNum; ++i) {
-		  
-		  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[1]", usersFullNames[i-1]);
-		  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[2]", "User configuration was saved successfully");
-	  }
-	
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);	  
-  }
-
-  // Add new configuration key according to given data
-  private void createNewConfValue(WebDriver driver, String confValName, String confValValue) {
-	
-	  // Select 'generate configuration' action, set data and submit	
-	  testFuncs.myDebugPrinting("Select 'generate configuration' action, set data and submit", testVars.logerVars.MINOR);
-	  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("User configuration");
-	  testFuncs.myWait(3000);  
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confValName , 2000);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), confValValue, 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[3]/a/span"), 3000);
-	
-	  // Verify create
-	  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
-	  testFuncs.searchStr(driver, confValName);
-	  testFuncs.searchStr(driver, confValValue);  
   }
 
   @After
