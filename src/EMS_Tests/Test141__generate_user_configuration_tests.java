@@ -83,8 +83,7 @@ public class Test141__generate_user_configuration_tests {
 	
 	// Set variables
 	String usersNumber		= "1";
-	String mac				= "";
-	String currUrl 			= "";
+	String bodyText 		= "",  mac = "", currUrl = "";
 	String Id 				= testFuncs.getId();
 	String regPrefix		= "genconftst" + Id;
 	String confName 		= "confName"   + Id;
@@ -130,7 +129,7 @@ public class Test141__generate_user_configuration_tests {
  	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
-	String bodyText     = driver.findElement(By.tagName("body")).getText();
+	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Congiuration value was added bfore generate !!", !bodyText.contains(confName));
     driver.get(currUrl);
     
