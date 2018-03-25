@@ -39,6 +39,7 @@ public class Test1__login_1 {
 	  this.usedBrowser = browser;
   }
   
+  
   //Define each browser as a parameter
   @SuppressWarnings("rawtypes")
   @Parameters(name="{0}")

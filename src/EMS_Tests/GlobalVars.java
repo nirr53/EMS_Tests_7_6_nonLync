@@ -87,7 +87,7 @@ public class GlobalVars {
 	private  String sysMainStr       = "NETWORK TOPOLOGY";
 	private  String failLogMainStr   = "Invalid credentials";
 	private  String sysInvalidStr    = "Wrong username or password";
-	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_2\\chromedriver.exe";
+	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
 	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
 	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
 	private  String srcFilesPath     = "C:\\Users\\nirk\\Desktop\\myEclipseProjects\\EMS_Tests_7_4\\sourceFiles\\EMS";	

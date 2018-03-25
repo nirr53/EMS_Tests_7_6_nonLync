@@ -137,7 +137,7 @@ import org.junit.runners.Suite;
 	Test127__templates_with_special_characters.class				,
 	Test128__template_exisiting_configuration_and_ph.class			,
 	Test129__export_private_template_placeholder.class				,
-	Test130__site_special_characters.class					,
+	Test130__site_special_characters.class							,
 	Test131__delete_device_tests.class								,
 	Test132__timeout.class											,
 	Test133__delete_device_status_tests.class						,
@@ -149,7 +149,8 @@ import org.junit.runners.Suite;
 	Test139__username_length.class									,
 	Test140__empty_password_bug.class								,
 	Test141__generate_user_configuration_tests.class				,
-	Test142__generate_delete_user_configuration_tests.class
+	Test142__generate_delete_user_configuration_tests.class			,
+	Test143__generate_exists_user_configuration_tests.class
 
 })
 

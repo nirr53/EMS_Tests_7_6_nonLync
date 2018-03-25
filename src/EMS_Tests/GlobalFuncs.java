@@ -310,7 +310,7 @@ public class GlobalFuncs {
 		  
 	   markElemet(driver, driver.findElement(By.xpath(elemName)));
 	   String txt = driver.findElement(By.xpath(elemName)).getText();  
-	   myAssertTrue("<" + strName + "> was not detecetd !! <" + txt + ">", txt.contains(strName));	  
+	   myAssertTrue("<" + strName + "> was not detected !! <" + txt + ">", txt.contains(strName));	  
 	   myWait(1000);
 	  }
 	  
@@ -728,7 +728,7 @@ public class GlobalFuncs {
 	  public void selectMultipleUsers(WebDriver driver, String prefix, String expNumber) {
 		    		
 		myDebugPrinting("selectMultipleUsers() - prefix - " + prefix + " expNumber - " + expNumber, testVars.logerVars.NORMAL);
-		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 10000);
+		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 11000);
 		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 10000);
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
@@ -871,7 +871,7 @@ public class GlobalFuncs {
 			  
 			  Assert.assertTrue("Title was not found (" + title + ")", title.contains(verifyHeader));
 		  }
-		  myWait(2000);
+		  myWait(3000);
 		  myDebugPrinting("enterMenu  - " +  menuName + " ended successfully !!", testVars.logerVars.NORMAL);
       }
 
@@ -3200,10 +3200,10 @@ public class GlobalFuncs {
 		  // Select 'generate configuration' action, set data and submit	
 		  myDebugPrinting("Select 'generate configuration' action, set data and submit", testVars.logerVars.MINOR);
 		  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("User configuration");
-		  myWait(3000);  
-		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confValName , 2000);
-		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), confValValue, 2000);
-		  myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[3]/a/span"), 3000);
+		  myWait(5000);  
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confValName , 4000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), confValValue, 4000);
+		  myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[3]/a/span"), 10000);
 		
 		  // Verify create
 		  myDebugPrinting("Verify create", testVars.logerVars.MINOR);
@@ -3277,5 +3277,40 @@ public class GlobalFuncs {
 			  }		  
 			  myDebugPrinting("Delete succeded !!", testVars.logerVars.MINOR);
 		  }
+	  }
+	  
+	  /**
+	  *  Edit user configuration value
+	  *  @param driver       - given driver
+	  *  @param userName     - given user-name (with domain) of the edited configuration value
+	  *  @param confName  	 - configuration value name for edit
+	  *  @param confValue	 - configuration value name for edit
+	  *  @param newConfValue - new configuration value
+	  */
+	  public void editUserConfigurationValue(WebDriver driver, String userName, String confName, String confValue, String newConfValue) {
+			 
+		  // Enter the configuration-value menu of the user
+		  myDebugPrinting("Enter the configuration-value menu of the user", testVars.logerVars.MINOR);
+		  myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a"), 5000);	  
+		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + userName + ")");			  
+		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
+		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValue);			  
+
+		  // Edit the user
+		  myDebugPrinting("Edit the user", testVars.logerVars.MINOR);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confName    , 4000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), newConfValue, 4000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div[2]/div[1]/div[3]/a/span"), 5000);	  
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Add Setting");			  
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "This setting name is already in use.\nAre you sure you want to replace " + confValue + " to " + newConfValue); 
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + userName + " )");			  
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "User configuration was saved successfully."); 
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+		  
+		  // Verify the edit
+		  myDebugPrinting("Verify the edit", testVars.logerVars.MINOR);
+		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
+		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", newConfValue);
 	  }
 }
