@@ -26,8 +26,8 @@ import org.openqa.selenium.*;
 * 	 5. Delete the created user
 * 
 * Results:
-* 	 1+2. The value should still be found on the configuration file
-* 	 3+4. The value should not be found on the configuration file
+* 	 1+2. The value should not be edited on the configuration file
+* 	 3+4. The value should be edited on the configuration file
 *      5. User should be deleted.
 * 
 * @author Nir Klieman

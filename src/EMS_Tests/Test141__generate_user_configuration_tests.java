@@ -130,7 +130,7 @@ public class Test141__generate_user_configuration_tests {
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
 	bodyText = driver.findElement(By.tagName("body")).getText();
-	testFuncs.myAssertTrue("Congiuration value was added bfore generate !!", !bodyText.contains(confName));
+	testFuncs.myAssertTrue("Congiuration value was added before generate !!", !bodyText.contains(confName));
     driver.get(currUrl);
     
 	// Step 4 - Generate the user configuration

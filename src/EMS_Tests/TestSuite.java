@@ -150,7 +150,11 @@ import org.junit.runners.Suite;
 	Test140__empty_password_bug.class								,
 	Test141__generate_user_configuration_tests.class				,
 	Test142__generate_delete_user_configuration_tests.class			,
-	Test143__generate_exists_user_configuration_tests.class
+	Test143__generate_exists_user_configuration_tests.class			,
+	Test144__tenant_configuration_generate.class					,
+	Test145__site_configuration_generate.class						,
+	Test146__configuration_vals_during_create.class
+
 
 })
 

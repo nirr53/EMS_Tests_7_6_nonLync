@@ -166,89 +166,89 @@ public class Test11__import_configuration_tests {
 	String firmVersion = "430HDUC_2.0.13.121";
 	testFuncs.searchStr(driver, firmName + " " + firmDesc + " " + firmVersion + " /data/NBIF/ippmanager/generate//firmware/430HD.img");
 
-    // Step 3 - Remove a value from each of the sections, and verify that the import action re-add them
- 	testFuncs.myDebugPrinting("Step 2 - Remove a value from each of the sections, and verify that the import action re-add them");
-	
- 	// Delete Templates
-	testFuncs.myDebugPrinting("Delete Templates", testVars.logerVars.NORMAL);
- 	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
-	testFuncs.deleteTemplate(driver, templatesName);
-	
-	// Change MWI number
-	testFuncs.myDebugPrinting("Change MWI number", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
-	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
-	
-	// Change System Settings
-	testFuncs.myDebugPrinting("Change System Settings", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
-	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
-	
-	// Delete Template place-holders
-	testFuncs.myDebugPrinting("Delete Template placeholders", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
-    testFuncs.deleteTemplatePlaceholder(driver, tempPhTemplate, tempPhName);
-
-    // Delete Tenant place-holders
-	testFuncs.myDebugPrinting("Delete Tenant placeholders", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
-	testFuncs.selectTenant(driver, tenPhTenant);
-	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
-
-	// Delete Site-place-holders
-	testFuncs.myDebugPrinting("Delete Site-placeholders", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
-	testFuncs.selectSite(driver, siteForSearch);
-	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, siteForDelete);
-
-	// Delete from Phone-firmware-files
-	testFuncs.myDebugPrinting("Delete from Phone-firmware-files", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
-	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
-
-	// Re-import	
-	testFuncs.myDebugPrinting("Re-import", testVars.logerVars.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
-	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
-	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
-	
-	// Tenants
-	testFuncs.searchStr(driver, "NirTest1 Tenant that used for Nir auto testing " + "Exist");
-	
-	// Regions
-	testFuncs.searchStr(driver, "Test1Region Test1 Test1Region " 										   		+ "Exist");
-	testFuncs.searchStr(driver, "AutoDetection Nir This region is intended for automatic detection nodes " 		+ "Exist");
-	testFuncs.searchStr(driver, "AutoDetection NirTest1 This region is intended for automatic detection nodes " + "Exist");
-	
-	// Sites
-	testFuncs.searchStr(driver, "Test1Site Test1Site Test1 Test1Region " + "Exist");
-	testFuncs.searchStr(driver, "AutoDetection Nir AutoDetection " 		 + "Exist");
-	testFuncs.searchStr(driver, "AutoDetection NirTest1 AutoDetection "  + "Exist");
-
-	// Templates		
-	testFuncs.searchStr(driver, templatesName + " Template for Import configuration tests");
-
-	// System Settings
-	testFuncs.searchStr(driver, "MwiVmNumber 888 "     + "Exist");
-	testFuncs.searchStr(driver, "ntpserver 10.1.1.10 " + "Exist");
-
-	// Template place-holders
-	testFuncs.searchStr(driver, tempPhName + " " +  tempPhValue + " Template PH that used for configuration import tests " + tempPhTemplate + " Added");
-
-	// Tenant place-holders
-	testFuncs.searchStr(driver, tenPhName + " " + tenPhValue + " Nir " + "Added");
-	
-	// Site place-holders
-	testFuncs.searchStr(driver, sitePhName + " " + sitePhValue + " " + sitePhSite + " Added");
-
-	// Phone Firmware Files
-	testFuncs.searchStr(driver, firmName + " " + firmDesc + " " + firmVersion + " /data/NBIF/ippmanager/generate//firmware/430HD.img " + "Added");
+//    // Step 3 - Remove a value from each of the sections, and verify that the import action re-add them
+// 	testFuncs.myDebugPrinting("Step 2 - Remove a value from each of the sections, and verify that the import action re-add them");
+//	
+// 	// Delete Templates
+//	testFuncs.myDebugPrinting("Delete Templates", testVars.logerVars.NORMAL);
+// 	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+//	testFuncs.deleteTemplate(driver, templatesName);
+//	
+//	// Change MWI number
+//	testFuncs.myDebugPrinting("Change MWI number", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+//	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
+//	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
+//	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
+//	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
+//	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
+//	
+//	// Change System Settings
+//	testFuncs.myDebugPrinting("Change System Settings", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+//	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
+//	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
+//	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
+//	
+//	// Delete Template place-holders
+//	testFuncs.myDebugPrinting("Delete Template placeholders", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+//    testFuncs.deleteTemplatePlaceholder(driver, tempPhTemplate, tempPhName);
+//
+//    // Delete Tenant place-holders
+//	testFuncs.myDebugPrinting("Delete Tenant placeholders", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+//	testFuncs.selectTenant(driver, tenPhTenant);
+//	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
+//
+//	// Delete Site-place-holders
+//	testFuncs.myDebugPrinting("Delete Site-placeholders", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+//	testFuncs.selectSite(driver, siteForSearch);
+//	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, siteForDelete);
+//
+//	// Delete from Phone-firmware-files
+//	testFuncs.myDebugPrinting("Delete from Phone-firmware-files", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+//	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
+//
+//	// Re-import	
+//	testFuncs.myDebugPrinting("Re-import", testVars.logerVars.NORMAL);
+//	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+//	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
+//	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
+//	
+//	// Tenants
+//	testFuncs.searchStr(driver, "NirTest1 Tenant that used for Nir auto testing " + "Exist");
+//	
+//	// Regions
+//	testFuncs.searchStr(driver, "Test1Region Test1 Test1Region " 										   		+ "Exist");
+//	testFuncs.searchStr(driver, "AutoDetection Nir This region is intended for automatic detection nodes " 		+ "Exist");
+//	testFuncs.searchStr(driver, "AutoDetection NirTest1 This region is intended for automatic detection nodes " + "Exist");
+//	
+//	// Sites
+//	testFuncs.searchStr(driver, "Test1Site Test1Site Test1 Test1Region " + "Exist");
+//	testFuncs.searchStr(driver, "AutoDetection Nir AutoDetection " 		 + "Exist");
+//	testFuncs.searchStr(driver, "AutoDetection NirTest1 AutoDetection "  + "Exist");
+//
+//	// Templates		
+//	testFuncs.searchStr(driver, templatesName + " Template for Import configuration tests");
+//
+//	// System Settings
+//	testFuncs.searchStr(driver, "MwiVmNumber 888 "     + "Exist");
+//	testFuncs.searchStr(driver, "ntpserver 10.1.1.10 " + "Exist");
+//
+//	// Template place-holders
+//	testFuncs.searchStr(driver, tempPhName + " " +  tempPhValue + " Template PH that used for configuration import tests " + tempPhTemplate + " Added");
+//
+//	// Tenant place-holders
+//	testFuncs.searchStr(driver, tenPhName + " " + tenPhValue + " Nir " + "Added");
+//	
+//	// Site place-holders
+//	testFuncs.searchStr(driver, sitePhName + " " + sitePhValue + " " + sitePhSite + " Added");
+//
+//	// Phone Firmware Files
+//	testFuncs.searchStr(driver, firmName + " " + firmDesc + " " + firmVersion + " /data/NBIF/ippmanager/generate//firmware/430HD.img " + "Added");
   }
   
   @After
