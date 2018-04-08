@@ -92,6 +92,7 @@ public class Test130__site_special_characters {
 	testFuncs.selectSite(driver, sitePHSite);
 
 	// Step 1 - Add a new site CFG key
+	// Nir 28/3/18 VI  150647
 	testFuncs.myDebugPrinting("Step 1 - Add a new site CFG key");
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite);
     

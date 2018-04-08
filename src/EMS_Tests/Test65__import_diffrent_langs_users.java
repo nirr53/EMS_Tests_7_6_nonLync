@@ -103,7 +103,8 @@ public class Test65__import_diffrent_langs_users {
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("65");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);			  
 	for (int i = 1; i <= Integer.valueOf(usersNumber); ++i) {
-
+		
+		// Nir 28/3/18 VI 149358
 		testFuncs.searchStr(driver, userNames[i-1] + "@" + testVars.getDomain() + " Added, Device " + userNames[i-1] + " - added");     	
 	}
 		

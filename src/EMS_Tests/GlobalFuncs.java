@@ -231,13 +231,14 @@ public class GlobalFuncs {
 	  */
 	  public void verifyStrByXpathContains(WebDriver 	driver, String xpath, String strName) {
 	  	  
-		  if (driver.findElement(By.xpath(xpath)).getText().contains(strName)) {
+		  String txt = driver.findElement(By.xpath(xpath)).getText();
+		  if (txt.contains(strName)) {
 			  
 		    	myDebugPrinting(strName + " was detected", testVars.logerVars.DEBUG);
 		  } else {
 			  
 			  myDebugPrinting(driver.findElement(By.xpath(xpath)).getText());
-			  myFail (strName + " was not detected !!");
+			  myFail (strName + " was not detected !! (txt - " + txt + ")");
 		  }
 		  myWait(1000);
 	  }

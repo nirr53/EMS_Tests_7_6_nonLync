@@ -122,7 +122,7 @@ public class Test20__multiple_devices_send_message_delete_device {
     testFuncs.searchStr(driver, dispPrefix + "_2@" + testVars.getDomain() + " " + testFuncs.readFile("mac_2.txt"));
     testFuncs.searchStr(driver, dispPrefix + "_3@" + testVars.getDomain() + " " + testFuncs.readFile("mac_3.txt"));
     testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/button[1]"), 3000);
-    testFuncs.selectMultipleUsers(driver, dispPrefix, "0");
+    testFuncs.selectMultipleDevices(driver, dispPrefix, "0");
 
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");

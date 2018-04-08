@@ -192,7 +192,7 @@ public class Test122__registered_unregistered_users_number {
 	    map.put("action"	 	  , "Delete Users");
 	    map.put("skipVerifyDelete", "true");
 	    testFuncs.setMultipleUsersAction(driver, map);
-	    testFuncs.searchStr(driver, regUserName   + "@" + testVars.getDomain() + " Finished");
+	    testFuncs.searchStr(driver, regUserName.toLowerCase() + "@" + testVars.getDomain() + " Finished");
   }
   
   // Get disconnected devices number  
@@ -233,7 +233,7 @@ public class Test122__registered_unregistered_users_number {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

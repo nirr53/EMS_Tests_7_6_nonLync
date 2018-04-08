@@ -131,7 +131,7 @@ public class Test131__delete_device_tests {
 	  testFuncs.myAssertTrue("Device was not deleted !! <" + deletedDevice + ">", deletedDevice.contains("---"));
 	  testFuncs.myDebugPrinting("deletedDevice - " + deletedDevice);
 	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
-	  testFuncs.selectMultipleUsers(driver, userName1, "0");
+	  testFuncs.selectMultipleDevices(driver, userName1, "0");
 
 	  // Step 2 - Delete a device via Manage multiple devices
 	  testFuncs.myDebugPrinting("Step 1 - Delete a device via Manage user page");

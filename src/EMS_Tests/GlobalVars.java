@@ -97,7 +97,7 @@ public class GlobalVars {
 	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
-	private  String version			 = "7.4.2091";
+	private  String version			 = "7.4.2101";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";

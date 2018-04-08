@@ -91,6 +91,7 @@ public class Test103__special_characters_users {
 	// String suffixes[]     = {"'"};
 	
     // Step 1-8 - Create a user using POST query with !#$ characters
+	// Nir 28/3/18 VI 149363
 	int len = suffixes.length;
 	for (int i = 0; i < len; ++i) {
 		
