@@ -75,7 +75,7 @@ public class GlobalVars {
     private  String crKpAlvBatName   = "changeStatus.exe";
     private  String mainPageStr		 = "Login to IP Phone Manager Pro";
     private  String sysUsername      = "acladmin";
-	private  String sysPassword      = "pass_1234";
+	private  String sysPassword      = "pass_12345";
     private  String monitUsername    = "Nir_Monitoring4";
 	private  String monitPassword    = "1q2w3e4r5t6y";
     private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";

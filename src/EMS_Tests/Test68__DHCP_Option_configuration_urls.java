@@ -81,8 +81,9 @@ public class Test68__DHCP_Option_configuration_urls {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String tenWithoutAnyTemp = testVars.getNonDefTenant(1);
+//	String tenWithoutAnyTemp = testVars.getNonDefTenant(1);
 	String tenWithAllTemp    = testVars.getDefTenant();
+	int    modelsNumber 	 = -1;
 	  
     // Enter System settings and DHCP option configuration menu
 	testFuncs.myDebugPrinting("Enter System settings and DHCP option configuration menu");
@@ -117,25 +118,26 @@ public class Test68__DHCP_Option_configuration_urls {
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/b/span", "http://" + testVars.getIp() + "/ipp/tenant/" 				  + tenant);
 	}
 
-	// Step 3 - Select a Tenant without any templates and use the tester
-  	testFuncs.myDebugPrinting("Step 3 - Select a Tenant without any templates and use the tester");
-  	tenants.selectByVisibleText(tenWithoutAnyTemp);
-    testFuncs.myWait(2000);
-	Select models    = new Select(driver.findElement(By.id("model_id")));
-	int modelsNumber = models.getOptions().size();
-	for (int i = 0; i < modelsNumber; ++i) {
-		
-		models.selectByIndex(i);
-	    testFuncs.myWait(1000);
-	    String model = models.getFirstSelectedOption().getText();
-	  	testFuncs.myDebugPrinting("model - " + model, testVars.logerVars.MINOR);
-	  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[4]/td/a"), 3000);	
-	  	String txt = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[5]/td/span")).getText();
-	  	testFuncs.myAssertTrue("Meassage was not displayed !!\ntxt - " + txt, txt.contains("tenant " + tenWithoutAnyTemp + " and type " + model + " not found url"));
-	}
+//	// Step 3 - Select a Tenant without any templates and use the tester
+//  	testFuncs.myDebugPrinting("Step 3 - Select a Tenant without any templates and use the tester");
+//  	tenants.selectByVisibleText(tenWithoutAnyTemp);
+//    testFuncs.myWait(2000);
+//	Select models    = new Select(driver.findElement(By.id("model_id")));
+//	modelsNumber = models.getOptions().size();
+//	for (int i = 0; i < modelsNumber; ++i) {
+//		
+//		models.selectByIndex(i);
+//	    testFuncs.myWait(1000);
+//	    String model = models.getFirstSelectedOption().getText();
+//	  	testFuncs.myDebugPrinting("model - " + model, testVars.logerVars.MINOR);
+//	  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[4]/td/a"), 3000);	
+//	  	String txt = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[5]/td/span")).getText();
+//	  	testFuncs.myAssertTrue("Meassage was not displayed !!\ntxt - " + txt, txt.contains("tenant " + tenWithoutAnyTemp + " and type " + model + " not found url"));
+//	}
 	
 	// Step 4 - Select a Tenant with all templates and use the tester
   	testFuncs.myDebugPrinting("Step 4 - Select a Tenant with all templates and use the tester.");
+  	Select models    = new Select(driver.findElement(By.id("model_id")));
   	tenants.selectByVisibleText(tenWithAllTemp);
     testFuncs.myWait(2000);
 	for (int i = 0; i < modelsNumber; ++i) {
@@ -156,7 +158,7 @@ public class Test68__DHCP_Option_configuration_urls {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();
