@@ -165,11 +165,11 @@ public class Test104__alarms_icons {
 	  testFuncs.myDebugPrinting("Check Alarms-Icon message-box", testVars.logerVars.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a"), 2000);
 	  testFuncs.searchStr(driver, "ALARMS");
-	  testFuncs.searchStr(driver, numOfSrcAlerts + " Major Alarm(s)");
+	  testFuncs.searchStr(driver, "Total: " + numOfSrcAlerts + " alarm(s)");
 	  	  
 	  // Check View-All link
 	  testFuncs.myDebugPrinting("Check View-All link", testVars.logerVars.MINOR);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/span[2]/a"), 10000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/span[2]/a"), 10000);	  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[1]/h3", "Alarms");
   }
 

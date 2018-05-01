@@ -111,7 +111,7 @@ public class Test133__delete_device_status_tests {
 	  // Step 2 - Delete a user via Manage-multiple-users menu
 	  testFuncs.myDebugPrinting("Step 2 - Delete a user via Manage-multiple-users menu");		
 	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
-	  testFuncs.selectMultipleUsers(driver, userName2, "1");
+	  testFuncs.selectMultipleUsers(driver, prefix, "1");
 	  map.put("usersPrefix"	  , prefix);  
 	  map.put("usersNumber"	  , "1"); 
 	  map.put("startIdx"   	  , String.valueOf("1"));	  

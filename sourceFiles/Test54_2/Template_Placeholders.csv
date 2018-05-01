@@ -1,0 +1,625 @@
+DEF_KEY,DEF_VAL,DESCRIPTION,MODEL
+KeepAlivePeriod,5,"Keep alive period (minutes)",Audiocodes_405_LYNC
+NB_Speakers_Vol,-19,,Audiocodes_405_LYNC
+Refresh,99:99,,Audiocodes_405_LYNC
+Ring_Vol,-31,,Audiocodes_405_LYNC
+Stub,,,Audiocodes_405_LYNC
+Tones_Vol,31,,Audiocodes_405_LYNC
+WB_Speakers_Vol,-19,,Audiocodes_405_LYNC
+WD,1,,Audiocodes_405_LYNC
+RegCountry,,"The country name - need to use the correct tones according to it.",Audiocodes_450HD_LYNC
+RegCountry,,"The country name - need to use the correct tones according to it.",Audiocodes_440HD_LYNC
+SpeedDialName2,.,"Speed Dial 2 Name",Audiocodes_450HD_LYNC
+SpeedDialNumber1,.,"Speed Dial 1 Number",Audiocodes_450HD_LYNC
+SpeedDialNumber2,.,"Speed Dial 2 Number",Audiocodes_450HD_LYNC
+Stub,,,Audiocodes_450HD_LYNC
+Tones_Vol,31,,Audiocodes_450HD_LYNC
+WB_Speakers_Vol,-28,,Audiocodes_450HD_LYNC
+WD,1,,Audiocodes_450HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_405_LYNC
+KeepAlivePeriod,5,"Keep alive period (minutes)",Audiocodes_405_LYNC
+NB_Speakers_Vol,-19,,Audiocodes_405_LYNC
+Refresh,99:99,,Audiocodes_405_LYNC
+Ring_Vol,-31,,Audiocodes_405_LYNC
+Stub,,,Audiocodes_405_LYNC
+Tones_Vol,31,,Audiocodes_405_LYNC
+WB_Speakers_Vol,-19,,Audiocodes_405_LYNC
+WD,1,,Audiocodes_405_LYNC
+ddd,222,dddd,Audiocodes_405
+DayLightActivate,Disable,,New_450HD_Lync
+DayLightEndDay,14,,New_450HD_Lync
+ProvisioningMethod,Dynamic,"Provisioning Method",Audiocodes_420HD_LYNC
+OVR_Enable,0,,Audiocodes_440HD_LYNC
+Core_Dump,1,"Enable core dump",Audiocodes_440HD_LYNC
+OVR_Address,,,Audiocodes_440HD_LYNC
+Syslog_Control_Center,NONE,,Audiocodes_440HD_LYNC
+Syslog_Mode,DISABLE,,Audiocodes_440HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",ovr420
+DayLightEndDay,14,"Day Light End Day",ovr420
+DayLightEndMonth,9,"Day Light End Month",ovr420
+DayLightStartDay,26,"Day Light Start Day",ovr420
+DayLightStartMonth,3,"Day Light Start Month",ovr420
+FirmwareFile,,"Firmware File Name",ovr420
+ProvisioningMethod,Dynamic,"Provisioning Method",ovr420
+RegCountry,,"The country name - need to use the correct tones according to it.",Audiocodes_405_LYNC
+ProvisioningMethod,Dynamic,"Provisioning Method",Audiocodes_405_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","405 Israel"
+DayLightEndDay,14,"Day Light End Day","405 Israel"
+DayLightEndMonth,9,"Day Light End Month","405 Israel"
+DayLightStartDay,26,"Day Light Start Day","405 Israel"
+DayLightStartMonth,3,"Day Light Start Month","405 Israel"
+FirmwareFile,,"Firmware File Name","405 Israel"
+ProvisioningMethod,Dynamic,"Provisioning Method","405 Israel"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",france_420
+DayLightEndDay,14,"Day Light End Day",france_420
+DayLightEndMonth,9,"Day Light End Month",france_420
+DayLightStartDay,26,"Day Light Start Day",france_420
+DayLightStartMonth,3,"Day Light Start Month",france_420
+FirmwareFile,,"Firmware File Name",france_420
+ProvisioningMethod,Dynamic,"Provisioning Method",france_420
+Token_Uri,,"token uri for calendar",Audiocodes_440HD_LYNC
+Calendar_Mode,TODAY,"Calendar Mode",Audiocodes_440HD_LYNC
+direcory,empty_file,empty,Audiocodes_420HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",430_acl_israel
+DayLightEndDay,14,"Day Light End Day",430_acl_israel
+DayLightEndMonth,9,"Day Light End Month",430_acl_israel
+DayLightStartDay,26,"Day Light Start Day",430_acl_israel
+DayLightStartMonth,3,"Day Light Start Month",430_acl_israel
+LDAPNameFilter,fff,aaa,Audiocodes_440HD
+Language,German,sdfsdfsdf,Audiocodes_430HD
+DayLightEndMonth,3,"Day Light End Month","440 Lync Demo"
+DayLightStartDay,26,"Day Light Start Day","440 Lync Demo"
+DayLightStartMonth,10,"Day Light Start Month","440 Lync Demo"
+Firmware,440HD.img,,"440 Lync Demo"
+FirmwareFile,,"Firmware File Name","440 Lync Demo"
+FirmwareName,,"Firmware file Name","440 Lync Demo"
+OVR_Address,,,"440 Lync Demo"
+OVR_Enable,0,,"440 Lync Demo"
+OVR_Port,,,"440 Lync Demo"
+ProvisioningMethod,STATIC,"Provisioning Method","440 Lync Demo"
+Syslog_Control_Center,NONE,,"440 Lync Demo"
+Syslog_IP,0.0.0.0,,"440 Lync Demo"
+Syslog_Mode,DISABLE,,"440 Lync Demo"
+Token_Uri,,"token uri for calendar","440 Lync Demo"
+VOCANOM,,,"440 Lync Demo"
+VOCANOM_NUM,,,"440 Lync Demo"
+Core_Dump,1,"Enable core dump",440HD_PPC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",440HD_PPC
+DayLightEndDay,27,"Day Light End Day",440HD_PPC
+DayLightEndMonth,3,"Day Light End Month",440HD_PPC
+DayLightStartDay,26,"Day Light Start Day",440HD_PPC
+DayLightStartMonth,10,"Day Light Start Month",440HD_PPC
+Firmware,440HD.img,,440HD_PPC
+FirmwareFile,,"Firmware File Name",440HD_PPC
+FirmwareName,,"Firmware file Name",440HD_PPC
+OVR_Address,,,440HD_PPC
+OVR_Enable,0,,440HD_PPC
+OVR_Port,,,440HD_PPC
+ProvisioningMethod,STATIC,"Provisioning Method",440HD_PPC
+Syslog_Control_Center,NONE,,440HD_PPC
+Syslog_IP,0.0.0.0,,440HD_PPC
+Syslog_Mode,DISABLE,,440HD_PPC
+pin_lock,0,"IPP PIN Lock settings","430 IPP Support"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","420 CBU"
+DayLightEndDay,14,"Day Light End Day","420 CBU"
+DayLightEndMonth,9,"Day Light End Month","420 CBU"
+DayLightStartDay,26,"Day Light Start Day","420 CBU"
+DayLightStartMonth,3,"Day Light Start Month","420 CBU"
+FirmwareFile,,"Firmware File Name","420 CBU"
+ProvisioningMethod,Dynamic,"Provisioning Method","420 CBU"
+direcory,empty_file,empty,"420 CBU"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","430 IPP Support"
+DayLightEndDay,14,"Day Light End Day","430 IPP Support"
+DayLightEndMonth,9,"Day Light End Month","430 IPP Support"
+DayLightStartDay,26,"Day Light Start Day","430 IPP Support"
+DayLightStartMonth,3,"Day Light Start Month","430 IPP Support"
+FirmwareFile,,"Firmware File Name","430 IPP Support"
+Calendar_Mode,24H,"Calendar Mode",440HD_OVR_Lync
+Core_Dump,1,"Enable core dump",440HD_OVR_Lync
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",440HD_OVR_Lync
+DayLightEndDay,27,"Day Light End Day",440HD_OVR_Lync
+DayLightEndMonth,3,"Day Light End Month",440HD_OVR_Lync
+DayLightStartDay,26,"Day Light Start Day",440HD_OVR_Lync
+DayLightStartMonth,10,"Day Light Start Month",440HD_OVR_Lync
+Firmware,440HD.img,,440HD_OVR_Lync
+FirmwareFile,,"Firmware File Name",440HD_OVR_Lync
+FirmwareName,,"Firmware file Name",440HD_OVR_Lync
+OVR_Address,,,440HD_OVR_Lync
+OVR_Enable,0,,440HD_OVR_Lync
+OVR_Port,,,440HD_OVR_Lync
+ProvisioningMethod,STATIC,"Provisioning Method",440HD_OVR_Lync
+Syslog_Control_Center,NONE,,440HD_OVR_Lync
+Syslog_IP,0.0.0.0,,440HD_OVR_Lync
+Syslog_Mode,DISABLE,,440HD_OVR_Lync
+Token_Uri,,"token uri for calendar",440HD_OVR_Lync
+VOCANOM,,,440HD_OVR_Lync
+VOCANOM_NUM,,,440HD_OVR_Lync
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",405-RND-IPP
+Calendar_Mode,24H,"Calendar Mode",Audiocodes_450HD_LYNC
+Core_Dump,1,"Enable core dump",Audiocodes_450HD_LYNC
+Firmware,440HD.img,,Audiocodes_450HD_LYNC
+FirmwareName,,"Firmware file Name",Audiocodes_450HD_LYNC
+OVR_Address,,,Audiocodes_450HD_LYNC
+OVR_Enable,0,,Audiocodes_450HD_LYNC
+NB_Speakers_Vol,-28,,OECD_Test
+Refresh,99:99,,OECD_Test
+Ring_Vol,-32,,OECD_Test
+SpeedDialName1,.,"Speed Dial 1 Name",OECD_Test
+SpeedDialName2,.,"Speed Dial 2 Name",OECD_Test
+SpeedDialNumber1,.,"Speed Dial 1 Number",OECD_Test
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_420HD
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_420HD
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_420HD
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_420HD
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_420HD
+DayLightEndDay,14,"Day Light End Day",Audiocodes_420HD
+FirmwareFile,,"Firmware File Name",Audiocodes_420HD
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_430HD
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_430HD
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_430HD
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_430HD
+DayLightEndDay,14,"Day Light End Day",Audiocodes_430HD
+FirmwareFile,,"Firmware File Name",Audiocodes_430HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_440HD
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_440HD
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_440HD
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_440HD
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_440HD
+DayLightEndDay,14,"Day Light End Day",Audiocodes_440HD
+FirmwareFile,,"Firmware File Name",Audiocodes_440HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_420HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_420HD_LYNC
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_420HD_LYNC
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_420HD_LYNC
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_420HD_LYNC
+DayLightEndDay,14,"Day Light End Day",Audiocodes_420HD_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_420HD_LYNC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_430HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_430HD_LYNC
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_430HD_LYNC
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_430HD_LYNC
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_430HD_LYNC
+DayLightEndDay,14,"Day Light End Day",Audiocodes_430HD_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_430HD_LYNC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_440HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_440HD_LYNC
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_440HD_LYNC
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_440HD_LYNC
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_440HD_LYNC
+DayLightEndDay,14,"Day Light End Day",Audiocodes_440HD_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_440HD_LYNC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_405
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_405
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_405
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_405
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_405
+DayLightEndDay,14,"Day Light End Day",Audiocodes_405
+FirmwareFile,,"Firmware File Name",Audiocodes_405
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_405_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_405_LYNC
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_405_LYNC
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_405_LYNC
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_405_LYNC
+DayLightEndDay,14,"Day Light End Day",Audiocodes_405_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_405_LYNC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template430_2"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template430_2"
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template430_2"
+DayLightEndDay,14,"Day Light End Day","Nir Default Template430_2"
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template430_2"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template430_2"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template430_2"
+FirmwareFile,,"Firmware File Name","Nir Default Template430_2"
+Tones_Vol,31,,OECD_Test
+WB_Speakers_Vol,-28,,OECD_Test
+WD,1,,OECD_Test
+OVR_Port,,,Audiocodes_450HD_LYNC
+ProvisioningMethod,STATIC,"Provisioning Method",Audiocodes_450HD_LYNC
+Syslog_Control_Center,NONE,,Audiocodes_450HD_LYNC
+Syslog_IP,0.0.0.0,,Audiocodes_450HD_LYNC
+Syslog_Mode,DISABLE,,Audiocodes_450HD_LYNC
+SpeedDialNumber2,.,"Speed Dial 2 Number",OECD_Test
+Stub,,,OECD_Test
+FirmwareFile,,"Firmware File Name",405-RND-IPP
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template430"
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template430"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template430"
+DayLightEndDay,14,"Day Light End Day","Nir Default Template430"
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template430"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template430"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template430"
+FirmwareFile,,"Firmware File Name","Nir Default Template430"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template450"
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template450"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template450"
+DayLightEndDay,14,"Day Light End Day","Nir Default Template450"
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template450"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template450"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template450"
+FirmwareFile,,"Firmware File Name","Nir Default Template450"
+ProvisioningMethod,Dynamic,"Provisioning Method",405-RND-IPP
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",450-ACL-Israel
+DayLightEndDay,14,"Day Light End Day",450-ACL-Israel
+DayLightEndMonth,9,"Day Light End Month",450-ACL-Israel
+FK_PK,,ITCS_FK_PK,OECD_Test
+FirmwareFile,,FirmwareFile,OECD_Test
+DayLightStartDay,26,"Day Light Start Day",450-ACL-Israel
+DayLightStartMonth,3,"Day Light Start Month",450-ACL-Israel
+FirmwareFile,,"Firmware File Name",450-ACL-Israel
+Calendar_Mode,TODAY,"Calendar Mode",testDayLight
+Core_Dump,1,"Enable core dump",testDayLight
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",testDayLight
+DayLightEndDay,27,"Day Light End Day",testDayLight
+DayLightEndMonth,3,"Day Light End Month",testDayLight
+DayLightStartDay,26,"Day Light Start Day",testDayLight
+DayLightStartMonth,10,"Day Light Start Month",testDayLight
+Firmware,440HD.img,,testDayLight
+FirmwareFile,,"Firmware File Name",testDayLight
+FirmwareName,,"Firmware file Name",testDayLight
+OVR_Address,,,testDayLight
+OVR_Enable,0,,testDayLight
+OVR_Port,,,testDayLight
+ProvisioningMethod,STATIC,"Provisioning Method",testDayLight
+Syslog_Control_Center,NONE,,testDayLight
+Syslog_IP,0.0.0.0,,testDayLight
+Syslog_Mode,DISABLE,,testDayLight
+Token_Uri,,"token uri for calendar",testDayLight
+VOCANOM,,,testDayLight
+VOCANOM_NUM,,,testDayLight
+Calendar_Mode,24H,,450-ACL-Israel
+Calendar_Mode,24H,,450HD_PPC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",450HD_PPC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Nir_Default_Template
+RegCountry,,"The country name - need to use the correct tones according to it.",Nir_Default_Template
+myPHolderName23564523,newmyPHolderValue23564523,newmyPHolderDescription23564523,Audiocodes_405
+DayLightEndDay,14,"Day Light End Day",Nir_Default_Template
+DayLightEndMonth,9,"Day Light End Month",Nir_Default_Template
+DayLightStartDay,26,"Day Light Start Day",Nir_Default_Template
+DayLightStartMonth,3,"Day Light Start Month",Nir_Default_Template
+FirmwareFile,,"Firmware File Name",Nir_Default_Template
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template405"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template405"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template405"
+FirmwareFile,,"Firmware File Name","Nir Default Template405"
+ddd,222,dddd,"Nir Default Template405"
+destination,21,111,"Nir Default Template405"
+myPHolderName10434226,myPHolderValue10434226,myPHolderDescription10434226,"Nir Default Template405"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template440"
+destination,21,111,Audiocodes_405
+DayLightEndDay,14,"Day Light End Day","Nir Default Template405"
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template440"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template440"
+DayLightEndDay,14,"Day Light End Day","Nir Default Template440"
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template440"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template440"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template440"
+FirmwareFile,,"Firmware File Name","Nir Default Template440"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Nir_Default_Template-HRS
+RegCountry,,"The country name - need to use the correct tones according to it.",Nir_Default_Template-HRS
+FirmwareFile,,"Firmware File Name",Nir_Default_Template-HRS
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template420"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template420"
+DayLightActivate,Enable,,Nir_Default_Template
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template420"
+DayLightEndDay,14,"Day Light End Day","Nir Default Template420"
+DayLightEndMonth,9,"Day Light End Month","Nir Default Template420"
+DayLightStartDay,26,"Day Light Start Day","Nir Default Template420"
+DayLightStartMonth,3,"Day Light Start Month","Nir Default Template420"
+FirmwareFile,,"Firmware File Name","Nir Default Template420"
+ddd,222,dddd,"Nir Default Template420"
+destination,21,111,"Nir Default Template420"
+myPHolderName10434226,myPHolderValue10434226,myPHolderDescription10434226,"Nir Default Template420"
+DayLightEndDay,14,"Day Light End Day",450HD_PPC
+OVR_Address,,,hongkong
+OVR_Enable,0,,hongkong
+OVR_Port,,,hongkong
+ProvisioningMethod,STATIC,"Provisioning Method",hongkong
+Syslog_Control_Center,NONE,,hongkong
+Syslog_IP,0.0.0.0,,hongkong
+Core_Dump,1,"Enable core dump","440 Israel"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","440 Israel"
+DayLightEndDay,27,"Day Light End Day","440 Israel"
+DayLightEndMonth,3,"Day Light End Month","440 Israel"
+DayLightStartDay,26,"Day Light Start Day","440 Israel"
+WB_Speakers_Vol,-28,,430Region2
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",430Region2
+DayLightEndDay,14,"Day Light End Day",430Region2
+DayLightEndMonth,9,"Day Light End Month",430Region2
+DayLightStartDay,26,"Day Light Start Day",430Region2
+DayLightStartMonth,3,"Day Light Start Month",430Region2
+FK_PK,,ITCS_FK_PK,430Region2
+FirmwareFile,,FirmwareFile,430Region2
+NB_Speakers_Vol,-28,,430Region2
+Refresh,99:99,,430Region2
+Ring_Vol,-32,,430Region2
+Stub,,,430Region2
+Tones_Vol,31,,430Region2
+WD,1,,430Region2
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",OECD_Test
+DayLightEndDay,14,"Day Light End Day",OECD_Test
+DayLightEndMonth,9,"Day Light End Month",OECD_Test
+DayLightStartDay,26,"Day Light Start Day",OECD_Test
+DayLightStartMonth,3,"Day Light Start Month",OECD_Test
+Core_Dump,1,"Enable core dump",MOVE_TO_NEW_EMS
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",MOVE_TO_NEW_EMS
+DayLightEndDay,27,"Day Light End Day",MOVE_TO_NEW_EMS
+DayLightEndMonth,3,"Day Light End Month",MOVE_TO_NEW_EMS
+DayLightStartDay,26,"Day Light Start Day",MOVE_TO_NEW_EMS
+DayLightStartMonth,10,"Day Light Start Month",MOVE_TO_NEW_EMS
+Firmware,440HD.img,,MOVE_TO_NEW_EMS
+FirmwareFile,,"Firmware File Name",MOVE_TO_NEW_EMS
+FirmwareName,,"Firmware file Name",MOVE_TO_NEW_EMS
+OVR_Address,,,MOVE_TO_NEW_EMS
+OVR_Enable,0,,MOVE_TO_NEW_EMS
+OVR_Port,,,MOVE_TO_NEW_EMS
+ProvisioningMethod,STATIC,"Provisioning Method",MOVE_TO_NEW_EMS
+Syslog_Control_Center,NONE,,MOVE_TO_NEW_EMS
+Syslog_IP,0.0.0.0,,MOVE_TO_NEW_EMS
+Syslog_Mode,DISABLE,,MOVE_TO_NEW_EMS
+Token_Uri,,"token uri for calendar",MOVE_TO_NEW_EMS
+VOCANOM,,,MOVE_TO_NEW_EMS
+VOCANOM_NUM,,,MOVE_TO_NEW_EMS
+Calendar_Mode,24H,"Calendar Mode",MOVE_TO_OVR_NEW_EMS
+Core_Dump,1,"Enable core dump",MOVE_TO_OVR_NEW_EMS
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",MOVE_TO_OVR_NEW_EMS
+DayLightEndDay,27,"Day Light End Day",MOVE_TO_OVR_NEW_EMS
+DayLightEndMonth,3,"Day Light End Month",MOVE_TO_OVR_NEW_EMS
+DayLightStartDay,26,"Day Light Start Day",MOVE_TO_OVR_NEW_EMS
+DayLightStartMonth,10,"Day Light Start Month",MOVE_TO_OVR_NEW_EMS
+Firmware,440HD.img,,MOVE_TO_OVR_NEW_EMS
+FirmwareFile,,"Firmware File Name",MOVE_TO_OVR_NEW_EMS
+FirmwareName,,"Firmware file Name",MOVE_TO_OVR_NEW_EMS
+OVR_Address,,,MOVE_TO_OVR_NEW_EMS
+OVR_Enable,0,,MOVE_TO_OVR_NEW_EMS
+OVR_Port,,,MOVE_TO_OVR_NEW_EMS
+ProvisioningMethod,STATIC,"Provisioning Method",MOVE_TO_OVR_NEW_EMS
+Syslog_Control_Center,NONE,,MOVE_TO_OVR_NEW_EMS
+Syslog_IP,0.0.0.0,,MOVE_TO_OVR_NEW_EMS
+Syslog_Mode,DISABLE,,MOVE_TO_OVR_NEW_EMS
+Token_Uri,,"token uri for calendar",MOVE_TO_OVR_NEW_EMS
+VOCANOM,,,MOVE_TO_OVR_NEW_EMS
+VOCANOM_NUM,,,MOVE_TO_OVR_NEW_EMS
+myPHolderName23564523,newmyPHolderValue23564523,newmyPHolderDescription23564523,Audiocodes_420HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_450HD
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_450HD
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_450HD
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_450HD
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_450HD
+DayLightEndDay,14,"Day Light End Day",Audiocodes_450HD
+FirmwareFile,,"Firmware File Name",Audiocodes_450HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_450HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Audiocodes_450HD_LYNC
+DayLightStartMonth,3,"Day Light Start Month",Audiocodes_450HD_LYNC
+DayLightEndMonth,9,"Day Light End Month",Audiocodes_450HD_LYNC
+DayLightStartDay,26,"Day Light Start Day",Audiocodes_450HD_LYNC
+DayLightEndDay,14,"Day Light End Day",Audiocodes_450HD_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_450HD_LYNC
+myPHolderName10434226,myPHolderValue10434226,myPHolderDescription10434226,Audiocodes_420HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","440 Israel"
+RegCountry,,"The country name - need to use the correct tones according to it.","440 Israel"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",acl_israel_420
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",430Region2
+RegCountry,,"The country name - need to use the correct tones according to it.",430Region2
+KeepAlivePeriod,5,"Keep alive period (minutes)",Audiocodes_420HD
+Tones_Vol,31,,Audiocodes_440HD_LYNC
+destination,21,111,Audiocodes_420HD
+NB_Speakers_Vol,-28,,Audiocodes_430HD_LYNC
+DayLightStartMonth,3,"Day Light Start Month",440Region3
+FK_PK,,ITCS_FK_PK,440Region3
+FirmwareFile,,FirmwareFile,440Region3
+NB_Speakers_Vol,-28,,440Region3
+Refresh,99:99,,440Region3
+Ring_Vol,-32,,440Region3
+ProvisioningMethod,STATIC,"Provisioning Method",Audiocodes_440HD_LYNC
+OVR_Port,,,Audiocodes_440HD_LYNC
+Syslog_IP,0.0.0.0,,Audiocodes_440HD_LYNC
+Firmware,440HD.img,,Audiocodes_440HD_LYNC
+FirmwareName,,"Firmware file Name",Audiocodes_440HD_LYNC
+FirmwareFile,,"Firmware File Name",430_acl_israel
+Calendar_Mode,24H,"Calendar Mode","440 Lync Demo"
+Core_Dump,1,"Enable core dump","440 Lync Demo"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","440 Lync Demo"
+DayLightEndDay,27,"Day Light End Day","440 Lync Demo"
+Token_Uri,,"token uri for calendar",Audiocodes_450HD_LYNC
+DayLightEndDay,14,"Day Light End Day",405-RND-IPP
+DayLightEndMonth,9,"Day Light End Month",405-RND-IPP
+test_shay,111,,430_acl_israel
+DayLightStartDay,26,"Day Light Start Day",405-RND-IPP
+DayLightStartMonth,3,"Day Light Start Month",405-RND-IPP
+DayLightEndMonth,9,"Day Light End Month",450HD_PPC
+DayLightStartDay,26,"Day Light Start Day",450HD_PPC
+DayLightStartMonth,3,"Day Light Start Month",450HD_PPC
+FirmwareFile,,"Firmware File Name",450HD_PPC
+functional_key_type,SPEED_DIAL_BLF,,"430 IPP Support"
+Language,German,"Language - German",ovr420
+Core_Dump,1,"Enable core dump",hongkong
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",hongkong
+DayLightEndDay,27,"Day Light End Day",hongkong
+DayLightEndMonth,3,"Day Light End Month",hongkong
+DayLightStartDay,26,"Day Light Start Day",hongkong
+DayLightStartMonth,10,"Day Light Start Month",hongkong
+Firmware,440HD.img,,hongkong
+FirmwareFile,,"Firmware File Name",hongkong
+FirmwareName,,"Firmware file Name",hongkong
+Syslog_Mode,DISABLE,,hongkong
+Calendar_Mode,24H,"Calendar Mode","440 IPP Support"
+Core_Dump,1,"Enable core dump","440 IPP Support"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","440 IPP Support"
+DayLightEndDay,27,"Day Light End Day","440 IPP Support"
+DayLightEndMonth,3,"Day Light End Month","440 IPP Support"
+DayLightStartDay,26,"Day Light Start Day","440 IPP Support"
+DayLightStartMonth,10,"Day Light Start Month","440 IPP Support"
+Firmware,440HD.img,,"440 IPP Support"
+FirmwareFile,,"Firmware File Name","440 IPP Support"
+FirmwareName,,"Firmware file Name","440 IPP Support"
+OVR_Address,,,"440 IPP Support"
+OVR_Enable,0,,"440 IPP Support"
+OVR_Port,,,"440 IPP Support"
+ProvisioningMethod,STATIC,"Provisioning Method","440 IPP Support"
+Syslog_Control_Center,NONE,,"440 IPP Support"
+Syslog_IP,0.0.0.0,,"440 IPP Support"
+Syslog_Mode,DISABLE,,"440 IPP Support"
+Token_Uri,,"token uri for calendar","440 IPP Support"
+VOCANOM,,,"440 IPP Support"
+VOCANOM_NUM,,,"440 IPP Support"
+functional_key_0,11111,"First function key speed dial setting","430 IPP Support"
+DayLightStartMonth,10,"Day Light Start Month","440 Israel"
+Firmware,440HD.img,,"440 Israel"
+FirmwareFile,,"Firmware File Name","440 Israel"
+FirmwareName,,"Firmware file Name","440 Israel"
+OVR_Address,,,"440 Israel"
+OVR_Enable,0,,"440 Israel"
+OVR_Port,,,"440 Israel"
+ProvisioningMethod,STATIC,"Provisioning Method","440 Israel"
+Syslog_Control_Center,NONE,,"440 Israel"
+Syslog_IP,0.0.0.0,,"440 Israel"
+Syslog_Mode,DISABLE,,"440 Israel"
+VOCANOM_NUM,,,Audiocodes_440HD_LYNC
+VOCANOM,,,Audiocodes_440HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",acl_israel_420
+DayLightEndDay,14,"Day Light End Day",acl_israel_420
+DayLightEndMonth,9,"Day Light End Month",acl_israel_420
+DayLightStartDay,26,"Day Light Start Day",acl_israel_420
+DayLightStartMonth,3,"Day Light Start Month",acl_israel_420
+FirmwareFile,,"Firmware File Name",acl_israel_420
+ProvisioningMethod,Dynamic,"Provisioning Method",acl_israel_420
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","405 demo lync"
+DayLightEndDay,14,"Day Light End Day","405 demo lync"
+DayLightEndMonth,9,"Day Light End Month","405 demo lync"
+DayLightStartDay,23,"Day Light Start Day","405 demo lync"
+DayLightStartMonth,3,"Day Light Start Month","405 demo lync"
+FirmwareFile,,"Firmware File Name","405 demo lync"
+ProvisioningMethod,Dynamic,"Provisioning Method","405 demo lync"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",430_cbu
+DayLightEndDay,14,"Day Light End Day",430_cbu
+DayLightEndMonth,9,"Day Light End Month",430_cbu
+DayLightStartDay,26,"Day Light Start Day",430_cbu
+DayLightStartMonth,3,"Day Light Start Month",430_cbu
+FirmwareFile,,"Firmware File Name",430_cbu
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","420 IPP Support"
+DayLightEndDay,14,"Day Light End Day","420 IPP Support"
+DayLightEndMonth,9,"Day Light End Month","420 IPP Support"
+DayLightStartDay,26,"Day Light Start Day","420 IPP Support"
+DayLightStartMonth,3,"Day Light Start Month","420 IPP Support"
+FirmwareFile,,"Firmware File Name","420 IPP Support"
+ProvisioningMethod,Dynamic,"Provisioning Method","420 IPP Support"
+direcory,empty_file,empty,"420 IPP Support"
+hk_blind_transfer,0,"Set the Transfer HK to consultive transfer","430 IPP Support"
+functional_key_1,22222,"Second function key speed dial setting","430 IPP Support"
+Calendar_Mode,TODAY,"Calendar Mode",MOVE_TO_NEW_EMS
+DayLightStartMonth,3,,New_450HD_Lync
+DayLightEndMonth,9,,New_450HD_Lync
+DayLightStartDay,26,,New_450HD_Lync
+FirmwareFile,,,New_450HD_Lync
+KeepAlivePeriod,5,,New_450HD_Lync
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_HRS_LYNC
+FirmwareFile,,"Firmware File Name",Audiocodes_HRS_LYNC
+myPHolderName10434226,myPHolderValue10434226,myPHolderDescription10434226,Audiocodes_405
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","Nir Default Template405"
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable","Nir Default Template405"
+RegCountry,,"The country name - need to use the correct tones according to it.","Nir Default Template405"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",New_450HD_Lync
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",440Region3
+RegCountry,,"The country name - need to use the correct tones according to it.",440Region3
+RegCountry,,"The country name - need to use the correct tones according to it.",New_450HD_Lync
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",OECD_Test
+RegCountry,,"The country name - need to use the correct tones according to it.",OECD_Test
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",ovr420
+RegCountry,,"The country name - need to use the correct tones according to it.",ovr420
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","405 Israel"
+RegCountry,,"The country name - need to use the correct tones according to it.","405 Israel"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",france_420
+RegCountry,,"The country name - need to use the correct tones according to it.",france_420
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",430_acl_israel
+RegCountry,,"The country name - need to use the correct tones according to it.",430_acl_israel
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","440 Lync Demo"
+RegCountry,,"The country name - need to use the correct tones according to it.","440 Lync Demo"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",440HD_PPC
+RegCountry,,"The country name - need to use the correct tones according to it.",440HD_PPC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","420 CBU"
+RegCountry,,"The country name - need to use the correct tones according to it.","420 CBU"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","430 IPP Support"
+RegCountry,,"The country name - need to use the correct tones according to it.","430 IPP Support"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",440HD_OVR_Lync
+RegCountry,,"The country name - need to use the correct tones according to it.",440HD_OVR_Lync
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",450-ACL-Israel
+RegCountry,,"The country name - need to use the correct tones according to it.",450-ACL-Israel
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",405-RND-IPP
+RegCountry,,"The country name - need to use the correct tones according to it.",405-RND-IPP
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",testDayLight
+RegCountry,,"The country name - need to use the correct tones according to it.",testDayLight
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",450HD_PPC
+RegCountry,,"The country name - need to use the correct tones according to it.",450HD_PPC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",hongkong
+RegCountry,,"The country name - need to use the correct tones according to it.",hongkong
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","440 IPP Support"
+RegCountry,,"The country name - need to use the correct tones according to it.","440 IPP Support"
+RegCountry,,"The country name - need to use the correct tones according to it.",acl_israel_420
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","405 demo lync"
+RegCountry,,"The country name - need to use the correct tones according to it.","405 demo lync"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",430_cbu
+RegCountry,,"The country name - need to use the correct tones according to it.",430_cbu
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4","420 IPP Support"
+RegCountry,,"The country name - need to use the correct tones according to it.","420 IPP Support"
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",MOVE_TO_NEW_EMS
+RegCountry,,"The country name - need to use the correct tones according to it.",MOVE_TO_NEW_EMS
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",MOVE_TO_OVR_NEW_EMS
+RegCountry,,"The country name - need to use the correct tones according to it.",MOVE_TO_OVR_NEW_EMS
+Ring_Vol,-32,,Audiocodes_440HD_LYNC
+KeepAlivePeriod,5,"Keep alive period (minutes)",Audiocodes_420HD_LYNC
+NB_Speakers_Vol,-28,,Audiocodes_440HD_LYNC
+KeepAlivePeriod,5,"Keep alive period (minutes)",Audiocodes_430HD
+Ring_Vol,-32,,Audiocodes_430HD_LYNC
+Tones_Vol,31,,Audiocodes_430HD_LYNC
+Ring_Vol,-31,,Audiocodes_420HD_LYNC
+NB_Speakers_Vol,-19,,Audiocodes_420HD_LYNC
+WD,1,,Audiocodes_440HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_440HD_LYNC
+Stub,,,Audiocodes_430HD_LYNC
+WB_Speakers_Vol,-28,,Audiocodes_430HD_LYNC
+Stub,,,Audiocodes_440HD_LYNC
+Refresh,99:99,,Audiocodes_430HD_LYNC
+Refresh,99:99,,Audiocodes_420HD_LYNC
+WD,1,,Audiocodes_420HD_LYNC
+WD,1,,Audiocodes_430HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_450HD_LYNC
+NB_Speakers_Vol,-28,,Audiocodes_450HD_LYNC
+Refresh,99:99,,Audiocodes_450HD_LYNC
+Ring_Vol,-32,,Audiocodes_450HD_LYNC
+SpeedDialName1,.,"Speed Dial 1 Name",Audiocodes_450HD_LYNC
+SpeedDialName1,.,"Speed Dial 1 Name",Audiocodes_440HD_LYNC
+SpeedDialNumber1,.,"Speed Dial 1 Number",Audiocodes_440HD_LYNC
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",440Region3
+DayLightEndDay,14,"Day Light End Day",440Region3
+DayLightEndMonth,9,"Day Light End Month",440Region3
+DayLightStartDay,26,"Day Light Start Day",440Region3
+SpeedDialName1,.,"Speed Dial 1 Name",440Region3
+SpeedDialName2,.,"Speed Dial 2 Name",440Region3
+SpeedDialNumber1,.,"Speed Dial 1 Number",440Region3
+SpeedDialNumber2,.,"Speed Dial 2 Number",440Region3
+Stub,,,440Region3
+Tones_Vol,31,,440Region3
+WB_Speakers_Vol,-28,,440Region3
+WD,1,,440Region3
+SpeedDialName2,.,"Speed Dial 2 Name",Audiocodes_440HD_LYNC
+SpeedDialNumber2,.,"Speed Dial 2 Number",Audiocodes_440HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_430HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_420HD_LYNC
+WB_Speakers_Vol,-28,,Audiocodes_440HD_LYNC
+Tones_Vol,31,,Audiocodes_420HD_LYNC
+WB_Speakers_Vol,-19,,Audiocodes_420HD_LYNC
+Stub,,,Audiocodes_420HD_LYNC
+Refresh,99:99,,Audiocodes_440HD_LYNC
+FK_PK,,ITCS_FK_PK,Audiocodes_405_LYNC
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Audiocodes_430HD
+SipDigitMap,**xxxx,"Digit map for the IPP e.g 4xxx for 4 digits number that starts with 4",Template_for_configuration_test
+DayLightEndDay,14,"Day Light End Day",Template_for_configuration_test
+RegCountry,,"The country name - need to use the correct tones according to it.",Template_for_configuration_test
+DayLightEndMonth,9,"Day Light End Month",Template_for_configuration_test
+DayLightStartDay,26,"Day Light Start Day",Template_for_configuration_test
+DayLightStartMonth,3,"Day Light Start Month",Template_for_configuration_test
+FirmwareFile,,"Firmware File Name",Template_for_configuration_test
+KeepAlivePeriod,5,"Keep alive period (minutes)",Template_for_configuration_test
+Language,German,sdfsdfsdf,Template_for_configuration_test
+DayLightActivate,Disable,"Day Light Activate - Enable/Disable",Template_for_configuration_test
+ConfTest_ph,1234,"Template PH that used for configuration import tests",Audiocodes_430HD

@@ -860,9 +860,9 @@ public class GlobalFuncs {
 				  break;
 			  }
 			  myDebugPrinting("paths[" + i + "] - " +  paths[i], testVars.logerVars.MINOR);
-			  myWait(1000);
+			  myWait(5000);
 			  markElemet(driver, driver.findElement(By.xpath(paths[i])));
-			  myWait(2000);
+			  myWait(5000);
 		      driver.findElement(By.xpath(paths[i])).click();
 			  myWait(7000);
 		  }
@@ -872,7 +872,7 @@ public class GlobalFuncs {
 			  
 			  Assert.assertTrue("Title was not found (" + title + ")", title.contains(verifyHeader));
 		  }
-		  myWait(3000);
+		  myWait(9000);
 		  myDebugPrinting("enterMenu  - " +  menuName + " ended successfully !!", testVars.logerVars.NORMAL);
       }
 
@@ -1543,29 +1543,30 @@ public class GlobalFuncs {
 			verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[1]/div[3]/h4", "Please enter template description");
 			mySendKeys(driver, By.xpath("//*[@id='description']"), tempDesc, 2000);
 		}
-				
+		
+		// Is two templates create or bad name
 		if (map.containsKey("secondCreate")) {
 			
-			myDebugPrinting("secondCreate - TRUE (upload big cfg file test)", testVars.logerVars.NORMAL);
-//			driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[7]/td[2]/a")).click();
-//			myWait(3000);
-//			verifyStrByXpath(driver, "//*[@id='title']", "Upload IP Phone Template " + tempName);
-//			String bigCfgPath = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("36");
-//			myDebugPrinting("bigCfgPath - " + bigCfgPath, testVars.logerVars.MINOR);
-//			driver.findElement(By.xpath("//*[@id='IntroScreen']/form/table/tbody/tr[3]/td/input")).sendKeys(bigCfgPath);
-//			myWait(5000);
-//			driver.findElement(By.xpath("//*[@id='submit_img']")).click();
-//			myWait(45000);
-//			verifyStrByXpath(driver, "//*[@id='promt_div_id']"        , "Please choose a cfg file.");
-//		    driver.findElement(By.xpath("//*[@id='jqi_state0_buttonOk']")).click();
-//		    myWait(2000);
-		    driver.findElement(By.xpath("//*[@id='back_img']")).click();
-		    myWait(2000);
+			myDebugPrinting("secondCreate - TRUE (create two templates with same name test)", testVars.logerVars.NORMAL);
+			myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 3000);		
+			verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save New Template");
+			verifyStrByXpath(driver, "//*[@id='modalContentId']", "Failed to create new template. Reason: this template name exists.");
+			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);				
+			myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[1]"), 3000);		
 			return;
 		}
 		
 		// Submit
-		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 7000);	
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 7000);
+		if (map.containsKey("speicalChrsName")) {
+			
+			myDebugPrinting("speicalChrsName - TRUE (name with special characters)", testVars.logerVars.NORMAL);
+			verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[1]/div[3]/h4"  , "Invalid template name. When naming your template, avoid characters incompatible with the file system: <, >, :, |, ?, *, double quote, (period) or a space at the end, etc.");
+			myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[1]"), 7000);	
+			return;
+		}
+		
+		
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save New Template");
 		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Add new template of tenant successfully.");
 		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
@@ -2186,7 +2187,7 @@ public class GlobalFuncs {
 	  public void mySendKeys(WebDriver driver, By byType, String currUsr, int timeOut) {
 		  
 		  driver.findElement(byType).clear();
-		  myWait(1000);
+		  myWait(3000);
 		  driver.findElement(byType).sendKeys(currUsr);
 		  myWait(timeOut);
 	  }
@@ -2929,8 +2930,10 @@ public class GlobalFuncs {
 
 		  // Delete all Configuration values
 		  myDebugPrinting("Delete all Configuration values", testVars.logerVars.NORMAL);
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/button")    , 3000);
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/ul/li[1]/a"), 3000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/button")    , 5000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/ul/li[1]/a"), 5000);
+//		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/ul/li[1]/a"), 3000);
+		  myDebugPrinting("Confirm delete", testVars.logerVars.MINOR);
 		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration settings");
 		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete all configuration settings and save empty content?");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
@@ -3314,4 +3317,25 @@ public class GlobalFuncs {
 		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
 		  verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", newConfValue);
 	  }
+	  
+	  /**
+	  *  Add a mapping value by given parameters
+	  *  @param driver       - given driver
+	  *  @param usedTemplate - given used template
+	  *  @param defTemplateVars - array of data for default mapping (). NULL if not default
+	  */
+
+	public void addMapping(WebDriver driver, String usedTemplate, String[] defTemplateVars) {
+		
+		new Select(driver.findElement(By.xpath("//*[@id='templates-def']"))).selectByVisibleText(usedTemplate);
+		myWait(5000);
+		
+		
+		myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
+
+		// Confirm
+		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Template");			  
+		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to update the template of tenant and type"); 
+		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);	
+	}
 }

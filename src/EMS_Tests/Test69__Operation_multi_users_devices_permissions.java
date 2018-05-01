@@ -89,8 +89,8 @@ public class Test69__Operation_multi_users_devices_permissions {
 	String prefix			= "op";
 	String nonDefTenant		= testVars.getNonDefTenant(0);
 	String Id 				= testFuncs.getId();
-	String defTenantUser    = prefix + "_deftenant"    + Id;
-	String nonDefTenantUser = prefix + "_nondeftenant" + Id;
+	String defTenantUser    = prefix + "deftenant"    + Id;
+	String nonDefTenantUser = prefix + "nondeftenant" + Id;
 	
 	// Login via Administrator, create a user of default Tenant with a POST query
 	testFuncs.myDebugPrinting("Login via Administrator, create a user of default Tenant with a POST query");

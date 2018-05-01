@@ -79,11 +79,11 @@ public class GlobalVars {
     private  String monitUsername    = "Nir_Monitoring4";
 	private  String monitPassword    = "1q2w3e4r5t6y";
     private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";
-	private  String monitTenPswd     = "1q2w3e4r5t";
+	private  String monitTenPswd     = "1q2w3e4r6t";
     private  String operTenUsrnme    = "Nir_Operation_Tenant2";
-	private  String operTenPswd      = "1q2w3e4r5t";
+	private  String operTenPswd      = "1q2w3e4r6t";
     private  String operUsername     = "Nir_Operation2";
-	private  String operPassword     = "1q2w3e4r5t";
+	private  String operPassword     = "1q2w3e4r6t";
 	private  String sysMainStr       = "NETWORK TOPOLOGY";
 	private  String failLogMainStr   = "Invalid credentials";
 	private  String sysInvalidStr    = "Wrong username or password";
@@ -97,7 +97,7 @@ public class GlobalVars {
 	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
-	private  String version			 = "7.4.2101";
+	private  String version			 = "7.4.3063";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";

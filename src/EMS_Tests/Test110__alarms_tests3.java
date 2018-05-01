@@ -94,7 +94,7 @@ public class Test110__alarms_tests3 {
 	testFuncs.myDebugPrinting("Create a registered users from two different tenants");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
-			 												 " 1"				    	,
+			 												 "1"				    	,
 			 												 user1 						,
 			 												 testVars.getDomain()       ,
 			 												 "registered"               ,
@@ -175,7 +175,6 @@ public class Test110__alarms_tests3 {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[2]/label[5]", "Wait for response:");
 	 // TODO how to test it?
 	testFuncs.myClick(driver, By.xpath("//*[@id='jqi_state0_buttonCancel']"), 2000);
-	
 	
 	// Step 6 - Delete the created alarms and users
 	testFuncs.myDebugPrinting("Step 6 - Delete the created alarms and users");

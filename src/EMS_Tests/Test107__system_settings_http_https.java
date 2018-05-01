@@ -151,7 +151,7 @@ public class Test107__system_settings_http_https {
 	
     // Step 5 - Delete the created user
   	testFuncs.myDebugPrinting("Step 5 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 

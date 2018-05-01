@@ -229,20 +229,20 @@ public class Test100__Monitoring_device_actions_row {
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	
-//	// Step 1 - Check status via Device-status menu
-//	testFuncs.myDebugPrinting("Step 1 - Check status via Device-status menu");
-//	searchAndSelectDevice(driver, userName);
-//	checkStatusDevice();
-//	
-//	// Step 2 - Change Tenant via Device-status menu
-//	testFuncs.myDebugPrinting("Step 2 - Change Tenant via Device-status menu");
-//	searchAndSelectDevice(driver, userName);
-//	changeDeviceTenant(userName, testVars.getNonDefTenant(0));
-//
-//	// Step 3 - Update firmware via Device-status menu
-//	testFuncs.myDebugPrinting("Step 3 - Update firmware via Device-status menu");
-//	searchAndSelectDevice(driver, userName);
-//	updateDeviceFirmware(userName, testVars.getDefPhoneModel());
+	// Step 1 - Check status via Device-status menu
+	testFuncs.myDebugPrinting("Step 1 - Check status via Device-status menu");
+	searchAndSelectDevice(driver, userName);
+	checkStatusDevice();
+	
+	// Step 2 - Change Tenant via Device-status menu
+	testFuncs.myDebugPrinting("Step 2 - Change Tenant via Device-status menu");
+	searchAndSelectDevice(driver, userName);
+	changeDeviceTenant(userName, testVars.getNonDefTenant(0));
+
+	// Step 3 - Update firmware via Device-status menu
+	testFuncs.myDebugPrinting("Step 3 - Update firmware via Device-status menu");
+	searchAndSelectDevice(driver, userName);
+	updateDeviceFirmware(userName, testVars.getDefPhoneModel());
 	
 	// Step 4 - Open web admin via Device-status menu
 	testFuncs.myDebugPrinting("Step 4 - Open web admin via Device-status menu");
@@ -406,7 +406,7 @@ public class Test100__Monitoring_device_actions_row {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[1]/a"), 20000);  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Status");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Error in Status check!");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 2000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 2000);  
   }
 
   // Search for a device and select it via Select-All checkbox

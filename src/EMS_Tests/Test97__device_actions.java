@@ -170,7 +170,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='delete']")   , 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete IP Phones Status");  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the selected IP phones status?");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify delete
 	  testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.MINOR); 
@@ -196,7 +196,7 @@ public class Test97__device_actions {
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='mtext']"), "message", 3000);  
 	  new Select(driver.findElement(By.xpath("//*[@id='mtime']"))).selectByVisibleText(command);
 	  testFuncs.myWait(2000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -214,7 +214,7 @@ public class Test97__device_actions {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[1]/label", "Message Text");  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[2]/label", "Display Timet");   
 	  testFuncs.mySendKeys(driver, By.xpath("	//*[@id='mtext']"), "message", 3000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -229,8 +229,8 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='updateConfig']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update IPP IP-Phones Configuration");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to update the configuration files of the selected IP phones?<br/><table class=\"table table-bordered table-striped\"><tbody><tr><td>" + deviceName + "</td></tr></tbody></table>");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000); 
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to update the configuration files of the selected IP phones?\n" + deviceName);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -247,10 +247,10 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='generateConfiguration']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to generate the configuration files of the selected IP phones?");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 4000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 4000); 
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update devices now");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -266,7 +266,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='resetIPP']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart IP-Phones");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to restart the selected IP phones?");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -284,7 +284,7 @@ public class Test97__device_actions {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please select a firmware:");  
 	  new Select(driver.findElement(By.xpath("//*[@id='firmware']"))).selectByVisibleText(firmware);
 	  testFuncs.myWait(2000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
@@ -296,13 +296,13 @@ public class Test97__device_actions {
 
 	  // Change device tenant
 	  testFuncs.myDebugPrinting("Change device tenant", testVars.logerVars.NORMAL); 
-	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='changeTenant']"), 2000);  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a")  , 5000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='changeTenant']"), 5000);  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Tenant");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please select a tenant:");
-	  new Select(driver.findElement(By.xpath("/html/body/div[3]/div/select"))).selectByVisibleText(nonDefTenant);
-	  testFuncs.myWait(2000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000);  
+	  new Select(driver.findElement(By.xpath("/html/body/div[4]/div/select"))).selectByVisibleText(nonDefTenant);
+	  testFuncs.myWait(5000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 

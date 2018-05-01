@@ -183,7 +183,7 @@ public class Test101__device_status_export_tests {
 		
 		testFuncs.myDebugPrinting("isExportAll - false", testVars.logerVars.MINOR);    
 	}
-	testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 120000); 
+	testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 120000); 
 	testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), downloadedFile));
   }
 

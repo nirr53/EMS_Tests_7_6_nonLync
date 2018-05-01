@@ -96,7 +96,7 @@ public class Test109__alarms_tests2 {
 	testFuncs.myDebugPrinting("Create a registered and un-registered users using POST method");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
-			 												 " 1"				    	,
+			 												 "1"				    	,
 			 												 "regAlert" + Id			,
 			 												 testVars.getDomain()       ,
 			 												 "registered"               ,
@@ -108,7 +108,7 @@ public class Test109__alarms_tests2 {
     testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 												 testVars.getPort()    	    ,
-			 												 " 1"				   	    ,
+			 												 "1"				   	    ,
 			 												 "unRegAlert" + Id     		,
 			 												 testVars.getDomain()       ,
 			 												 "unregistered"             ,

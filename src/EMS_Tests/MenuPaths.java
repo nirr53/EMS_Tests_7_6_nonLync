@@ -4,10 +4,13 @@ public class MenuPaths {
 	
 	// Setup section
 	private String SETUP_SECTION 						 = "//*[@id='navbar-collapse']/ul[1]/li[1]/a";
+	private String SETUP_WIZARD_SECTION 			 	 = "//*[@id='left-nav']/ul/li[1]/a/span";
+	private String SETUP_WIZARD 			 			 = "//*[@id='left-nav']/ul/li[1]/ul/li/a/span[1]";
 	private String SETUP_USERS_DEVICES_MANAGE_MULTI_USRS = "//*[@id='left-nav']/ul/li[2]/ul/li[2]/a/span[1]";
 	private String SETUP_USERS_DEVICES_MANAGE_MULTI_DVCS = "//*[@id='left-nav']/ul/li[2]/ul/li[3]/a/span[1]";
 	private String SETUP_PHONE_CONF_SECTION 			 = "//*[@id='left-nav']/ul/li[3]/a";
 	private String SETUP_PHONE_CONF_TEMPLATES 			 = "//*[@id='left-nav']/ul/li[3]/ul/li[1]/a";
+	private String SETUP_PHONE_CONF_TEMPLATES_MAPPING 	 = "//*[@id='left-nav']/ul/li[3]/ul/li[2]/a";
 	private String SETUP_PHONE_CONF_SYS_SETTINGS	 	 = "//*[@id='left-nav']/ul/li[3]/ul/li[3]/a";
 	private String SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIG	 = "//*[@id='left-nav']/ul/li[3]/ul/li[4]/a";
 	private String SETUP_PHONE_CONF_LDAP_SETTINGS	 	 = "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[1]";	
@@ -32,8 +35,8 @@ public class MenuPaths {
 	// Mainpage section
 	private String MAINPAGE_ALERTS_BUTTON 				 = "//*[@id='left-nav']/ul/li/ul/li[3]/a";
 	private String MAINPAGE_USER_DETAILS 				 = "//*[@id='navbar-collapse']/ul[3]/li[3]/a";
-	private String MAINPAGE_USER_LOGOUT_BUTTON 			 = "/html/body/div[2]/span[2]/a/button";
-	private String MONITOR_MAINPAGE_USER_LOGOUT_BUTTON 	 = "/html/body/div[3]/span[2]/a/button";
+	private String MAINPAGE_USER_LOGOUT_BUTTON 			 = "/html/body/div[4]/span[2]/a/button";
+	private String MONITOR_MAINPAGE_USER_LOGOUT_BUTTON 	 = "/html/body/div[4]/span[2]/a/button";
 
 	// Monitor section
 	private String MONITOR_SECTION 						 = "//*[@id='navbar-collapse']/ul[1]/li[2]/a";
@@ -71,7 +74,12 @@ public class MenuPaths {
             //
             // Setup section
            	//
-    		// -----------------
+    		// -----------------	
+			case "Setup_Wizard":
+	            paths[0] = SETUP_SECTION;
+	            paths[1] = SETUP_WIZARD_SECTION;   
+	            paths[2] = SETUP_WIZARD;
+	            break;  
             	
 			case "Setup_Manage_users":
 	            paths[0] = SETUP_SECTION;
@@ -96,7 +104,12 @@ public class MenuPaths {
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_TEMPLATES;
-	            break;  
+	            break;      
+			case "Templates_mapping":
+	            paths[0] = SETUP_SECTION;
+	            paths[1] = SETUP_PHONE_CONF_SECTION;
+	            paths[2] = SETUP_PHONE_CONF_TEMPLATES_MAPPING;
+	            break;          
 			case "Setup_Phone_conf_system_settings":
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;

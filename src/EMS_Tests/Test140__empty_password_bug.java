@@ -148,10 +148,10 @@ public class Test140__empty_password_bug {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[7]/a"), 7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to generate the configuration files of the selected IP phones?");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 4000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 4000); 
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update devices now");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 20000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 

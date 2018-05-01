@@ -93,7 +93,7 @@ public class Test3__home_screen_buttons {
 
 	// Step 3.3 - Help Button
 	testFuncs.myDebugPrinting("Step 3.3 - Help button");
-	pressHelpButton(driver, "Help is not supported yet!");
+	pressHelpButton(driver);
 	
 	// Step 3.4 - Home button
 	testFuncs.myDebugPrinting("Step 3.4 - Home button");
@@ -127,18 +127,25 @@ public class Test3__home_screen_buttons {
   }
 
   // Press the Help button
-  private void pressHelpButton(WebDriver driver, String string) {
+  private void pressHelpButton(WebDriver driver) {
 	  
 	  // Test the Help button at right side of page
 	  testFuncs.myDebugPrinting("Step 3.3.1 - Test the Help button at right side of page", testVars.logerVars.NORMAL);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[4]/a"), 2000);
-	  Alert alert = driver.switchTo().alert();	
-	  testFuncs.myAssertTrue(string + " was not detected at pop-up!!", alert.getText().contains(string)); 
-	  alert.accept(); 	    
-	  testFuncs.myWait(3000);
+	  String winHandleBefore = driver.getWindowHandle();
+	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[4]/a"), 8000);
+	  for(String winHandle : driver.getWindowHandles()) {
+	    	
+	        driver.switchTo().window(winHandle);  
+	  }
+	  
+	  // Verify Help headers
+	  testFuncs.myDebugPrinting("Verify Help headers", testVars.logerVars.MINOR);
+	  testFuncs.searchStr(driver, "Welcome to AudioCodes Technical Document Library");  
+	  driver.close();
+	  driver.switchTo().window(winHandleBefore); 
   }
 
-@After
+  @After
   public void tearDown() throws Exception {
 	  
     driver.quit();

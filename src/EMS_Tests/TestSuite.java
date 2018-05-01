@@ -153,7 +153,8 @@ import org.junit.runners.Suite;
 	Test143__generate_exists_user_configuration_tests.class			,
 	Test144__tenant_configuration_generate.class					,
 	Test145__site_configuration_generate.class						,
-	Test146__configuration_vals_during_create.class
+	Test146__configuration_vals_during_create.class					,
+	Test148__menus_test.class
 
 
 })

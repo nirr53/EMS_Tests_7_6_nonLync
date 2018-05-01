@@ -108,6 +108,8 @@ public class Test96__template_features {
 	testFuncs.myDebugPrinting("Step 2 - Add Telnet-Access (enabled + disabled)");
 	addTelnetAccessValue(driver, telnetPrefix, false);
 	addTelnetAccessValue(driver, telnetPrefix, true);
+	
+	// Nir 1\5\18 VI 152905
 	deleteAllConfValues(driver , telnetPrefix);
 	
 	// Step 3 - Add Pin-value (enabled + disabled)
@@ -136,8 +138,6 @@ public class Test96__template_features {
 		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
 	  }  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
-
-	  // Nir - bug 7.4.245 7.4.17 (VI 145708)
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
@@ -245,6 +245,7 @@ public class Test96__template_features {
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration settings");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete all configuration settings and save empty content?");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
+	  
 //	   Nir - bug 7.4.245 7.4.17 (VI 145708)
 	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + testVars.getDefSite() + " [" + testVars.getDefSite() + "] / " + testVars.getDefTenant() + " )");
 	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");

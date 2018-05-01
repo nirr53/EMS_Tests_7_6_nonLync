@@ -123,16 +123,14 @@ public class Test115__different_BToE_version_numbers {
     map.put("action"	      , "Delete Users");
     map.put("srcUsername"     , "Finished");
     map.put("skipVerifyDelete", "true");
-    map.put("usersPrefix"     , prefixName);
+    map.put("usersPrefix"     , "btoe");
     map.put("usersNumber"	  , usersNumber); 
     map.put("startIdx"   	  , String.valueOf(1));  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
-    testFuncs.selectMultipleUsers(driver, prefixName, usersNumber);   
+    testFuncs.selectMultipleUsers(driver, "btoe", usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);
-    btoeDisabled   = btoeDisabled.toLowerCase();
-    btoeAutoPaired = btoeAutoPaired.toLowerCase();
-    testFuncs.searchStr(driver, btoeDisabled   + "@" + testVars.getDomain() + " Finished");
-    testFuncs.searchStr(driver, btoeAutoPaired + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, btoeDisabled.toLowerCase()   + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, btoeAutoPaired.toLowerCase() + "@" + testVars.getDomain() + " Finished");
   }
   
   private void checkBToE(String state, String version) {

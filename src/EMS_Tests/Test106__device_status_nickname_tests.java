@@ -111,15 +111,15 @@ public class Test106__device_status_nickname_tests {
 	searchAndSelectDevice(driver, editedUser);
 	setDeviceNickname(editedUser, "new Nickname" + Id);
 	
-	// Step 2 - Verify that you cannot edit a nickname while sevarl devices are selected
-	testFuncs.myDebugPrinting("Step 2 - Verify that you cannot edit a nickname while sevarl devices are selected");
+	// Step 2 - Verify that you cannot edit a nickname while several devices are selected
+	testFuncs.myDebugPrinting("Step 2 - Verify that you cannot edit a nickname while several devices are selected");
 	searchAndSelectDevice(driver, dispPrefix);
 	testFuncs.myClick(driver, By.xpath("//*[@id='selectall']"), 2000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);  
 	testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[5]/a"), 2000);	  
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Nickname");	  
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Nickname can be updated to one device at a time."); 
-	testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 5000);	  	
+	testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 5000);	  	
 				
     // Step 3 - Delete the created users
   	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
@@ -147,7 +147,7 @@ public class Test106__device_status_nickname_tests {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Nickname");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Nickname"); 
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='mtext']"), nickname, 3000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[3]/div/button[1]"), 10000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000);  
 	  	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 

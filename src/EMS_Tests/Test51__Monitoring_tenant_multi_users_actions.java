@@ -108,8 +108,8 @@ public class Test51__Monitoring_tenant_multi_users_actions {
 				 				"myLocation");
 	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	 
-    // Login via a Monitoring user (tenant) and enter Multi-user-changes menu
-	testFuncs.myDebugPrinting("Login via a Monitoring user (tenant) and enter Multi-user-changes menu");
+    // Login via a Monitoring user (tenant) and enter Multiple-user-changes menu
+	testFuncs.myDebugPrinting("Login via a Monitoring user (tenant) and enter Multiple-user-changes menu");
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     

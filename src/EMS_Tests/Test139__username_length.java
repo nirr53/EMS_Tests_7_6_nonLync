@@ -79,7 +79,7 @@ public class Test139__username_length {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String prefix		   = "lngUserName__" + testFuncs.getId();
+	String prefix		   = "lngUserName" + testFuncs.getId();
 	int    maxLength	   = 100;
 	Map<String, String>map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 
@@ -148,7 +148,7 @@ public class Test139__username_length {
   public void tearDown() throws Exception {
     
 	  // Close session
-//	  driver.quit();
+	  driver.quit();
 	  System.clearProperty("webdriver.chrome.driver");
 	  System.clearProperty("webdriver.ie.driver");
 	  String verificationErrorString = verificationErrors.toString(); 
