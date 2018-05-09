@@ -117,6 +117,7 @@ public class Test112__multiple_users_add_delete_configuration {
     // Step 3 - Delete configuration key
   	testFuncs.myDebugPrinting("Step 3 - Delete configuration key");
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.myWait(3000);
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "Delete User configuration");
     testFuncs.setMultipleUsersAction(driver, map);    

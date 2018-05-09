@@ -148,7 +148,7 @@ public class Test109__alarms_tests2 {
 	
 	// Step 2 - Create alarms on different severity types
 	testFuncs.myDebugPrinting("Step 2 - Create alarms on different severity types");
-	String[] alertsSeverity = {"info", "warning", "minor", "Major", "Critical"};
+	String[] alertsSeverity = {"Info", "Warning", "Minor", "Major", "Critical"};
 
 	for (int i = 0; i < 5; ++i) {
 		

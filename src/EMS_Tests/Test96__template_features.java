@@ -247,8 +247,8 @@ public class Test96__template_features {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
 	  
 //	   Nir - bug 7.4.245 7.4.17 (VI 145708)
-	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + testVars.getDefSite() + " [" + testVars.getDefSite() + "] / " + testVars.getDefTenant() + " )");
-	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
+	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
+	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Failed to save the template new configuration settings");
 	   testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	
 
 	  // verify delete

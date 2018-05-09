@@ -311,8 +311,9 @@ public class GlobalFuncs {
 		  
 	   markElemet(driver, driver.findElement(By.xpath(elemName)));
 	   String txt = driver.findElement(By.xpath(elemName)).getText();  
-	   myAssertTrue("<" + strName + "> was not detected !! <" + txt + ">", txt.contains(strName));	  
-	   myWait(1000);
+	   myAssertTrue("<" + strName + "> was not detected !! <" + txt + ">", txt.contains(strName));	  	 
+		myDebugPrinting("<" + strName + "> was detected !", testVars.logerVars.DEBUG);
+	   myWait(500);
 	  }
 	  
 	  /**
@@ -729,8 +730,9 @@ public class GlobalFuncs {
 	  public void selectMultipleUsers(WebDriver driver, String prefix, String expNumber) {
 		    		
 		myDebugPrinting("selectMultipleUsers() - prefix - " + prefix + " expNumber - " + expNumber, testVars.logerVars.NORMAL);
-		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 11000);
-		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 10000);
+		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 10000);
+		myWait(3000);
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 13000);
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
 	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
@@ -738,6 +740,7 @@ public class GlobalFuncs {
 			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 	    	return;
 	    }
+		myDebugPrinting("Filter ended", testVars.logerVars.MINOR);
 		myClick(driver, By.xpath("//*[@id='maintable']/tbody/tr[1]/td/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td/a"), 7000);
 	    if (Integer.parseInt(expNumber) > 500) {
 	    	
@@ -888,11 +891,6 @@ public class GlobalFuncs {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--start-maximized");
 			return new ChromeDriver(options);
-			
-			
-			
-			
-			
 			
 		} else if (usedBrowser.equals(testVars.FF))     {
 			
@@ -1074,7 +1072,7 @@ public class GlobalFuncs {
 				case "Generate IP Phones Configuration Files":
 					myDebugPrinting("Enter Generate IP Phones Configuration Files block", testVars.logerVars.NORMAL);				    
 					myClick(driver, By.xpath("//*[@id='setIpPhonesTR']/td/div/div/a/span"), 3000);  
-					verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generate to the location define in the template (destinationDir).\nDo you want to continue?");
+					verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generated to the location defined in the template (destinationDir)..\nDo you want to continue?");
 					myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);	
 			    	waitTillString(driver, "Waiting");
 					break;				
@@ -1093,8 +1091,21 @@ public class GlobalFuncs {
 					myDebugPrinting("Enter Delete User configuration block", testVars.logerVars.NORMAL);
 				    myClick(driver, By.xpath("//*[@id='deletePersonalInfoTR']/td[1]/div/a"), 3000);				    
 					verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");
-					verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration to selected user(s) ?");
-					myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);	
+					verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration from selected user(s) ?");
+					myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
+					
+					// Check confirm box
+					myDebugPrinting("Check confirm box", testVars.logerVars.NORMAL);
+					verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");
+					verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[1]", "Name");
+					verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[2]", "Result");
+					String dispPrefix0 = map.get("dispPrefix");
+					for (int i = 1; i <= usrsNumber; ++i) {
+						
+						verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[1]", dispPrefix0 + "_" + i + "@" + testVars.getDomain());
+						verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[2]", "User configuration was saved successfully.");
+					}
+					myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
 					break;
 					
 				case "User configuration":
@@ -1260,7 +1271,7 @@ public class GlobalFuncs {
 					verifyStrByXpath(driver, "//*[@id='modalTitleId']", "Save Configuration");
 					verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[1]", "Name");
 					verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[2]", "Result");
-					for (int i = 1; i < usrsNumber; ++i) {
+					for (int i = 1; i <= usrsNumber; ++i) {
 						
 						verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[1]", dispPrefix + "_" + i + "@" + testVars.getDomain());
 						verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[2]", "User configuration was saved successfully.");		
@@ -1380,7 +1391,7 @@ public class GlobalFuncs {
 				case "Generate IP Phones Configuration Files":
 					myDebugPrinting("Enter Generate IP Phone Configuration block", testVars.logerVars.NORMAL);  
 				    myClick(driver, By.xpath("//*[@id='setIpPhonesTR']/td/div/div/a"), 2000);
-					verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generate to the location define in the template (destinationDir).\nDo you want to continue?");
+					verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generated to the location defined in the template (destinationDir).\nDo you want to continue?");
 				    myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 					waitTillString(driver, "Waiting");
 					break;
@@ -1476,7 +1487,7 @@ public class GlobalFuncs {
 		}
 	  
 		// Is clone from other template is needed
-		if (!map.get("cloneFromtemplate").isEmpty()) {
+		if (!map.get("cloneFromtemplate").isEmpty() && map.get("cloneFromtemplate").equals("true")) {
 			
 			myDebugPrinting("cloneFromtemplate is not empty, clone starts !", testVars.logerVars.MINOR);		
 			Select cloneTempName = new Select (driver.findElement(By.xpath("//*[@id='clone_model_id']")));
@@ -1923,7 +1934,7 @@ public class GlobalFuncs {
 		  mySendKeys(driver, By.xpath("//*[@id='ph_desc']") , tempPhDescription, 2000);  				  
 		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[4]/button[2]"), 3000);
 		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Placeholder.");
-		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update new placeholder successfully.");
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update placeholder successfully.");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 
 		  // Verify edit
@@ -2392,7 +2403,7 @@ public class GlobalFuncs {
 		mySendKeys(driver, By.xpath("//*[@id='ph_value']"), tenPhValue, 2000);
 		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save New Placeholder.");
-		verifyStrByXpath(driver, "//*[@id='modalContentId']", "The new placeholder was saved successfully." + tenPhName);
+		verifyStrByXpath(driver, "//*[@id='modalContentId']", "The new placeholder (" + tenPhName + ") was saved successfully.");
 		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 		
 		// Verify the create
@@ -2471,10 +2482,10 @@ public class GlobalFuncs {
 		myDebugPrinting("Delete PH", testVars.logerVars.NORMAL);
 		myClick(driver, By.xpath("//*[@id='tenants1']/tbody[1]/tr[" + i + "]/td[6]/button[2]"), 5000);
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete placeholder");
-		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete this placeholder?: " + tenPhName);
+		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete this placeholder: " + tenPhName);
 		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);	
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete placeholder");
-		verifyStrByXpath(driver, "//*[@id='modalContentId']", "The selected " + tenPhName + " placeholder has been successfully removed from");
+		verifyStrByXpath(driver, "//*[@id='modalContentId']", "The selected placeholder (" + tenPhName + ") has been successfully removed from");
 		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);	
 	
 		// Verify delete
@@ -2528,7 +2539,7 @@ public class GlobalFuncs {
 		mySendKeys(driver, By.xpath("//*[@id='ph_value']"), tenNewPhValue, 2000);
 		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Placeholder.");
-		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update new placeholder successfully." + tenPhName);
+		verifyStrByXpath(driver, "//*[@id='modalContentId']", "The placeholder (" + tenPhName + ") was saved successfully.");
 		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 		
 		// Verify the create
@@ -2777,15 +2788,17 @@ public class GlobalFuncs {
 	  public void addNewSiteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant, String currSite) {  
 		  
 		  // Select site
-		  myDebugPrinting("Select site", testVars.logerVars.MINOR);	  
+		  myDebugPrinting("Select site - " + currSite, testVars.logerVars.MINOR);	  
 		  selectSite(driver, currSite); 
 		  
 		  // Select key, set data and submit
-		  myDebugPrinting("Select key, set data and submit", testVars.logerVars.MINOR);	  
-		  mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName  , 2000);  
+		  myDebugPrinting("Select key, set data and submit", testVars.logerVars.MINOR);	 
+		  myDebugPrinting("cfgKeyName - "  + cfgKeyName, testVars.logerVars.MINOR);	  
+		  myDebugPrinting("cfgKeyValue - " + cfgKeyValue, testVars.logerVars.MINOR);	  
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , cfgKeyName  , 2000);  
 		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 2000);  	  
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 3000);
-		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currSite + " )");
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
 		  
@@ -2850,15 +2863,15 @@ public class GlobalFuncs {
 	  /**
 	  *  Search for an Alert using given detector
 	  *  @param driver          - given driver
-	  *  @param searchMode      - given searchMode (I.e. description, severirty)
+	  *  @param searchMode      - given searchMode (I.e. description, severity)
 	  *  @param alertData       - search criteria
 	  *  @param alertsForSearch - array of alert descriptions for search
 	  **/
 	  public void searchAlarm(WebDriver driver, String searchMode, String alertData, String []alertsForSearch) {
 		  
 		  // Enter the filter menu & clear it before a new search
-		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    , 3000);
-		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[2]"), 3000);
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    , 7000);
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[2]"), 7000);
 		  switch (searchMode) {
 			  case "Description":	
 				  myDebugPrinting("Search according to description - " + alertData, testVars.logerVars.MINOR);
@@ -3227,11 +3240,11 @@ public class GlobalFuncs {
 		  myWait(3000);	
 		  myClick(driver, By.xpath("//*[@id='deletePersonalInfoTR']/td[1]/div/a"), 5000);		  
 		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");			  
-		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration to selected user(s) ?"); 
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration from selected user(s) ?"); 
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);		  
 				  
 		  // Empty confNames and confValues
-		  verifyConfValues(driver, usersFullNames, confNames, confValues, false);
+//		  verifyConfValues(driver, usersFullNames, confNames, confValues, false);
 	  }
 	  
 	  /**
@@ -3250,9 +3263,9 @@ public class GlobalFuncs {
 		  myDebugPrinting("Loop on all users and verify their create one after another", testVars.logerVars.MINOR);	
 		  for (int i = 0; i < usersNUmber; ++i) {
 			  
-			  enterMenu(driver, "Setup_Manage_users", "New User");
-			  searchUser(driver, usersFullNames[i]);  
-			  
+			  enterMenu(driver, "Setup_Manage_users", "New User");		  
+			  String[] parts = usersFullNames[i].split("@");
+			  searchUser(driver, parts[0]);  		  
 			  if (isValuesExist) {
 				  
 				  myDebugPrinting("isValuesExist - TRUE", testVars.logerVars.MINOR);
@@ -3322,20 +3335,100 @@ public class GlobalFuncs {
 	  *  Add a mapping value by given parameters
 	  *  @param driver       - given driver
 	  *  @param usedTemplate - given used template
-	  *  @param defTemplateVars - array of data for default mapping (). NULL if not default
+	  *  @param newDataMap   - array of data for default mapping
 	  */
-
-	public void addMapping(WebDriver driver, String usedTemplate, String[] defTemplateVars) {
+	  public void addMapping(WebDriver driver, String usedTemplate, Map<String, String> newDataMap) {
 		
+		// Set a Template
+		myDebugPrinting("Set a Template", testVars.logerVars.MINOR);
 		new Select(driver.findElement(By.xpath("//*[@id='templates-def']"))).selectByVisibleText(usedTemplate);
 		myWait(5000);
-		
-		
 		myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
-
+		
+		// Set extra data
+		myDebugPrinting("Set extra data", testVars.logerVars.MINOR);
+		if (newDataMap.containsKey("isDefault") && newDataMap.get("isDefault").contains("true")) {
+				
+			// Mapping is default - Check the checkbox if needed
+			myDebugPrinting("Mapping is default - Check the checkbox if needed", testVars.logerVars.MINOR);		
+			WebElement cbIsDef = driver.findElement(By.xpath("//*[@id='is_default']"));
+			if (cbIsDef.getAttribute("value").contains("false")) {
+				
+				cbIsDef.click();
+				myWait(2000);
+			}
+			
+			// Set model
+			myDebugPrinting("Set model", testVars.logerVars.MINOR);		
+			new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[3]/select"))).selectByVisibleText(newDataMap.get("modelType"));
+			myWait(5000);
+			
+			// Set Tenant
+			myDebugPrinting("Set Tenant", testVars.logerVars.MINOR);		
+			new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[5]/select"))).selectByVisibleText(newDataMap.get("tenantType"));
+			myWait(5000);	
+		}
+		
 		// Confirm
+		myDebugPrinting("Confirm create", testVars.logerVars.MINOR);
 		verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Template");			  
 		verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to update the template of tenant and type"); 
-		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);	
-	}
+		myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+		
+		// Verify the mapping
+//		verifyMapping(driver, usedTemplate, newDataMap[1]);
+	  }
+	  
+	  /**
+	  *  Verify a mapping value by given parameters
+	  *  @param driver       - given driver
+	  *  @param usedTemplate - given used template
+	  *  @param usedTenant   - given used tenant
+	  */
+	  private void verifyMapping(WebDriver driver, String usedTemplate, String usedTenant) {
+		  
+		  // Set vars
+		  int i 	 = -1;
+		  int recNum = -1;
+		  
+		  // Enter Mapping menu
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a"), 5000);
+		  verifyStrByXpath(driver, "//*[@id='zero']/div/div/div[1]/h3", "Map TEMPLATE to {MODEL + TENANT}");
+		  recNum  = driver.findElement(By.tagName("body")).getText().split("Save", -1).length - 1;
+		  myDebugPrinting("recNum - " + recNum, testVars.logerVars.MINOR);
+
+		  // Run on all Templates
+		  for (i = 1; i < recNum; ++i) {
+						
+			  String currXpath = "//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i +"]/td[2]/div/select";	
+			  
+			  // Skip if current Select is disabled
+			  if (driver.findElement(By.xpath(currXpath)).getAttribute("disabled") != null) {
+					
+					myDebugPrinting("Current Select is disabled", testVars.logerVars.MINOR);
+					continue;
+			  } 
+				
+			  // Get current Select Template name
+			  String currTemplate = new Select(driver.findElement(By.xpath(currXpath))).getFirstSelectedOption().getText();
+			  myDebugPrinting("currTemplate - " + currTemplate, testVars.logerVars.MINOR);
+				
+			  // If the current template is the Template we create, test the tenant it routed to
+			  if (usedTemplate.contains(currTemplate)) {
+					
+				  String currTenant = new Select(driver.findElement(By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[4]/div/select"))).getFirstSelectedOption().getText();					
+				  myDebugPrinting("currTenant - " + currTenant, testVars.logerVars.MINOR);
+				  if (currTenant.contains(usedTenant)) {
+									
+					  myDebugPrinting("Full mapping is found - ", testVars.logerVars.MINOR);	
+					  break;
+				  }
+			  }
+		  }
+		  
+		  if (i == recNum) {
+			  
+			  myFail("Mapping was not detected !!");
+		  }
+	  }
 }

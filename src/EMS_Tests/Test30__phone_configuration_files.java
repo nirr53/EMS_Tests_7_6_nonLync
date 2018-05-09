@@ -131,7 +131,9 @@ public class Test30__phone_configuration_files {
 	  
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='myfile']"), filePath, 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='form_upload']/div/input[4]"), 10000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[1]/div[1]/h4", "\"" + fileName + "\" File Successfully Uploaded.");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload Configuration File");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "\"" + fileName + "\" File Successfully Uploaded.");	  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 		
 	  // Verify upload
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), fileName, 7000);

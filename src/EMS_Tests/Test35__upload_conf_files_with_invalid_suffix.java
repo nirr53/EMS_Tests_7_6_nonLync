@@ -76,7 +76,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.1");
+	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("35.2");
 	  
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
@@ -95,7 +95,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.1");
+	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("35.2");
 	testFuncs.myDebugPrinting("nonCfgFile - " + nonCfgFile, testVars.logerVars.MINOR);
 	
 	// Login and enter the Phone configuration menu
@@ -122,8 +122,8 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	    
 	  // Verify that an error is received
 	  testFuncs.myDebugPrinting("Verify that an error is received", testVars.logerVars.MINOR);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Invalid file extension");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please choose a cfg file");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Invalid file to upload");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Invalid file extension. Please select valid file or add this file extension on the System Settings page");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 	  testFuncs.myDebugPrinting("Search for nonCfgFileName - " + nonCfgFileName, testVars.logerVars.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), nonCfgFileName, 4000);
@@ -146,9 +146,9 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Upload IP Phone Template "); 
 	  WebElement fileInput = driver.findElement(By.name("uploadedfile"));
 	  fileInput.sendKeys(nonCfgFileName);    
-	  testFuncs.myWait(5000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload File");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please select valid template file to upload (*.cfg)");	  
+	  testFuncs.myWait(7000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "IP Phone upload template");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Invalid file extension. Please select valid file or add this file extension on the System Settings page");	  
   }
   
   @After

@@ -166,7 +166,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.myWait(2000);
     testFuncs.myClick(driver, By.xpath("//*[@id='setIpPhonesTR']/td/div/div/a"), 5000);
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IP Phones Configuration Files");
-   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generate to the location define in the template (destinationDir).\nDo you want to continue?");
+   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generated to the location defined in the template (destinationDir).\nDo you want to continue?");
    	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 

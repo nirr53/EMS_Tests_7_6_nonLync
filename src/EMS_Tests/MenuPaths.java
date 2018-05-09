@@ -35,8 +35,8 @@ public class MenuPaths {
 	// Mainpage section
 	private String MAINPAGE_ALERTS_BUTTON 				 = "//*[@id='left-nav']/ul/li/ul/li[3]/a";
 	private String MAINPAGE_USER_DETAILS 				 = "//*[@id='navbar-collapse']/ul[3]/li[3]/a";
-	private String MAINPAGE_USER_LOGOUT_BUTTON 			 = "/html/body/div[4]/span[2]/a/button";
-	private String MONITOR_MAINPAGE_USER_LOGOUT_BUTTON 	 = "/html/body/div[4]/span[2]/a/button";
+	private String MAINPAGE_USER_LOGOUT_BUTTON 			 = "/html/body/div[2]/span[2]/a/button";
+	private String MONITOR_MAINPAGE_USER_LOGOUT_BUTTON 	 = "/html/body/div[3]/span[2]/a/button";
 
 	// Monitor section
 	private String MONITOR_SECTION 						 = "//*[@id='navbar-collapse']/ul[1]/li[2]/a";
@@ -68,8 +68,8 @@ public class MenuPaths {
 			case "Monitoring_General_Informatiom_logout":
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MONITOR_MAINPAGE_USER_LOGOUT_BUTTON;
-            	break;       	
-            	            	
+            	break;
+            		
     		// -----------------
             //
             // Setup section

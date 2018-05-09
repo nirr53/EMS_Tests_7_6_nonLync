@@ -97,7 +97,7 @@ public class GlobalVars {
 	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "440HD";
-	private  String version			 = "7.4.3063";
+	private  String version			 = "7.4.3069";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
@@ -105,6 +105,7 @@ public class GlobalVars {
 	private  String shFilesFiName    = "Files.zip";
 	private  String srcImpConf       = "Configuration.zip";
 	private  String srcImpUserDvcs   = "users.zip";
+	private  String invalidCfg   	 = "users.jpeg";
 	private  String srcImp1000Usrs   = "users1000.zip";
 	private  String srcConfFile      = "my.cfg";
 	private  String srcFirmFile      = "430HD.img";
@@ -336,7 +337,10 @@ public class GlobalVars {
 				 break;
 			case "31":
 				 usedSrcFile =  srcFirmFile;
-				 break;	 
+				 break;
+			case "35.2":
+				 usedSrcFile =  invalidCfg;
+				 break;	
 			case "36":
 				 usedSrcFile =  srcBigCfgFile;
 				 break;

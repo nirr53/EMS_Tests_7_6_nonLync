@@ -83,7 +83,7 @@ public class Test65__import_diffrent_langs_users {
 	Map<String, String> map 	= new HashMap<String, String>();
 	String   xpathUploadField  	= "//*[@id='file_source']";  
 	String   xpathUploadButton  = "//*[@id='uploadForm']/div[2]/a";  
-	String[] confirmMessageStrs = {"Import Users & Devices", "The import action can take a few minutes. Do you want to continue?"};  
+	String[] confirmMessageStrs = {"Import Users & Devices", "The process might take a few minutes. Do you want to continue?"};  
 	String   usersNumber   		= "12";	  
 	String   prefixUser		 	= "lang__";
 	String[] userNames		 	= {"lang__czech1__úůýžáďéěíňóřšť"	 				  , "lang__czech2__ÚŮÝŽÁČĎÉĚÍŇÓŘŠŤ"												 ,

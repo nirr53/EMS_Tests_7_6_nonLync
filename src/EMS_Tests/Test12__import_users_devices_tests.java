@@ -89,10 +89,10 @@ public class Test12__import_users_devices_tests {
 	int    usersNumberInt		= -1;
 	String xpathUploadField  	= "//*[@id='file_source']";
 	String xpathUploadButton    = "//*[@id='uploadForm']/div[2]/a";
-	String[] confirmMessageStrs = {"Import Users & Devices", "The import action can take a few minutes. Do you want to continue?"};
+	String[] confirmMessageStrs = {"Import Users & Devices", "The process might take a few minutes. Do you want to continue?"};
 	String usersNumber   		= "5";
     Map<String, String> map 	= new HashMap<String, String>();
-	
+    
 	// Login and enter the Import users+devices menu
 	testFuncs.myDebugPrinting("Login and enter the Import users-devices menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);

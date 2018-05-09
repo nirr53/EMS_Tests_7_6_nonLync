@@ -232,7 +232,7 @@ public class Test98__device_actions_row {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[9]/a"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Send Message");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[1]/label", "Message Text");  
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[2]/label", "Display Timet");   
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[2]/label", "Display Time");   
 	  testFuncs.mySendKeys(driver, By.xpath("	//*[@id='mtext']"), "message", 3000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000); 
 	  
