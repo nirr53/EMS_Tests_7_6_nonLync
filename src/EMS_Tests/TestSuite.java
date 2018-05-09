@@ -1,11 +1,9 @@
 package EMS_Tests;
 
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-
 @Suite.SuiteClasses({
 	
 	Test1__login_1.class											,
@@ -152,13 +150,12 @@ import org.junit.runners.Suite;
 	Test142__generate_delete_user_configuration_tests.class			,
 	Test143__generate_exists_user_configuration_tests.class			,
 	Test144__tenant_configuration_generate.class					,
-	Test145__site_configuration_generate.class						,
+	Test145__site_configuration_generate.class						,				
 	Test146__configuration_vals_during_create.class					,
-	Test148__menus_test.class
-
-
+	Test148__menus_test.class										,
+	Test149__setup_wizard.class										,
+	Test150__permitted_suffixes.class
 })
 
 public class TestSuite {
-
 }

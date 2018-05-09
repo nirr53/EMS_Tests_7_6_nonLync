@@ -100,6 +100,7 @@ public class Test108__alarms_tests {
     testFuncs.verifyPostUserCreate(driver, username, username, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
 
+	// Nir 7.4.3069 9\5\18 - VI 152070
 	// Step 1 - Create an alarm that sent from an unknown MAC address
 	testFuncs.myDebugPrinting("Step 1 - Create an alarm that sent from an unknown MAC address");
 	String alertPrefix = "unknownMac";

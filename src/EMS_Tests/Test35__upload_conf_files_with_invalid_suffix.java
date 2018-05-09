@@ -105,30 +105,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  
 	// Step 2 - Try to Upload non-cfg file to the Phone configuration
   	testFuncs.myDebugPrinting("Step 2 - Try to Upload non-cfg file to the Phone configuration");
-  	uploadNonCfgToPhoneConfiguration(driver, nonCfgFile);  
-  }
-  
-  /**
-  *  Upload non-cfg file to Phone configuration menu
-  *  @param driver         - A given driver
-  *  @param nonCfgFileName -  An invalid file path
-  */
-  private void uploadNonCfgToPhoneConfiguration(WebDriver driver, String nonCfgFileName) {
-	  
-	  // Try to upload non-cfg file to Configuration-files menu
-	  testFuncs.myDebugPrinting("Try to upload non-cfg file to Configuration-files menu", testVars.logerVars.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='myfile']"), nonCfgFileName, 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='form_upload']/div/input[4]"), 5000);
-	    
-	  // Verify that an error is received
-	  testFuncs.myDebugPrinting("Verify that an error is received", testVars.logerVars.MINOR);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Invalid file to upload");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Invalid file extension. Please select valid file or add this file extension on the System Settings page");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
-	  testFuncs.myDebugPrinting("Search for nonCfgFileName - " + nonCfgFileName, testVars.logerVars.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), nonCfgFileName, 4000);
-	  String txt =  driver.findElement(By.tagName("body")).getText();;
-	  testFuncs.myAssertTrue("Configuration file was uploaded successfully !!\ntxt - " + txt, !txt.contains(nonCfgFileName));
+  	testFuncs.uploadNonCfgToPhoneConfiguration(driver, nonCfgFile);  
   }
   
   /**

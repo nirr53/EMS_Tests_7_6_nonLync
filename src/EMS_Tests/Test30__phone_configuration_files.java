@@ -84,7 +84,7 @@ public class Test30__phone_configuration_files {
 	
 	// Step 1 - Upload a phone configuration file
   	testFuncs.myDebugPrinting("Step 1 - Upload a phone configuration file");
-	uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
+  	testFuncs.uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
 	
 	// Step 2 - Display configuration file
  	testFuncs.myDebugPrinting("Step 2 - Display configuration file");
@@ -97,47 +97,7 @@ public class Test30__phone_configuration_files {
 
 	// Step 3 - Delete a phone configuration file
   	testFuncs.myDebugPrinting("Step 3 - Delete a phone configuration file");
-	deleteConfigurationFile(driver,  testVars.getImportFile("30"));
-  }
-  
-  /**
-  *  Delete a configuration file
-  *  @param driver   - A given driver
-  *  @param fileName - A name of the deleted file
-  */
-  private void deleteConfigurationFile(WebDriver driver, String fileName) {
-	  
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), fileName, 7000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='selall']"), 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='filelist']/div[2]/a"), 3000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Files");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure want to delete the selected files?\n" + fileName);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
-
-	  // Verify delete
-	  testFuncs.myDebugPrinting("verify delete", testVars.logerVars.MINOR);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/table/tbody[1]/tr/td[1]", fileName);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/table/tbody[1]/tr/td[2]", "Deleted");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);
-  }
-  
-  /**
-  *  Upload a configuration file
-  *  @param driver   - A given driver
-  *  @param filePath - A given path to configuration file we want to upload
-  *  @param fileName - A name of the uploaded file
-  */
-  private void uploadConfigurationFile(WebDriver driver, String filePath, String fileName) {
-	  
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='myfile']"), filePath, 3000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='form_upload']/div/input[4]"), 10000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload Configuration File");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "\"" + fileName + "\" File Successfully Uploaded.");	  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
-		
-	  // Verify upload
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), fileName, 7000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='fbody']/tr[1]/td[3]/a[2]", fileName);	  
+	testFuncs.deleteConfigurationFile(driver, usedFile);
   }
   
   @After

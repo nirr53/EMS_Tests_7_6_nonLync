@@ -3431,4 +3431,67 @@ public class GlobalFuncs {
 			  myFail("Mapping was not detected !!");
 		  }
 	  }
+	  
+	  /**
+	  *  Delete a configuration file
+	  *  @param driver   - A given driver
+	  *  @param fileName - A name of the deleted file
+	  */
+	  public void deleteConfigurationFile(WebDriver driver, String fileName) {
+		  
+		  mySendKeys(driver, By.xpath("//*[@id='searchInput']"), fileName, 7000);
+	 	  myClick(driver, By.xpath("//*[@id='selall']"), 2000);
+	 	  myClick(driver, By.xpath("//*[@id='filelist']/div[2]/a"), 3000);
+	 	  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Files");
+	 	  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure want to delete the selected files?\n" + fileName);
+	 	  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+
+	 	  // Verify delete
+	 	  myDebugPrinting("verify delete", testVars.logerVars.MINOR);
+	 	  verifyStrByXpath(driver, "//*[@id='modalContentId']/table/tbody[1]/tr/td[1]", fileName);
+	 	  verifyStrByXpath(driver, "//*[@id='modalContentId']/table/tbody[1]/tr/td[2]", "Deleted");
+	 	  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000); 
+	  }
+	   
+	  /**
+	  *  Upload a configuration file
+	  *  @param driver   - A given driver
+	  *  @param filePath - A given path to configuration file we want to upload
+	  *  @param fileName - A name of the uploaded file
+	  */
+	  public void uploadConfigurationFile(WebDriver driver, String filePath, String fileName) {
+		  
+		  mySendKeys(driver, By.xpath("//*[@id='myfile']"), filePath, 3000);
+	 	  myClick(driver, By.xpath("//*[@id='form_upload']/div/input[4]"), 10000);
+	 	  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload Configuration File");
+	 	  verifyStrByXpath(driver, "//*[@id='modalContentId']", "\"" + fileName + "\" File Successfully Uploaded.");	  
+	 	  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	 		
+	 	  // Verify upload
+	 	  mySendKeys(driver, By.xpath("//*[@id='searchInput']"), fileName, 7000);
+	 	  verifyStrByXpath(driver, "//*[@id='fbody']/tr[1]/td[3]/a[2]", fileName);
+	  }
+	  
+	  /**
+	  *  Upload non-cfg file to Phone configuration menu
+	  *  @param driver         - A given driver
+	  *  @param nonCfgFileName -  An invalid file path
+	  */
+	  public void uploadNonCfgToPhoneConfiguration(WebDriver driver, String nonCfgFileName) {
+		  
+		  // Try to upload non-cfg file to Configuration-files menu	 	  
+		  myDebugPrinting("Try to upload non-cfg file to Configuration-files menu", testVars.logerVars.MINOR);
+	 	  mySendKeys(driver, By.xpath("//*[@id='myfile']"), nonCfgFileName, 2000);
+	 	  myClick(driver, By.xpath("//*[@id='form_upload']/div/input[4]"), 5000);
+	 	    
+	 	  // Verify that an error is received
+	 	  myDebugPrinting("Verify that an error is received", testVars.logerVars.MINOR);
+	 	  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Invalid file to upload");
+	 	  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Invalid file extension. Please select valid file or add this file extension on the System Settings page");
+	 	  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	 	  myDebugPrinting("Search for nonCfgFileName - " + nonCfgFileName, testVars.logerVars.MINOR);
+	 	  mySendKeys(driver, By.xpath("//*[@id='searchInput']"), nonCfgFileName, 4000);
+	 	  String txt =  driver.findElement(By.tagName("body")).getText();;
+	 	  myAssertTrue("Configuration file was uploaded successfully !!\ntxt - " + txt, !txt.contains(nonCfgFileName));   
+	  }
 }
