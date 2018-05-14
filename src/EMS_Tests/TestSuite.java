@@ -154,7 +154,11 @@ import org.junit.runners.Suite;
 	Test146__configuration_vals_during_create.class					,
 	Test148__menus_test.class										,
 	Test149__setup_wizard.class										,
-	Test150__permitted_suffixes.class
+	Test150__permitted_suffixes.class								,
+	Test151__permitted_suffixes_firmware_template_users_conf.class	,
+	Test152__different_USBHeadsetType_status.class					,
+	Test153__different_HRSSpeakerModel_status.class
+
 })
 
 public class TestSuite {

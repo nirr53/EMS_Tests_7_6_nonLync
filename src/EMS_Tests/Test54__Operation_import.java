@@ -91,7 +91,7 @@ public class Test54__Operation_import {
 	  String usrsXpathUploadButton = "//*[@id='uploadForm']/div[2]/a";
 	  String confXpathUploadField  = "//*[@id='fileToUpload']";
 	  String confXpathUploadButton = "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/input";
-	  String[] confirmMessageStrs  = {"Import Users & Devices", "The import action can take a few minutes. Do you want to continue?"};
+	  String[] confirmMessageStrs  = {"Import Users & Devices", "The process might take a few minutes. Do you want to continue?"};
 	  String usersNumber   		   = "5"; 
 	  Map<String, String> map 	   = new HashMap<String, String>();
 	

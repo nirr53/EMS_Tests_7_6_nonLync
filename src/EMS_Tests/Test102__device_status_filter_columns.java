@@ -20,6 +20,7 @@ import org.openqa.selenium.*;
 * Results:
 * 	 1. All columns should be displayed.
 * 	 2. All default columns should be displayed.
+* 		All non-default columns should NOT be displayed.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -80,12 +81,14 @@ public class Test102__device_status_filter_columns {
 	
 	// Step 1 - Select all the columns via Display-Columns and verify that they displayed
 	testFuncs.myDebugPrinting("Step 1 - Select all the columns via Display-Columns and verify that they displayed");  
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[1]"), 3000);     
+	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[1]"), 7000);     
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"  		 , "Devices Status Columns"); 
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/label", "Please select columns to display in Devices Status table"); 
-	String checkboxNames[] = {"FW_VERSION", "IP" 		  , "MODEL" 	 , "LAST_STATUS_UPDATE_TIME", "LOCATION",
-							  "MAC"		  , "PHONE_NUMBER", "REPORT_TIME", "SIP_PROXY"              , "STATUS"  ,
-							  "SUBNET"	  , "USER_AGENT"  , "USER_NAME"  , "TENANT_NAME"            , "SITE_NAME", "VLAN_ID"};
+	String checkboxNames[] = {"FW_VERSION"  , "IP" 		  		, "MODEL" 	 		 , "LAST_STATUS_UPDATE_TIME", "LOCATION",
+			  "MAC"		    , "PHONE_NUMBER"	, "REPORT_TIME"		 , "SIP_PROXY"              , "STATUS"  ,
+			  "SUBNET"	    , "USER_AGENT"      , "USER_NAME"    	 , "TENANT_NAME"            , "MODEL_NAME",
+			  "BTOE_VERSION", "USB_HEADSET_TYPE", "HRS_SPEAKER_MODEL", "HRS_SPEAKER_FW"			, "BTOE_PAIRING_STATUS",
+			  "SITE_NAME", "VLAN_ID"};
 	int length = checkboxNames.length;
 	for (int i = 0; i < length; ++i) {
 		
@@ -93,16 +96,18 @@ public class Test102__device_status_filter_columns {
 		testFuncs.myDebugPrinting("The checkbox xpath is - " + xpath, testVars.logerVars.MINOR);  
 		if (!driver.findElement(By.xpath(xpath)).isSelected()) {
 			
-			testFuncs.myClick(driver, By.xpath(xpath), 2000);
+			testFuncs.myClick(driver, By.xpath(xpath), 5000);
 		}
 	}
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 3000);      
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);      
 
 	// Search for the column names at table
 	testFuncs.myDebugPrinting("Search for the column names at table", testVars.logerVars.MINOR);  
-	String columnNames[] = {"Firmware"   , "IP Address"  , "IPP Model"  , "Last Update Status", "Location",
-							"Mac Address", "Phone Number", "Report Time" /*",SIP Proxy"    ,*/, "Status"  ,
-							"Subnet"	 , "User Agent"  , "User Name"  , "Tenant"    	      , "Site"    , "VLAN ID"};
+	String columnNames[] = {"User Name"		   , "Phone Number"	 , "Last Update Status", "Mac Address",
+			   				"IP Address"  	   , "IPP Model" 	 , "Firmware"          , "Tenant",
+			   				"Site"			   , "Template"		 , "Report Time"       , "Location",
+			   				"Subnet"		   , "VLAN ID"		 , "BToE Version"	   , "USB Headset Type",
+			   				"HRS Speaker Model", "HRS Speaker FW", "User Agent"		   , "SIP Proxy"};
 	length = columnNames.length;
 	for (int i = 0; i < length; ++i) {
 		
@@ -112,26 +117,32 @@ public class Test102__device_status_filter_columns {
 	
 	// Step 2 - Restore the columns via via Display-Columns and verify that only-default columns are displayed
 	testFuncs.myDebugPrinting("Step 2 - Restore the columns via via Display-Columns and verify that only-default columns are displayed");  
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[1]"), 3000);     
+	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[1]"), 7000);     
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"  		 , "Devices Status Columns"); 
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[2]"), 3000);      
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 3000);      
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[2]"), 10000);      
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);      
 
 	// Search for the default-column names at table
-	testFuncs.myDebugPrinting("Search for the default-column names at table", testVars.logerVars.MINOR);  
-	String defColumnNames[] = {"Firmware"   , "IP Address"  , "IPP Model"  , "Last Update Status", "Location",
-							   "Mac Address", "Phone Number", "Report Time", "Status"			 , "User Name",
-							   "Tenant"    	, "Site"};
+	testFuncs.myDebugPrinting("2.1 Search for the default-column names at table", testVars.logerVars.MINOR);  
+	String defColumnNames[] = {"BToE"		, "User Name"   , "Phone Number", "Last Update Status",
+			   				   "Mac Address", "IP Address"  , "IPP Model"   , "Firmware",
+			   				   "Tenant"		, "Site"        , "Template"    , "Report Time",
+			   				   "Location"   , "BToE Version", "USB Headset Type"};
 	length = defColumnNames.length;
 	for (int i = 0; i < length; ++i) {
 		
 		testFuncs.myDebugPrinting("The searched column name is - " + defColumnNames[i], testVars.logerVars.MINOR);  
 		testFuncs.searchStr(driver, defColumnNames[i]);
 	}
-	testFuncs.myAssertTrue("VLAN-ID column  is displayed!"   , !driver.findElement(By.tagName("body")).getText().contains("VLAN ID"));
-	testFuncs.myAssertTrue("SIP Proxy column  is displayed!" , !driver.findElement(By.tagName("body")).getText().contains("SIP Proxy"));
-	testFuncs.myAssertTrue("Subnet column  is displayed!"    , !driver.findElement(By.tagName("body")).getText().contains("Subnet"));
-	testFuncs.myAssertTrue("User Agent column  is displayed!", !driver.findElement(By.tagName("body")).getText().contains("User Agent"));
+	
+	testFuncs.myDebugPrinting("2.2 Verify that non-default columns are not displayed", testVars.logerVars.MINOR);  
+	String pageTxt = driver.findElement(By.tagName("body")).getText();
+	testFuncs.myAssertTrue("VLAN-ID column  is displayed!"   	   , !pageTxt.contains("VLAN ID"));
+	testFuncs.myAssertTrue("SIP Proxy column  is displayed!" 	   , !pageTxt.contains("SIP Proxy"));
+	testFuncs.myAssertTrue("Subnet column  is displayed!"    	   , !pageTxt.contains("Subnet"));
+	testFuncs.myAssertTrue("User Agent column  is displayed!"	   , !pageTxt.contains("User Agent"));
+	testFuncs.myAssertTrue("HRS Speaker Model column is displayed!", !pageTxt.contains("HRS Speaker Model"));
+	testFuncs.myAssertTrue("HRS Speaker FW column  is displayed!"  , !pageTxt.contains("HRS Speaker FW"));
   }
 
   @After

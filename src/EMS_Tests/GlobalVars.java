@@ -23,6 +23,7 @@ public class GlobalVars {
 	*  sysLogsPrefix  - Prefix of the logs of the system
 	*  sysLogsActPre  - Prefix of the logs of the system (Activity)
 	*  shFilesFiName  - Name of sherd-files
+	*  permSuffixes	  - Permitted suffixes list
 	*  
 	*  // Login data
 	*  mainPageStr    - Main page welcome string (used for detect good login)

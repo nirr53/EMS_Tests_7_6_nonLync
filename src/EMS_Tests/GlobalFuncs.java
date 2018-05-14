@@ -2060,7 +2060,15 @@ public class GlobalFuncs {
 		  myDebugPrinting("Upload firmware file", testVars.logerVars.MINOR);		  
 		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/div/div[7]/a"), 3000);
 		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Upload IP Phone Firmware " + firmName);
-		  WebElement fileInput = driver.findElement(By.name("uploadedfile"));
+		  
+		  
+		  //verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div", "");
+
+		  
+		  //Note! Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.jpeg, *.zip.
+
+		  WebElement fileInput = driver.findElement(By.name("uploadedfile"));  
+		  myDebugPrinting("Upload file - <" + testVars.getSrcFilesPath() + "\\" + firmFileName + ">", testVars.logerVars.MINOR);		  
 		  fileInput.sendKeys(testVars.getSrcFilesPath() + "\\" + firmFileName);
 		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 15000);
 		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload Successful");
@@ -3493,5 +3501,36 @@ public class GlobalFuncs {
 	 	  mySendKeys(driver, By.xpath("//*[@id='searchInput']"), nonCfgFileName, 4000);
 	 	  String txt =  driver.findElement(By.tagName("body")).getText();;
 	 	  myAssertTrue("Configuration file was uploaded successfully !!\ntxt - " + txt, !txt.contains(nonCfgFileName));   
+	  }
+	  
+	  /**
+	  *  Select a column in the Device-status menu by given xpath name
+	  *  @param driver          - A given driver
+	  *  @param xpathOfCheckbox -  A xpath of Xpath of the checkbox
+	  *  @param isCheck			- A boolean flag that indicates if to check the field or not
+	  */
+	  public void selectColumn(WebDriver driver, String xpathOfCheckbox, Boolean isCheck) {
+		  
+		  // Enter Display columns menu
+	 	  myDebugPrinting("Enter Display columns menu", testVars.logerVars.MINOR);
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[1]")			  , 7000);   
+		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"  		 , "Devices Status Columns"); 
+		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/label", "Please select columns to display in Devices Status table"); 			
+		
+		  // Check the checkbox
+		  if (!driver.findElement(By.xpath(xpathOfCheckbox)).isSelected() && isCheck) {
+					 	  
+			  myDebugPrinting("Check the checkbox ..", testVars.logerVars.MINOR);			
+			  myClick(driver, By.xpath(xpathOfCheckbox), 5000);
+		  }
+		  else if (driver.findElement(By.xpath(xpathOfCheckbox)).isSelected() && !isCheck) {
+				
+			  myDebugPrinting("Uncheck the checkbox ..", testVars.logerVars.MINOR);			
+			  myClick(driver, By.xpath(xpathOfCheckbox), 5000);
+		  }
+		  	
+		  // Submit	
+		  myDebugPrinting("Submit ..", testVars.logerVars.MINOR);			
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);   
 	  }
 }
