@@ -121,7 +121,7 @@ public class Test95__site_configuration_features {
 	  }
 	  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " [" + site + "] / " + tenant + " )");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 
@@ -148,7 +148,7 @@ public class Test95__site_configuration_features {
 		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
 	  }  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " [" + site + "] / " + tenant + " )");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 
@@ -170,7 +170,7 @@ public class Test95__site_configuration_features {
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration settings");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete all configuration settings and save empty content?");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " [" + site + "] / " + tenant + " )");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 

@@ -146,8 +146,8 @@ public class Test119__alarms_tests4 {
 	// Step 3 - Create an alarm with very long info field
 	testFuncs.myDebugPrinting("Step 3 - Create an alarm with very long info field");	
 	String[] alartNames3 = {"specialInfoAlarm3_" + Id};
-	info1 = "info1_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz12345678__" + Id;
-	info2 = "info2_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz12345678__" + Id;
+	info1 = "info1_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijkl__" + Id;
+	info2 = "info2_3_abcdefghijklmnopqrstuvwxyz1234567890abcdefghijkl__" + Id;
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 			  testVars.getPort()							 ,
 			  mac1								 			 ,

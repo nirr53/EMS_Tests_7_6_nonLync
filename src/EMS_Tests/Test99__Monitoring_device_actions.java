@@ -122,7 +122,7 @@ public class Test99__Monitoring_device_actions {
 	
 	// Logout, re-login via Monitoring user (system) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (system) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	
@@ -168,7 +168,7 @@ public class Test99__Monitoring_device_actions {
 	
     // Step 9 - Logout, re-login as Administrator user and delete the created user
   	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator user and delete the created user");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
@@ -209,7 +209,7 @@ public class Test99__Monitoring_device_actions {
 	
 	// Logout, re-login via Monitoring user (tenant) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (tenant) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	
@@ -255,7 +255,7 @@ public class Test99__Monitoring_device_actions {
 	
     // Step 9 - Logout, re-login as Administrator user and delete the created user
   	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator user and delete the created user");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");

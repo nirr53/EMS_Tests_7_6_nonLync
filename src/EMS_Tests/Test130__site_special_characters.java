@@ -99,7 +99,7 @@ public class Test130__site_special_characters {
 	// Step 2 - Delete a site CFG key
 	testFuncs.myDebugPrinting("Step 2 - Delete a site CFG key");
 	testFuncs.selectSite(driver, sitePHSite);
-	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite);
+	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite, testVars.getSpecialCharsSite(0));
 	
 	// Step 3 - Add a new Site Placeholder
 	testFuncs.myDebugPrinting("Step 3 - Add a new Site Placeholder");

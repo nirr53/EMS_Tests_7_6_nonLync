@@ -23,9 +23,9 @@ import org.openqa.selenium.*;
 * 
 * Results:
 * 	 1. Section should be displayed properly.
-* 	 2-3. An error-message box should be displayed.
-* 	   4. The upload should succeed
-* 	   5. The remove should NOT succeed.
+*  2-3. An error-message box should be displayed.
+*    4. The upload should succeed
+* 	 5. The remove should NOT succeed.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -39,6 +39,7 @@ public class Test150__permitted_suffixes {
   private String        usedBrowser = "";
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
+  String permittedSuffixes = ".cab,.cfg,.csv,.id,.img,.zip";
   
   // Default constructor for print the name of the used browser 
   public Test150__permitted_suffixes(String browser) {
@@ -78,7 +79,6 @@ public class Test150__permitted_suffixes {
   public void Permitted_suffixes() throws Exception {
 	  
 	Log.startTestCase(this.getClass().getName());
-	String permittedSuffixes = ".cab,.cfg,.csv,.id,.img,.zip";
 	String usedFile = testVars.getImportFile("35.2");
 	 
     // Enter the System configuration menu
@@ -105,12 +105,12 @@ public class Test150__permitted_suffixes {
 	testFuncs.myDebugPrinting("Step 4 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
 	editPermSuffixesField(permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.zip, *.jpeg. Configuration standard file extension(s): *.cfg.");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.jpeg, *.zip. Configuration standard file extension(s): *.cfg");
 	testFuncs.uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
 	testFuncs.deleteConfigurationFile(driver,  usedFile);
 
-	// Step 5 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system
-	testFuncs.myDebugPrinting("Step 5 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
+	// Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system
+	testFuncs.myDebugPrinting("Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
 	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
@@ -132,7 +132,9 @@ public class Test150__permitted_suffixes {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

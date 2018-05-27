@@ -105,7 +105,7 @@ public class Test136__duplicate_site_configuration_ph {
 	testFuncs.myDebugPrinting("Step 3 - Delete the Site PH and Site value");
 	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");   
 	testFuncs.selectSite(driver, site);
-	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);    
+	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());    
 	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getDefSite() + " [" + testVars.getDefSite() + "]");
   }
   

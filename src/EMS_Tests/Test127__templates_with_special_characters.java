@@ -9,28 +9,27 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests a create of Template with special characters
+* This test tests a create of Template with different special character
 * ----------------
 * Tests:
 * 	 - Enter Manage multiple users changes menu.
-* 	 1. Create a Template with !#$ characters
-* 	 2. Create a Template with /=? characters
-* 	 3. Create a Template with ^_` characters
-* 	 4. Create a Template with {|} characters
-* 	 5. Create a Template with ~;  characters
-* 	 6. Create a Template with *   characters
-* 	 7. Create a Template with +;  characters
-*  	 8. Create a Template with '   characters
-* 	 9. Delete the Templates.
-* 
+* 	 1.  Try to create a Template with . character
+* 	 2.  Try to create a Template with \ character
+* 	 3.  Try to create a Template with | character
+* 	 4.  Try to create a Template with * character
+* 	 5.  Try to create a Template with ? character
+* 	 6.  Try to create a Template with < character
+*  	 7.  Try to create a Template with > character
+*  	 8.  Try to create a Template with : character
+*  	 9.  Try to create a Template with $ character
+*  	 10. Try to create a Template with / character
+*  
 * Results:
-* 	 1-8. All the Templates should be created successfully.
-* 	   9. All Templates should be deleted successfully.
+* 	 1-10. All the Templates should not be created.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -88,18 +87,18 @@ public class Test127__templates_with_special_characters {
 	String Id 			  = testFuncs.getId();
 	String type			  = "430HD";
 	String prefixName     = "sChrsTmpNme_" + Id + "_";
-	String prefixDesc     = "sChrsTmpDsc_" + Id + "_";
-	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+", "'" };
+	String prefixDesc     = "sChrsTmpDsc_" + Id + "_";	
+	String suffixes[]     = {".", "\"", "|", "*", "?", "<", ":", ">", "$", "//"};
     Map<String, String> map = new HashMap<String, String>();
     map.put("isRegionDefault"		   ,  "false");
-    map.put("cloneFromtemplate"        ,  "Audiocodes_430HD_LYNC"); 
     map.put("isDownloadSharedTemplates",  "false");
-
+    map.put("speicalChrsName",  "true");
+    
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);    
   	
-    // Step 1-8 - Create a user using POST query with !#$ characters
+    // Step 1-10 - Create a user using POST query with different special characters
 	int len = suffixes.length;
 	for (int i = 0; i < len; ++i) {
 		
@@ -113,16 +112,6 @@ public class Test127__templates_with_special_characters {
   		testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), type, map);
   		testFuncs.myWait(3000);
 	}
-  	
-	// Step 9 - Delete the templates
-	for (int i = 0; i < len; ++i) {
-		
-		testFuncs.myDebugPrinting("Step 9." + i + ":", testVars.logerVars.NORMAL);
-		String tempName = prefixName + suffixes[i];
-		testFuncs.myDebugPrinting("tempName - " + tempName, testVars.logerVars.MINOR);;
-  		testFuncs.deleteTemplate(driver,tempName);
-  		testFuncs.myWait(3000);
-  	}
   }
   
   @After

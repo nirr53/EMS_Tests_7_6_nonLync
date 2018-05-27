@@ -84,26 +84,26 @@ public class Test29__tenant_configuration {
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
 	String Id = testFuncs.getId();
-	String cfgKeyName  = "user_name" + Id;
-	String cfgKeyValue = "userValue" + Id;
+	String cfgKeyName      = "user_name" + Id;
+	String cfgKeyValue     = "userValue" + Id;
 
-	// Step 1 - Add a new CFG key
-	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
-	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
-    
-	// Step 2 - Delete a CFG key
-	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
-	testFuncs.deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+//	// Step 1 - Add a new CFG key
+//	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
+//	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+//    
+//	// Step 2 - Delete a CFG key
+//	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
+//	testFuncs.deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
 	
 	// Step 3 - Copy a CFG key from other tenant
 	testFuncs.myDebugPrinting("Step 3 - Copy a CFG key from other tenant");
     copyCFGkey(driver, testVars.getDefTenant(), testVars.getNonDefTenant(0), cfgKeyName, cfgKeyValue);
 	
-	// Step 4 - Delete  configuration values from the tenants
-	testFuncs.myDebugPrinting("Step 4 - Delete  configuration values from the tenants");
-    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getDefTenant());
-    testFuncs.selectTenant(driver, testVars.getNonDefTenant(0));
-    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getNonDefTenant(0));
+//	// Step 4 - Delete  configuration values from the tenants
+//	testFuncs.myDebugPrinting("Step 4 - Delete  configuration values from the tenants");
+//    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getDefTenant());
+//    testFuncs.selectTenant(driver, testVars.getNonDefTenant(0));
+//    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getNonDefTenant(0));
   }
   
   // Copy a configuration value from other tenant
@@ -111,28 +111,29 @@ public class Test29__tenant_configuration {
 	
 	  // Create a new CFG key on other Tenant
 	  testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenWeCopyFrom);
-	  testFuncs.myWait(10000);
+	  testFuncs.myWait(60000);
 
 	  // Select a new tenant
-	  testFuncs.myDebugPrinting("Select a new tenant", testVars.logerVars.MINOR);	  
+	  testFuncs.myDebugPrinting("Select a new tenant (" + tenWeCopyTo + ")", testVars.logerVars.MINOR);	  
 	  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	  currentTenant.selectByVisibleText(tenWeCopyTo);
-	  testFuncs.myWait(20000);
+	  testFuncs.myWait(10000);
 	  
 	  // Copy values from other tenant
 	  testFuncs.myDebugPrinting("Copy values from other tenant", testVars.logerVars.NORMAL);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/button")    , 7000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/button")    , 5000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/ul/li[3]/a"), 7000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Copy Configuration ( " + tenWeCopyTo + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Please select configuration setting to copy from.");
-	  testFuncs.myWait(7000);
+	  new Select(driver.findElement(By.xpath("/html/body/div[2]/div/select"))).selectByVisibleText("AutoDetection");
+	  testFuncs.myWait(5000);
 	  new Select(driver.findElement(By.xpath("/html/body/div[2]/div/select"))).selectByVisibleText(tenWeCopyFrom);
-	  testFuncs.myWait(7000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+	  testFuncs.myWait(15000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 15000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + testVars.getDefTenant() + " )");
-	  testFuncs.myWait(7000);
+	  testFuncs.myWait(10000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);	  
 			  
 	  // Verify copy
 	  testFuncs.searchStr(driver, cfgKeyName);

@@ -85,8 +85,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	
 	// Step 1 - Try to Upload non-cfg file to the Template
   	testFuncs.myDebugPrinting("Step 1 - Try to Upload non-cfg file to the Template");
-  	uploadNonCfgToTemplates(driver, nonCfgFile);
-  	
+  	uploadNonCfgToTemplates(driver, nonCfgFile); 	
   }
   
   @Test

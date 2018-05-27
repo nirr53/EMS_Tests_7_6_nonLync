@@ -157,7 +157,9 @@ import org.junit.runners.Suite;
 	Test150__permitted_suffixes.class								,
 	Test151__permitted_suffixes_firmware_template_users_conf.class	,
 	Test152__different_USBHeadsetType_status.class					,
-	Test153__different_HRSSpeakerModel_status.class
+	Test153__different_HRSSpeakerModel_status.class					,
+	Test154__different_HRSSpeakerFW_status.class					,
+	Test155__mainpage_links.class
 
 })
 

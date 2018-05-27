@@ -122,6 +122,7 @@ public class GlobalFuncs {
 			  myDebugPrinting("<" + strName + "> was detected !!",  testVars.logerVars.DEBUG);
 		  } else {
 			  
+			  //myDebugPrinting("<" + strName + "> was NOT detected !!",  testVars.logerVars.DEBUG);
 			  myFail("<" + strName + "> was not detected !! \nbodyText - " + bodyText);
 		  }
 	  }
@@ -234,11 +235,11 @@ public class GlobalFuncs {
 		  String txt = driver.findElement(By.xpath(xpath)).getText();
 		  if (txt.contains(strName)) {
 			  
-		    	myDebugPrinting(strName + " was detected", testVars.logerVars.DEBUG);
+		    	myDebugPrinting("<" + strName + "> was detected", testVars.logerVars.DEBUG);
 		  } else {
 			  
 			  myDebugPrinting(driver.findElement(By.xpath(xpath)).getText());
-			  myFail (strName + " was not detected !! (txt - " + txt + ")");
+			  myFail ("<" + strName + "> was not detected !! (txt - <" + txt + ">)");
 		  }
 		  myWait(1000);
 	  }
@@ -2729,14 +2730,15 @@ public class GlobalFuncs {
 	  
 	  /**
 	  *  Delete a Site Configuration-key by given variables
-	  *  @param  driver      - given element
-	  *  @param  cfgKeyName  - given configuration name
-	  *  @param  cfgKeyValue - given configuration value
-	  *  @param  currTenant	 - given configuration tenant
-	  *  @param  currSite    - given configuration site
+	  *  @param  driver       - given element
+	  *  @param  cfgKeyName   - given configuration name
+	  *  @param  cfgKeyValue  - given configuration value
+	  *  @param  currTenant	  - given configuration tenant
+	  *  @param  currSite     - given configuration site
+	  *  @param  currSiteOnly - given configuration site
 	  *  @throws IOException 
 	  */
-	  public void deleteSiteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant, String currSite) throws IOException {
+	  public void deleteSiteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant, String currSite, String currSiteOnly) throws IOException {
 		  		    
 		  // Select site
 		  myDebugPrinting("Select site", testVars.logerVars.MINOR);	
@@ -2773,7 +2775,7 @@ public class GlobalFuncs {
 		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
 		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000); 
-		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']", currSite);
+		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']",   "Save Configuration ( " + currSiteOnly + " )");
 		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");  
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 				  
@@ -3140,7 +3142,7 @@ public class GlobalFuncs {
 	  public void addNewCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) {
 		  
 		  // Select tenant
-		  myDebugPrinting("Select tenant", testVars.logerVars.MINOR);	  
+		  myDebugPrinting("Select tenant (" + currTenant + ")", testVars.logerVars.MINOR);	  
 		  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 		  currentTenant.selectByVisibleText(currTenant);
 		  myWait(20000);
@@ -3149,11 +3151,17 @@ public class GlobalFuncs {
 		  myDebugPrinting("Add cfgKeyName - "  + cfgKeyName, testVars.logerVars.MINOR);	
 		  myDebugPrinting("Add cfgKeyValue - " + cfgKeyValue, testVars.logerVars.MINOR);	 
 		  mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName  , 7000);
-		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 7000);  
-		  myWait(7000);
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);
-		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
-		  myWait(7000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 7000); 
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);	 
+		  String txt = driver.findElement(By.tagName("body")).getText();
+		  if (txt.contains("Tenant configuration was saved successfully.")) {
+			  
+			  myDebugPrinting("Confirmbox was detected .. ", testVars.logerVars.MINOR);	
+			  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
+		  }   else {
+			  
+			  myWait(7000);			  
+		  }
 
 		  // verify create
 		  myDebugPrinting("verify create", testVars.logerVars.MINOR);
@@ -3245,14 +3253,26 @@ public class GlobalFuncs {
 	  public void deleteConfValue(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues) {
 		  	  
 		  new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByVisibleText("Delete User configuration");
-		  myWait(3000);	
+		  myWait(7000);	
 		  myClick(driver, By.xpath("//*[@id='deletePersonalInfoTR']/td[1]/div/a"), 5000);		  
 		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");			  
 		  verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete User configuration from selected user(s) ?"); 
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);		  
-				  
+				  	
+		  // Check confirm box	
+		  myDebugPrinting("Check confirm box", testVars.logerVars.NORMAL);		
+		  verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete User configuration");		
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[1]", "Name");			
+		  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/thead/tr/th[2]", "Result");
+		  for (int i = 1; i <= usersFullNames.length; ++i) {
+				
+			  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[1]", usersFullNames[i-1]);
+			  verifyStrByXpath(driver, "//*[@id='modalContentId']/div/table/tbody/tr[" + i + "]/td[2]", "User configuration was saved successfully.");		
+		  }
+		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
+		  
 		  // Empty confNames and confValues
-//		  verifyConfValues(driver, usersFullNames, confNames, confValues, false);
+		  //verifyConfValues(driver, usersFullNames, confNames, confValues, false);
 	  }
 	  
 	  /**

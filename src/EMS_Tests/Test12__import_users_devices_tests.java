@@ -118,7 +118,7 @@ public class Test12__import_users_devices_tests {
 	for (int i = 1; i < usersNumberInt; ++i) {
 		
 		String tempIdx = String.valueOf(i);
-	    testFuncs.searchStr(driver, prefixUser + "_" + tempIdx + "@" + testVars.getDomain() + " Failed to add (see log file)");
+	    testFuncs.searchStr(driver, prefixUser + "_" + tempIdx + "@" + testVars.getDomain() + " Already exists");
 	}
 
     // Step 3 - Delete the created users

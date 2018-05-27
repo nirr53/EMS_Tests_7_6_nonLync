@@ -144,7 +144,7 @@ public class Test145__site_configuration_generate {
 	testFuncs.myDebugPrinting("Step 4 - Delete Site configuration value");
 	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
 	testFuncs.selectSite(driver, site);
-	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);
+	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());
 	
 	// Step 5 - Delete the created user
  	testFuncs.myDebugPrinting("Step 5 - Delete the created user");

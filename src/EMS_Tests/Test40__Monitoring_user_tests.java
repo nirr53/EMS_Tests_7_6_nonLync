@@ -126,16 +126,15 @@ public class Test40__Monitoring_user_tests {
 
  	// Step 5 - Try to add / delete a device to an existing user (I.e System)
    	testFuncs.myDebugPrinting("Step 5 - Try to add / delete a device to an existing user (I.e System)");
-   	testFuncs.searchUser(driver, sysUser);
-   	addDeviceState = driver.findElement(By.xpath("//*[@id='results']/tbody/tr/td[9]/a[1]")).getAttribute("class");
-   	testFuncs.myAssertTrue("Add device button is activated !!", addDeviceState.contains("not-active"));	
-  	deleteDeviceState = driver.findElement(By.xpath("//*[@id='results']/tbody/tr/td[9]/a[3]")).getAttribute("class");
-   	testFuncs.myAssertTrue("Delete device button is activated !!", deleteDeviceState.contains("not-active"));	
+   	addDeviceState = driver.findElement(By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[1]")).getAttribute("class");
+   	testFuncs.myAssertTrue("Add device button is activated !! <" + addDeviceState + ">", addDeviceState.contains("not-active"));	
+  	deleteDeviceState = driver.findElement(By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[3]")).getAttribute("class");
+   	testFuncs.myAssertTrue("Delete device button is activated !! <" + deleteDeviceState + ">", deleteDeviceState.contains("not-active"));	
 
-   	// Step 6 - Try to edit a device to an existing user (I.e System)
-    testFuncs.myDebugPrinting("Step 6 - Try to edit a device to an existing user (I.e System)");
+   	// Step 6 - Try to edit a device to an existing user
+    testFuncs.myDebugPrinting("Step 6 - Try to edit a device to an existing user");
     testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr/td[9]/a[2]"), 7000);
-   	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3/label", "Edit User DO NOT DELETE");
+   	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3/label", "Edit User");
     testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[1]"), 7000);
     testFuncs.searchStr(driver, "Unauthorized");
     testFuncs.searchStr(driver, "You do not have permission to modify this item");	

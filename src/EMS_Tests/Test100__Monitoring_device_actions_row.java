@@ -127,7 +127,7 @@ public class Test100__Monitoring_device_actions_row {
 	
 	// Logout, re-login via a Monitoring-user (system) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via a Monitoring-user (system) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");  	
 	
@@ -183,7 +183,7 @@ public class Test100__Monitoring_device_actions_row {
 	
     // Step 11 - Logout, re-login as Administrator and delete the created user
   	testFuncs.myDebugPrinting("Step 11 - Logout, re-login as Administrator and delete the created user");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
@@ -225,7 +225,7 @@ public class Test100__Monitoring_device_actions_row {
 	
 	// Logout, re-login via a Monitoring-user (tenant) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via a Monitoring-user (tenant) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	
@@ -281,7 +281,7 @@ public class Test100__Monitoring_device_actions_row {
 	
     // Step 11 - Logout, re-login as Administrator and delete the created user
   	testFuncs.myDebugPrinting("Step 11 - Logout, re-login as Administrator and delete the created user");
-  	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+  	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
@@ -428,7 +428,7 @@ public class Test100__Monitoring_device_actions_row {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

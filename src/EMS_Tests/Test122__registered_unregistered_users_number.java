@@ -91,7 +91,6 @@ public class Test122__registered_unregistered_users_number {
 	    regDevicesNumber = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
 		testFuncs.myDebugPrinting("\nregDevicesNumber - " + regDevicesNumber + "\n", testVars.logerVars.MINOR);
 	    String totalDeviceNumber 			= getTotalDevicesNumber();
-	    String totalDisconectedDeviceNumber = getTotalDisconectedDvicesNumber();
 	    String totalUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();
 
 	  	// Step 1 - Create a registered
@@ -159,26 +158,27 @@ public class Test122__registered_unregistered_users_number {
 		totalDeviceNumberNew = getTotalDevicesNumber();
 		testFuncs.myAssertTrue("Total users number was not increased !! <" + totalDeviceNumberNew + ">", (Integer.valueOf(totalDeviceNumber) + 2) == Integer.valueOf(totalDeviceNumberNew));
 		testFuncs.pressHomeButton(driver);
-		
-	  	// Verify no-change at Disconnected devices menu			
-		testFuncs.myDebugPrinting("Verify no-change at Disconnected devices menu", testVars.logerVars.NORMAL); 
-	    String totalDisconectedDeviceNumberNew = getTotalDisconectedDvicesNumber();
-		testFuncs.myAssertTrue("Total disconnected users number was not increased !! <" + totalDisconectedDeviceNumberNew + ">", (Integer.valueOf(totalDisconectedDeviceNumber)) == Integer.valueOf(totalDisconectedDeviceNumberNew));
-	
+			
 	  	// Step 3 - Change device status to Offline
 		testFuncs.myDebugPrinting("Step 3 - Change device status to Offline");	
 		testFuncs.sendKeepAlivePacket(testVars.getKpAlveBatName()	 ,
-				  testVars.getIp()               ,
-				  testVars.getPort()           	 ,
-				  testFuncs.readFile("mac_1.txt"),
-				  unRegUserName				 ,
-				  testVars.getDefPhoneModel()	 ,
-				  testVars.getDomain()        	 ,
-				  "offline"						 ,
-				  "myLocation"					 ,
-				  "+97239764713");
+				  					  testVars.getIp()               ,
+				  					  testVars.getPort()           	 ,
+				  					  testFuncs.readFile("mac_1.txt"),
+				  					  unRegUserName				 	 ,
+				  					  testVars.getDefPhoneModel()	 ,
+				  					  testVars.getDomain()        	 ,
+				  					  "offline"						 ,
+				  					  "myLocation"					 ,
+				  					  "+97239764713");
 		String newUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();
 		testFuncs.myAssertTrue("Unregistered device number was not changed !!", (Integer.valueOf(totalUnregDeviceNumber) + 1) == Integer.valueOf(newUnregDeviceNumber));
+		
+	  	// Verify no change at Total devices menu		
+		testFuncs.myDebugPrinting("Verify no change at Total devices menu", testVars.logerVars.NORMAL); 
+		totalDeviceNumberNew = getTotalDevicesNumber();
+		testFuncs.myAssertTrue("Total users number was increased !! <" + totalDeviceNumberNew + ">", (Integer.valueOf(totalDeviceNumber) + 2) == Integer.valueOf(totalDeviceNumberNew));
+		testFuncs.pressHomeButton(driver);	
 		
 	    // Step 3 - Delete the users
 	  	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
@@ -193,20 +193,6 @@ public class Test122__registered_unregistered_users_number {
 	    map.put("skipVerifyDelete", "true");
 	    testFuncs.setMultipleUsersAction(driver, map);
 	    testFuncs.searchStr(driver, regUserName.toLowerCase() + "@" + testVars.getDomain() + " Finished");
-  }
-  
-  // Get disconnected devices number  
-  private String getTotalDisconectedDvicesNumber() {
-	  
-	  testFuncs.myClick(driver, By.xpath("//*[@id='card']/div/article/div[1]/div[3]/span/a"), 10000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[4]")		, 10000);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "status:disconnected", 10000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/span/button")		, 10000);
-	  String totalDisDeviceNumber = driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[2]/div[1]/span")).getText();
-	  totalDisDeviceNumber = totalDisDeviceNumber.substring(totalDisDeviceNumber.indexOf("of ") + "of ".length(), totalDisDeviceNumber.indexOf("entries")).trim();	  
-	  testFuncs.myDebugPrinting("\nDisconnected - <" + totalDisDeviceNumber + ">\n", testVars.logerVars.MINOR);
-	  testFuncs.pressHomeButton(driver);
-	  return totalDisDeviceNumber;
   }
   
   // Get unregistered devices number  

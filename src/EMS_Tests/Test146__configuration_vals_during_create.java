@@ -138,7 +138,7 @@ public class Test146__configuration_vals_during_create {
 	testFuncs.myDebugPrinting("Step 2 - Delete Site and Tenant configuration value");
 	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
 	testFuncs.selectSite(driver, site);
-	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);
+	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());
 	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
     testFuncs.deleteAllConfValues(driver , tenantCfgKeyName, tenant);
 	
@@ -160,7 +160,7 @@ public class Test146__configuration_vals_during_create {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -93,7 +93,7 @@ public class Test82__site_configuration {
 	// Step 2 - Delete a site CFG key
 	testFuncs.myDebugPrinting("Step 2 - Delete a site CFG key");
 	testFuncs.selectSite(driver, site);
-	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);
+	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());
   }
 
   @After

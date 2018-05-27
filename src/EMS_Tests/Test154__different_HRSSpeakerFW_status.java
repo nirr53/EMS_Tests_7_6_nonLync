@@ -13,14 +13,14 @@ import org.openqa.selenium.*;
 
 /**
 * ----------------
-* This test tests the create of users with different HRSSpeakerModel statuses.
+* This test tests the create of users with different HRSSpeakerFW statuses.
 * ----------------
 * Tests:
 * 	 - Enter Manage multiple users changes menu.
-* 	 1. Create a user using POST query with randomize HRSSpeakerModel value
-* 	 2. Create a user using POST query with long (129+ characters) HRSSpeakerModel value
-* 	 3. Create a user using POST query with empty HRSSpeakerModel value
-* 	 4. Create a user using POST query with HRSSpeakerModel value that has special characters
+* 	 1. Create a user using POST query with randomize HRSSpeakerFW value
+* 	 2. Create a user using POST query with long (129+ characters) HRSSpeakerFW value
+* 	 3. Create a user using POST query with empty HRSSpeakerFW value
+* 	 4. Create a user using POST query with HRSSpeakerFW value that has special characters
 * 	 5. Delete all the created users.
 * 
 * Results:
@@ -32,7 +32,7 @@ import org.openqa.selenium.*;
 */
 
 @RunWith(Parameterized.class)
-public class Test153__different_HRSSpeakerModel_status {
+public class Test154__different_HRSSpeakerFW_status {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
@@ -41,7 +41,7 @@ public class Test153__different_HRSSpeakerModel_status {
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test153__different_HRSSpeakerModel_status(String browser) {
+  public Test154__different_HRSSpeakerFW_status(String browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -75,97 +75,96 @@ public class Test153__different_HRSSpeakerModel_status {
   }
 
   @Test
-  public void Different_HRSSpeakerModel_fields() throws Exception {
+  public void Different_HRSSpeakerFW_fields() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String Id                   = testFuncs.getId();
-	String prefixName           = "hrsSpeakerModel";
-	String usersNumber	        = "4";
-	String tempHRSSpeakerModel 	= "";
-	String hrsSpeakerModelStts  = prefixName + "Status" + Id;
-	String hrsSpeakerModelLong  = prefixName + "Long"   + Id;
-	String hrsSpeakerModelEmpty = prefixName + "Empty"  + Id;
-	String hrsSpeakerModelSpec 	= prefixName + "Spec"   + Id;
+	String Id                = testFuncs.getId();
+	String prefixName        = "hrsSpeakerFw";
+	String usersNumber	     = "4";
+	String tempHRSSpeakerFW  = "";
+	String hrsSpeakerFwStts  = prefixName + "Status" + Id;
+	String hrsSpeakerFwLong  = prefixName + "Long"   + Id;
+	String hrsSpeakerFwEmpty = prefixName + "Empty"  + Id;
+	String hrsSpeakerFwSpec  = prefixName + "Spec"   + Id;
 	
-	// Login and check the HRS Speaker Model check-box
-	testFuncs.myDebugPrinting("Login and check the HRS Speaker Model check-box");
+	// Login and check the HRS Speaker FW check-box
+	testFuncs.myDebugPrinting("Login and check the HRS Speaker FW check-box");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
-	testFuncs.selectColumn(driver, "//*[@id='HRS_SPEAKER_MODEL']", true);
+	testFuncs.selectColumn(driver, "//*[@id='HRS_SPEAKER_FW']", true);
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	
-    // Step 1 - Create a user using POST query with randomize HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize HRSSpeakerModel value");
+    // Step 1 - Create a user using POST query with randomize HRSSpeakerFW value
+	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize HRSSpeakerFW value");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
 								"1"				   		   ,
-								hrsSpeakerModelStts		   ,
+								hrsSpeakerFwStts		   ,
 								testVars.getDomain()  	   ,
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
 			 					"myLocation");
-	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelStts, hrsSpeakerModelStts, true);
-	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
-		
-	// Nir 14\5\18 VI 153259
-    // Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value");
+	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwStts, hrsSpeakerFwStts, true);
+	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 	
+	
+	// Nir 15\5\18 VI 153295
+    // Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerFW value
+	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerFW value");
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
 								"1"				   		   ,
-								hrsSpeakerModelLong		   ,
+								hrsSpeakerFwLong		   ,
 								testVars.getDomain()  	   ,
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
 								"myLocation");
-	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelLong, hrsSpeakerModelLong, true);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "unknown"); 
-	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
+	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwLong, hrsSpeakerFwLong, true);
+	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 
 	
-    // Step 3 - Create a user using POST query with empty HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with empty HRSSpeakerModel value");
+    // Step 3 - Create a user using POST query with empty HRSSpeakerFW value
+	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with empty HRSSpeakerFW value");
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
 								"1"				   		   ,
-								hrsSpeakerModelEmpty	   ,
+								hrsSpeakerFwEmpty	   ,
 								testVars.getDomain()  	   ,
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
 						"myLocation");
-	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelEmpty, hrsSpeakerModelEmpty, true);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", "");
+	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwEmpty, hrsSpeakerFwEmpty, true);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", "");
 
-    // Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters
-	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters");
+    // Step 4 - Create a user using POST query with HRSSpeakerFW value that has special characters
+	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with HRSSpeakerFW value that has special characters");
 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
 								"1"				   		   ,
-								hrsSpeakerModelSpec		   	   ,
+								hrsSpeakerFwSpec		   	   ,
 								testVars.getDomain()  	   ,
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
 								"myLocation");
-	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelSpec, hrsSpeakerModelSpec, true);
-	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
+	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwSpec, hrsSpeakerFwSpec, true);
+	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 
    
     // Step 5 - Delete the users
   	testFuncs.myDebugPrinting("Step 5 - Delete the users");
@@ -179,10 +178,10 @@ public class Test153__different_HRSSpeakerModel_status {
 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);  
-    testFuncs.searchStr(driver, hrsSpeakerModelStts.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
-    testFuncs.searchStr(driver, hrsSpeakerModelLong.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
-    testFuncs.searchStr(driver, hrsSpeakerModelEmpty.toLowerCase() + "@" + testVars.getDomain() + " Finished");
-    testFuncs.searchStr(driver, hrsSpeakerModelSpec.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, hrsSpeakerFwStts.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, hrsSpeakerFwLong.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, hrsSpeakerFwEmpty.toLowerCase() + "@" + testVars.getDomain() + " Finished");
+    testFuncs.searchStr(driver, hrsSpeakerFwSpec.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
   }
 
   @After

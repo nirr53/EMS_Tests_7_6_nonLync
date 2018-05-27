@@ -93,7 +93,7 @@ public class Test149__setup_wizard {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/div/div[1]"			  , "System Type");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/div/div[2]/div[1]/label", "Skype For Business");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/div/div[2]/div[2]/label", "Traditional Enterprise Phone Systems");	
-	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/div/div[3]"			  , "(The system will choose the most appropriate templates for configurating the devices.)");	
+	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/div/div[3]"			  , "(The system will choose the most appropriate templates for configuring the devices.)");	
 
 	// Step 2 - Check Step-2 at Traditional Enterprise path
 	testFuncs.myDebugPrinting("Step 2 - Check Step-2 at Traditional Enterprise path");
@@ -112,7 +112,7 @@ public class Test149__setup_wizard {
 	testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-1']/h2"		 , "Zero Touch");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-1']/div/div[1]", "Using Zero Touch Provisioning");	
-	testFuncs.verifyStrByXpath(driver, "//*[@id='step-1']/div/div[3]", "(For Zero Touch Provisioning need tenants.)");	
+	testFuncs.verifyStrByXpath(driver, "//*[@id='step-1']/div/div[3]", "(For Zero Touch Provisioning need tenants).");	
 
 	// Step 4 - Check Step-2-6 at Skype-For-Business path (when ZT is set to 'no')
 	testFuncs.myDebugPrinting("Step 4 - Check Step-2-6 at Skype-For-Business path (when ZT is set to 'no')");
@@ -142,7 +142,7 @@ public class Test149__setup_wizard {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-2']/h2"									, "Choose Tenant");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-2']/div/div[1]"							, "Choose Tenant");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-2']/div/div[2]/div[1]/label"				, "Select an existing tenant");	
-	testFuncs.verifyStrByXpath(driver, "//*[@id='step-2']/div/div[3]"							, "(Create tenant or use an exists one.)");	
+	testFuncs.verifyStrByXpath(driver, "//*[@id='step-2']/div/div[3]"							, "(Create tenant or use an exists one).");	
 	new Select(driver.findElement(By.xpath("//*[@id='step-2']/div/div[2]/div[1]/select"))).selectByVisibleText(testVars.getDefTenant());;
 	testFuncs.myWait(4000);
 	
@@ -161,7 +161,7 @@ public class Test149__setup_wizard {
 	testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/h2"				   						 , "Zero Touch Templates Mapping");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[1]/pre/p"						 , "After creating the TENANTs we need to map the TEMPLATE for each device.");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[1]/pre/p"						 , "The TEMPALTE will be choosen according to the {MODEL + TENANT}.");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[1]/pre/p"						 , "The TEMPALTE will be chosen according to the {MODEL + TENANT}.");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[1]/pre/p"						 , "With this mapping a new device that registered to the IPP Manager,");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[1]/pre/p"						 , "will get the TEMPLATE according to its {MODEL + TENANT}.");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-4']/div/div/div[2]/ul/li[1]/a"				 , "Setup Template");
@@ -178,7 +178,7 @@ public class Test149__setup_wizard {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/h5[2]"					      , "Note: A device that will get this URL from the DHCP will automatically be entered to tenant " + testVars.getDefTenant());	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/div"					      , "DHCP option 160 configuration");	
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/table[1]/tbody/tr[1]/td[1]", "Copy this URL to the DHCP option 160:");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/table[1]/tbody/tr[3]/td[1]", "For testing the device you can set this URL directly to the device(see tooltip)");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/table[1]/tbody/tr[3]/td[1]", "For testing the device you can set this URL directly to the device (see tooltip)");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/table[1]/tbody/tr[1]/td[2]", "http://" + testVars.getIp() + "/firmwarefiles;ipp/tenant/Nir");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-5']/div/table[1]/tbody/tr[3]/td[2]", "http://" + testVars.getIp() + "/ipp/tenant/Nir");
 	

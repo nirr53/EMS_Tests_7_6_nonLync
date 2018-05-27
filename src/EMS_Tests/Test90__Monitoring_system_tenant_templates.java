@@ -151,8 +151,10 @@ public class Test90__Monitoring_system_tenant_templates {
 	  // Step 6 - Verify that you cannot delete any Template
 	  testFuncs.myDebugPrinting("Step 6 - Verify that you cannot delete any Template");
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
-	  testFuncs.myClick(driver, By.xpath("//*[@id='tenants1']/tbody/tr[1]/td[8]/div/buttton[2]")							   , 3000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Template");
+	  idx = getIdx("NirTemplate445");
+	  testFuncs.myDebugPrinting("idx - " + idx, testVars.logerVars.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='tenants1']/tbody/tr[" + idx + "]/td[8]/div/buttton[2]")							   , 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Template");  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 	  testFuncs.searchStr(driver, "Unauthorized");		
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item"); 
