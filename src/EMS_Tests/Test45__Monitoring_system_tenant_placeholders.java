@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +38,12 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test45__Monitoring_system_tenant_placeholders(String browser) {
+  public Test45__Monitoring_system_tenant_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -211,7 +212,7 @@ public class Test45__Monitoring_system_tenant_placeholders {
   private void copyTenantPHMonitoring(WebDriver driver) {
 	  
 	// Try to copy a Tenant-Ph via a Monitoring user
-	testFuncs.myDebugPrinting("Try to copy a Tenant-Ph via a Monitoring user", testVars.logerVars.NORMAL);
+	testFuncs.myDebugPrinting("Try to copy a Tenant-Ph via a Monitoring user", enumsClass.logModes.NORMAL);
 	String copyButton = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[1]/a")).getAttribute("class");
 	testFuncs.myAssertTrue("Add button is not deactivated !!\nacopyButton - " + copyButton, copyButton.contains("not-active"));
   }
@@ -220,7 +221,7 @@ public class Test45__Monitoring_system_tenant_placeholders {
   private void addTenantPHMonitoring(WebDriver driver) {
 	  
 	  // Try to add a Tenant-Ph via a Monitoring user
-	  testFuncs.myDebugPrinting("Try to add a Tenant-Ph via a Monitoring user", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Try to add a Tenant-Ph via a Monitoring user", enumsClass.logModes.NORMAL);
 	  String addButton = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[2]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("Add button is not deactivated !!\naddButton - " + addButton, addButton.contains("not-active"));
   }

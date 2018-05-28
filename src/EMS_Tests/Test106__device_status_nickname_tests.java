@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -35,12 +36,12 @@ public class Test106__device_status_nickname_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test106__device_status_nickname_tests(String browser) {
+  public Test106__device_status_nickname_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -141,7 +142,7 @@ public class Test106__device_status_nickname_tests {
   private void setDeviceNickname(String deviceName, String nickname) {
 	  
 	  // Set nickname
-	  testFuncs.myDebugPrinting("set nickname for device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("set nickname for device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[5]/a"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Nickname");
@@ -150,7 +151,7 @@ public class Test106__device_status_nickname_tests {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000);  
 	  	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " [" + nickname + "]");  
   }
   
@@ -158,7 +159,7 @@ public class Test106__device_status_nickname_tests {
   private void searchAndSelectDevice(WebDriver driver, String userName) {
 	  
 	  // Search device
-	  testFuncs.myDebugPrinting("Search device", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
@@ -166,7 +167,7 @@ public class Test106__device_status_nickname_tests {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[8]", userName.trim());
 	  
 	  // Select the searched device via check Select-All check-box
-	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='table']/tbody[1]/tr/td[2]/input"), 3000);  
   }
   

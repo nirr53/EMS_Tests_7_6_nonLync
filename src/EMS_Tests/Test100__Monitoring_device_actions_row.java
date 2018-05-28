@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -61,12 +62,12 @@ public class Test100__Monitoring_device_actions_row {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test100__Monitoring_device_actions_row(String browser) {
+  public Test100__Monitoring_device_actions_row(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -299,7 +300,7 @@ public class Test100__Monitoring_device_actions_row {
   private void deleteDevice(String deviceName) {
 	  
 	  // Delete device
-	  testFuncs.myDebugPrinting("Delete device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Delete device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[9]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -309,7 +310,7 @@ public class Test100__Monitoring_device_actions_row {
   private void checktelnet(String deviceName, String command) {
 	  
 	  // Check Telnet
-	  testFuncs.myDebugPrinting("Check Telnet", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Check Telnet", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[10]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -319,7 +320,7 @@ public class Test100__Monitoring_device_actions_row {
   private void sendMessage(String deviceName) {
 
 	  // Send message
-	  testFuncs.myDebugPrinting("Update device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Update device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[8]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -329,7 +330,7 @@ public class Test100__Monitoring_device_actions_row {
   private void updateDevice(String deviceName) {
 
 	  // Update device configuration
-	  testFuncs.myDebugPrinting("Update device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Update device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[7]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -339,7 +340,7 @@ public class Test100__Monitoring_device_actions_row {
   private void generateDevice(String deviceName) {
 	  
 	  // Generate device configuration
-	  testFuncs.myDebugPrinting("Generate device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Generate device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[6]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -349,7 +350,7 @@ public class Test100__Monitoring_device_actions_row {
   private void resetDevice(String deviceName) {
 	  
 	  // Reset device
-	  testFuncs.myDebugPrinting("Reset device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Reset device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[5]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -359,18 +360,18 @@ public class Test100__Monitoring_device_actions_row {
   private void openWebAdminDevice() {
 	  
 	  // Reset device
-	  testFuncs.myDebugPrinting("Open Web Admin of device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Open Web Admin of device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);
 	  String ip = testFuncs.readFile("ip_1.txt");
-	  testFuncs.myDebugPrinting("ip - " + ip, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
 	  String parentHandle = driver.getWindowHandle();
 	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
 	  driver.switchTo().window((String) tabs.get(1));
 	  testFuncs.myWait(100000);
 	
 	  // Verify the correct IP is opened
-	  testFuncs.myDebugPrinting("Verify the correct IP is opened", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify the correct IP is opened", enumsClass.logModes.MINOR); 
 	  String txt = driver.getCurrentUrl();
 	  testFuncs.myAssertTrue("The opened web-page is does not match the IP of the device !! \ntxt - " + txt, txt.contains(ip));
 	  driver.close();
@@ -381,7 +382,7 @@ public class Test100__Monitoring_device_actions_row {
   private void updateDeviceFirmware(String deviceName, String firmware) {
 	  
 	  // Change device firmware
-	  testFuncs.myDebugPrinting("Change device firmware", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Change device firmware", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[3]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -391,7 +392,7 @@ public class Test100__Monitoring_device_actions_row {
   private void changeDeviceTenant(String deviceName, String nonDefTenant) {
 
 	  // Change device tenant
-	  testFuncs.myDebugPrinting("Change device tenant", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Change device tenant", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  String buttonClass = driver.findElement(By.xpath("//*[@id='dl-menu']/ul/li[2]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("The action is active !!", buttonClass.contains("not-active"));
@@ -401,7 +402,7 @@ public class Test100__Monitoring_device_actions_row {
   private void checkStatusDevice() {
 	  
 	  // Check device status
-	  testFuncs.myDebugPrinting("Check device status", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Check device status", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[1]/a"), 20000);  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Status");
@@ -413,7 +414,7 @@ public class Test100__Monitoring_device_actions_row {
   private void searchAndSelectDevice(WebDriver driver, String userName) {
 	  
 	  // Search device
-	  testFuncs.myDebugPrinting("Search device", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
@@ -421,7 +422,7 @@ public class Test100__Monitoring_device_actions_row {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[8]", userName.trim());
 	  
 	  // Select the searched device via check Select-All check-box
-	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='table']/tbody[1]/tr/td[2]/input"), 3000);  
   }
 

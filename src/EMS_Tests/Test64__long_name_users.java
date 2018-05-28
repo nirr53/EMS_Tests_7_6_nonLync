@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -30,7 +30,7 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test64__long_name_users {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
@@ -39,7 +39,7 @@ public class Test64__long_name_users {
   String 				longPrefix, manLongName, postLongName;
   
   // Default constructor for print the name of the used browser 
-  public Test64__long_name_users(String browser) {
+  public Test64__long_name_users(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;

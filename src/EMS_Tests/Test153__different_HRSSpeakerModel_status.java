@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test153__different_HRSSpeakerModel_status {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test153__different_HRSSpeakerModel_status(String browser) {
+  public Test153__different_HRSSpeakerModel_status(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -110,7 +110,7 @@ public class Test153__different_HRSSpeakerModel_status {
 			 					"myLocation");
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelStts, hrsSpeakerModelStts, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
 		
 	// Nir 14\5\18 VI 153259
@@ -130,7 +130,7 @@ public class Test153__different_HRSSpeakerModel_status {
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelLong, hrsSpeakerModelLong, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "unknown"); 
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
 	
     // Step 3 - Create a user using POST query with empty HRSSpeakerModel value
@@ -164,7 +164,7 @@ public class Test153__different_HRSSpeakerModel_status {
 								"myLocation");
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelSpec, hrsSpeakerModelSpec, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
    
     // Step 5 - Delete the users

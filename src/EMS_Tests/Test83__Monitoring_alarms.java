@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -35,14 +35,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test83__Monitoring_alarms {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test83__Monitoring_alarms(String browser) {
+  public Test83__Monitoring_alarms(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -86,7 +86,7 @@ public class Test83__Monitoring_alarms {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
 	
 	// Step 1 - Test the Export button
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 		testFuncs.myDebugPrinting("Step 1 - Test the Export button");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getAlarmsExport());
@@ -112,7 +112,7 @@ public class Test83__Monitoring_alarms {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
 	
 	// Step 3 - Test the Export button
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 		testFuncs.myDebugPrinting("Step 3 - Test the Export button");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getAlarmsExport());

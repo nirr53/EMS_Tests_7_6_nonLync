@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -31,12 +32,12 @@ public class Test102__device_status_filter_columns {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test102__device_status_filter_columns(String browser) {
+  public Test102__device_status_filter_columns(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -93,7 +94,7 @@ public class Test102__device_status_filter_columns {
 	for (int i = 0; i < length; ++i) {
 		
 		String xpath = "//*[@id='" + checkboxNames[i] + "']";
-		testFuncs.myDebugPrinting("The checkbox xpath is - " + xpath, testVars.logerVars.MINOR);  
+		testFuncs.myDebugPrinting("The checkbox xpath is - " + xpath, enumsClass.logModes.MINOR);  
 		if (!driver.findElement(By.xpath(xpath)).isSelected()) {
 			
 			testFuncs.myClick(driver, By.xpath(xpath), 5000);
@@ -102,7 +103,7 @@ public class Test102__device_status_filter_columns {
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);      
 
 	// Search for the column names at table
-	testFuncs.myDebugPrinting("Search for the column names at table", testVars.logerVars.MINOR);  
+	testFuncs.myDebugPrinting("Search for the column names at table", enumsClass.logModes.MINOR);  
 	String columnNames[] = {"User Name"		   , "Phone Number"	 , "Last Update Status", "Mac Address",
 			   				"IP Address"  	   , "IPP Model" 	 , "Firmware"          , "Tenant",
 			   				"Site"			   , "Template"		 , "Report Time"       , "Location",
@@ -111,7 +112,7 @@ public class Test102__device_status_filter_columns {
 	length = columnNames.length;
 	for (int i = 0; i < length; ++i) {
 		
-		testFuncs.myDebugPrinting("The searched column name is - " + columnNames[i], testVars.logerVars.MINOR);  
+		testFuncs.myDebugPrinting("The searched column name is - " + columnNames[i], enumsClass.logModes.MINOR);  
 		testFuncs.searchStr(driver, columnNames[i]);
 	}
 	
@@ -123,7 +124,7 @@ public class Test102__device_status_filter_columns {
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);      
 
 	// Search for the default-column names at table
-	testFuncs.myDebugPrinting("2.1 Search for the default-column names at table", testVars.logerVars.MINOR);  
+	testFuncs.myDebugPrinting("2.1 Search for the default-column names at table", enumsClass.logModes.MINOR);  
 	String defColumnNames[] = {"BToE"		, "User Name"   , "Phone Number", "Last Update Status",
 			   				   "Mac Address", "IP Address"  , "IPP Model"   , "Firmware",
 			   				   "Tenant"		, "Site"        , "Template"    , "Report Time",
@@ -131,11 +132,11 @@ public class Test102__device_status_filter_columns {
 	length = defColumnNames.length;
 	for (int i = 0; i < length; ++i) {
 		
-		testFuncs.myDebugPrinting("The searched column name is - " + defColumnNames[i], testVars.logerVars.MINOR);  
+		testFuncs.myDebugPrinting("The searched column name is - " + defColumnNames[i], enumsClass.logModes.MINOR);  
 		testFuncs.searchStr(driver, defColumnNames[i]);
 	}
 	
-	testFuncs.myDebugPrinting("2.2 Verify that non-default columns are not displayed", testVars.logerVars.MINOR);  
+	testFuncs.myDebugPrinting("2.2 Verify that non-default columns are not displayed", enumsClass.logModes.MINOR);  
 	String pageTxt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("VLAN-ID column  is displayed!"   	   , !pageTxt.contains("VLAN ID"));
 	testFuncs.myAssertTrue("SIP Proxy column  is displayed!" 	   , !pageTxt.contains("SIP Proxy"));

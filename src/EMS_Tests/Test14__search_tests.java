@@ -12,6 +12,8 @@ import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import EMS_Tests.enumsClass.browserTypes;
+
 /**
 * ----------------
 * This test tests the search of users in the manage-multiple-users menu
@@ -38,12 +40,12 @@ public class Test14__search_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test14__search_tests(String browser) {
+  public Test14__search_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -116,7 +118,7 @@ public class Test14__search_tests {
 	for (int i = 1; i < lim ; ++i) {
 		
 		String currUser = dispPrefix + "_" + i;
-		testFuncs.myDebugPrinting("Search for user: " + currUser, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Search for user: " + currUser, enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("User <" + currUser + "> was not detected via search !!", bodyText.contains(currUser));
 	}
 	  
@@ -129,7 +131,7 @@ public class Test14__search_tests {
 	for (int i = 1; i < lim ; ++i) {
 		
 		String currUser = dispPrefix + "_" + i;
-		testFuncs.myDebugPrinting("Search for user: " + currUser, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Search for user: " + currUser, enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("User <" + currUser + "> was not detected via search !!", bodyText.contains(currUser));
 	}
 	
@@ -142,7 +144,7 @@ public class Test14__search_tests {
 		testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 7000);
 	    bodyText = driver.findElement(By.tagName("body")).getText();
 		String currUser = dispPrefix + "_" + i;
-		testFuncs.myDebugPrinting("Search for MAC: " + macs[i-1], testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Search for MAC: " + macs[i-1], enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("User <" + currUser + "> was not detected via search !!", bodyText.contains(currUser));
 	}
 	

@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -33,12 +33,12 @@ public class Test74__multiple_users_export_results {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test74__multiple_users_export_results(String browser) {
+  public Test74__multiple_users_export_results(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -131,7 +131,7 @@ public class Test74__multiple_users_export_results {
 	  for (int i = 1; i < (Integer.parseInt(usersNumber) + 1); i++) {
 		
 			username = dispPrefix + "_" + String.valueOf(i); 
-			testFuncs.myDebugPrinting("Search for username - " + username, testVars.logerVars.MINOR);
+			testFuncs.myDebugPrinting("Search for username - " + username, enumsClass.logModes.MINOR);
 			testFuncs.myAssertTrue("The user " + username + " was not found in the export-data file !! \n" + exportFilesTxt, exportFilesTxt.contains(username));
 	  }
 	  testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), exportFilesPrefix);

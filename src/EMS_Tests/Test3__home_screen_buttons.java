@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,13 +36,13 @@ import org.openqa.selenium.*;
 public class Test3__home_screen_buttons {
 	
   private WebDriver 	driver;
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test3__home_screen_buttons(String browser) {
+  public Test3__home_screen_buttons(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -130,7 +130,7 @@ public class Test3__home_screen_buttons {
   private void pressHelpButton(WebDriver driver) {
 	  
 	  // Test the Help button at right side of page
-	  testFuncs.myDebugPrinting("Step 3.3.1 - Test the Help button at right side of page", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Step 3.3.1 - Test the Help button at right side of page", enumsClass.logModes.NORMAL);
 	  String winHandleBefore = driver.getWindowHandle();
 	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[4]/a"), 8000);
 	  for(String winHandle : driver.getWindowHandles()) {
@@ -139,7 +139,7 @@ public class Test3__home_screen_buttons {
 	  }
 	  
 	  // Verify Help headers
-	  testFuncs.myDebugPrinting("Verify Help headers", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify Help headers", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, "Welcome to AudioCodes Technical Document Library");  
 	  driver.close();
 	  driver.switchTo().window(winHandleBefore); 

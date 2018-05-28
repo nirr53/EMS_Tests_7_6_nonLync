@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -42,12 +42,12 @@ public class Test58__Operation_template_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test58__Operation_template_placeholders(String browser) {
+  public Test58__Operation_template_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -174,7 +174,7 @@ public class Test58__Operation_template_placeholders {
 	  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 
 	  //  Verify that add a new placeholder for default Template is impossible
-	  testFuncs.myDebugPrinting("Verify that add a new placeholder for default Template is impossible", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify that add a new placeholder for default Template is impossible", enumsClass.logModes.MINOR);
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[1]/h3"     , "Unauthorized");
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[2]/div/div", "You do not have permission to modify this item");
 	  enterTemplatePlaceholdersMenu(driver);
@@ -197,7 +197,7 @@ public class Test58__Operation_template_placeholders {
 	  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 
 	  // Verify that edit default placeholder of default Template is impossible
-	  testFuncs.myDebugPrinting(" Verify that edit default placeholder of default Template is impossible", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting(" Verify that edit default placeholder of default Template is impossible", enumsClass.logModes.MINOR);
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[1]/h3"     , "Unauthorized");
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[2]/div/div", "You do not have permission to modify this item"); 
 	  enterTemplatePlaceholdersMenu(driver);
@@ -218,7 +218,7 @@ public class Test58__Operation_template_placeholders {
 	  testFuncs.myWait(2000);
 
 	  // Verify that delete default placeholder of default Template is impossible
-	  testFuncs.myDebugPrinting(" Verify that delete default placeholder of default Template is impossible", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting(" Verify that delete default placeholder of default Template is impossible", enumsClass.logModes.MINOR);
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[1]/h3"     , "Unauthorized");
 	  testFuncs.verifyStrByXpath(driver, "/html/body/div/div/div[2]/div/div", "You do not have permission to modify this item"); 
 	  enterTemplatePlaceholdersMenu(driver);
@@ -227,7 +227,7 @@ public class Test58__Operation_template_placeholders {
   public void enterTemplatePlaceholdersMenu(WebDriver driver) {
 	  
 	  // Return to Template placeholders menu
-	  testFuncs.myDebugPrinting("Return to Template placeholders menu", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Return to Template placeholders menu", enumsClass.logModes.MINOR);
 	  driver.switchTo().defaultContent();
 	  driver.findElement(By.xpath("//*[@id='tree_tab']/tbody/tr[3]/td/div/ul/li[4]/ul/li[3]/a")).click();
 	  testFuncs.myWait(2000);

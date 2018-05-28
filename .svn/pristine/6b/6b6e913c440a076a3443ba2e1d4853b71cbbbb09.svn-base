@@ -7,10 +7,10 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import static org.junit.Assert.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * This test tests the add-multiple-devices mechanism
@@ -31,7 +31,7 @@ public class Test7__add_multiple_devices_to_same_user {
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test7__add_multiple_devices_to_same_user(String browser) {
+  public Test7__add_multiple_devices_to_same_user(browserTypes browser) {
 	  System.out.println("Browser - "  + browser);
   }
   

@@ -11,6 +11,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -43,12 +44,12 @@ public class Test49__Monitoring_system_multi_devices_actions {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test49__Monitoring_system_multi_devices_actions(String browser) {
+  public Test49__Monitoring_system_multi_devices_actions(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -200,7 +201,7 @@ public class Test49__Monitoring_system_multi_devices_actions {
  	String vlanModes[] = {"MANUAL", "CDP", "LLDP", "CDP_LLDP"};
  	for (String vlanMode : vlanModes) {
  		
- 	 	testFuncs.myDebugPrinting("Check VLAN - " +  vlanMode, testVars.logerVars.MINOR);
+ 	 	testFuncs.myDebugPrinting("Check VLAN - " +  vlanMode, enumsClass.logModes.MINOR);
  		testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
  	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
  		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeVlan");

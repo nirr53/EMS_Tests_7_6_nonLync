@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -30,13 +31,13 @@ public class Test111__multiple_browsers {
 	
   private WebDriver 	driver[];
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   static int 			browsersNumber = 3;
 
   // Default constructor for print the name of the used browser 
-  public Test111__multiple_browsers(String browser) {
+  public Test111__multiple_browsers(browserTypes browser) {
 	  
 	  Log.info("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -68,7 +69,7 @@ public class Test111__multiple_browsers {
 	driver = new WebDriver[browsersNumber];
 	for (int i = 0; i < browsersNumber; ++i) {
 		
-	    testFuncs.myDebugPrinting("Create browser number #" + i, testVars.logerVars.MINOR);
+	    testFuncs.myDebugPrinting("Create browser number #" + i, enumsClass.logModes.MINOR);
 		driver[i] = testFuncs.defineUsedBrowser(this.usedBrowser);
 	    driver[i].manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
 	}
@@ -84,7 +85,7 @@ public class Test111__multiple_browsers {
     
     // Enter the welcome page
 	for (int i = 0; i < browsersNumber; ++i) {	
-	    testFuncs.myDebugPrinting("Login via browser number #" + i, testVars.logerVars.MINOR);
+	    testFuncs.myDebugPrinting("Login via browser number #" + i, enumsClass.logModes.MINOR);
 	    driver[i].get("https://" + testVars.getUrl());
 	    testFuncs.myWait(3000); 
 	    testFuncs.searchStr(driver[i], testVars.getMainPageStr());  

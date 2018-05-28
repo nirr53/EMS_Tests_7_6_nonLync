@@ -3,17 +3,17 @@ package EMS_Tests;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 import static org.junit.Assert.*;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -93,7 +93,7 @@ public class GlobalFuncs {
 	  public void login(WebDriver 	driver, String username, String password, String mainStr, String httpStr, String brwType) {
 		  
 	      String title = driver.getTitle();
-    	  myDebugPrinting("1. title - "   + title  ,testVars.logerVars.MINOR);
+    	  myDebugPrinting("1. title - "   + title  ,enumsClass.logModes.MINOR);
 	      driver.get(httpStr + webUrl);
 	      testFuncs.myWait(3000);
 	      if (brwType.equals("IE") && title.equals("WebDriver")) {
@@ -102,8 +102,8 @@ public class GlobalFuncs {
 	    	  
 	      }
 	      assertTrue("EMS was not reached !! (" + driver.getTitle() + ")", driver.getTitle().equals(testVars.getMainPageStr()));
-    	  myDebugPrinting("username - " + username ,testVars.logerVars.MINOR);
-    	  myDebugPrinting("password - " + password ,testVars.logerVars.MINOR);
+    	  myDebugPrinting("username - " + username ,enumsClass.logModes.MINOR);
+    	  myDebugPrinting("password - " + password ,enumsClass.logModes.MINOR);
 	      driver.findElement(By.name("auth_admin_user_")).clear();
 	      driver.findElement(By.name("auth_admin_user_")).sendKeys(username);
     	  testFuncs.myWait(500);
@@ -114,7 +114,7 @@ public class GlobalFuncs {
 	      
 	      // Verify good access
 	      title = driver.getTitle();
-    	  myDebugPrinting("2. title - "   + title  ,testVars.logerVars.MINOR);
+    	  myDebugPrinting("2. title - "   + title  ,enumsClass.logModes.MINOR);
 	      try {  
 	    	  assertTrue("Text <" + mainStr + "> not found! (" + title + ")", title.equals(mainStr));
 	    	  if (mainStr.equals(testVars.getFailLogStr())) {
@@ -123,8 +123,8 @@ public class GlobalFuncs {
 	    	  }
 	      
 	      } catch (Error e) {
-	    	  myDebugPrinting("title - "   + title  ,testVars.logerVars.MINOR);
-	    	  myDebugPrinting("mainStr - " + mainStr,testVars.logerVars.MINOR);
+	    	  myDebugPrinting("title - "   + title  ,enumsClass.logModes.MINOR);
+	    	  myDebugPrinting("mainStr - " + mainStr,enumsClass.logModes.MINOR);
 	    	  fail(e.toString());
 	    	  
 	      }
@@ -137,14 +137,14 @@ public class GlobalFuncs {
 	  */
 	  public void deleteFilesByPrefix(String dir, String prefix) {
 	    	
-		myDebugPrinting("dir    - " + dir   ,  testVars.logerVars.MINOR);
-		myDebugPrinting("prefix - " + prefix,  testVars.logerVars.MINOR);
+		myDebugPrinting("dir    - " + dir   ,  enumsClass.logModes.MINOR);
+		myDebugPrinting("prefix - " + prefix,  enumsClass.logModes.MINOR);
     	File[] dirFiles = new File(dir).listFiles();
     	int filesNum = dirFiles.length;
     	for (int i = 0; i < filesNum; i++) {
-			//myDebugPrinting(dirFiles[i].getName(),  testVars.logerVars.MINOR);
+			//myDebugPrinting(dirFiles[i].getName(),  enumsClass.logModes.MINOR);
     	    if (dirFiles[i].getName().startsWith(prefix, 0)) {
-    			myDebugPrinting("Delete file - " + dirFiles[i].getName(),  testVars.logerVars.MINOR);
+    			myDebugPrinting("Delete file - " + dirFiles[i].getName(),  enumsClass.logModes.MINOR);
     	        new File(dir + "\\" + dirFiles[i].getName()).delete();
     		    testFuncs.myWait(3000);
     	        
@@ -215,7 +215,7 @@ public class GlobalFuncs {
     	  
     	  
 	      String title = driver.getTitle();
-    	  myDebugPrinting("title - " + title, testVars.logerVars.MINOR);
+    	  myDebugPrinting("title - " + title, enumsClass.logModes.MINOR);
 	      if (title.contains(mainStr)) {
 	    	  fail("Login succeded !!");
 	      }
@@ -263,7 +263,7 @@ public class GlobalFuncs {
 	  */
 	  public void myDebugPrinting(String str, int level) {
 		  
-		  String spaces = testVars.logerVars.debug[level];
+		  String spaces = enumsClass.logModes.debug[level];
 		  logger.info(spaces + str);
 	  }
 	 
@@ -273,7 +273,7 @@ public class GlobalFuncs {
 	  */
       public void myDebugPrinting(String str) {
 			
-		String spaces = testVars.logerVars.debug[testVars.logerVars.MAJOR];
+		String spaces = enumsClass.logModes.debug[enumsClass.logModes.MAJOR];
 		logger.info(spaces + str);
 	  }
 	 
@@ -290,7 +290,7 @@ public class GlobalFuncs {
 	        assert (driver.findElement(By.xpath(elemName)).getText().contains(strName)); 
 	        
 	   } catch (Error e) {
-	    	myDebugPrinting("The curr str is " + strName, testVars.logerVars.DEBUG);
+	    	myDebugPrinting("The curr str is " + strName, enumsClass.logModes.DEBUG);
 	   }
 	  }
 	  
@@ -341,8 +341,8 @@ public class GlobalFuncs {
 	    this.verifyStrByXpath(driver, "//*[@id='title']", "Add User");
 
 	    // Fill details
-		myDebugPrinting("currUsername - " + currUsername, testVars.logerVars.MINOR);
-		myDebugPrinting("userDisName - "  + userDisName , testVars.logerVars.MINOR);
+		myDebugPrinting("currUsername - " + currUsername, enumsClass.logModes.MINOR);
+		myDebugPrinting("userDisName - "  + userDisName , enumsClass.logModes.MINOR);
 	    driver.findElement(By.xpath("//*[@id='extension']")).clear();
 	    driver.findElement(By.xpath("//*[@id='extension']")).sendKeys(currUsername);
 	    driver.findElement(By.xpath("//*[@id='secret']")).clear();
@@ -351,7 +351,7 @@ public class GlobalFuncs {
 	    driver.findElement(By.xpath("//*[@id='displayName']")).sendKeys(userDisName);
 	    
 	    // Set region
-		myDebugPrinting("Set region - " + region, testVars.logerVars.MINOR);
+		myDebugPrinting("Set region - " + region, enumsClass.logModes.MINOR);
 		Select displayOptions = new Select(driver.findElement(By.xpath("//*[@id='branch']")));
 		for (int i = 0; ; ++i) {
 			displayOptions.selectByIndex(i);
@@ -366,14 +366,14 @@ public class GlobalFuncs {
 		}
 		
 		// Submit
-		myDebugPrinting("Submit", testVars.logerVars.MINOR);
+		myDebugPrinting("Submit", enumsClass.logModes.MINOR);
 	    driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 	    testFuncs.myWait(2000);
 	    driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 	    testFuncs.myWait(7000);
 	    
 	    // Verify Create
-		myDebugPrinting("Verify Create", testVars.logerVars.MINOR);
+		myDebugPrinting("Verify Create", enumsClass.logModes.MINOR);
 		searchUser(driver, currUsername);  
 	  }
 	
@@ -387,7 +387,7 @@ public class GlobalFuncs {
 	    Date date     = new Date();
 	    String id     = dateFormat.format(date);
 	    id = id.replaceAll("_", "");
-		myDebugPrinting("Id is:" + id, testVars.logerVars.MINOR);
+		myDebugPrinting("Id is:" + id, enumsClass.logModes.MINOR);
 	    return id;
 	  }
 	  
@@ -483,12 +483,12 @@ public class GlobalFuncs {
 	    this.verifyStrByXpath(driver, "//*[@id='trunkTBL']/table/tbody/tr[1]/td", "Add new device to " + deviceName);
 	    
 	    // Set device name
-		myDebugPrinting("Set device name " + deviceName, testVars.logerVars.MINOR);
+		myDebugPrinting("Set device name " + deviceName, enumsClass.logModes.MINOR);
 	    driver.findElement(By.xpath("//*[@id='display_name']")).clear();
 	    driver.findElement(By.xpath("//*[@id='display_name']")).sendKeys(deviceName);    
 	      
 	    // Set IP phone type	
-		myDebugPrinting("Set IP phone type " + phoneType, testVars.logerVars.MINOR);
+		myDebugPrinting("Set IP phone type " + phoneType, enumsClass.logModes.MINOR);
 		Select displayOptions = new Select(driver.findElement(By.xpath("//*[@id='ipphoneid']")));
 		String currType = "";
 		for (int i = 0;; ++i) {
@@ -505,12 +505,12 @@ public class GlobalFuncs {
 		} 
 	      
 	    // Set MAC address
-		myDebugPrinting("Set MAC address " + macAddName, testVars.logerVars.MINOR);
+		myDebugPrinting("Set MAC address " + macAddName, enumsClass.logModes.MINOR);
 	    driver.findElement(By.xpath("//*[@id='macaddress_val']")).clear();
 	    driver.findElement(By.xpath("//*[@id='macaddress_val']")).sendKeys(macAddName);
 	    
 	    // Set firmware
-		myDebugPrinting("Set firmware " + firmWareType, testVars.logerVars.MINOR);
+		myDebugPrinting("Set firmware " + firmWareType, enumsClass.logModes.MINOR);
 		Select firmwareOptions = new Select(driver.findElement(By.xpath("//*[@id='firmware_id']")));
 		String currType2 = "";
 		for (int i = 0;; ++i) {
@@ -526,7 +526,7 @@ public class GlobalFuncs {
 		}
 	    
 		// Submit & verify create
-		myDebugPrinting("Submit & verify create", testVars.logerVars.MINOR);
+		myDebugPrinting("Submit & verify create", enumsClass.logModes.MINOR);
 	    driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 	    testFuncs.myWait(5000);
 	   if( driver instanceof InternetExplorerDriver) {
@@ -604,13 +604,13 @@ public class GlobalFuncs {
 	  */
 	  public boolean findFilesByGivenPrefix(String dir, String prefix) {
 	    	
-			myDebugPrinting("dir    - " + dir   ,  testVars.logerVars.MINOR);
-			myDebugPrinting("prefix - " + prefix,  testVars.logerVars.MINOR);
+			myDebugPrinting("dir    - " + dir   ,  enumsClass.logModes.MINOR);
+			myDebugPrinting("prefix - " + prefix,  enumsClass.logModes.MINOR);
 	    	File[] dirFiles = new File(dir).listFiles();
 	    	int filesNum = dirFiles.length;
 	    	for (int i = 0; i < filesNum; i++) {
 	    	    if (dirFiles[i].getName().startsWith(prefix, 0)) {
-	    			myDebugPrinting("Find a file ! (" + dirFiles[i].getName() + ")",  testVars.logerVars.MINOR);
+	    			myDebugPrinting("Find a file ! (" + dirFiles[i].getName() + ")",  enumsClass.logModes.MINOR);
 	    	        return true;
 	    	    }
 	    	}
@@ -698,7 +698,7 @@ public class GlobalFuncs {
 	    	  
 	      } else { 
 	    	  idx += gapTime;
-	    	  myDebugPrinting(string + " is still detected after " + idx + " seconds", testVars.logerVars.MINOR);
+	    	  myDebugPrinting(string + " is still detected after " + idx + " seconds", enumsClass.logModes.MINOR);
 	    	  testFuncs.myWait(gapDelay);
 	    	  
 	      }
@@ -718,8 +718,8 @@ public class GlobalFuncs {
 	  */
 	  public void uploadFile(WebDriver driver, String path, String prefix, int initIdx, int usrsNum, String suffix) {
 	      		  
-		myDebugPrinting("path -   " + path, testVars.logerVars.NORMAL);
-		myDebugPrinting("prefix - " + prefix, testVars.logerVars.NORMAL);
+		myDebugPrinting("path -   " + path, enumsClass.logModes.NORMAL);
+		myDebugPrinting("prefix - " + prefix, enumsClass.logModes.NORMAL);
 		driver.findElement(By.xpath("//*[@id='file_source']")).sendKeys(path);
 		testFuncs.myWait(2000);
 		driver.findElement(By.xpath("//*[@id='uploadForm']/table/tbody/tr[5]/td/a")).click();
@@ -749,7 +749,7 @@ public class GlobalFuncs {
 			for (int i = initIdx; i < lim; i++) {
 				
 				if (!bodyText.contains(prefix + i + " " + suffix)) {
-					myDebugPrinting(prefix + i + " " + suffix, testVars.logerVars.MINOR);
+					myDebugPrinting(prefix + i + " " + suffix, enumsClass.logModes.MINOR);
 					fail("error - the following header was not detected !\n" + prefix + i + " " + suffix);
 				}
 			}
@@ -770,7 +770,7 @@ public class GlobalFuncs {
 	    driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr[2]/td/table/tbody/tr/td[5]/a/span")).click();
 	    testFuncs.myWait(7000);
 	    if (Integer.parseInt(expNumber) == 0) {
-	      	myDebugPrinting("verify delete", testVars.logerVars.NORMAL);
+	      	myDebugPrinting("verify delete", enumsClass.logModes.NORMAL);
 	    	verifyStrByXpath(driver, "//*[@id='promt_div_id']", "No device " + prefix + " found.");
 	    	return;
 
@@ -785,7 +785,7 @@ public class GlobalFuncs {
 		    verifyStrByXpathContains(driver, "//*[@id='left_total_id']", "of " + expNumber + " users");	    	
   		    
 	    } else if (Integer.parseInt(expNumber) == -1) {
-	      	myDebugPrinting("users number is unknown ..", testVars.logerVars.MINOR);
+	      	myDebugPrinting("users number is unknown ..", enumsClass.logModes.MINOR);
 	    } else {
 	    	verifyStrByXpath(driver, "//*[@id='left_total_id']", "Showing 1 to " + expNumber + " of " + expNumber + " users");
 	    }
@@ -808,11 +808,11 @@ public class GlobalFuncs {
 	    Boolean isMac      = false;
 
 	    if (arg4.equals(arg1)) {
-	    	myDebugPrinting("isEqSuffix - true", testVars.logerVars.MINOR);
+	    	myDebugPrinting("isEqSuffix - true", enumsClass.logModes.MINOR);
 	    	isEqSuffix = true;
 	    }
 	    if (arg4.equals("isMac")) {
-	    	myDebugPrinting("isMac - true", testVars.logerVars.MINOR);
+	    	myDebugPrinting("isMac - true", enumsClass.logModes.MINOR);
 	    	isMac = true;
 	    }
 	    temp = arg4;
@@ -823,7 +823,7 @@ public class GlobalFuncs {
 			}
 			if (isMac) {
 				temp = readFile("mac_" + i + ".txt");
-				myDebugPrinting("temp - " + temp, testVars.logerVars.MINOR);
+				myDebugPrinting("temp - " + temp, enumsClass.logModes.MINOR);
 			}
 			if (arg2 == 1) {				
 				if (!bodyText.contains(arg1 + " " + temp)) {
@@ -832,8 +832,8 @@ public class GlobalFuncs {
 
 			}
 			if (!bodyText.contains(arg1 + i + " " + temp)) {	
-				myDebugPrinting("The search prefix is:" + arg1 + i + " " + temp, testVars.logerVars.MINOR);
-				myDebugPrinting("bodyText - \n" + bodyText, testVars.logerVars.MINOR);
+				myDebugPrinting("The search prefix is:" + arg1 + i + " " + temp, enumsClass.logModes.MINOR);
+				myDebugPrinting("bodyText - \n" + bodyText, enumsClass.logModes.MINOR);
 				fail("Error, the string <" +  arg1 + i + " " + temp + "> was not recognized !!");
 				
 			}
@@ -848,7 +848,7 @@ public class GlobalFuncs {
 	  */
 	  public void enterMenu(WebDriver 	driver, String menuName, String verifyHeader) {
 		  
-		  myDebugPrinting("enterMenu  - " +  menuName, testVars.logerVars.NORMAL);
+		  myDebugPrinting("enterMenu  - " +  menuName, enumsClass.logModes.NORMAL);
 		  String paths[] = testMenuPaths.getPaths(menuName);
 		  int length = paths.length;
 		  for (int i = 0; i < length; ++i) {
@@ -856,7 +856,7 @@ public class GlobalFuncs {
 			  if (paths[i].isEmpty()) {
 				  break;
 			  }
-			  myDebugPrinting("paths[" + i + "] - " +  paths[i], testVars.logerVars.MINOR);
+			  myDebugPrinting("paths[" + i + "] - " +  paths[i], enumsClass.logModes.MINOR);
 			  markElemet(driver, driver.findElement(By.xpath(paths[i])));
 			  testFuncs.myWait(1000);
 		      driver.findElement(By.xpath(paths[i])).click();
@@ -867,7 +867,7 @@ public class GlobalFuncs {
 		  String title = driver.findElement(By.tagName("body")).getText();
 		  driver.switchTo().defaultContent();
 		  Assert.assertTrue("Title was not found (" + title + ")", title.contains(verifyHeader));
-		  myDebugPrinting("enterMenu  - " +  menuName + " ended successfully !!", testVars.logerVars.NORMAL);
+		  myDebugPrinting("enterMenu  - " +  menuName + " ended successfully !!", enumsClass.logModes.NORMAL);
       }
 
 	  /**
@@ -937,14 +937,14 @@ public class GlobalFuncs {
 			    	
 			    } else {
 			    	testFuncs.myWait(1100);
-			    	myDebugPrinting(i + ".waiting .. (" + maxWait + ")", testVars.logerVars.MINOR);
+			    	myDebugPrinting(i + ".waiting .. (" + maxWait + ")", enumsClass.logModes.MINOR);
 		
 			    }
 			    
 	    	}
 	    	
 	    }
-    	myDebugPrinting("Waiting was over ..", testVars.logerVars.MINOR);
+    	myDebugPrinting("Waiting was over ..", enumsClass.logModes.MINOR);
 
 	  }  
 	  
@@ -979,7 +979,7 @@ public class GlobalFuncs {
 			// Perform action
 			switch (action) {
 				case "Delete Users":				
-					myDebugPrinting("Enter Delete Users block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Delete Users block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='deleteUsersTR']/td/table/tbody/tr[2]/td/a/span")).click();
 				    testFuncs.myWait(3000);
 					verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Are you sure you want to delete the selected users?");
@@ -990,24 +990,24 @@ public class GlobalFuncs {
 				    
 				    // test 34 - Stop and continue test
 				    if (usrsPrefix.contains("stopAndContUser")) {
-						myDebugPrinting("stopAndContUser - TRUE (stop action  at middle and than continue)", testVars.logerVars.NORMAL);
+						myDebugPrinting("stopAndContUser - TRUE (stop action  at middle and than continue)", enumsClass.logModes.NORMAL);
 					    testFuncs.myWait(1000);
 						driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div/div/div/table[2]/tbody/tr/td[1]/a")).click();
-						myDebugPrinting("STOP button was pressed ..", testVars.logerVars.MINOR);
+						myDebugPrinting("STOP button was pressed ..", enumsClass.logModes.MINOR);
 					    testFuncs.myWait(10000);
 					    String bodyText = driver.findElement(By.tagName("body")).getText();
 					    assertTrue("Delete action continued although Stop was pressed /n bodyText - " + bodyText, bodyText.contains("Waiting"));
 						driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div/div/div/table[2]/tbody/tr/td[3]/a")).click();
-					    myDebugPrinting("Continue button was pressed ..", testVars.logerVars.MINOR);
+					    myDebugPrinting("Continue button was pressed ..", enumsClass.logModes.MINOR);
 				    	waitTillString(driver, "Waiting");
 				    
 				    }
 				    // test 33 - Stop and not continue test
 				    else if (usrsPrefix.contains("stopDelUser") && usrsNumber != -1) {
-						myDebugPrinting("stopAndContUser - TRUE (stop action  at middle and than continue)", testVars.logerVars.NORMAL);
+						myDebugPrinting("stopAndContUser - TRUE (stop action  at middle and than continue)", enumsClass.logModes.NORMAL);
 					    testFuncs.myWait(1000);
 						driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div/div/div/table[2]/tbody/tr/td[1]/a")).click();
-						myDebugPrinting("STOP button was pressed ..", testVars.logerVars.MINOR);
+						myDebugPrinting("STOP button was pressed ..", enumsClass.logModes.MINOR);
 					    testFuncs.myWait(10000);
 					    String bodyText = driver.findElement(By.tagName("body")).getText();
 					    assertTrue("Delete action continued although Stop was pressed /n bodyText - " + bodyText, bodyText.contains("Waiting"));
@@ -1029,10 +1029,10 @@ public class GlobalFuncs {
 				    } else  
 				    {
 				    	if (map.containsKey("skipVerifyDelete") && map.get("skipVerifyDelete").equals("true")){
-							myDebugPrinting("skipVerifyDelete - TRUE", testVars.logerVars.MINOR);
+							myDebugPrinting("skipVerifyDelete - TRUE", enumsClass.logModes.MINOR);
 				    		break;
 				    	} else {
-							myDebugPrinting("skipVerifyDelete - FALSE", testVars.logerVars.MINOR);
+							myDebugPrinting("skipVerifyDelete - FALSE", enumsClass.logModes.MINOR);
 				    		verifyAction(driver.findElement(By.tagName("body")).getText(), usrsPrefix, usrsNumber, usrsInIdx, acSuffix);
 				    	}
 				    }
@@ -1042,16 +1042,16 @@ public class GlobalFuncs {
 					String subAction   = map.get("subAction");
 					String password    = map.get("password");
 					if (!subAction.isEmpty() && subAction.equals("changePassword")) {
-						myDebugPrinting("Enter Change Users Passwords block", testVars.logerVars.NORMAL);
+						myDebugPrinting("Enter Change Users Passwords block", enumsClass.logModes.NORMAL);
 						driver.findElement(By.xpath("//*[@id='resetPassword2All']")).click();
 						driver.findElement(By.xpath("//*[@id='resetToPassword']")).clear();
 					    testFuncs.myWait(1000);
-						myDebugPrinting("The password we want to modify is - " + password, testVars.logerVars.MINOR);
+						myDebugPrinting("The password we want to modify is - " + password, enumsClass.logModes.MINOR);
 						driver.findElement(By.xpath("//*[@id='resetToPassword']")).sendKeys(password);
 					    testFuncs.myWait(1000);
 					    
 					} else {
-						myDebugPrinting("Enter Reset Users Passwords block", testVars.logerVars.NORMAL);
+						myDebugPrinting("Enter Reset Users Passwords block", enumsClass.logModes.NORMAL);
 					
 					}
 					driver.findElement(By.xpath("//*[@id='resetPasswordsTR']/td/table/tbody/tr[5]/td/a/span")).click();
@@ -1067,9 +1067,9 @@ public class GlobalFuncs {
 					
 				case "Set Users Region":
 					String region     = map.get("region");
-					myDebugPrinting("Enter Set Users region block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Set Users region block", enumsClass.logModes.NORMAL);
 					org.openqa.selenium.support.ui.Select regionsList = new Select(driver.findElement(By.xpath("//*[@id='branch']")));
-					myDebugPrinting("The wanted region is - " + region, testVars.logerVars.MINOR);
+					myDebugPrinting("The wanted region is - " + region, enumsClass.logModes.MINOR);
 					int regionListNum = regionsList.getOptions().size();
 					for (i = 0; i < regionListNum; ++i) {
 						regionsList.selectByIndex(i);
@@ -1093,7 +1093,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Update Configuration Files":
-					myDebugPrinting("Enter Update Configuration Files block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Update Configuration Files block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='updateConfigFilesTR']/td/table/tbody/tr[2]/td/a/span")).click();
 				    testFuncs.myWait(1000);
 					verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Note: update configuration command will work only on supported IP Phones.\nAre you sure you want to update the selected IP Phones files?Are you sure you want to change the region to selected user(s) ?");
@@ -1106,7 +1106,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Generate IP Phones Configuration Files":
-					myDebugPrinting("Enter Generate IP Phones Configuration Files block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Generate IP Phones Configuration Files block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='setIpPhonesTR']/td/table/tbody/tr[4]/td/a/span")).click();
 				    testFuncs.myWait(1000);
 					verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Note: update configuration command will work only on supported IP Phones.\nAre you sure you want to update the selected IP Phones files?Are you sure you want to change the region to selected user(s) ?");
@@ -1119,7 +1119,7 @@ public class GlobalFuncs {
 					break;				
 					
 				case "Send Message":
-					myDebugPrinting("Enter Send Message block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Send Message block", enumsClass.logModes.NORMAL);
 					String message = map.get("message");
 					driver.findElement(By.xpath("//*[@id='sendMessageTR']/td/table/tbody/tr[4]/td/input")).clear();
 					driver.findElement(By.xpath("//*[@id='sendMessageTR']/td/table/tbody/tr[4]/td/input")).sendKeys(message);
@@ -1136,7 +1136,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Restart Devices":
-					myDebugPrinting("Enter Restart Devices block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Restart Devices block", enumsClass.logModes.NORMAL);
 					String resetMode = map.get("resMode");
 					Select resetList = new Select(driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/table/tbody/tr[4]/td/select")));
 					int resListNum = resetList.getOptions().size();
@@ -1147,7 +1147,7 @@ public class GlobalFuncs {
 				        }
 					}					
 				    testFuncs.myWait(2000);
-					myDebugPrinting("Reset mode is - " + resetMode, testVars.logerVars.MINOR);
+					myDebugPrinting("Reset mode is - " + resetMode, enumsClass.logModes.MINOR);
 					if (resetMode.equals("Scheduled")) {
 						String scDelay = map.get("scMinutes");
 						Select resetList2 = new Select(driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/table/tbody/tr[6]/td/select")));
@@ -1198,7 +1198,7 @@ public class GlobalFuncs {
 			// Perform action
 			switch (action) {	
 				case "Change Language":
-					myDebugPrinting("Enter Change Language block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Change Language block", enumsClass.logModes.NORMAL);
 					String language = map.get("language");
 					driver.findElement(By.xpath("//*[@id='deviceLanguage']")).sendKeys(language);
 				    testFuncs.myWait(1000);
@@ -1214,7 +1214,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Send Message":
-					myDebugPrinting("Enter Send Message block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Send Message block", enumsClass.logModes.NORMAL);
 					String message = map.get("message");
 					driver.findElement(By.xpath("//*[@id='sendMessageTR']/td/table/tbody/tr[4]/td/input")).sendKeys(message);
 				    testFuncs.myWait(1000);
@@ -1230,7 +1230,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Change IP Phone Type":
-					myDebugPrinting("Enter Change IP Phone Type block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Change IP Phone Type block", enumsClass.logModes.NORMAL);
 					String phoneType = map.get("phoneType");
 					driver.findElement(By.xpath("//*[@id='ipptype']")).sendKeys(phoneType);
 				    testFuncs.myWait(1000);
@@ -1246,14 +1246,14 @@ public class GlobalFuncs {
 					break;
 					
 				case "Restart Devices":
-					myDebugPrinting("Enter Restart Devices block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Restart Devices block", enumsClass.logModes.NORMAL);
 					String resMode = map.get("resMode");
-					myDebugPrinting("resMode - " + resMode, testVars.logerVars.MINOR);
+					myDebugPrinting("resMode - " + resMode, enumsClass.logModes.MINOR);
 					driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/table/tbody/tr[4]/td/select")).sendKeys(resMode);
 					testFuncs.myWait(1000);
 					if (resMode.equals("Scheduled")) {
 						String scTime = map.get("schTime");
-						myDebugPrinting("scTime - " + scTime, testVars.logerVars.MINOR);
+						myDebugPrinting("scTime - " + scTime, enumsClass.logModes.MINOR);
 						driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/table/tbody/tr[6]/td/select")).sendKeys(scTime);
 					    testFuncs.myWait(1000);
 						
@@ -1270,7 +1270,7 @@ public class GlobalFuncs {
 					break;	
 					
 				case "Generate IP Phones Configuration Files":
-					myDebugPrinting("Enter Generate IP Phone Configuration block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Generate IP Phone Configuration block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='setIpPhonesTR']/td/table/tbody/tr[4]/td/a/span")).click();
 				    testFuncs.myWait(1000);
 					verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "The configuration files will be generate to the location define in the template (destinationDir).\nDo you want to continue?");
@@ -1283,7 +1283,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Update Configuration file":
-					myDebugPrinting("Enter Update Configuration block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Update Configuration block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='updateConfigFilesTR']/td/table/tbody/tr[2]/td/a/span")).click();
 				    testFuncs.myWait(1000);
 					verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Note: update configuration command will work only on supported IP Phones.\nAre you sure you want to update the selected IP Phones files?");
@@ -1296,7 +1296,7 @@ public class GlobalFuncs {
 					break;
 					
 				case "Change Firmware":
-					myDebugPrinting("Enter Change Firmware block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Change Firmware block", enumsClass.logModes.NORMAL);
 					String firmware = map.get("firmware");
 					driver.findElement(By.xpath("//*[@id='firmware_id']")).sendKeys(firmware);
 				    testFuncs.myWait(1000);
@@ -1312,9 +1312,9 @@ public class GlobalFuncs {
 					break;
 					
 				case "Change VLAN Discovery Mode":
-					myDebugPrinting("Enter Change VLAN Discovery Mode block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Change VLAN Discovery Mode block", enumsClass.logModes.NORMAL);
 					String vlanMode = map.get("vlanMode");
-					myDebugPrinting("vlanMode - " + vlanMode, testVars.logerVars.MINOR);
+					myDebugPrinting("vlanMode - " + vlanMode, enumsClass.logModes.MINOR);
 					driver.findElement(By.xpath("//*[@id='changeVlanTR']/td/table/tbody/tr[2]/td/table/tbody/tr[1]/td[1]/select")).sendKeys(vlanMode);
 				    testFuncs.myWait(1000);
 				    if (vlanMode.equals("Manual Configuration")) {
@@ -1338,7 +1338,7 @@ public class GlobalFuncs {
 					break;	
 					
 				case "Delete Devices":
-					myDebugPrinting("Enter Delete Devices block", testVars.logerVars.NORMAL);
+					myDebugPrinting("Enter Delete Devices block", enumsClass.logModes.NORMAL);
 					driver.findElement(By.xpath("//*[@id='deleteDevicesTR']/td/table/tbody/tr[2]/td/a/span")).click();
 				    testFuncs.myWait(1000);
 				    verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Are you sure you want to delete the selected devices?");
@@ -1367,9 +1367,9 @@ public class GlobalFuncs {
 	  public void addTemplate(WebDriver driver, String tempName, String tempDesc, String region, String type, Map<String, String> map) {
 		  
 		// Create new template
-		myDebugPrinting("Create new template"    , testVars.logerVars.MINOR);
-		myDebugPrinting("tempName - "  + tempName, testVars.logerVars.MINOR);
-		myDebugPrinting("type - "      + type    , testVars.logerVars.MINOR);
+		myDebugPrinting("Create new template"    , enumsClass.logModes.MINOR);
+		myDebugPrinting("tempName - "  + tempName, enumsClass.logModes.MINOR);
+		myDebugPrinting("type - "      + type    , enumsClass.logModes.MINOR);
 		
 		driver.findElement(By.xpath("//*[@id='tbTemps']/tbody/tr[1]/td/a")).click();
 		testFuncs.myWait(3000);
@@ -1384,19 +1384,19 @@ public class GlobalFuncs {
 	  
 		// Check region default template check-box
 		if (map.get("isRegionDefault").equals("true")) {
-			myDebugPrinting("isRegionDefault - TRUE", testVars.logerVars.MINOR);
+			myDebugPrinting("isRegionDefault - TRUE", enumsClass.logModes.MINOR);
 
 		}
 	  
 		// Is clone from other template is needed
 		if (!map.get("cloneFromtemplate").isEmpty()) {
-			myDebugPrinting("cloneFromtemplate is not empty, clone starts !", testVars.logerVars.MINOR);
+			myDebugPrinting("cloneFromtemplate is not empty, clone starts !", enumsClass.logModes.MINOR);
 
 		}
 	  
 		// Is download shared templates
 		if (map.get("isDownloadSharedTemplates").equals("true")) {
-			myDebugPrinting("isDownloadSharedTemplates - TRUE", testVars.logerVars.MINOR);
+			myDebugPrinting("isDownloadSharedTemplates - TRUE", enumsClass.logModes.MINOR);
 			driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[8]/td/a/b")).click();
 			testFuncs.myWait(7000);
 			verifyStrByXpath(driver, "//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[8]/td/a/b", "AudioCodes");
@@ -1422,7 +1422,7 @@ public class GlobalFuncs {
 		testFuncs.myWait(3000);
 		
 		if (map.containsKey("secondCreate")) {
-			myDebugPrinting("secondCreate - TRUE (create two templates with same name test)", testVars.logerVars.NORMAL);
+			myDebugPrinting("secondCreate - TRUE (create two templates with same name test)", enumsClass.logModes.NORMAL);
 			verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]", "Please choose another name");
 		    driver.findElement(By.xpath("//*[@id='jqi_state0_buttonOk']")).click();
 		    testFuncs.myWait(2000);
@@ -1434,7 +1434,7 @@ public class GlobalFuncs {
 			
 		} else if (map.containsKey("falseCreateName")) {
 			
-			myDebugPrinting("falseCreateName - TRUE (false data)", testVars.logerVars.NORMAL);
+			myDebugPrinting("falseCreateName - TRUE (false data)", enumsClass.logModes.NORMAL);
 			tempName = map.get("falseCreateName");
 			tempDesc = map.get("falseCreateDesc");
 			verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[1]", "Please enter template name");
@@ -1459,12 +1459,12 @@ public class GlobalFuncs {
 		testFuncs.myWait(1000);
 		
 		if (map.containsKey("secondCreate")) {
-			myDebugPrinting("secondCreate - TRUE (upload big cfg file test)", testVars.logerVars.NORMAL);
+			myDebugPrinting("secondCreate - TRUE (upload big cfg file test)", enumsClass.logModes.NORMAL);
 //			driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[7]/td[2]/a")).click();
 //			testFuncs.myWait(3000);
 //			verifyStrByXpath(driver, "//*[@id='title']", "Upload IP Phone Template " + tempName);
 //			String bigCfgPath = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("36");
-//			myDebugPrinting("bigCfgPath - " + bigCfgPath, testVars.logerVars.MINOR);
+//			myDebugPrinting("bigCfgPath - " + bigCfgPath, enumsClass.logModes.MINOR);
 //			driver.findElement(By.xpath("//*[@id='IntroScreen']/form/table/tbody/tr[3]/td/input")).sendKeys(bigCfgPath);
 //			testFuncs.myWait(5000);
 //			driver.findElement(By.xpath("//*[@id='submit_img']")).click();
@@ -1495,7 +1495,7 @@ public class GlobalFuncs {
 	  */
 	  public void deleteTemplate(WebDriver driver, String tempName) {
 		  
-		  myDebugPrinting("tempName - " + tempName, testVars.logerVars.MINOR);
+		  myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);
 		  driver.findElement(By.cssSelector("a[href*='" + tempName + "']")).click();
 		  testFuncs.myWait(2000);
 		  verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]/table/tbody/tr[1]/th", "Delete Template");
@@ -1518,16 +1518,16 @@ public class GlobalFuncs {
 	  */
 	  public void editTemplate(WebDriver driver, String tempName, String valueForEdit) throws UnsupportedFlavorException, IOException {
 		  
-		  myDebugPrinting("tempName - " + tempName, testVars.logerVars.MINOR);
+		  myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);
 		  
 		  // Get id of the created template
-		  myDebugPrinting("Get id of the created template", testVars.logerVars.NORMAL);
+		  myDebugPrinting("Get id of the created template", enumsClass.logModes.NORMAL);
 		  String href = driver.findElement(By.cssSelector("a[href*='" + tempName + "']")).getAttribute("href");
-		  myDebugPrinting("href - " + href, testVars.logerVars.MINOR); 
+		  myDebugPrinting("href - " + href, enumsClass.logModes.MINOR); 
 		  int first  = href.indexOf('\"') + 1;
 		  int second = href.indexOf('\"', first);
 		  String id  = href.substring(first, second);
-		  myDebugPrinting("id - " + id, testVars.logerVars.MINOR);
+		  myDebugPrinting("id - " + id, enumsClass.logModes.MINOR);
 		  driver.findElement(By.cssSelector("a[href*='" + id + "']")).click();
 		  
 		  // Verify headers
@@ -1536,7 +1536,7 @@ public class GlobalFuncs {
 		  verifyStrByXpath(driver, "//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[2]/td[2]/font", tempName);
 
 		  // Edit template
-		  myDebugPrinting("Edit template", testVars.logerVars.NORMAL); 
+		  myDebugPrinting("Edit template", enumsClass.logModes.NORMAL); 
 		  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[5]/td[2]/a")).click();
 		  testFuncs.myWait(2000);
 		  driver.findElement(By.xpath("//*[@id='templateDiv']/textarea")).sendKeys(valueForEdit);		  
@@ -1561,7 +1561,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(2000);
 		    
 		  // Restore to default
-		  myDebugPrinting("Restore to default", testVars.logerVars.NORMAL); 
+		  myDebugPrinting("Restore to default", enumsClass.logModes.NORMAL); 
 		  driver.findElement(By.xpath("//*[@id='restoreToDefId']/span")).click();
 		  testFuncs.myWait(2000);
 		  verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[1]", "Reset the IP Phone template");
@@ -1606,7 +1606,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  
 		  // verify create
-		  myDebugPrinting("verify create", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify create", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).sendKeys(regPhName);	  
 		  testFuncs.myWait(3000);
@@ -1628,7 +1628,7 @@ public class GlobalFuncs {
 		  // Some manipulations to detect row ID
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 		  String rowId = bodyText.substring(bodyText.indexOf("Placeholder Value Region") + "Placeholder Value Region".length(), bodyText.indexOf("%ITCS_") - 1);
-		  myDebugPrinting("rowId - " + rowId, testVars.logerVars.MINOR);
+		  myDebugPrinting("rowId - " + rowId, enumsClass.logModes.MINOR);
 		  
 		  driver.findElement(By.xpath("//*[@id='regions1']/tbody/tr[" + rowId + "]/td[6]/button")).click();
 		  testFuncs.myWait(3000);
@@ -1642,7 +1642,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  		  
 		  // verify edit
-		  myDebugPrinting("verify edit", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify edit", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).sendKeys(regPhName);	  
 		  testFuncs.myWait(3000);
@@ -1662,7 +1662,7 @@ public class GlobalFuncs {
 		  // Some manipulations to detect row ID
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 		  String rowId = bodyText.substring(bodyText.indexOf("Placeholder Value Region") + "Placeholder Value Region".length(), bodyText.indexOf("%ITCS_") - 1);
-		  myDebugPrinting("rowId - " + rowId, testVars.logerVars.MINOR);  
+		  myDebugPrinting("rowId - " + rowId, enumsClass.logModes.MINOR);  
 		  driver.findElement(By.xpath("//*[@id='regions1']/tbody/tr[" + rowId + "]/td[7]/button")).click();
 		  testFuncs.myWait(1000);
 		  verifyStrByXpath(driver, "//*[@id='jqi_state_state0']/div[1]/table/tbody/tr[1]/th"  , "Delete Region - " + regPhName);  
@@ -1674,7 +1674,7 @@ public class GlobalFuncs {
 		  driver.findElement(By.xpath("//*[@id='jqi_state0_buttonOk']")).click();
 
 		  // verify delete
-		  myDebugPrinting("verify delete", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify delete", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).sendKeys(regPhName);	  
 		  testFuncs.myWait(3000);
@@ -1709,7 +1709,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(1000);
 		  
 		  // verify copy
-		  myDebugPrinting("verify copy", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify copy", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='regions1-filtering']")).sendKeys(regPhName);
 		  testFuncs.myWait(3000);
@@ -1739,7 +1739,7 @@ public class GlobalFuncs {
 		  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 
 		  // Verify create
-		  myDebugPrinting("verify create", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify create", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).sendKeys(tempPhName);
 		  testFuncs.myWait(3000);
@@ -1761,7 +1761,7 @@ public class GlobalFuncs {
 		  // Some manipulations to detect row ID
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 		  String rowId = bodyText.substring(bodyText.indexOf("Placeholder Value Description") + "Placeholder Value Description".length(), bodyText.indexOf("%ITCS_") - 1);
-		  myDebugPrinting("rowId - " + rowId, testVars.logerVars.MINOR);
+		  myDebugPrinting("rowId - " + rowId, enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='results']/tbody/tr[" + rowId + "]/td[6]/a[1]")).click();
 		  testFuncs.myWait(3000);
 		  driver.findElement(By.xpath("//*[@id='project']")).clear();
@@ -1773,7 +1773,7 @@ public class GlobalFuncs {
 		  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 
 		  // Verify edit
-		  myDebugPrinting("verify edit", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify edit", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).sendKeys(tempPhName);
 		  testFuncs.myWait(3000);
@@ -1797,7 +1797,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 
 		  // Verify delete
-		  myDebugPrinting("verify delete", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify delete", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='models']")).sendKeys(tempName); 
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).clear(); 
 		  driver.findElement(By.xpath("//*[@id='results-filtering']")).sendKeys(tempPhName); 
@@ -1831,7 +1831,7 @@ public class GlobalFuncs {
 			// Copy a template place holder to Default Template should not be possible
 			if (tempWecopyFrom.contains("operTemplate")) {
 				
-				myDebugPrinting("Copy a template place holder to Default Template should not be possible", testVars.logerVars.MINOR);
+				myDebugPrinting("Copy a template place holder to Default Template should not be possible", enumsClass.logModes.MINOR);
 				verifyStrByXpath(driver, "/html/body/div/div/div[1]/h3"     , "Unauthorized");
 				verifyStrByXpath(driver, "/html/body/div/div/div[2]/div/div", "You do not have permission to modify this item"); 
 				return;
@@ -1841,7 +1841,7 @@ public class GlobalFuncs {
 			driver.findElement(By.xpath("//*[@id='jqi_state0_buttonOk']")).click();
 			
 			// Verify import
-			myDebugPrinting("verify import", testVars.logerVars.MINOR);
+			myDebugPrinting("verify import", enumsClass.logModes.MINOR);
 			driver.findElement(By.xpath("//*[@id='results-filtering']")).clear(); 
 			driver.findElement(By.xpath("//*[@id='results-filtering']")).sendKeys(tempPhName);
 			testFuncs.myWait(3000);
@@ -1917,7 +1917,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(1000);
 		  
 		  // Verify delete
-		  myDebugPrinting("verify delete", testVars.logerVars.MINOR);
+		  myDebugPrinting("verify delete", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/form/p[1]/input")).clear();
 		  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/form/p[1]/input")).sendKeys(fileName);
 		  testFuncs.myWait(3000);
@@ -1943,7 +1943,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(2000);
 		  
 		  // Fill data at created firmware
-		  myDebugPrinting("Fill data at created firmware", testVars.logerVars.MINOR);
+		  myDebugPrinting("Fill data at created firmware", enumsClass.logModes.MINOR);
 		  verifyStrByXpath(driver, "//*[@id='title']"										   , "Add new IP Phone firmware");
 		  verifyStrByXpath(driver, "//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[1]/td", "Add new IP Phone firmware");
 		  driver.findElement(By.xpath("//*[@id='name']")).sendKeys(firmName);
@@ -1954,7 +1954,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		
 		  // Upload file
-		  myDebugPrinting("Upload file", testVars.logerVars.MINOR);
+		  myDebugPrinting("Upload file", enumsClass.logModes.MINOR);
 		  verifyStrByXpath(driver, "//*[@id='title']"										   , "IP Phone " + firmName + " Firmware");
 		  verifyStrByXpath(driver, "//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[1]/td", "IP Phone " + firmName + " Firmware");
 		  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[10]/td[2]/a")).click();
@@ -1972,10 +1972,10 @@ public class GlobalFuncs {
 
 		  // Download file
 		  if(driver instanceof InternetExplorerDriver) {
-			  myDebugPrinting(" Download is not activated in IE", testVars.logerVars.MINOR);
+			  myDebugPrinting(" Download is not activated in IE", enumsClass.logModes.MINOR);
 
 		  } else {
-			  myDebugPrinting("Download file and submit", testVars.logerVars.MINOR);
+			  myDebugPrinting("Download file and submit", enumsClass.logModes.MINOR);
 			  deleteFilesByPrefix(testVars.getDownloadsPath(), firmName);
 			  driver.findElement(By.xpath("//*[@id='downloadRowId']/td[2]/a")).click();
 			  testFuncs.myWait(15000);
@@ -1988,7 +1988,7 @@ public class GlobalFuncs {
 		  }
 		  
 		  // Submit and verify create
-		  myDebugPrinting("Submit and verify create", testVars.logerVars.MINOR);
+		  myDebugPrinting("Submit and verify create", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 		  testFuncs.myWait(5000);
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
@@ -2023,7 +2023,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(5000);
 		
 		  // Verify edit
-		  myDebugPrinting("Verify edit", testVars.logerVars.MINOR);
+		  myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 	      assertTrue("Edited name was not detected !! (" + firmName + ")"       , bodyText.contains(firmName));
 	      assertTrue("Edited description was not detected !! (" + newFirmDesc + ")", bodyText.contains(newFirmDesc));
@@ -2047,7 +2047,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  
 		  // Verify delete
-		  myDebugPrinting("Verify delete", testVars.logerVars.MINOR);
+		  myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);
 		  String bodyText = driver.findElement(By.tagName("body")).getText();
 	      assertFalse("Firmware name still detected !! (" + firmName + ")"          , bodyText.contains(firmName));
 	      assertFalse("Firmware description still detected !! (" + newFirmDesc + ")", bodyText.contains(newFirmDesc));
@@ -2076,7 +2076,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  
 		  // Try to upload a non-cfg to the created Template
-		  myDebugPrinting("Try to upload a non-cfg to the created Template", testVars.logerVars.MINOR);
+		  myDebugPrinting("Try to upload a non-cfg to the created Template", enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[7]/td[2]/a")).click();
 		  testFuncs.myWait(3000);
 		  verifyStrByXpath(driver, "//*[@id='title']", "Upload IP Phone Template");
@@ -2089,7 +2089,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  
 		  // Return to the Templates menu and delete the created Template
-		  myDebugPrinting("Return to the Templates menu and delete the created Template", testVars.logerVars.MINOR);
+		  myDebugPrinting("Return to the Templates menu and delete the created Template", enumsClass.logModes.MINOR);
 		  driver.switchTo().defaultContent();
 		  driver.findElement(By.xpath("//*[@id='tree_tab']/tbody/tr[3]/td/div/ul/li[4]/ul/li[1]/a")).click();
 		  driver.switchTo().frame(1);
@@ -2132,14 +2132,14 @@ public class GlobalFuncs {
 		  driver.findElement(By.xpath("//*[@id='devices_body']/tr/td[3]/b")).click();
 		  testFuncs.myWait(3000);
 		  String txt = driver.findElement(By.xpath("//*[@id='device_id']")).getText();
-		  myDebugPrinting("txt - " + txt, testVars.logerVars.MINOR);
+		  myDebugPrinting("txt - " + txt, enumsClass.logModes.MINOR);
 		  driver.findElement(By.xpath("//*[@id='key']")).sendKeys(phName);
 		  driver.findElement(By.xpath("//*[@id='over_value']")).sendKeys(phValue);
 		  driver.findElement(By.xpath("//*[@id='submit_img']")).click();
 		  testFuncs.myWait(3000);
 		  
 		  // Verify create
-		  myDebugPrinting("Verify create", testVars.logerVars.MINOR);  
+		  myDebugPrinting("Verify create", enumsClass.logModes.MINOR);  
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).clear();
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).sendKeys(userName);
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/span/button")).click();
@@ -2171,7 +2171,7 @@ public class GlobalFuncs {
 		  testFuncs.myWait(3000);
 		  
 		  // Verify edit
-		  myDebugPrinting("Verify edit", testVars.logerVars.MINOR);  
+		  myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);  
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).clear();
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).sendKeys(userName);
 		  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/span/button")).click();

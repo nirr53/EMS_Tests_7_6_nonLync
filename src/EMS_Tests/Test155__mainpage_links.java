@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,13 +32,13 @@ import org.openqa.selenium.*;
 public class Test155__mainpage_links {
 	
   private WebDriver 	driver;
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test155__mainpage_links(String browser) {
+  public Test155__mainpage_links(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -108,20 +108,20 @@ public class Test155__mainpage_links {
       String winHandleBefore = driver.getWindowHandle();
       
       // Press the icon
-      testFuncs.myDebugPrinting("Press the icon", testVars.logerVars.NORMAL);
+      testFuncs.myDebugPrinting("Press the icon", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath(xpath), 10000);    
 	  for(String winHandle : driver.getWindowHandles()) {
 	    	
 	        driver.switchTo().window(winHandle);  
 	  }
 	  String tempCurrUrl = driver.getCurrentUrl();
-      testFuncs.myDebugPrinting("tempCurrUrl - " + tempCurrUrl, testVars.logerVars.MINOR);
-      testFuncs.myDebugPrinting("searchedUrl - " + searchedUrl, testVars.logerVars.MINOR);
+      testFuncs.myDebugPrinting("tempCurrUrl - " + tempCurrUrl, enumsClass.logModes.MINOR);
+      testFuncs.myDebugPrinting("searchedUrl - " + searchedUrl, enumsClass.logModes.MINOR);
 	  testFuncs.myAssertTrue("Wanted url was not detected !! current url - <" + tempCurrUrl + ">", tempCurrUrl.contains(searchedUrl)); 
 	  driver.close();
 	  
 	  // Return to OVOC
-      testFuncs.myDebugPrinting("Return to OVOC", testVars.logerVars.NORMAL);
+      testFuncs.myDebugPrinting("Return to OVOC", enumsClass.logModes.NORMAL);
       driver.switchTo().window(winHandleBefore);
       testFuncs.myWait(3000);
   }

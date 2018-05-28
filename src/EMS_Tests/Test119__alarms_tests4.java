@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +38,12 @@ public class Test119__alarms_tests4 {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test119__alarms_tests4(String browser) {
+  public Test119__alarms_tests4(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -117,7 +118,7 @@ public class Test119__alarms_tests4 {
 			  "minor");
 
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", alartNames[0]  , alartNames);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames[0]);	
@@ -138,7 +139,7 @@ public class Test119__alarms_tests4 {
 			  "minor");
 
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", alartNames2[0]  , alartNames2);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames2[0]);	
@@ -159,7 +160,7 @@ public class Test119__alarms_tests4 {
 			  "minor");
 
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", alartNames3[0]  , alartNames3);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames3[0]);	
@@ -180,7 +181,7 @@ public class Test119__alarms_tests4 {
 			  "minor");
 
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", alartNames4[0]  , alartNames4);
 	testFuncs.searchStr(driver, "IPPhone/" + mac1 + " " + Inet4Address.getLocalHost().getHostAddress());
 	testFuncs.deleteAlarm(driver, alartNames4[0]);

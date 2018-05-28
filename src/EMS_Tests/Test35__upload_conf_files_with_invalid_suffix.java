@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,12 +32,12 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test35__upload_conf_files_with_invalid_suffix(String browser) {
+  public Test35__upload_conf_files_with_invalid_suffix(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -95,7 +95,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	
 	// Set variables
 	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("35.2");
-	testFuncs.myDebugPrinting("nonCfgFile - " + nonCfgFile, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("nonCfgFile - " + nonCfgFile, enumsClass.logModes.MINOR);
 	
 	// Login and enter the Phone configuration menu
 	testFuncs.myDebugPrinting("Login and enter the Phone configuration menu");
@@ -115,8 +115,8 @@ public class Test35__upload_conf_files_with_invalid_suffix {
   private void uploadNonCfgToTemplates(WebDriver driver, String nonCfgFileName) {
 	  
 	  // Try to edit one of the Templates by uploading a file
-	  testFuncs.myDebugPrinting("Try to edit one of the Templates by uploading a file", testVars.logerVars.MINOR);
-	  testFuncs.myDebugPrinting("nonCfgFileName - " + nonCfgFileName, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Try to edit one of the Templates by uploading a file", enumsClass.logModes.MINOR);
+	  testFuncs.myDebugPrinting("nonCfgFileName - " + nonCfgFileName, enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='tenants1']/tbody/tr[3]/td[8]/div/buttton[1]")							 , 5000);  
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/a[3]"), 5000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Upload IP Phone Template "); 

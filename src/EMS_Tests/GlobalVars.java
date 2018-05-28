@@ -60,13 +60,7 @@ public class GlobalVars {
 	*  srcLangsFile   - Source File name for import users in different languages
 	*  srcDhcpCnfFile - Source File name for import DHCP configuration file
 	*  srcSbcConfFile - Source File name for import SBC configuration file
-	*  
-	*  // Browsers names
-	*  CHROME 		  - name of Chrome browser
-	*  FF 			  - name of Firefox browser
-	*  IE		      - name of Internet-Explorer browser
 	*/
-    public   LogVars 				logerVars;
 	private  String ip               = "10.21.8.35";
 	private  String port             = "8081";
 	private  String domain           = "cloudbond365b.com";
@@ -116,10 +110,7 @@ public class GlobalVars {
 	private  String srcLangsFile     = "nirDdifferentLanguages.zip";
 	private  String srcDhcpCnfFile   = "dhcp_option_template.cfg";
 	private  String srcSbcConfFile   = "proxy_dhcp_option_template.cfg";
-	public   String CHROME  	     = "Chrome";
-	public   String FF 			     = "Firefox";
-	public 	 String IE			     = "IE";
-	private  Object[][] browsersList = {{CHROME}};
+	private  Object[][] browsersList = {{enumsClass.browserTypes.CHROME}};
 
     /**
     *  Non-default constructor for provide another data
@@ -136,15 +127,10 @@ public class GlobalVars {
 		this.sysPassword = _password;
 		this.sysMainStr  = _mainStr;
     	this.downloadsPath = "C:\\Users\\" + System.getProperty("user.name") + "\\Downloads";
-    	this.logerVars     = new LogVars();
 	}
-	
-    /**
-    *  Default constructor for provide interface
-    */
+    
     public GlobalVars() {
     	
-    	this.logerVars     = new LogVars();
     	this.downloadsPath = "C:\\Users\\" + System.getProperty("user.name") + "\\Downloads";  		
 	}
     

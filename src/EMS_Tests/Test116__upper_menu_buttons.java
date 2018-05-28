@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -35,12 +36,12 @@ public class Test116__upper_menu_buttons {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test116__upper_menu_buttons(String browser) {
+  public Test116__upper_menu_buttons(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -86,7 +87,7 @@ public class Test116__upper_menu_buttons {
 	testFuncs.myClick(driver, By.xpath("//*[@id='subHeader']/a[1]"), 5000);
 	testFuncs.searchStr(driver, "Manage Multiple Users - Generate Configuration");	
 	String selectAction = new Select(driver.findElement(By.xpath("//*[@id='action']"))).getFirstSelectedOption().getText();
-	testFuncs.myDebugPrinting("selectAction - " + selectAction, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("selectAction - " + selectAction, enumsClass.logModes.MINOR);
 	testFuncs.myAssertTrue("Generate configuration option is not selected !! (selectAction - " + selectAction + ")", selectAction.equals("Generate IP Phones Configuration Files"));
 		
     // Step 2 - Press the 'Generate configuration' menu
@@ -94,7 +95,7 @@ public class Test116__upper_menu_buttons {
 	testFuncs.pressHomeButton(driver);
 	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
 	String selectAction2 = new Select(driver.findElement(By.xpath("//*[@id='action']"))).getFirstSelectedOption().getText();
-	testFuncs.myDebugPrinting("selectAction2 - " + selectAction2, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("selectAction2 - " + selectAction2, enumsClass.logModes.MINOR);
 	testFuncs.myAssertTrue("Generate configuration option is not selected !! (selectAction2 - " + selectAction2 + ")", selectAction2.equals("User configuration"));
 	   
 	// Step 3 - Press the Network Topology button

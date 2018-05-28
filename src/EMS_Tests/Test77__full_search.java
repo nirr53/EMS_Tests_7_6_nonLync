@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test77__full_search {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test77__full_search(String browser) {
+  public Test77__full_search(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -98,7 +98,7 @@ public class Test77__full_search {
 					 										   "location");
 	  testFuncs.verifyPostUserCreate(driver, srcUserName1 + "@" + testVars.getDomain(), srcUserName1, true);
 	  String userMacAddr = testFuncs.readFile("mac_1.txt");
-	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, enumsClass.logModes.MINOR);
 
 	  // Step 1 - Search the user by its MAC address without check the Search all
 	  testFuncs.myDebugPrinting(" Step 1 - Search the user by its MAC address without check the Search all");
@@ -121,7 +121,7 @@ public class Test77__full_search {
 					 										   "location");
 	  testFuncs.verifyPostUserCreate(driver, srcUserName2 + "@" + testVars.getDomain(), srcUserName2, true);
 	  userMacAddr = testFuncs.readFile("mac_1.txt");
-	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, enumsClass.logModes.MINOR);
 
 	  // Step 2 - Search the user by its MAC address with check the Search all
 	  testFuncs.myDebugPrinting(" Step 2 - Search the user by its MAC address with check the Search all");

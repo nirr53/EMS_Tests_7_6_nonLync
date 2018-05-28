@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +37,12 @@ public class Test137__duplicate_device_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test137__duplicate_device_placeholders(String browser) {
+  public Test137__duplicate_device_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -136,7 +137,7 @@ public class Test137__duplicate_device_placeholders {
   private void deleteDevicePlaceholder(WebDriver driver, String userName, String phName, String phNewValue) {
 	  
 	  // Delete the device Placeholder
-	  testFuncs.myDebugPrinting("Delete the device Placeholder", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Delete the device Placeholder", enumsClass.logModes.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/input"), userName, 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/span/button"), 5000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='placeholders_body']/tr/td[8]/a"), 5000);  

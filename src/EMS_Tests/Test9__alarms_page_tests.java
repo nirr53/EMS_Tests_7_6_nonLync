@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -31,14 +32,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test9__alarms_page_tests {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test9__alarms_page_tests(String browser) {
+  public Test9__alarms_page_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -82,7 +83,7 @@ public class Test9__alarms_page_tests {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
 	
 	// Step 2 - Test the Export button
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 		testFuncs.myDebugPrinting("Step 2 - Test the Export button");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getAlarmsExport());

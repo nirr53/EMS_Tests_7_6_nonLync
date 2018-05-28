@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,14 +33,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test139__username_length {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test139__username_length(String browser) {
+  public Test139__username_length(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -132,7 +133,7 @@ public class Test139__username_length {
 			  
 	  // Create random string as suffix
 	  wantedRandPartLen = maxLength - prefix.length();
-	  testFuncs.myDebugPrinting("wantedRandPartLen - " + wantedRandPartLen, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("wantedRandPartLen - " + wantedRandPartLen, enumsClass.logModes.MINOR);
 	  for (int i = 0 ; i < wantedRandPartLen; ++i) {
 		  
 		  wantedRandPartStr += String.valueOf(rand.nextInt(9) + 1);
@@ -140,7 +141,7 @@ public class Test139__username_length {
 
 	  // Merge prefix and the random string we created
 	  String wantedStr = prefix + wantedRandPartStr;
-	  testFuncs.myDebugPrinting("wantedStr - " + wantedStr, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("wantedStr - " + wantedStr, enumsClass.logModes.MINOR);
 	  return (wantedStr);
 }
 

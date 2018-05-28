@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -35,12 +35,12 @@ public class Test70__search_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test70__search_tests(String browser) {
+  public Test70__search_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -122,7 +122,7 @@ public class Test70__search_tests {
 	for (int i = 1; i < lim; i++) {
 
 			tempMac = testFuncs.readFile("mac_" + i + ".txt");
-		  	testFuncs.myDebugPrinting("tempMac - " +  tempMac, testVars.logerVars.MINOR);		    
+		  	testFuncs.myDebugPrinting("tempMac - " +  tempMac, enumsClass.logModes.MINOR);		    
 			testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "mac:" + tempMac, 5000);
 		    driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
 		    testFuncs.myWait(7000);

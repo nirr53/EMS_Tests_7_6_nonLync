@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -44,12 +45,12 @@ public class Test109__alarms_tests2 {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test109__alarms_tests2(String browser) {
+  public Test109__alarms_tests2(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -143,7 +144,7 @@ public class Test109__alarms_tests2 {
 															  "minor");
 		
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", regAlertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create alarms on different severity types
@@ -153,10 +154,10 @@ public class Test109__alarms_tests2 {
 	for (int i = 0; i < 5; ++i) {
 		
 		testFuncs.myDebugPrinting("--------");
-		testFuncs.myDebugPrinting("Create an alarm of <" + alertsSeverity[i] + "> severity", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Create an alarm of <" + alertsSeverity[i] + "> severity", enumsClass.logModes.NORMAL);
 		String[] alarmNames   = {"severityTestAlarm_" + Id + "_" +	alertsSeverity[i]};
-		testFuncs.myDebugPrinting("alarmNames[0] - " 	 + alarmNames[0]    , testVars.logerVars.MINOR);
-		testFuncs.myDebugPrinting("alertsSeverity[i] - " + alertsSeverity[i], testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("alarmNames[0] - " 	 + alarmNames[0]    , enumsClass.logModes.MINOR);
+		testFuncs.myDebugPrinting("alertsSeverity[i] - " + alertsSeverity[i], enumsClass.logModes.MINOR);
 		testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 																  testVars.getPort()							 ,
 																  mac1								 			 ,

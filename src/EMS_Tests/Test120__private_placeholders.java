@@ -14,6 +14,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -39,12 +40,12 @@ public class Test120__private_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test120__private_placeholders(String browser) {
+  public Test120__private_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -114,10 +115,10 @@ public class Test120__private_placeholders {
 	testFuncs.myAssertTrue("Private PH was not detected !! \nbodyText - " + bodyText,  bodyText.contains("%ITCS_P_" + prCfgKey 	 + "% Edit Delete"));
 	testFuncs.myAssertTrue("Non Private PH was detected !! \nbodyText - " + bodyText, !bodyText.contains("%ITCS_"  + nonPrCfgKey + "%"));
 
-//	// Step 3 - Delete the created Template
-//	testFuncs.myDebugPrinting("Step 3 - Delete the created Template");
-//	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
-//	testFuncs.deleteTemplate(driver, tempName);
+	// Step 3 - Delete the created Template
+	testFuncs.myDebugPrinting("Step 3 - Delete the created Template");
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.deleteTemplate(driver, tempName);
   }
 
   // Add private configuration key
@@ -128,7 +129,7 @@ public class Test120__private_placeholders {
 		  
 		  tempStr = "%ITCS_" + id + "%";
 	  }
-	  testFuncs.myDebugPrinting("tempStr - " + tempStr, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("tempStr - " + tempStr, enumsClass.logModes.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , id		, 3000);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), tempStr, 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[3]/a/span"), 3000);
@@ -146,10 +147,10 @@ public class Test120__private_placeholders {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
 		  if (l.contains(tempName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {

@@ -23,7 +23,7 @@ $location 		 	= $CmdLine[9]  ; I.e.  myLocation
 ;~ $IP	 			  = "10.21.8.32"
 ;~ $PORT	 		  = "8081"
 ;~ $usersNumber  	  = "1"
-;~ $usersPrefixName  = "changeStatus1"
+;~ $usersPrefixName  = "usbHdstType_user_status_1"
 ;~ $domainName 	  = "cloudbond365b.com"
 ;~ $createStatus 	  = "registered"
 ;~ $phoneType 		  = "430HD"
@@ -175,22 +175,6 @@ Func createUserViaPost($userPassword, $macAdress, $ipAddress  , $phoneType  , $p
    $emsSubnet   = "255.255.255.0"
    $target2 = "http://" & $IP & ":" & $PORT & $emsPostUrl
 
-   ; Change Location field in speicel case
-   $emsLocation = ""
-   If 	  StringInStr($userName, "location_2048") Then
-		 myToolTip("Create a location string in 2048 chracters long !!", 150, 150, $innerFunctionLevel)
-		 $emsLocation = myRandomString(2048)
-
-   ElseIf StringInStr($userName, "location_2049") Then
-		 myToolTip("Create a location string in 2049 chracters long !!", 150, 150, $innerFunctionLevel)
-		 $emsLocation = myRandomString(2049)
-
-   Else
-		 myToolTip("Create a default location string - myLocation", 150, 150, $innerFunctionLevel)
-	     $emsLocation = "myLocation"
-
-   EndIf
-
    ; Add BtOe status and version
    $btoeStatus  = ""
    $btoeversion = ""
@@ -223,6 +207,18 @@ Func createUserViaPost($userPassword, $macAdress, $ipAddress  , $phoneType  , $p
 
    EndIf
 
+   ; Add $emsLocation status (If needed)
+   $emsLocation     = getEmsLocation($userName)
+
+   ; Add USBHeadsetType status (If needed)
+   $usbHeadsetType  = getUSBHeadsetType($userName, $phoneNumber)
+
+   ; Add HRSSpeakerModel status (If needed)
+   $hrsSpeakerModel = getHrsSpeakerModel($userName, $phoneNumber)
+
+   ; Add HRSSpeakerFW status (If needed)
+   $hrsSpeakerFW    = getHrsSpeakerFW($userName, $phoneNumber)
+
    ; Stage 0 -  send packet with primary data to make the system be reasy for the 'create-user' method.
    myToolTip("Stage 0 -  send packet with primary data to make the system be reasy for the 'create-user' method.", 150, 150, $innerFunctionLevel)
    $PostData0 = "{" 												   			   & @LF & _
@@ -244,6 +240,9 @@ Func createUserViaPost($userPassword, $macAdress, $ipAddress  , $phoneType  , $p
 	'"sipProxy"'		  & ":" & " " & '"' & ""     			& '"'  & $extraDot & @LF & _
 											  $btoeStatus					 	   & _
 											  $btoeversion					 	   & _
+											  $usbHeadsetType		   			   & _
+											  $hrsSpeakerModel		   			   & _
+											  $hrsSpeakerFW		   			   	   & _
 	"}"
    myToolTip("$PostData0 is:" & @CRLF & $PostData0, 150, 150, $innerFunctionLevel)
    myToolTip("$target2 - " & $target2, 150, 150, $innerFunctionLevel)
@@ -296,6 +295,9 @@ Func createUserViaPost($userPassword, $macAdress, $ipAddress  , $phoneType  , $p
 	   '"sipProxy"'		  	  & ":" & " " & '"' & $sipProxy     	& '"'  & $extraDot & @LF & _
 	   											  $btoeStatus					 			 & _
 												  $btoeversion					 			 & _
+												  $usbHeadsetType		   			   		 & _
+												  $hrsSpeakerModel		   			   		 & _
+												  $hrsSpeakerFW		   			   		 	 & _
 	   "}"
    myToolTip("$PostData is:" & @CRLF & $PostData, 150, 150, $innerFunctionLevel)
    $Socket = _HTTPConnect($IP)
@@ -356,7 +358,6 @@ Func writeMacToFile($macAddress, $i)
    FileClose($hFileOpen)
 
 EndFunc
-
 ;--------------------------------------------------------------------------------------------------
 Func writeIPToFile($ipAddress, $i)
 
@@ -399,145 +400,129 @@ Func myRandomString($length = "2", $isDisplay = 0)
    return $sText
 
 EndFunc
+;--------------------------------------------------------------------------------------------------
+Func getEmsLocation($userName)
 
+   $emsLocation = ""
+   If 	  StringInStr($userName, "location_2048") Then
+	  myToolTip("Create a location string in 2048 chracters long !!", 150, 150, $innerFunctionLevel)
+	  $emsLocation = myRandomString(2048)
 
+   ElseIf StringInStr($userName, "location_2049") Then
 
+	  myToolTip("Create a location string in 2049 chracters long !!", 150, 150, $innerFunctionLevel)
+	  $emsLocation = myRandomString(2049)
 
+   Else
+	  myToolTip("Create a default location string - myLocation", 150, 150, $innerFunctionLevel)
+	  $emsLocation = "myLocation"
 
+   EndIf
 
-Func Asc2Unicode($AscString, $addBOM = false)
-    Local $BufferSize = StringLen($AscString) * 2
-    Local $FullUniStr = DllStructCreate("byte[" & $BufferSize + 2 & "]")
-    Local $Buffer = DllStructCreate("byte[" & $BufferSize & "]", DllStructGetPtr($FullUniStr) + 2)
-    Local $Return = DllCall("Kernel32.dll", "int", "MultiByteToWideChar", _
-        "int", 0, _
-        "int", 0, _
-        "str", $AscString, _
-        "int", StringLen($AscString), _
-        "ptr", DllStructGetPtr($Buffer, 1), _
-        "int", $BufferSize)
-    DllStructSetData($FullUniStr, 1, 0xFF, 1)
-    DllStructSetData($FullUniStr, 1, 0xFE, 2)
-    If $addBOM then
-        Return DllStructGetData($FullUniStr, 1)
-    Else
-        Return DllStructGetData($Buffer, 1)
-    Endif
+   return $emsLocation
+
 EndFunc
+;--------------------------------------------------------------------------------------------------
+Func getUSBHeadsetType($userName, $phoneNumber)
 
-Func Unicode2Asc($UniString)
-    If Not  IsBinary($UniString) Then
-        SetError(1)
-        Return $UniString
-    EndIf
+   $usbHeadsetType = ""
+   If 	  StringInStr($userName, "usbHdstTypeuser") Then
+	  myToolTip("USB headset type user was detected !! ($userName - " & $userName & ")", 150, 150, $innerFunctionLevel)
+	  If 	   StringInStr($userName, "usbHdstTypeuserstatus") Then
+		 myToolTip("USB headset type status was detected !!", 150, 150, $innerFunctionLevel)
+		 $usbHeadsetType = $phoneNumber
+		 writeIPToFile($usbHeadsetType, "1")
 
-    Local $BufferLen = StringLen($UniString)
-    Local $Input = DllStructCreate("byte[" & $BufferLen & "]")
-    Local $Output = DllStructCreate("char[" & $BufferLen & "]")
-    DllStructSetData($Input, 1, $UniString)
-    Local $Return = DllCall("kernel32.dll", "int", "WideCharToMultiByte", _
-        "int", 0, _
-        "int", 0, _
-        "ptr", DllStructGetPtr($Input), _
-        "int", $BufferLen / 2, _
-        "ptr", DllStructGetPtr($Output), _
-        "int", $BufferLen, _
-        "int", 0, _
-        "int", 0)
-    Local $AscString = DllStructGetData($Output, 1)
-    $Output = 0
-    $Input = 0
-    Return $AscString
+	  ElseIf   StringInStr($userName, "usbHdstTypeuserunknown") Then
+		 myToolTip("USB headset type unknown was detected !!", 150, 150, $innerFunctionLevel)
+		 $usbHeadsetType = "unknown"
+
+	  ElseIf   StringInStr($userName, "usbHdstTypeuserempty") Then
+		 myToolTip("USB headset type empty was detected !!", 150, 150, $innerFunctionLevel)
+
+	  ElseIf   StringInStr($userName, "usbHdstTypeuserlong") Then
+		 myToolTip("USB headset type long status was detected !!", 150, 150, $innerFunctionLevel)
+		 $usbHeadsetType = myRandomString(130)
+		 writeIPToFile($usbHeadsetType, "1")
+
+	  EndIf
+	  $extraDot   = ","
+	  $usbHeadsetType  = '"USBHeadsetType"' & ":" & " " & '"' & $usbHeadsetType  & '",' & @LF
+	  myToolTip("$usbHeadsetType - " & $usbHeadsetType, 150, 150, $innerFunctionLevel)
+
+   EndIf
+
+   return $usbHeadsetType
+
 EndFunc
+;--------------------------------------------------------------------------------------------------
+Func getHrsSpeakerModel($userName, $phoneNumber)
 
-Func Unicode2Utf8($UniString)
-    If Not  IsBinary($UniString) Then
-        SetError(1)
-        Return $UniString
-    EndIf
+   $hrsSpeakerModel = ""
+   If 	  StringInStr($userName, "hrsSpeakerModel") Then
+	  myToolTip("HRS Speaker Model user was detected !! ($userName - " & $userName & ")", 150, 150, $innerFunctionLevel)
+	  If 	   StringInStr($userName, "hrsSpeakerModelStatus") Then
+		 myToolTip("HRS Speaker Model status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerModel = $phoneNumber
+		 writeIPToFile($hrsSpeakerModel, "1")
 
-    Local $UniStringLen = StringLen($UniString)
-    Local $BufferLen = $UniStringLen * 2
-    Local $Input = DllStructCreate("byte[" & $BufferLen & "]")
-    Local $Output = DllStructCreate("char[" & $BufferLen & "]")
-    DllStructSetData($Input, 1, $UniString)
-    Local $Return = DllCall("kernel32.dll", "int", "WideCharToMultiByte", _
-        "int", 65001, _
-        "int", 0, _
-        "ptr", DllStructGetPtr($Input), _
-        "int", $UniStringLen / 2, _
-        "ptr", DllStructGetPtr($Output), _
-        "int", $BufferLen, _
-        "int", 0, _
-        "int", 0)
-    Local $Utf8String = DllStructGetData($Output, 1)
-    $Output = 0
-    $Input = 0
-    Return $Utf8String
+	  ElseIf   StringInStr($userName, "hrsSpeakerModelLong") Then
+		 myToolTip("HRS Speaker Model long status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerModel = myRandomString(130)
+		 writeIPToFile($hrsSpeakerModel, "1")
+
+	  ElseIf   StringInStr($userName, "hrsSpeakerModelEmpty") Then
+		 myToolTip("HRS Speaker Model empty status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerModel = ""
+
+	  ElseIf   StringInStr($userName, "hrsSpeakerModelSpec") Then
+		 myToolTip("HRS Speaker Model speical characters status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerModel = "~!@#$%^&*()+<>,'_"
+		 writeIPToFile($hrsSpeakerModel, "1")
+
+	  EndIf
+	  $extraDot   = ","
+	  $hrsSpeakerModel  = '"HRSSpeakerModel"' & ":" & " " & '"' & $hrsSpeakerModel  & '",' & @LF
+	  myToolTip("$hrsSpeakerModel - " & $hrsSpeakerModel, 150, 150, $innerFunctionLevel)
+
+   EndIf
+
+   return $hrsSpeakerModel
+
 EndFunc
+;--------------------------------------------------------------------------------------------------
+Func getHrsSpeakerFW($userName, $phoneNumber)
 
-Func Utf82Unicode($Utf8String)
-    Local $BufferSize = StringLen($Utf8String) * 2
-    Local $Buffer = DllStructCreate("byte[" & $BufferSize & "]")
-    Local $Return = DllCall("Kernel32.dll", "int", "MultiByteToWideChar", _
-        "int", 65001, _
-        "int", 0, _
-        "str", $Utf8String, _
-        "int", StringLen($Utf8String), _
-        "ptr", DllStructGetPtr($Buffer), _
-        "int", $BufferSize)
-    Local $UnicodeString = StringLeft(DllStructGetData($Buffer, 1), $Return[0] * 2)
-    $Buffer = 0
-    Return $UnicodeString
- EndFunc
+   $hrsSpeakerFW = ""
+   If 	  StringInStr($userName, "hrsSpeakerFw") Then
+	  myToolTip("HRS Speaker FW user was detected !! ($userName - " & $userName & ")", 150, 150, $innerFunctionLevel)
 
+	  If 	   StringInStr($userName, "hrsSpeakerFwStatus") Then
+		 myToolTip("HRS Speaker FW status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerFW = $phoneNumber
+		 writeIPToFile($hrsSpeakerFW, "1")
 
- Func URLEncode($urlText)
-    $url = ""
-    For $i = 1 To StringLen($urlText)
-        $acode = Asc(StringMid($urlText, $i, 1))
-        Select
-            Case ($acode >= 48 And $acode <= 57) Or _
-                    ($acode >= 65 And $acode <= 90) Or _
-                    ($acode >= 97 And $acode <= 122)
-                $url = $url & StringMid($urlText, $i, 1)
-            Case $acode = 32
-                $url = $url & "+"
-            Case Else
-                $url = $url & "%" & Hex($acode, 2)
-        EndSelect
-    Next
-    Return $url
- EndFunc   ;==>URLEncode
+	  ElseIf   StringInStr($userName, "hrsSpeakerFwLong") Then
+		 myToolTip("HRS Speaker FW long status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerFW = myRandomString(130)
+		 writeIPToFile($hrsSpeakerFW, "1")
 
+	  ElseIf   StringInStr($userName, "hrsSpeakerFwEmpty") Then
+		 myToolTip("HRS Speaker FW empty status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerFW = ""
 
+	  ElseIf   StringInStr($userName, "hrsSpeakerFwSpec") Then
+		 myToolTip("HRS Speaker FW speical characters status was detected !!", 150, 150, $innerFunctionLevel)
+		 $hrsSpeakerFW = "~!@#$%^&*()+<>,'_"
+		 writeIPToFile($hrsSpeakerFW, "1")
 
- Func _URIEncode($sData)
-    ; Prog@ndy
-    Local $aData = StringSplit(BinaryToString(StringToBinary($sData,4),1),"")
-    Local $nChar
-    $sData=""
-    For $i = 1 To $aData[0]
-        ; ConsoleWrite($aData[$i] & @CRLF)
-        $nChar = Asc($aData[$i])
-        Switch $nChar
-            Case 45, 46, 48 To 57, 65 To 90, 95, 97 To 122, 126
-                $sData &= $aData[$i]
-            Case 32
-                $sData &= "+"
-            Case Else
-                $sData &= "%" & Hex($nChar,2)
-        EndSwitch
-    Next
-    Return $sData
-EndFunc
+	  EndIf
+	  $extraDot   = ","
+	  $hrsSpeakerFW  = '"HRSSpeakerFW"' & ":" & " " & '"' & $hrsSpeakerFW  & '",' & @LF
+	  myToolTip("$hrsSpeakerFW - " & $hrsSpeakerFW, 150, 150, $innerFunctionLevel)
 
-Func _URIDecode($sData)
-    ; Prog@ndy
-    Local $aData = StringSplit(StringReplace($sData,"+"," ",0,1),"%")
-    $sData = ""
-    For $i = 2 To $aData[0]
-        $aData[1] &= Chr(Dec(StringLeft($aData[$i],2))) & StringTrimLeft($aData[$i],2)
-    Next
-    Return BinaryToString(StringToBinary($aData[1],1),4)
+   EndIf
+
+   return $hrsSpeakerFW
+
 EndFunc

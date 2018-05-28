@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -39,12 +40,12 @@ public class Test104__alarms_icons {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test104__alarms_icons(String browser) {
+  public Test104__alarms_icons(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -162,13 +163,13 @@ public class Test104__alarms_icons {
   private void checkAlarmsViaIcon(String numOfSrcAlerts) {
 	  	
 	  // Check Alarms-Icon message-box
-	  testFuncs.myDebugPrinting("Check Alarms-Icon message-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Check Alarms-Icon message-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a"), 2000);
 	  testFuncs.searchStr(driver, "ALARMS");
 	  testFuncs.searchStr(driver, "Total: " + numOfSrcAlerts + " alarm(s)");
 	  	  
 	  // Check View-All link
-	  testFuncs.myDebugPrinting("Check View-All link", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Check View-All link", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/span[2]/a"), 10000);	  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[1]/h3", "Alarms");
   }

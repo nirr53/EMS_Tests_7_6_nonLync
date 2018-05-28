@@ -7,10 +7,10 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import static org.junit.Assert.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * This test tests the login mechanism
@@ -32,7 +32,7 @@ public class Test1__login {
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test1__login(String browser) {
+  public Test1__login(browserTypes browser) {
 	  System.out.println("Browser - "  + browser);
   }
   

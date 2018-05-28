@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +37,12 @@ public class Test29__tenant_configuration {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test29__tenant_configuration(String browser) {
+  public Test29__tenant_configuration(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -114,13 +115,13 @@ public class Test29__tenant_configuration {
 	  testFuncs.myWait(60000);
 
 	  // Select a new tenant
-	  testFuncs.myDebugPrinting("Select a new tenant (" + tenWeCopyTo + ")", testVars.logerVars.MINOR);	  
+	  testFuncs.myDebugPrinting("Select a new tenant (" + tenWeCopyTo + ")", enumsClass.logModes.MINOR);	  
 	  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	  currentTenant.selectByVisibleText(tenWeCopyTo);
 	  testFuncs.myWait(10000);
 	  
 	  // Copy values from other tenant
-	  testFuncs.myDebugPrinting("Copy values from other tenant", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Copy values from other tenant", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/button")    , 5000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[5]/div[2]/ul/li[3]/a"), 7000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Copy Configuration ( " + tenWeCopyTo + " )");

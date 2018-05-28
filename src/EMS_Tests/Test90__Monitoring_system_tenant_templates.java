@@ -12,7 +12,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -43,12 +43,12 @@ public class Test90__Monitoring_system_tenant_templates {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test90__Monitoring_system_tenant_templates(String browser) {
+  public Test90__Monitoring_system_tenant_templates(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -152,7 +152,7 @@ public class Test90__Monitoring_system_tenant_templates {
 	  testFuncs.myDebugPrinting("Step 6 - Verify that you cannot delete any Template");
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
 	  idx = getIdx("NirTemplate445");
-	  testFuncs.myDebugPrinting("idx - " + idx, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("idx - " + idx, enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='tenants1']/tbody/tr[" + idx + "]/td[8]/div/buttton[2]")							   , 3000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Template");  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
@@ -170,7 +170,7 @@ public class Test90__Monitoring_system_tenant_templates {
   // Get index of template according to its name
   private String getIdx(String tempName) throws IOException {
 	  
-	  testFuncs.myDebugPrinting("tempName - " + tempName, testVars.logerVars.MINOR);	  
+	  testFuncs.myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);	  
 	  
 	  // Get idx
 	  BufferedReader r = new BufferedReader(new StringReader(driver.findElement(By.tagName("body")).getText()));
@@ -178,10 +178,10 @@ public class Test90__Monitoring_system_tenant_templates {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
 		  if (l.contains(tempName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {

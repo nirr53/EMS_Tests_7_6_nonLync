@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -39,12 +39,12 @@ public class Test96__template_features {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test96__template_features(String browser) {
+  public Test96__template_features(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -128,13 +128,13 @@ public class Test96__template_features {
   private void addPinLockValue(WebDriver driver, String prefix, Boolean isLock) {
 	  
 	  // Add PIN lock value
-	  testFuncs.myDebugPrinting("Add PIN lock value", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Add PIN lock value", enumsClass.logModes.NORMAL);  
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[1]/button"), 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='pinlock']")															   , 3000);	
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Pin Lock");
 	  if (isLock) {
 		  
-		  testFuncs.myDebugPrinting("isLock - TRUE", testVars.logerVars.MINOR);
+		  testFuncs.myDebugPrinting("isLock - TRUE", enumsClass.logModes.MINOR);
 		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
 	  }  
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
@@ -143,7 +143,7 @@ public class Test96__template_features {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
 
 	  // Verify create
-	  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, prefix);
 	  String valueForsearch = "0";
 	  if (isLock) { valueForsearch = "1"; }
@@ -159,10 +159,10 @@ public class Test96__template_features {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
 		  if (l.contains(tempName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {
@@ -178,7 +178,7 @@ public class Test96__template_features {
   private void addDayLightValue(WebDriver driver, String site, String tenant) {
 	  
 	  // Add daylight values
-	  testFuncs.myDebugPrinting("Add daylight values", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Add daylight values", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[1]/button"), 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='daylight']")															 , 3000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Daylight Savings Time");
@@ -188,7 +188,7 @@ public class Test96__template_features {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
 	  
 	  // Verify that all the values were added
-	  testFuncs.myDebugPrinting("Verify that all the values were added", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Verify that all the values were added", enumsClass.logModes.NORMAL);
 	  String dayLightValues[] = {"system/daylight_saving/activate"			  , "system/daylight_saving/end_date/day" 		   ,
 			  					 "system/daylight_saving/end_date/day_of_week", "system/daylight_saving/end_date/hour"		   ,
 			  					 "system/daylight_saving/end_date/month"	  , "system/daylight_saving/end_date/week"		   ,
@@ -202,7 +202,7 @@ public class Test96__template_features {
 	  int dayLightValuesNumber = dayLightValues.length;
 	  for (int i = 0; i < dayLightValuesNumber; ++i) {
 		  
-		  testFuncs.myDebugPrinting(i + ". The searched value is: " + dayLightValues[i], testVars.logerVars.MINOR);
+		  testFuncs.myDebugPrinting(i + ". The searched value is: " + dayLightValues[i], enumsClass.logModes.MINOR);
 		  testFuncs.searchStr(driver, dayLightValues[i]);	  
 		  testFuncs.myWait(3000); 
 	  }  
@@ -212,13 +212,13 @@ public class Test96__template_features {
   private void addTelnetAccessValue(WebDriver driver, String prefix, boolean isTelnetAccess) {
 	  
 	  // Add Telnet-Access value
-	  testFuncs.myDebugPrinting("Add Telnet-Access value", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Add Telnet-Access value", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[1]/button"), 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='telnet']")															   , 3000);	
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Activate Telnet access");
 	  if (isTelnetAccess) {
 		  
-		  testFuncs.myDebugPrinting("isTelnetAccess - TRUE", testVars.logerVars.MINOR);
+		  testFuncs.myDebugPrinting("isTelnetAccess - TRUE", enumsClass.logModes.MINOR);
 		  testFuncs.myClick(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);
 	  }
 	  
@@ -228,7 +228,7 @@ public class Test96__template_features {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	
   
 	  // Verify create
-	  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, prefix);
 	  String valueForsearch = "0";
 	  if (isTelnetAccess) { valueForsearch = "1"; }
@@ -239,7 +239,7 @@ public class Test96__template_features {
   private void deleteAllConfValues(WebDriver driver, String prefix) {
 
 	  // Delete all Configuration values
-	  testFuncs.myDebugPrinting("Delete all Configuration values", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Delete all Configuration values", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[2]/button")    , 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[2]/ul/li[1]/a"), 3000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration settings");
@@ -252,7 +252,7 @@ public class Test96__template_features {
 	   testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	
 
 	  // verify delete
-	  testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);
 	  String txt = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("All tenant configuration values were not delete successfully !!\ntxt - " + txt, !txt.contains(prefix));
   }

@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -38,12 +39,12 @@ public class Test129__export_private_template_placeholder {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test129__export_private_template_placeholder(String browser) {
+  public Test129__export_private_template_placeholder(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -130,7 +131,7 @@ public class Test129__export_private_template_placeholder {
   private void addCfg(String id) {
 	  
 	  String tempStr = "%ITCS_P_" + id + "%";
-	  testFuncs.myDebugPrinting("tempStr - " + tempStr, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("tempStr - " + tempStr, enumsClass.logModes.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , id		, 3000);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), tempStr, 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[3]/a/span"), 3000);
@@ -148,10 +149,10 @@ public class Test129__export_private_template_placeholder {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
 		  if (l.contains(tempName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {

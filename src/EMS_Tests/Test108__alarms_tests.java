@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +38,12 @@ public class Test108__alarms_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test108__alarms_tests(String browser) {
+  public Test108__alarms_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -117,7 +118,7 @@ public class Test108__alarms_tests {
 															  "minor");
 		
 	// Search the alerts according to their description
-	testFuncs.myDebugPrinting("Search the alerts according to their description", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, "Description", alertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create an alarm with different special characters
@@ -130,10 +131,10 @@ public class Test108__alarms_tests {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");
 	
 	// Create alarms with different sets of characters
-	testFuncs.myDebugPrinting("Create alarms with different sets of characters", testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Create alarms with different sets of characters", enumsClass.logModes.MINOR);
 	for (int i = 0; i < 4; ++i) {
 		
-		testFuncs.myDebugPrinting("alertsForSearch2[i] - " + alertsForSearch2[i], testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("alertsForSearch2[i] - " + alertsForSearch2[i], enumsClass.logModes.MINOR);
 		testFuncs.createAlarmViaPost(testVars.getAlarmsBatName()					,
 									 testVars.getIp()  								,						
 									 testVars.getPort()								,
@@ -147,7 +148,7 @@ public class Test108__alarms_tests {
 		
 		// Search the created alert
 		String[] searchedAlerts = {alertsForSearch2[i]};
-		testFuncs.myDebugPrinting("Search the created alert", testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Search the created alert", enumsClass.logModes.MINOR);
 		testFuncs.searchAlarm(driver, "Description", alertPrefix2  , searchedAlerts);
 	}
 	
@@ -155,7 +156,7 @@ public class Test108__alarms_tests {
 	testFuncs.myDebugPrinting("Step 3 - Delete the created alarms");
 	for (int i = 0; i < 4; ++i) {
 		
-		testFuncs.myDebugPrinting("Delete alert " +  alertsForSearch2[i], testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Delete alert " +  alertsForSearch2[i], enumsClass.logModes.MINOR);
 		testFuncs.deleteAlarm(driver, alertsForSearch2[i]);	
 	}
 	

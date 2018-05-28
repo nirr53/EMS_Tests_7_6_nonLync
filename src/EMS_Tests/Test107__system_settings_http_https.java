@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -42,12 +43,12 @@ public class Test107__system_settings_http_https {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test107__system_settings_http_https(String browser) {
+  public Test107__system_settings_http_https(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -168,11 +169,11 @@ public class Test107__system_settings_http_https {
   private void openWebAdminDevice(String prefix) {
 	  
 	  // Open Web Admin
-	  testFuncs.myDebugPrinting("Open Web Admin of device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Open Web Admin of device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);
 	  String ip = testFuncs.readFile("ip_1.txt");
-	  testFuncs.myDebugPrinting("ip - " + ip, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
 	  String parentHandle = driver.getWindowHandle();
 	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
 	  driver.switchTo().window((String) tabs.get(1));
@@ -180,7 +181,7 @@ public class Test107__system_settings_http_https {
 	
 	  // Verify the url used the given http prefix (http or https)
 	  String url = driver.getCurrentUrl();
-	  testFuncs.myDebugPrinting("url - " + url, testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("url - " + url, enumsClass.logModes.MINOR); 
 	  if (prefix.equals("http")) {
 		  
 		  testFuncs.myAssertTrue("URL was not opened in http format !!", url.contains("http://" + ip) || url.contains("about:blank"));
@@ -197,7 +198,7 @@ public class Test107__system_settings_http_https {
   private void searchAndSelectDevice(WebDriver driver, String userName) {
 	  
 	  // Search device
-	  testFuncs.myDebugPrinting("Search device", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
@@ -205,7 +206,7 @@ public class Test107__system_settings_http_https {
 	  testFuncs.searchStr(driver, userName.trim());
 	  
 	  // Select the searched device via check Select-All check-box
-	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='table']/tbody[1]/tr/td[2]/input"), 3000);  
   }
   
@@ -217,21 +218,21 @@ public class Test107__system_settings_http_https {
 	  WebElement openWebAdminHttps = driver.findElement(By.xpath("//*[@id='using_https_open_web']"));
 	  if (isHttps) {
 		  		
-		  testFuncs.myDebugPrinting("isHttps - true, check all checkboxes", testVars.logerVars.MINOR);
+		  testFuncs.myDebugPrinting("isHttps - true, check all checkboxes", enumsClass.logModes.MINOR);
 		  if (!devHttps.isSelected()) 		   { devHttps.click();   		}
 		  if (!confHttps.isSelected())         { confHttps.click();         }
 		  if (!openWebAdminHttps.isSelected()) { openWebAdminHttps.click(); }
 		   
 	  } else {
 		  
-		  testFuncs.myDebugPrinting("isHttps - false, uncheck all checkboxes", testVars.logerVars.MINOR); 
+		  testFuncs.myDebugPrinting("isHttps - false, uncheck all checkboxes", enumsClass.logModes.MINOR); 
 		  if (devHttps.isSelected()) 		  { devHttps.click();   	   }
 		  if (confHttps.isSelected())         { confHttps.click();         }
 		  if (openWebAdminHttps.isSelected()) { openWebAdminHttps.click(); }	  
 	  }
 	  
 	  // Submit
-	  testFuncs.myDebugPrinting("Submit", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Submit", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 10000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");

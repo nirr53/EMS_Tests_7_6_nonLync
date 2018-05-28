@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -31,14 +31,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test8__delete_devices_tests {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test8__delete_devices_tests(String browser) {
+  public Test8__delete_devices_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -101,7 +101,7 @@ public class Test8__delete_devices_tests {
 	testFuncs.myDebugPrinting("Step 1 - delete one of the user devices");
 	testFuncs.searchUser(driver, userName); 
 	String deletedDevice = driver.findElement(By.xpath("//*[@id='tr" + userName + "device']/td[2]/table/tbody/tr[1]/td/div/table/tbody/tr[4]/td[2]")).getText();
-	testFuncs.myDebugPrinting("deletedDevice  " + deletedDevice, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("deletedDevice  " + deletedDevice, enumsClass.logModes.MINOR);
 	testFuncs.myClick(driver, By.xpath("//*[@id='"+ userName + "tree']")															  , 2000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='tr" + userName + "device']/td[2]/table/tbody/tr[1]/td/div/table/tbody/tr[5]/td/a[2]"), 2000);
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete device?");

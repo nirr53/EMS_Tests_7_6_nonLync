@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,14 +37,14 @@ public class Test126__timeout {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   Map<String, String> 	map;
   String 				userName;
   
   // Default constructor for print the name of the used browser 
-  public Test126__timeout(String browser) {
+  public Test126__timeout(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -132,7 +133,7 @@ public class Test126__timeout {
 	
     // Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive
 	testFuncs.myDebugPrinting("Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive");
-	testFuncs.myDebugPrinting("Wait for <"  + ((timeoutInt - 1) * 61 * 1000) + "> milli-seconds" , testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Wait for <"  + ((timeoutInt - 1) * 61 * 1000) + "> milli-seconds" , enumsClass.logModes.MINOR);
 	testFuncs.myWait((timeoutInt - 1) * 61 * 1000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 5000);
 	String classTxt = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[7]/i")).getAttribute("class");
@@ -140,7 +141,7 @@ public class Test126__timeout {
 	
 	// Step 2 - Verify that the user is disconnect after 180 (3 minutes) seconds from the the last keep-alive
 	testFuncs.myDebugPrinting("Step 2 - Verify that the user is disconnect after 180 (3 minutes) seconds from the the last keep-alive");	
-	testFuncs.myDebugPrinting("Wait for <"  + (1 * 61 * 1000) + "> milli-seconds" , testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("Wait for <"  + (1 * 61 * 1000) + "> milli-seconds" , enumsClass.logModes.MINOR);
 	testFuncs.myWait(1 * 61 * 1000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 5000);
 	classTxt = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[7]/i")).getAttribute("class");

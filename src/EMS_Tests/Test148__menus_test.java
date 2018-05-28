@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -28,14 +29,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test148__menus_test {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test148__menus_test(String browser) {
+  public Test148__menus_test(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -115,8 +116,8 @@ public class Test148__menus_test {
 	for (String[] menuData : menuNames) {
 		
 		testFuncs.pressHomeButton(driver);
-		testFuncs.myDebugPrinting(menuIdx + ".Enter menu - "      + menuData[0], testVars.logerVars.NORMAL);
-		testFuncs.myDebugPrinting(menuIdx + ".Seek for header - " + menuData[1], testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting(menuIdx + ".Enter menu - "      + menuData[0], enumsClass.logModes.NORMAL);
+		testFuncs.myDebugPrinting(menuIdx + ".Seek for header - " + menuData[1], enumsClass.logModes.MINOR);
 		testFuncs.enterMenu(driver, menuData[0], menuData[1]);
 		menuIdx++;
 	}

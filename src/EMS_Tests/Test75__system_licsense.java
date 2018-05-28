@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -30,12 +30,12 @@ public class Test75__system_licsense {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test75__system_licsense(String browser) {
+  public Test75__system_licsense(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -87,7 +87,7 @@ public class Test75__system_licsense {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='license_prop_body']/tr[3]/td[2]"				   						   , "Number of devices");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='license_prop_body']/tr[1]/td[3]"				   						   , "Enable");
 	  String numDays = driver.findElement(By.xpath("//*[@id='license_prop_body']/tr[2]/td[3]")).getText();
-	  testFuncs.myDebugPrinting("Number of days - " + numDays, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Number of days - " + numDays, enumsClass.logModes.MINOR);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='license_prop_body']/tr[1]/td[4]"				   						   , "License status");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='license_prop_body']/tr[2]/td[4]"				   						   , "Days left until license expires");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='license_prop_body']/tr[3]/td[4]"				   						   , "Total number of devices");	  

@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 *----------------
@@ -39,12 +40,12 @@ public class Test12__import_users_devices_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test12__import_users_devices_tests(String browser) {
+  public Test12__import_users_devices_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -155,7 +156,7 @@ public class Test12__import_users_devices_tests {
 		String tempName = prefixUser + "_" + tempIdx + "@" + testVars.getDomain() + " Added"; 
 		if (bodyText.contains(tempName)) {
 			  
-			testFuncs.myDebugPrinting("<" + tempName + "> was detected !!",  testVars.logerVars.MINOR);
+			testFuncs.myDebugPrinting("<" + tempName + "> was detected !!",  enumsClass.logModes.MINOR);
 		  
 		} else {
 			
@@ -180,7 +181,7 @@ public class Test12__import_users_devices_tests {
 		String tempName = prefixUser + "_" + tempIdx + "@" + testVars.getDomain() + " Finished"; 
 		if (bodyText.contains(tempName)) {
 			  
-			testFuncs.myDebugPrinting("<" + tempName + "> was detected !!",  testVars.logerVars.MINOR);
+			testFuncs.myDebugPrinting("<" + tempName + "> was detected !!",  enumsClass.logModes.MINOR);
 		  
 		} else {
 			

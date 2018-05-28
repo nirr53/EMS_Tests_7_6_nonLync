@@ -10,7 +10,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -38,12 +38,12 @@ public class Test41__Monitoring_phone_firmware_files {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test41__Monitoring_phone_firmware_files(String browser) {
+  public Test41__Monitoring_phone_firmware_files(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -124,11 +124,11 @@ public class Test41__Monitoring_phone_firmware_files {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.DEBUG);
-		  testFuncs.myDebugPrinting(l		  , testVars.logerVars.DEBUG);  
+		  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.DEBUG);
+		  testFuncs.myDebugPrinting(l		  , enumsClass.logModes.DEBUG);  
 		  if (l.contains(firmName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {

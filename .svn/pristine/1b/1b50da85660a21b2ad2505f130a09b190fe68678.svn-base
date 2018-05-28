@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,12 +32,12 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test35__upload_conf_files_with_invalid_suffix(String browser) {
+  public Test35__upload_conf_files_with_invalid_suffix(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -142,7 +142,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  testFuncs.myWait(3000);
 	  
 	  // Try to upload a non-cfg to the created Template
-	  testFuncs.myDebugPrinting("Try to upload a non-cfg to the created Template", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Try to upload a non-cfg to the created Template", enumsClass.logModes.MINOR);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[7]/td[2]/a")).click();
 	  testFuncs.myWait(3000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='title']", "Upload IP Phone Template");
@@ -155,7 +155,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	  testFuncs.myWait(3000);
 	  
 	  // Return to the Templates menu and delete the created Template
-	  testFuncs.myDebugPrinting("Return to the Templates menu and delete the created Template", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Return to the Templates menu and delete the created Template", enumsClass.logModes.MINOR);
 	  driver.switchTo().defaultContent();
 	  driver.findElement(By.xpath("//*[@id='tree_tab']/tbody/tr[3]/td/div/ul/li[4]/ul/li[1]/a")).click();
 	  driver.switchTo().frame(1);

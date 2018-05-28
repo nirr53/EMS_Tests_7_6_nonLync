@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -35,12 +35,12 @@ public class Test62__Monitoring_export_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test62__Monitoring_export_tests(String browser) {
+  public Test62__Monitoring_export_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -77,7 +77,7 @@ public class Test62__Monitoring_export_tests {
   public void Monitoring_export_users() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 
 	    // Login via a Monitoring user (System)
 		testFuncs.myDebugPrinting("Login via a Monitoring user (System)");

@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -30,12 +31,12 @@ public class Test132__timeout {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
 
   // Default constructor for print the name of the used browser 
-  public Test132__timeout(String browser) {
+  public Test132__timeout(browserTypes browser) {
 	  
 	  Log.info("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -82,14 +83,14 @@ public class Test132__timeout {
 	for (int i = 0; i < 900; ++i) {
 		
 		testFuncs.myWait(1000);
-	    testFuncs.myDebugPrinting("Wait for " + i + " seconds !!", testVars.logerVars.MINOR);
+	    testFuncs.myDebugPrinting("Wait for " + i + " seconds !!", enumsClass.logModes.MINOR);
 	}
 	
 	// Step 1 - try to enter one of the system menus and verify that you logged of the system
     testFuncs.myDebugPrinting("Step 1 - try to enter one of the system menus and verify that you logged of the system");
 	
 	String bodyText = driver.findElement(By.tagName("body")).getText();
-	testFuncs.myDebugPrinting("bodyText - \n" + bodyText, testVars.logerVars.MAJOR);
+	testFuncs.myDebugPrinting("bodyText - \n" + bodyText, enumsClass.logModes.MAJOR);
 	if (!bodyText.contains(testVars.getMainPageStr())) {
 		
 		testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[1]/li[2]/a"), 7000); 

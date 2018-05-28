@@ -12,6 +12,8 @@ import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import EMS_Tests.enumsClass.browserTypes;
+
 /**
 * ----------------
 * This test tests the multiple device actions via an Operation user (tenant)
@@ -43,12 +45,12 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test72__Operation_tenant_multi_devices_actions(String browser) {
+  public Test72__Operation_tenant_multi_devices_actions(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -144,7 +146,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	String resModes[] = {"Graceful", "Force", "Scheduled"};
 	for (String resMode : resModes) {
 		
-		testFuncs.myDebugPrinting("resMode - " + resMode, testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("resMode - " + resMode, enumsClass.logModes.NORMAL);
 		testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
 	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetIpPhones");
@@ -214,7 +216,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	String vlanModes[] = {"Disabled", "Manual Configuration", "Automatic - CDP", "Automatic - LLDP", "Automatic - CDP LLDP"};
 	for (String vlanMode : vlanModes) {
 
-		testFuncs.myDebugPrinting("vlanMode - " + vlanMode, testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("vlanMode - " + vlanMode, enumsClass.logModes.NORMAL);
 		testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
 	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeVlan");

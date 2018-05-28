@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -30,12 +31,12 @@ public class Test2__invalid_login {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test2__invalid_login(String browser) {
+  public Test2__invalid_login(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -73,17 +74,17 @@ public class Test2__invalid_login {
 	
 	Log.startTestCase(this.getClass().getName());
 	  
-//    // Step 2.1 - invalid login - valid username + invalid password
-//	testFuncs.myDebugPrinting("Step 2.1 - invalid login - valid username + invalid password");
-//	invalidLogin(driver, testVars.getSysMainStr(), 0, this.usedBrowser, "https://");
-//	
-//    // Step 2.2 - invalid login - invalid username + valid password
-//	testFuncs.myDebugPrinting("Step 2.2 - invalid login - invalid username + valid password");
-//	invalidLogin(driver, testVars.getSysMainStr(), 1, this.usedBrowser, "https://");
-//	
-//    // Step 2.3 - invalid login - invalid username + invalid password
-//	testFuncs.myDebugPrinting("Step 2.3 - invalid login - invalid username + invalid password");
-//	invalidLogin(driver, testVars.getSysMainStr(), 2, this.usedBrowser, "https://");
+    // Step 2.1 - invalid login - valid username + invalid password
+	testFuncs.myDebugPrinting("Step 2.1 - invalid login - valid username + invalid password");
+	invalidLogin(driver, testVars.getSysMainStr(), 0, "https://");
+	
+    // Step 2.2 - invalid login - invalid username + valid password
+	testFuncs.myDebugPrinting("Step 2.2 - invalid login - invalid username + valid password");
+	invalidLogin(driver, testVars.getSysMainStr(), 1, "https://");
+	
+    // Step 2.3 - invalid login - invalid username + invalid password
+	testFuncs.myDebugPrinting("Step 2.3 - invalid login - invalid username + invalid password");
+	invalidLogin(driver, testVars.getSysMainStr(), 2, "https://");
   }
   
   /**
@@ -91,21 +92,20 @@ public class Test2__invalid_login {
   *  @param driver  - Given driver for make all tasks
   *  @param mainStr - Given string for verify bad access
   *  @param i       - Integer to mark the tested test
-  *  @param brwType	- Browser type (Chrome, IE or FF)
+  *  @param usedBrowser.IE !	- Browser type (Chrome, IE or FF)
   *  @param httpStr - Browser type (http or https)
   */
-  private void invalidLogin(WebDriver driver, String mainStr, int i, String brwType, String httpStr) {
+  private void invalidLogin(WebDriver driver, String mainStr, int i, String httpStr) {
         
       String title = driver.getTitle();
-	  testFuncs.myDebugPrinting("1. title - "   	    + title  			 ,testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("1. title - "   	    + title  			 ,enumsClass.logModes.MINOR);
       driver.get("https://" + testVars.getUrl());
       
       // Special login for IE browser
-      if (brwType.equals("IE") && title.equals("WebDriver") && httpStr.equals("https://")) {
+      if (browserTypes.IE != null && title.equals("WebDriver") && httpStr.equals("https://")) {
     	  
     	  driver.findElement(By.xpath("//a[@id='overridelink']")).click();
-    	  testFuncs.myWait(5000);
-    	  
+    	  testFuncs.myWait(5000);	  
       }
      
 	  testFuncs.searchStr(driver, testVars.getMainPageStr());  

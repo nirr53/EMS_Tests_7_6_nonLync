@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -39,12 +39,12 @@ public class Test67__DHCP_Option_configuration {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test67__DHCP_Option_configuration(String browser) {
+  public Test67__DHCP_Option_configuration(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -83,7 +83,7 @@ public class Test67__DHCP_Option_configuration {
 	  
 	  String strForEdit = "ems_server/keep_alive_period=" + testFuncs.getId();
 	  String uploadStr  = "1234";
-	  testFuncs.myDebugPrinting("strForEdit - " + strForEdit, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("strForEdit - " + strForEdit, enumsClass.logModes.MINOR);
 	  Log.startTestCase(this.getClass().getName());
 	  
 	  // Enter System settings and DHCP option configuration menu
@@ -133,7 +133,7 @@ public class Test67__DHCP_Option_configuration {
 
   private void uploadDHCPConfigurationTemplate(WebDriver driver, String filePath, String uploadStr) throws UnsupportedFlavorException, IOException {
 	  
-	  testFuncs.myDebugPrinting("filePath - " + filePath, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("filePath - " + filePath, enumsClass.logModes.MINOR);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[4]/td[2]/a")).click();
 	  testFuncs.myWait(1000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='title']"								   , "Upload IP Phone Template");
@@ -147,7 +147,7 @@ public class Test67__DHCP_Option_configuration {
 	  testFuncs.myWait(2000);
 	  
 	  // Verify upload
-	  testFuncs.myDebugPrinting("Verify upload", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify upload", enumsClass.logModes.MINOR);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[2]/td[2]/a")).click();
 	  testFuncs.myWait(1000);
 	  driver.findElement(By.xpath("//*[@id='templateDiv']/textarea")).click();
@@ -170,7 +170,7 @@ public class Test67__DHCP_Option_configuration {
 	  testFuncs.myWait(1000);
 	  
 	  // Verify reset
-	  testFuncs.myDebugPrinting("Verify reset", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify reset", enumsClass.logModes.MINOR);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[2]/td[2]/a")).click();
 	  testFuncs.myWait(1000);
 	  driver.findElement(By.xpath("//*[@id='templateDiv']/textarea")).click();
@@ -197,7 +197,7 @@ public class Test67__DHCP_Option_configuration {
 	  testFuncs.myWait(1000);
 	    
 	  // Verify edit
-	  testFuncs.myDebugPrinting("Verify edit", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/table/tbody/tr/td/table/tbody/tr[2]/td[2]/a")).click();
 	  testFuncs.myWait(1000);
 	  driver.findElement(By.xpath("//*[@id='templateDiv']/textarea")).click();

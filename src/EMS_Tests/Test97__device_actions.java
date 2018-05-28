@@ -11,6 +11,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -42,12 +43,12 @@ public class Test97__device_actions {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test97__device_actions(String browser) {
+  public Test97__device_actions(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -165,7 +166,7 @@ public class Test97__device_actions {
   private void deleteDevice(String deviceName) {
 	  
 	  // Delete device
-	  testFuncs.myDebugPrinting("Delete device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Delete device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='delete']")   , 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete IP Phones Status");  
@@ -173,7 +174,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify delete
-	  testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ") Finished");
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/button[1]"), 7000);
 	  String txt = driver.findElement(By.tagName("body")).getText();
@@ -184,7 +185,7 @@ public class Test97__device_actions {
   private void checktelnet(String deviceName, String command) {
 	  
 	  // Check Telnet
-	  testFuncs.myDebugPrinting("Check Telnet", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Check Telnet", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='telnet']")   , 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Telnet");
@@ -199,7 +200,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");
   }
 
@@ -207,7 +208,7 @@ public class Test97__device_actions {
   private void sendMessage(String deviceName) {
 
 	  // Send message
-	  testFuncs.myDebugPrinting("Update device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Update device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='sendMsg']")   , 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Send Message");
@@ -217,7 +218,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");
   }
 
@@ -225,7 +226,7 @@ public class Test97__device_actions {
   private void updateDevice(String deviceName) {
 
 	  // Update device configuration
-	  testFuncs.myDebugPrinting("Update device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Update device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='updateConfig']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update IPP IP-Phones Configuration");
@@ -233,7 +234,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000); 
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");
 
   }
@@ -242,7 +243,7 @@ public class Test97__device_actions {
   private void generateDevice(String deviceName) {
 	  
 	  // Generate device configuration
-	  testFuncs.myDebugPrinting("Generate device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Generate device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='generateConfiguration']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
@@ -253,7 +254,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");  
   }
 
@@ -261,7 +262,7 @@ public class Test97__device_actions {
   private void resetDevice(String deviceName) {
 	  
 	  // Reset device
-	  testFuncs.myDebugPrinting("Reset device", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Reset device", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='resetIPP']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart IP-Phones");
@@ -269,7 +270,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");    
   }
 
@@ -277,7 +278,7 @@ public class Test97__device_actions {
   private void updateDeviceFirmware(String deviceName, String firmware) {
 	  
 	  // Change device firmware
-	  testFuncs.myDebugPrinting("Change device firmware", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Change device firmware", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='updateFirmware']"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Firmware");
@@ -287,7 +288,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ") Finished");    
   }
 
@@ -295,7 +296,7 @@ public class Test97__device_actions {
   private void changeDeviceTenant(String deviceName, String nonDefTenant) {
 
 	  // Change device tenant
-	  testFuncs.myDebugPrinting("Change device tenant", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Change device tenant", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu1']/a")  , 5000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='changeTenant']"), 5000);  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Tenant");
@@ -305,7 +306,7 @@ public class Test97__device_actions {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName);  
   }
 
@@ -313,7 +314,7 @@ public class Test97__device_actions {
   private void searchAndSelectDevice(WebDriver driver, String userName) {
 	  
 	  // Search device
-	  testFuncs.myDebugPrinting("Search device", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	  
@@ -322,7 +323,7 @@ public class Test97__device_actions {
 	  testFuncs.myWait(5000);
 	  
 	  // Select the searched device via check Select-All check-box
-	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='selectall']"), 3000);	  
   }
 

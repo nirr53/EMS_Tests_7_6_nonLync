@@ -12,8 +12,8 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -43,12 +43,12 @@ public class Test128__template_exisiting_configuration_and_ph {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test128__template_exisiting_configuration_and_ph(String browser) {
+  public Test128__template_exisiting_configuration_and_ph(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -153,7 +153,7 @@ public class Test128__template_exisiting_configuration_and_ph {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);					  
 
 	  // Verify edit
-	  testFuncs.myDebugPrinting("Verify edit", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, confName);
 	  testFuncs.searchStr(driver, newConfValue); 
   }
@@ -170,7 +170,7 @@ public class Test128__template_exisiting_configuration_and_ph {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);				
 
 	  // Verify create
-	  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, confName);
 	  testFuncs.searchStr(driver, confValue);  
   }
@@ -184,10 +184,10 @@ public class Test128__template_exisiting_configuration_and_ph {
 	  int i = 1;
 	  while ((l = r.readLine()) != null) {
 		  
-		  testFuncs.myDebugPrinting("i - " + i + " " + l, testVars.logerVars.DEBUG);
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
 		  if (l.contains(tempName)) {
 			  
-			  testFuncs.myDebugPrinting("i - " + i, testVars.logerVars.MINOR);
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
 			  break;
 		  }
 		  if (l.contains("Edit" )) {

@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +38,12 @@ public class Test118__user_configuration_features {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test118__user_configuration_features(String browser) {
+  public Test118__user_configuration_features(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -144,17 +145,17 @@ public class Test118__user_configuration_features {
 	  if (isSelectAll) {
 		  
 		  if ( driver.findElement(By.xpath("//*[@id='voip_common_area_is_cap_device']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("Web sign-in will use the CAP web sign-in method is checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("Web sign-in will use the CAP web sign-in method is checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='voip_common_area_is_cap_device']"), 1000);		  	  
 		  }
 		  if ( driver.findElement(By.xpath("//*[@id='lync_corporate_directory_enabled']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("Enable Corporate Directory is checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("Enable Corporate Directory is checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='lync_corporate_directory_enabled']"), 1000);		  	  
 		  }
 		  if ( driver.findElement(By.xpath("//*[@id='lync_userSetting_prevent_user_sign_out']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("No sign out option from status screen is checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("No sign out option from status screen is checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='lync_userSetting_prevent_user_sign_out']"), 1000);		  	  
 		  }
@@ -168,7 +169,7 @@ public class Test118__user_configuration_features {
 		  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")	   			   , 1000);
 	  
 		  // Verify create
-		  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);			
+		  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);			
 		  testFuncs.searchStr(driver, "voip_common_area_is_cap_device 1");
 		  testFuncs.searchStr(driver, "lync_corporate_directory_enabled 1");
 		  testFuncs.searchStr(driver, "lync_userSetting_prevent_user_sign_out 1");		
@@ -182,17 +183,17 @@ public class Test118__user_configuration_features {
 	  } else {
 		  
 		  if (!driver.findElement(By.xpath("//*[@id='voip_common_area_is_cap_device']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("Web sign-in will use the CAP web sign-in method is not checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("Web sign-in will use the CAP web sign-in method is not checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='voip_common_area_is_cap_device']"), 1000);		  	  
 		  }
 		  if (!driver.findElement(By.xpath("//*[@id='lync_corporate_directory_enabled']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("Enable Corporate Directory is not checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("Enable Corporate Directory is not checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='lync_corporate_directory_enabled']"), 1000);		  	  
 		  }
 		  if (!driver.findElement(By.xpath("//*[@id='lync_userSetting_prevent_user_sign_out']")).isSelected()) {	  
-			  testFuncs.myDebugPrinting("No sign out option from status screen is not checked !!", testVars.logerVars.MINOR);			
+			  testFuncs.myDebugPrinting("No sign out option from status screen is not checked !!", enumsClass.logModes.MINOR);			
 		  } else {	  
 			  testFuncs.myClick(driver, By.xpath("//*[@id='lync_userSetting_prevent_user_sign_out']"), 1000);		  	  
 		  }
@@ -200,7 +201,7 @@ public class Test118__user_configuration_features {
 
 	  
 		  // Verify create
-		  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);			
+		  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);			
 		  testFuncs.searchStr(driver, "voip_common_area_is_cap_device 0");
 		  testFuncs.searchStr(driver, "lync_corporate_directory_enabled 0");	
 		  testFuncs.searchStr(driver, "lync_userSetting_prevent_user_sign_out 0");		
@@ -222,13 +223,13 @@ public class Test118__user_configuration_features {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']", "Pin Lock");
 	  if (isAddPInAccess) {
 		  
-		  testFuncs.myDebugPrinting("isAddPInAccess - true", testVars.logerVars.MINOR);			
+		  testFuncs.myDebugPrinting("isAddPInAccess - true", enumsClass.logModes.MINOR);			
 		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);		
 	  }
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);
 	
 	  // Verify create	
-	  testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 	  if (isAddPInAccess) {
 			 
 		testFuncs.searchStr(driver, "system_pin_lock_enabled 1");
@@ -259,13 +260,13 @@ public class Test118__user_configuration_features {
 		testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']", "Activate Telnet access");
 		if (isActivateTelnetAccess) {
 					 
-			testFuncs.myDebugPrinting("isActivateTelnetAccess - true", testVars.logerVars.MINOR);	
+			testFuncs.myDebugPrinting("isActivateTelnetAccess - true", enumsClass.logModes.MINOR);	
 			testFuncs.myClick(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);	
 		}
 		testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);
 
 		// Verify create
-		testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 		if (isActivateTelnetAccess) {
 			 
 			testFuncs.searchStr(driver, "management_telnet_enabled 1");
@@ -284,7 +285,7 @@ public class Test118__user_configuration_features {
 		testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							  , 3000);
 		
 		// Verify create
-		testFuncs.myDebugPrinting("Verify create", testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
 		testFuncs.searchStr(driver, "system_daylight_saving_activate ENABLE");
 		testFuncs.searchStr(driver, "system_daylight_saving_mode FIXED");
 		testFuncs.searchStr(driver, "system_daylight_saving_offset 60");

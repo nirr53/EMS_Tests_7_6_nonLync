@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,7 +36,7 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test5__add_user_tests {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
@@ -45,7 +45,7 @@ public class Test5__add_user_tests {
   String 				Id, prefix;
   
   // Default constructor for print the name of the used browser 
-  public Test5__add_user_tests(String browser) {
+  public Test5__add_user_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;

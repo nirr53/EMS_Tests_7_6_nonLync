@@ -14,8 +14,8 @@ package EMS_Tests;
 //import org.apache.http.params.HttpParams;
 //import org.apache.http.protocol.BasicHttpContext;
 //import org.eclipse.jetty.http.HttpMethod;
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+//import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 // 
 //import java.io.File;
 //import java.io.IOException;

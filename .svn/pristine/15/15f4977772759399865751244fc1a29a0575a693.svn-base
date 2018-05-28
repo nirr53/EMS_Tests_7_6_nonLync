@@ -2,8 +2,8 @@ package EMS_Tests;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 public class GlobalStrings {
 	
 	

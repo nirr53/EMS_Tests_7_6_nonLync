@@ -10,7 +10,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test14__search_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test14__search_tests(String browser) {
+  public Test14__search_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -113,7 +113,7 @@ public class Test14__search_tests {
 	for (int i = 1; i < lim ; ++i) {
 		
 		String currUser = srcUserName + "_" + i;
-		testFuncs.myDebugPrinting("Search for user: " + currUser, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("Search for user: " + currUser, enumsClass.logModes.MINOR);
 		if (!bodyText.contains(currUser)) {
 			
 			testFuncs.myFail("User <" + currUser + "> was not detected via search !!");

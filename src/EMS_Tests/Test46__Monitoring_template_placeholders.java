@@ -8,7 +8,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -42,12 +42,12 @@ public class Test46__Monitoring_template_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test46__Monitoring_template_placeholders(String browser) {
+  public Test46__Monitoring_template_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -153,7 +153,7 @@ public class Test46__Monitoring_template_placeholders {
   // Try to delete a Template PH via a Monitoring user
   private void deleteTemplatePHMonitoring(WebDriver driver) {
 	
-	  testFuncs.myDebugPrinting("Try to delete a Template PH via a Monitoring user", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Try to delete a Template PH via a Monitoring user", enumsClass.logModes.NORMAL);  
 	  String deleteButton = driver.findElement(By.xpath("//*[@id='tenants1']/tbody/tr[1]/td[6]/a[2]")).getAttribute("class");
 	  testFuncs.myAssertTrue("Delete button is not deactivated !!\ndeleteButton - " + deleteButton, deleteButton.contains("not-active"));
   }
@@ -161,7 +161,7 @@ public class Test46__Monitoring_template_placeholders {
   // Try to edit a Template PH via a Monitoring user
   private void editTemplatePHMonitoring(WebDriver driver) {
 	  
-	  testFuncs.myDebugPrinting("Try to edit a Template PH via a Monitoring user", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Try to edit a Template PH via a Monitoring user", enumsClass.logModes.NORMAL);  
 	  String editButton = driver.findElement(By.xpath("//*[@id='tenants1']/tbody/tr[1]/td[6]/a[1]")).getAttribute("class");
 	  testFuncs.myAssertTrue("Edit button is not deactivated !!\neditButton - " + editButton, editButton.contains("not-active"));
   }
@@ -169,7 +169,7 @@ public class Test46__Monitoring_template_placeholders {
   // Try to add a Template PH via a Monitoring user
   private void addTemplatePHMonitoring(WebDriver driver) {
 	  
-	  testFuncs.myDebugPrinting("Try to add a Template PH via a Monitoring user", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Try to add a Template PH via a Monitoring user", enumsClass.logModes.NORMAL);
 	  String addButton = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[8]/div[2]/table/tbody/tr[1]/td/table/tbody/tr[1]/td[2]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("Add button is not deactivated !!\naddButton - " + addButton, addButton.contains("not-active"));
   }

@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test154__different_HRSSpeakerFW_status {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test154__different_HRSSpeakerFW_status(String browser) {
+  public Test154__different_HRSSpeakerFW_status(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -110,7 +110,7 @@ public class Test154__different_HRSSpeakerFW_status {
 			 					"myLocation");
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwStts, hrsSpeakerFwStts, true);
 	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 	
 	
 	// Nir 15\5\18 VI 153295
@@ -129,7 +129,7 @@ public class Test154__different_HRSSpeakerFW_status {
 								"myLocation");
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwLong, hrsSpeakerFwLong, true);
 	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 
 	
     // Step 3 - Create a user using POST query with empty HRSSpeakerFW value
@@ -163,7 +163,7 @@ public class Test154__different_HRSSpeakerFW_status {
 								"myLocation");
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwSpec, hrsSpeakerFwSpec, true);
 	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", tempHRSSpeakerFW); 
    
     // Step 5 - Delete the users

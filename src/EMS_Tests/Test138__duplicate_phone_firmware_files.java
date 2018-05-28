@@ -7,8 +7,9 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
+
 
 /**
 * ----------------
@@ -32,12 +33,12 @@ public class Test138__duplicate_phone_firmware_files {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test138__duplicate_phone_firmware_files(String browser) {
+  public Test138__duplicate_phone_firmware_files(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;

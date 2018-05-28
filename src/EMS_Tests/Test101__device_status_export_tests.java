@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +38,12 @@ public class Test101__device_status_export_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test101__device_status_export_tests(String browser) {
+  public Test101__device_status_export_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -170,18 +171,18 @@ public class Test101__device_status_export_tests {
   private void exportDevices(String downloadedFile, boolean isExportAll) {
 	  
 	// Export All devices at Device-Status menu
-	testFuncs.myDebugPrinting("Export All devices at Device-Status menu", testVars.logerVars.NORMAL);  
+	testFuncs.myDebugPrinting("Export All devices at Device-Status menu", enumsClass.logModes.NORMAL);  
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[2]"), 3000);      
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Export to CSV"); 
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are your sure you want to export the devices to CSV??");	
 	if (isExportAll) {
 		
-		testFuncs.myDebugPrinting("isExportAll - true", testVars.logerVars.MINOR);    
+		testFuncs.myDebugPrinting("isExportAll - true", enumsClass.logModes.MINOR);    
 		testFuncs.myClick(driver, By.xpath("//*[@id='update']"), 3000);
 	} else {
 		
-		testFuncs.myDebugPrinting("isExportAll - false", testVars.logerVars.MINOR);    
+		testFuncs.myDebugPrinting("isExportAll - false", enumsClass.logModes.MINOR);    
 	}
 	testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 120000); 
 	testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), downloadedFile));

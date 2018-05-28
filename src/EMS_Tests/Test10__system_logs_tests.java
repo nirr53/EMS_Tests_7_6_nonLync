@@ -10,6 +10,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -34,14 +35,14 @@ import org.openqa.selenium.support.ui.Select;
 @RunWith(Parameterized.class)
 public class Test10__system_logs_tests {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test10__system_logs_tests(String browser) {
+  public Test10__system_logs_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -89,7 +90,7 @@ public class Test10__system_logs_tests {
     testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/form/table/tbody/tr[2]/td[1]/span/b", "Activity");
 
     // Step 2.1 - Check the Web admin menu and download last file
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE != null) {
 		
 	  	testFuncs.myDebugPrinting("Step 2.1 - Check the Web admin menu and download last file"); 	
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getSysLogsPrefix());
@@ -97,7 +98,7 @@ public class Test10__system_logs_tests {
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/a"), 2000);
 	  	testFuncs.myWait(120000);
 	  	String fileName = testFuncs.getLatestFilefromDir(testVars.getDownloadsPath()).getName();
-	    testFuncs.myDebugPrinting("fileName - " + fileName, testVars.logerVars.MINOR);
+	    testFuncs.myDebugPrinting("fileName - " + fileName, enumsClass.logModes.MINOR);
 	    testFuncs.myAssertTrue("Downloaded file does not matches:\n" +
 	    		          	   "fileName - "                         + fileName 													     + "   \n" +
 	    		          	   "getSystemLogsFilename - "            + getSystemLogsFilename(testVars.getSysLogsPrefix(), ".log", false) + "   \n" +   		           
@@ -121,25 +122,25 @@ public class Test10__system_logs_tests {
 		
 		displayLogOptions.selectByIndex(i);
 	  	testFuncs.myWait(3000);
-		testFuncs.myDebugPrinting("displayLogOptions - " + displayLogOptions.getFirstSelectedOption().getText(), testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("displayLogOptions - " + displayLogOptions.getFirstSelectedOption().getText(), enumsClass.logModes.MINOR);
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='append_']"), 700);
 	  	testFuncs.searchStr(driver, "Web Admin log level was saved successfully.");
 	}
 
     // Step 2.3 - Download Archive files
   	testFuncs.myWait(7000);
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 		testFuncs.myDebugPrinting("Step 2.3 - Download Archive files");
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/a"), 3000);
 		testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/form/table/thead/tr/th", "Web Admin Archive Files");	
 		String txt = driver.findElement(By.tagName("body")).getText();
-		testFuncs.myDebugPrinting("txt - " + txt, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("txt - " + txt, enumsClass.logModes.MINOR);
 		int numOfFiles = txt.length() - txt.replace(".txt", "aaa").length();
-		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, enumsClass.logModes.MINOR);
 		for (int j = 1; j < numOfFiles; ++j) {
 			
-			testFuncs.myDebugPrinting("Download file #" + j, testVars.logerVars.MINOR);
+			testFuncs.myDebugPrinting("Download file #" + j, enumsClass.logModes.MINOR);
 		    driver.findElement(By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[" + j  +"]/td[2]/a")).click();
 		  	testFuncs.myWait(3000);
 		}
@@ -151,7 +152,7 @@ public class Test10__system_logs_tests {
   	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[3]/button"), 10000);
   	
     // Step 2.4 - Check the Activity logs menu and download last file
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 	  	testFuncs.myDebugPrinting("Step 2.4 - Check the Activity logs menu and download last file"); 	
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getSysLogsActPre());
@@ -159,7 +160,7 @@ public class Test10__system_logs_tests {
 	  	driver.findElement(By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/a")).click();
 	  	testFuncs.myWait(120000);
 	  	String fileName = testFuncs.getLatestFilefromDir(testVars.getDownloadsPath()).getName();
-	    testFuncs.myDebugPrinting("fileName - " + fileName, testVars.logerVars.MINOR);
+	    testFuncs.myDebugPrinting("fileName - " + fileName, enumsClass.logModes.MINOR);
 	    testFuncs.myAssertTrue("Downloaded file does not matches:\n" +
 	          	   "fileName - "                         + fileName 													     + "   \n" +
 	          	   "getSystemLogsFilename - "            + getSystemLogsFilename(testVars.getSysLogsActPre(), ".csv", false) + "   \n" +   		           
@@ -180,18 +181,18 @@ public class Test10__system_logs_tests {
 	}
 	
     // Step 2.6 - Download Archive files
-	if (!this.usedBrowser.equals(testVars.IE)) {
+	if (browserTypes.IE == null) {
 		
 		testFuncs.myDebugPrinting("Step 2.6 - Download Archive files");
 	 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/a"), 3000);
 	 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/form/table/thead/tr/th", "Activity Archive Files");
 		String txt = driver.findElement(By.tagName("body")).getText();
-		testFuncs.myDebugPrinting("txt - " + txt, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("txt - " + txt, enumsClass.logModes.MINOR);
 		int numOfFiles = txt.length() - txt.replace(".csv", "aaa").length();
-		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, enumsClass.logModes.MINOR);
 	 	for (int j = 1; j <= numOfFiles; ++j) {
 	 		
-			testFuncs.myDebugPrinting("Download file #" + j, testVars.logerVars.MINOR);
+			testFuncs.myDebugPrinting("Download file #" + j, enumsClass.logModes.MINOR);
 	 	    driver.findElement(By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[" + j + "]/td[2]/a")).click();
 	 	  	testFuncs.myWait(20000);
 	 	}

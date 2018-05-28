@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
+
 
 /**
 * ----------------
@@ -34,14 +36,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test146__configuration_vals_during_create {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test146__configuration_vals_during_create(String browser) {
+  public Test146__configuration_vals_during_create(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -124,7 +126,7 @@ public class Test146__configuration_vals_during_create {
  	// Step 1 - Verify the configuration-file of the new user holds the Tenant-A and Site-A values.
  	testFuncs.myDebugPrinting("Step 1 - Verify the configuration-file of the new user holds the Tenant-A and Site-A values");
  	currUrl  = driver.getCurrentUrl();
- 	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
 	bodyText = driver.findElement(By.tagName("body")).getText();

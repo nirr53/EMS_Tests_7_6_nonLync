@@ -8,7 +8,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,12 +32,12 @@ public class Test80__view_tenants {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test80__view_tenants(String browser) {
+  public Test80__view_tenants(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -96,8 +96,8 @@ public class Test80__view_tenants {
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("Log In"));	
 	String emsUrl = "https://" + testVars.getIp() + "/web-ui-ovoc/#!/login";	
 	String currUrl = driver.getCurrentUrl();
-	testFuncs.myDebugPrinting("emsUrl - "   + emsUrl, testVars.logerVars.MINOR);
-	testFuncs.myDebugPrinting("currUrl - "  + currUrl, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("emsUrl - "   + emsUrl, enumsClass.logModes.MINOR);
+	testFuncs.myDebugPrinting("currUrl - "  + currUrl, enumsClass.logModes.MINOR);
 	testFuncs.myAssertTrue("emsUrl was not detected !! ("  + emsUrl + ")", emsUrl.contains(currUrl));
   }
   

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -40,12 +40,12 @@ public class Test54__Operation_import {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test54__Operation_import(String browser) {
+  public Test54__Operation_import(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -184,38 +184,30 @@ public class Test54__Operation_import {
 	  // Check headers of the import-result
 	  testFuncs.myDebugPrinting("Check headers of the import-result");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[1]/h1", "Import Result");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/div/label", "Tenants");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[3]/div/div/label", "Regions");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[4]/div/div/label", "Sites");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[5]/div/div/label", "Templates");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[6]/div/div/label", "System Settings");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[7]/div/div/label", "Template Placeholders");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[8]/div/div/label", "Tenant Placeholders");
-	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[9]/div/div/label", "Site Placeholders");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/div/label" , "Tenants");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[3]/div/div/label" , "Regions");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[4]/div/div/label" , "Sites");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[5]/div/div/label" , "Templates");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[6]/div/div/label" , "System Settings");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[7]/div/div/label" , "Template Placeholders");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[8]/div/div/label" , "Tenant Placeholders");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[10]/div/div/label", "Phone Firmware Files");
 
 	  // Check data of the import-result	
-	  testFuncs.myDebugPrinting("Check data of the import-result", testVars.logerVars.NORMAL);
-	  testFuncs.searchStr(driver, "NirTest1 Tenant that used for Nir auto testing");
-	  testFuncs.searchStr(driver, "Test1Region Test1 Test1Region");
-	  testFuncs.searchStr(driver, "AutoDetection Nir This region is intended for automatic detection nodes");
-	  testFuncs.searchStr(driver, "AutoDetection NirTest1 This region is intended for automatic detection nodes");
-	  testFuncs.searchStr(driver, "Test1Site Test1Site Test1 Test1Region");
+	  testFuncs.myDebugPrinting("Check data of the import-result", enumsClass.logModes.NORMAL);
+	  testFuncs.searchStr(driver, "Nir Tenant for Nir auto testing");
 	  testFuncs.searchStr(driver, "AutoDetection Nir AutoDetection");
 	  testFuncs.searchStr(driver, "AutoDetection NirTest1 AutoDetection");
-	  testFuncs.searchStr(driver, "Template_for_configuration_test Template for Import configuration tests");
-	  testFuncs.searchStr(driver, "MwiVmNumber 888");
+	  testFuncs.searchStr(driver, "NirTemplate440 Template for Nir auto testing");
+	  testFuncs.searchStr(driver, "MwiVmNumber 7521");
 	  testFuncs.searchStr(driver, "ntpserver 10.1.1.10");	
-	  testFuncs.searchStr(driver, "ConfTest_ph 1234 Template PH that used for configuration import tests Audiocodes_430HD");
-	  testFuncs.searchStr(driver, "ConfTest_Tenant_ph_key 1234 Nir");
-	  testFuncs.searchStr(driver, "ConfTest_Site_ph_key 1234 AutoDetection");
-	  testFuncs.searchStr(driver, "430HD 430HD - default firmware 430HDUC_2.0.13.121 /data/NBIF/ippmanager/generate//firmware/430HD.img");
+	  testFuncs.searchStr(driver, "430HD 430HDUC_2.0.13.121 430HD - default firmware"); 
   }
 
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

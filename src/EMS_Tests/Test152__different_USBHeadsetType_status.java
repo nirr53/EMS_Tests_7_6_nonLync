@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test152__different_USBHeadsetType_status {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test152__different_USBHeadsetType_status(String browser) {
+  public Test152__different_USBHeadsetType_status(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -105,7 +105,7 @@ public class Test152__different_USBHeadsetType_status {
 			 					"myLocation");
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeStts, usbHdstTypeStts, true);
 	String tempUSBHeadsetType = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempUSBHeadsetType - " + tempUSBHeadsetType, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempUSBHeadsetType - " + tempUSBHeadsetType, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", tempUSBHeadsetType); 
 	
     // Step 2 - Create a user using POST query with unknown USBHeadsetType status
@@ -155,7 +155,7 @@ public class Test152__different_USBHeadsetType_status {
 								"myLocation");
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeLong, usbHdstTypeLong, true);
 	String tempLongUSBHeadsetType = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempLongUSBHeadsetType - " + tempLongUSBHeadsetType, testVars.logerVars.MINOR);
+	testFuncs.myDebugPrinting("tempLongUSBHeadsetType - " + tempLongUSBHeadsetType, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", tempLongUSBHeadsetType); 
    
    // Step 5 - Delete the users

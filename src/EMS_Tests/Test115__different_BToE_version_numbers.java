@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -34,12 +35,12 @@ public class Test115__different_BToE_version_numbers {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test115__different_BToE_version_numbers(String browser) {
+  public Test115__different_BToE_version_numbers(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -136,10 +137,10 @@ public class Test115__different_BToE_version_numbers {
   private void checkBToE(String state, String version) {
 	      
 	  // Check BToE
-	  testFuncs.myDebugPrinting("Check that BToE icon and BToE version were detected !", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Check that BToE icon and BToE version were detected !", enumsClass.logModes.NORMAL);  
 	  String title = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[5]/i")).getAttribute("title");
 	  String style = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[5]/i")).getAttribute("style");  
-	  testFuncs.myDebugPrinting("state - " + state, testVars.logerVars.MINOR);  
+	  testFuncs.myDebugPrinting("state - " + state, enumsClass.logModes.MINOR);  
 	  switch (state) {
 	  
 	  	case "disabled":
@@ -165,7 +166,7 @@ public class Test115__different_BToE_version_numbers {
 	  }; 
 	  
 	  // Check version
-	  testFuncs.myDebugPrinting("Check version", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Check version", enumsClass.logModes.NORMAL);  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[14]", version);	  
   }
 

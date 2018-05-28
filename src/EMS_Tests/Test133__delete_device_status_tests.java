@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -33,12 +34,12 @@ public class Test133__delete_device_status_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test133__delete_device_status_tests(String browser) {
+  public Test133__delete_device_status_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -105,7 +106,7 @@ public class Test133__delete_device_status_tests {
 	  deleteUserManMenu(userName1 + "@" + testVars.getDomain());
 	  
 	  // Verify that device-status was also deleted
-	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", enumsClass.logModes.NORMAL);
 	  verifyDeleteDevStatus(userName1);
 	     
 	  // Step 2 - Delete a user via Manage-multiple-users menu
@@ -122,7 +123,7 @@ public class Test133__delete_device_status_tests {
 	  testFuncs.searchStr(driver, userName2 + "@" + testVars.getDomain() + " Finished");
 	  
 	  // Verify that device-status was also deleted
-	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Verify that device-status was also deleted", enumsClass.logModes.NORMAL);
 	  verifyDeleteDevStatus(userName2);
   }
   
@@ -130,7 +131,7 @@ public class Test133__delete_device_status_tests {
   private void verifyDeleteDevStatus(String userName) {
 	  
 	  testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
-	  testFuncs.myDebugPrinting("Verify that the device was also created", testVars.logerVars.MINOR);			    
+	  testFuncs.myDebugPrinting("Verify that the device was also created", enumsClass.logModes.MINOR);			    
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);			    
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	     
 	  testFuncs.myWait(10000);

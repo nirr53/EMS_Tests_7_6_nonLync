@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -38,12 +38,12 @@ public class Test66__SBC_Proxy_Option_configuration {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test66__SBC_Proxy_Option_configuration(String browser) {
+  public Test66__SBC_Proxy_Option_configuration(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -84,7 +84,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 	  // Set variables
 	  String strForEdit = "ems_server/keep_alive_period=" + testFuncs.getId();
 	  String uploadStr  = "1234";
-	  testFuncs.myDebugPrinting("strForEdit - " + strForEdit, testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("strForEdit - " + strForEdit, enumsClass.logModes.MINOR);
 	  
 	  // Enter System settings and SBC proxy configuration menu
 	  testFuncs.myDebugPrinting("Enter System settings and SBC proxy configuration menu");
@@ -109,7 +109,7 @@ public class Test66__SBC_Proxy_Option_configuration {
   private void uploadSBCproxyConfigurationTemplate(WebDriver driver, String filePath, String uploadStr) throws UnsupportedFlavorException, IOException {
 	  
 	  // Upload SBC configuration
-	  testFuncs.myDebugPrinting("Upload SBC configuration", testVars.logerVars.NORMAL);	    
+	  testFuncs.myDebugPrinting("Upload SBC configuration", enumsClass.logModes.NORMAL);	    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[3]"), 7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Upload Configuration Template");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='myform']/label"								 , "Press the Browse... button to locate the file and then press the Upload button. When file upload is complete The file has been uploaded successfully message will be shown.");	  
@@ -121,7 +121,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 	  
 	  // Verify upload
-	  testFuncs.myDebugPrinting("Verify upload", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify upload", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[1]/a[1]"), 5000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/textarea"), 5000);
 	  driver.findElement(By.xpath("/html/body/div[2]/div/textarea")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
@@ -136,14 +136,14 @@ public class Test66__SBC_Proxy_Option_configuration {
   private void restoreSBCproxyConfigurationTemplate(WebDriver driver, String strForEdit) throws UnsupportedFlavorException, IOException {
 	  
 	  // Restore default configuration
-	  testFuncs.myDebugPrinting("Restore default configuration", testVars.logerVars.NORMAL);	    
+	  testFuncs.myDebugPrinting("Restore default configuration", enumsClass.logModes.NORMAL);	    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[4]"), 3000);	
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Reset the Proxy DHCP Options Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to reset the Proxy DHCP option template?");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 	  
 	  // Verify reset
-	  testFuncs.myDebugPrinting("Verify reset", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify reset", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[1]/a[1]"), 5000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/textarea"), 5000);
 	  driver.findElement(By.xpath("/html/body/div[2]/div/textarea")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
@@ -158,7 +158,7 @@ public class Test66__SBC_Proxy_Option_configuration {
   private void editSBCproxyConfigurationTemplate(WebDriver driver, String strForEdit) throws UnsupportedFlavorException, IOException {
 	  
 	  // Edit SBC template
-	  testFuncs.myDebugPrinting("Edit SBC template", testVars.logerVars.NORMAL);	    
+	  testFuncs.myDebugPrinting("Edit SBC template", enumsClass.logModes.NORMAL);	    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[1]"), 5000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/textarea"), 5000); 
 	  testFuncs.mySendKeys(driver, By.xpath("/html/body/div[2]/div/textarea"), strForEdit,  2000);
@@ -168,7 +168,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 //	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
 	    
 	  // Verify edit
-	  testFuncs.myDebugPrinting("Verify edit", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/a[1]"), 5000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/textarea"), 5000);
 	  driver.findElement(By.xpath("/html/body/div[2]/div/textarea")).sendKeys(Keys.chord(Keys.CONTROL, "a"));

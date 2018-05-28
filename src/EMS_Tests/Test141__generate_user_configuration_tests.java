@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,14 +37,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test141__generate_user_configuration_tests {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test141__generate_user_configuration_tests(String browser) {
+  public Test141__generate_user_configuration_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -108,7 +109,7 @@ public class Test141__generate_user_configuration_tests {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
- 	testFuncs.myDebugPrinting("device mac - " + mac, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("device mac - " + mac, enumsClass.logModes.MINOR);
 	
  	// Step 1 - Verify that the configuration file of the user appears at Configuration-files menu while ZT create
  	testFuncs.myDebugPrinting("Step 1 - Verify that the configuration file of the user appears at Configuration-files menu while ZT create");
@@ -126,7 +127,7 @@ public class Test141__generate_user_configuration_tests {
  	// Step 3 -  Verify that Before-Generate the value does not exists at the configuration value
  	testFuncs.myDebugPrinting("Step 3 -  Verify that Before-Generate the value does not exists at the configuration value");
  	currUrl  = driver.getCurrentUrl();
- 	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
 	bodyText = driver.findElement(By.tagName("body")).getText();
@@ -143,7 +144,7 @@ public class Test141__generate_user_configuration_tests {
  	// Step 5 - Verify that After-Generate the value does exists at the configuration value
  	testFuncs.myDebugPrinting("Step 5 - Verify that After-Generate the value does exists at the configuration value");
  	currUrl  = driver.getCurrentUrl();
- 	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
 	bodyText     = driver.findElement(By.tagName("body")).getText();

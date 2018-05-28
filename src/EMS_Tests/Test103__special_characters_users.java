@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -40,12 +41,12 @@ public class Test103__special_characters_users {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test103__special_characters_users(String browser) {
+  public Test103__special_characters_users(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -124,11 +125,11 @@ public class Test103__special_characters_users {
 	testFuncs.setMultipleUsersAction(driver, map);
 	
 	// Verify delete
-	testFuncs.myDebugPrinting("Verify delete", testVars.logerVars.NORMAL);
+	testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.NORMAL);
 	for (int i = 0; i < len; ++i) {
 		
 		String temPUsername  = prefixName + suffixes[i];
-		testFuncs.myDebugPrinting(i + ". Verify delete of  " + temPUsername, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting(i + ". Verify delete of  " + temPUsername, enumsClass.logModes.MINOR);
 		testFuncs.searchStr(driver, temPUsername + "@" + testVars.getDomain() + " Finished");    
 	}
   }

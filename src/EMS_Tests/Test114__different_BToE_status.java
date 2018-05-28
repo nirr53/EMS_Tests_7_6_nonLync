@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +37,12 @@ public class Test114__different_BToE_status {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test114__different_BToE_status(String browser) {
+  public Test114__different_BToE_status(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -169,10 +170,10 @@ public class Test114__different_BToE_status {
   private void checkBToE(String state) {
 	      
 	  // Check BToE
-	  testFuncs.myDebugPrinting("Check that BToE icon and BToE version were detected !", testVars.logerVars.NORMAL);  
+	  testFuncs.myDebugPrinting("Check that BToE icon and BToE version were detected !", enumsClass.logModes.NORMAL);  
 	  String title = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[5]/i")).getAttribute("title");
 	  String style = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[5]/i")).getAttribute("style");  
-	  testFuncs.myDebugPrinting("state - " + state, testVars.logerVars.MINOR);  
+	  testFuncs.myDebugPrinting("state - " + state, enumsClass.logModes.MINOR);  
 	  switch (state) {
 	  
 	  	case "disabled":

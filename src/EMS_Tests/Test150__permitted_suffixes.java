@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,13 +37,13 @@ public class Test150__permitted_suffixes {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   String permittedSuffixes = ".cab,.cfg,.csv,.id,.img,.zip";
   
   // Default constructor for print the name of the used browser 
-  public Test150__permitted_suffixes(String browser) {
+  public Test150__permitted_suffixes(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -121,7 +122,7 @@ public class Test150__permitted_suffixes {
   // Edit the Permitted-Suffixes menu
   private void editPermSuffixesField(String permStr, String msgBoxHdr, String msgBoxHdr2) {
 	  
-	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", enumsClass.logModes.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/input"), permStr, 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[4]/button"), 5000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , msgBoxHdr);

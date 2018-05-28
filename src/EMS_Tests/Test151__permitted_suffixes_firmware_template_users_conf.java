@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -34,12 +34,12 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test151__permitted_suffixes_firmware_template_users_conf(String browser) {
+  public Test151__permitted_suffixes_firmware_template_users_conf(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -98,31 +98,31 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
 	editPermSuffixesField(permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	  
-//	// Nir VI 153180
-//	// Step 1 - Try to upload a jpeg file to Firmware menu
-//	testFuncs.myDebugPrinting("Step 1 - Try to upload a jpeg file to Firmware menu");
-//	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
-//	testFuncs.addNewFirmware(driver, firmName, firmDesc, firmVersion, firmRegion, usedFile);
-//	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
+	// Nir VI 153180
+	// Step 1 - Try to upload a jpeg file to Firmware menu
+	testFuncs.myDebugPrinting("Step 1 - Try to upload a jpeg file to Firmware menu");
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	testFuncs.addNewFirmware(driver, firmName, firmDesc, firmVersion, firmRegion, path);
+	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
 	
-//	// Nir VI 153182
-//	// Step 3 - Try to upload a jpeg file to Import-users menu
-//	testFuncs.myDebugPrinting("Step 3 - Try to upload a jpeg file to Import-users menu");
-//	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
-//	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
-//	
-//	// Nir VI 153182
-//	// Step 4 - Try to upload a jpeg file to Import-configuration menu
-//	testFuncs.myDebugPrinting("Step 4 - Try to upload a jpeg file to Import-configuration menu");
-//	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
-//	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
+	// Nir VI 153182
+	// Step 3 - Try to upload a jpeg file to Import-users menu
+	testFuncs.myDebugPrinting("Step 3 - Try to upload a jpeg file to Import-users menu");
+	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
+	
+	// Nir VI 153182
+	// Step 4 - Try to upload a jpeg file to Import-configuration menu
+	testFuncs.myDebugPrinting("Step 4 - Try to upload a jpeg file to Import-configuration menu");
+	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
 
   }
   
   // Edit the Permitted-Suffixes menu
   private void editPermSuffixesField(String permStr, String msgBoxHdr, String msgBoxHdr2) {
 	  
-	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", enumsClass.logModes.MINOR);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/input"), permStr, 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[4]/button"), 5000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , msgBoxHdr);

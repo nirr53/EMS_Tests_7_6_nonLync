@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -34,14 +35,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test140__empty_password_bug {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test140__empty_password_bug(String browser) {
+  public Test140__empty_password_bug(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -101,7 +102,7 @@ public class Test140__empty_password_bug {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
- 	testFuncs.myDebugPrinting("device mac - " + mac, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("device mac - " + mac, enumsClass.logModes.MINOR);
     
     // Generate the Device configuration file
  	testFuncs.myDebugPrinting("Generate the Device configuration file");
@@ -117,7 +118,7 @@ public class Test140__empty_password_bug {
  	// Step 2 - Verify that generated file does not contains password with long tab
  	testFuncs.myDebugPrinting("Step 2 - Verify that generated file does not contains password with long tab");
  	String currUrl  = driver.getCurrentUrl();
- 	testFuncs.myDebugPrinting("currUrl - " + currUrl, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + mac + ".cfg");
  	testFuncs.myWait(5000);
 	String bodyText     = driver.findElement(By.tagName("body")).getText();
@@ -143,7 +144,7 @@ public class Test140__empty_password_bug {
   private void generateDevice(String deviceName) {
 	  
 	  // Generate device configuration
-	  testFuncs.myDebugPrinting("Generate device configuration", testVars.logerVars.NORMAL); 
+	  testFuncs.myDebugPrinting("Generate device configuration", enumsClass.logModes.NORMAL); 
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a")			, 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[7]/a"), 7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
@@ -154,7 +155,7 @@ public class Test140__empty_password_bug {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 20000);  
 	  
 	  // Verify change
-	  testFuncs.myDebugPrinting("Verify change", testVars.logerVars.MINOR); 
+	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ")");  
   }
   
@@ -162,7 +163,7 @@ public class Test140__empty_password_bug {
   private void searchAndSelectDevice(WebDriver driver, String userName) {
 	  
 	  // Search device
-	  testFuncs.myDebugPrinting("Search device", testVars.logerVars.NORMAL);
+	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	  
 	  testFuncs.myWait(5000);
@@ -170,7 +171,7 @@ public class Test140__empty_password_bug {
 	  testFuncs.myWait(5000);
 	  
 	  // Select the searched device via check Select-All check-box
-	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("Select the searched device via check Select-All check-box", enumsClass.logModes.MINOR);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='selectall']"), 3000);	  
   }
 

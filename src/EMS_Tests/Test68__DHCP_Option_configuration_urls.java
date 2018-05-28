@@ -7,9 +7,9 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -37,12 +37,12 @@ public class Test68__DHCP_Option_configuration_urls {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test68__DHCP_Option_configuration_urls(String browser) {
+  public Test68__DHCP_Option_configuration_urls(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -112,7 +112,7 @@ public class Test68__DHCP_Option_configuration_urls {
 		tenants.selectByIndex(i);
 	    testFuncs.myWait(2000);
 	    String tenant = tenants.getFirstSelectedOption().getText();
-	  	testFuncs.myDebugPrinting("tenant - " + tenant, testVars.logerVars.MINOR);
+	  	testFuncs.myDebugPrinting("tenant - " + tenant, enumsClass.logModes.MINOR);
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[2]/td/table/tbody/tr[1]/td[2]/b/span", "http://" + testVars.getIp() + "/firmwarefiles;ipp/tenant/" 	  + tenant);
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/b/span", "http://SBC_PROXY_IP:SBC_PROXY_PORT/firmwarefiles;ipp/tenant/" + tenant);
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/b/span", "http://" + testVars.getIp() + "/ipp/tenant/" 				  + tenant);
@@ -129,7 +129,7 @@ public class Test68__DHCP_Option_configuration_urls {
 //		models.selectByIndex(i);
 //	    testFuncs.myWait(1000);
 //	    String model = models.getFirstSelectedOption().getText();
-//	  	testFuncs.myDebugPrinting("model - " + model, testVars.logerVars.MINOR);
+//	  	testFuncs.myDebugPrinting("model - " + model, enumsClass.logModes.MINOR);
 //	  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[4]/td/a"), 3000);	
 //	  	String txt = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[5]/td/span")).getText();
 //	  	testFuncs.myAssertTrue("Meassage was not displayed !!\ntxt - " + txt, txt.contains("tenant " + tenWithoutAnyTemp + " and type " + model + " not found url"));
@@ -145,7 +145,7 @@ public class Test68__DHCP_Option_configuration_urls {
 		models.selectByIndex(i);
 	    testFuncs.myWait(1000);    
 	    String model = models.getFirstSelectedOption().getText();
-	  	testFuncs.myDebugPrinting("model - " + model, testVars.logerVars.MINOR);	    
+	  	testFuncs.myDebugPrinting("model - " + model, enumsClass.logModes.MINOR);	    
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[4]/td/a"), 3000);	
 	  	String txt = driver.findElement(By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[2]/tbody/tr[5]/td/span")).getText(); 	
 	  	String tempType = "";

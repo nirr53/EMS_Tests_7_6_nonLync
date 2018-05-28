@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -40,12 +41,12 @@ public class Test127__templates_with_special_characters {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test127__templates_with_special_characters(String browser) {
+  public Test127__templates_with_special_characters(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -102,11 +103,11 @@ public class Test127__templates_with_special_characters {
 	int len = suffixes.length;
 	for (int i = 0; i < len; ++i) {
 		
-		testFuncs.myDebugPrinting("Step " + i + ":", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Step " + i + ":", enumsClass.logModes.NORMAL);
 		String tempName = prefixName + suffixes[i];
 		String tempDesc = prefixDesc + suffixes[i];
-		testFuncs.myDebugPrinting("tempName - " + tempName, testVars.logerVars.MINOR);
-		testFuncs.myDebugPrinting("tempDesc - " + tempDesc, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);
+		testFuncs.myDebugPrinting("tempDesc - " + tempDesc, enumsClass.logModes.MINOR);
 		testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
   		map.put("cloneFromtemplate", "Audiocodes_" + type + "_LYNC");
   		testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), type, map);

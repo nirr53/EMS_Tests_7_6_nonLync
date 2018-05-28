@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -38,12 +39,12 @@ public class Test122__registered_unregistered_users_number {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test122__registered_unregistered_users_number(String browser) {
+  public Test122__registered_unregistered_users_number(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -89,7 +90,7 @@ public class Test122__registered_unregistered_users_number {
 	    // Get registration-data and total devices number
 		testFuncs.myDebugPrinting("Get registration-data and total devices number");
 	    regDevicesNumber = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
-		testFuncs.myDebugPrinting("\nregDevicesNumber - " + regDevicesNumber + "\n", testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("\nregDevicesNumber - " + regDevicesNumber + "\n", enumsClass.logModes.MINOR);
 	    String totalDeviceNumber 			= getTotalDevicesNumber();
 	    String totalUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();
 
@@ -110,22 +111,22 @@ public class Test122__registered_unregistered_users_number {
 		testFuncs.pressHomeButton(driver);
 		
 		// Verify change in number at main page
-		testFuncs.myDebugPrinting("Verify change in number at main page", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Verify change in number at main page", enumsClass.logModes.NORMAL);
 	    String regDevicesNumberNew = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
-		testFuncs.myDebugPrinting("\nregDevicesNumberNew - " + regDevicesNumberNew + "\n", testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("\nregDevicesNumberNew - " + regDevicesNumberNew + "\n", enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("Registered users number was not increased !! <" + regDevicesNumberNew + ">", (Integer.valueOf(regDevicesNumber) + 1) == Integer.valueOf(regDevicesNumberNew));
 	    
 	  	// Verify change at Registered users menu
-		testFuncs.myDebugPrinting("Verify change at Registered users menu", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Verify change at Registered users menu", enumsClass.logModes.NORMAL);
 		testFuncs.myClick(driver, By.xpath("//*[@id='card']/div/article/div[1]/div[3]/span/a"), 7000);
 	    String regDevicesNumberNewStr = driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[2]/div[1]/span")).getText();
-		testFuncs.myDebugPrinting("regDevicesNumberNewStr - " + regDevicesNumberNewStr, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("regDevicesNumberNewStr - " + regDevicesNumberNewStr, enumsClass.logModes.MINOR);
 		String tempStr = "Showing 1 to " + regDevicesNumberNew + " of " + regDevicesNumberNew + " entries";
 		testFuncs.myAssertTrue("Registered users number was not increased !! <tempStr - " + tempStr + ">", regDevicesNumberNewStr.contains(tempStr));
 		testFuncs.pressHomeButton(driver);
 		
 	  	// Verify change at Total devices menu
-		testFuncs.myDebugPrinting("Verify change at Total devices menu", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Verify change at Total devices menu", enumsClass.logModes.NORMAL);
 	    String totalDeviceNumberNew = getTotalDevicesNumber();
 		testFuncs.myAssertTrue("Total users number was not increased !! <" + totalDeviceNumberNew + " -- " + totalDeviceNumber + ">", (Integer.valueOf(totalDeviceNumber) + 1) == Integer.valueOf(totalDeviceNumberNew));
 		
@@ -148,13 +149,13 @@ public class Test122__registered_unregistered_users_number {
 		testFuncs.pressHomeButton(driver);	
 
 		// Verify that there is no change in number at main page
-		testFuncs.myDebugPrinting("Verify that there is no change in number at main page", testVars.logerVars.NORMAL);
+		testFuncs.myDebugPrinting("Verify that there is no change in number at main page", enumsClass.logModes.NORMAL);
 	    regDevicesNumberNew = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
-		testFuncs.myDebugPrinting("regDevicesNumberNew - " + regDevicesNumberNew, testVars.logerVars.MINOR);
+		testFuncs.myDebugPrinting("regDevicesNumberNew - " + regDevicesNumberNew, enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("Registered users number was not increased !! <" + regDevicesNumberNew + ">", (Integer.valueOf(regDevicesNumber) + 1) == Integer.valueOf(regDevicesNumberNew));
 
 	  	// Verify change at Total devices menu		
-		testFuncs.myDebugPrinting("Verify change at Total devices menu", testVars.logerVars.NORMAL); 
+		testFuncs.myDebugPrinting("Verify change at Total devices menu", enumsClass.logModes.NORMAL); 
 		totalDeviceNumberNew = getTotalDevicesNumber();
 		testFuncs.myAssertTrue("Total users number was not increased !! <" + totalDeviceNumberNew + ">", (Integer.valueOf(totalDeviceNumber) + 2) == Integer.valueOf(totalDeviceNumberNew));
 		testFuncs.pressHomeButton(driver);
@@ -175,7 +176,7 @@ public class Test122__registered_unregistered_users_number {
 		testFuncs.myAssertTrue("Unregistered device number was not changed !!", (Integer.valueOf(totalUnregDeviceNumber) + 1) == Integer.valueOf(newUnregDeviceNumber));
 		
 	  	// Verify no change at Total devices menu		
-		testFuncs.myDebugPrinting("Verify no change at Total devices menu", testVars.logerVars.NORMAL); 
+		testFuncs.myDebugPrinting("Verify no change at Total devices menu", enumsClass.logModes.NORMAL); 
 		totalDeviceNumberNew = getTotalDevicesNumber();
 		testFuncs.myAssertTrue("Total users number was increased !! <" + totalDeviceNumberNew + ">", (Integer.valueOf(totalDeviceNumber) + 2) == Integer.valueOf(totalDeviceNumberNew));
 		testFuncs.pressHomeButton(driver);	
@@ -199,7 +200,7 @@ public class Test122__registered_unregistered_users_number {
   private String getTotalUnregistsredDvicesNumber() {
 	  
 	  String unRegNumber = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
-	  testFuncs.myDebugPrinting("\nUnregistered - <" + unRegNumber + ">\n", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("\nUnregistered - <" + unRegNumber + ">\n", enumsClass.logModes.MINOR);
 	  testFuncs.pressHomeButton(driver);
 	  return unRegNumber;
   }
@@ -211,7 +212,7 @@ public class Test122__registered_unregistered_users_number {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[4]")		, 10000);  
 	  String totalDeviceNumber = driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[2]/div[1]/span")).getText();
 	  totalDeviceNumber = totalDeviceNumber.substring(totalDeviceNumber.indexOf("of ") + "of ".length(), totalDeviceNumber.indexOf("entries")).trim();	  
-	  testFuncs.myDebugPrinting("\ntotalDeviceNumber - <" + totalDeviceNumber + ">\n", testVars.logerVars.MINOR);
+	  testFuncs.myDebugPrinting("\ntotalDeviceNumber - <" + totalDeviceNumber + ">\n", enumsClass.logModes.MINOR);
 	  testFuncs.pressHomeButton(driver);
 	  return totalDeviceNumber;
   }

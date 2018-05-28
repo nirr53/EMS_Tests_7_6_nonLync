@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
+import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -32,14 +33,14 @@ import org.openqa.selenium.*;
 @RunWith(Parameterized.class)
 public class Test121__network_topology {
 	
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test121__network_topology(String browser) {
+  public Test121__network_topology(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -119,7 +120,7 @@ public class Test121__network_topology {
 	testFuncs.pressNetworkTopologyButton(driver);
 	String bodyText = driver.findElement(By.tagName("body")).getText();				
 	int cirCount = bodyText.length() - bodyText.replace(".", "").length();
- 	testFuncs.myDebugPrinting("cirCount - " + cirCount, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("cirCount - " + cirCount, enumsClass.logModes.MINOR);
  	ip1 = removeSuffix(ip1);
  	ip2 = removeSuffix(ip2); 	
  	testFuncs.myAssertTrue("Endpoint <" + ip1 + "> is not detected !!", bodyText.contains(ip1));
@@ -130,7 +131,7 @@ public class Test121__network_topology {
  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div/div/button"), 3000);
 	bodyText = driver.findElement(By.tagName("body")).getText();				
 	cirCount = bodyText.length() - bodyText.replace(".", "").length();
- 	testFuncs.myDebugPrinting("cirCount - " + cirCount, testVars.logerVars.MINOR);
+ 	testFuncs.myDebugPrinting("cirCount - " + cirCount, enumsClass.logModes.MINOR);
  	String localIp = removeSuffix(Inet4Address.getLocalHost().getHostAddress()); 
  	testFuncs.myAssertTrue("External Point <" + localIp + "> is not detected !!", bodyText.contains(localIp));
   

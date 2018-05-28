@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -36,12 +36,12 @@ public class Test63__Operation_export_tests {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test63__Operation_export_tests(String browser) {
+  public Test63__Operation_export_tests(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -91,11 +91,11 @@ public class Test63__Operation_export_tests {
 		
 		for (int i = 0 ; i < 3; i ++) {
 			
-			testFuncs.myDebugPrinting("Tests on Operation user  - " + descriptions[i], testVars.logerVars.MAJOR);
+			testFuncs.myDebugPrinting("Tests on Operation user  - " + descriptions[i], enumsClass.logModes.MAJOR);
 			testFuncs.login(driver, usernames[i], passwords[i], testVars.getSysMainStr(), "https://", this.usedBrowser);
 
 		    // Step 1 - Export a CSV template containing users only
-			testFuncs.myDebugPrinting("Step " + i + ".1 - Export a CSV template containing users only", testVars.logerVars.NORMAL);
+			testFuncs.myDebugPrinting("Step " + i + ".1 - Export a CSV template containing users only", enumsClass.logModes.NORMAL);
 			testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), csvTemplatePref);
 			testFuncs.enterMenu(driver, "Import_export", "Import Users and Devices information");
 		    driver.switchTo().frame(1);	
@@ -110,7 +110,7 @@ public class Test63__Operation_export_tests {
 			testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), csvTemplatePref);
 			
 		    // Step 2 - Export a CSV template containing users and devices
-			testFuncs.myDebugPrinting("Step " + i + ".2 - Export a CSV template containing users and devices", testVars.logerVars.NORMAL);
+			testFuncs.myDebugPrinting("Step " + i + ".2 - Export a CSV template containing users and devices", enumsClass.logModes.NORMAL);
 			testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), csvTemplatePref);
 		    driver.switchTo().frame(1);	
 			driver.findElement(By.xpath("//*[@id='uploadForm']/table/tbody/tr[8]/td/p/b[2]/a")).click();
@@ -124,7 +124,7 @@ public class Test63__Operation_export_tests {
 			testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), csvTemplatePref);
 			
 		    // Step 3 - Export a CSV file containing users and devices information already defined in the server
-			testFuncs.myDebugPrinting("Step " + i + ".3 - Export a CSV file containing users and devices information already defined in the server", testVars.logerVars.NORMAL);
+			testFuncs.myDebugPrinting("Step " + i + ".3 - Export a CSV file containing users and devices information already defined in the server", enumsClass.logModes.NORMAL);
 			testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), csvCurrUsersPref);
 		    driver.switchTo().frame(1);	
 			driver.findElement(By.xpath("//*[@id='uploadForm']/table/tbody/tr[10]/td/a")).click();

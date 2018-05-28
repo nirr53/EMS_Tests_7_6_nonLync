@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
 
 /**
 * ----------------
@@ -40,12 +40,12 @@ public class Test32__device_placeholders {
 	
   private WebDriver 	driver;
   private StringBuffer  verificationErrors = new StringBuffer();
-  private String        usedBrowser = "";
+  private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   
   // Default constructor for print the name of the used browser 
-  public Test32__device_placeholders(String browser) {
+  public Test32__device_placeholders(browserTypes browser) {
 	  
 	  System.out.println("Browser - "  + browser);
 	  this.usedBrowser = browser;
@@ -188,7 +188,7 @@ public class Test32__device_placeholders {
 	  testFuncs.myWait(3000);
 	  
 	  // Verify edit
-	  testFuncs.myDebugPrinting("Verify edit", testVars.logerVars.MINOR);  
+	  testFuncs.myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);  
 	  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).clear();
 	  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/input")).sendKeys(userName);
 	  driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[3]/form/div/span/button")).click();
