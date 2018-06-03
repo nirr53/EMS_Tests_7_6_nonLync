@@ -12,7 +12,7 @@ import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -168,7 +168,7 @@ public class Test14__search_tests {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

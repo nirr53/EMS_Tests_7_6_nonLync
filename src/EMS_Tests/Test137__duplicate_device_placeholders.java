@@ -10,7 +10,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -108,7 +111,7 @@ public class Test137__duplicate_device_placeholders {
 	   
 	  // Step 1 - Add another device placeholder with the same name
 	  testFuncs.myDebugPrinting("Step 1 - Add another device placeholder with the same name");
-	  testFuncs.addDevicePlaceholder(driver, srcUserName, phName);
+	  addDevicePlaceholder(driver, srcUserName, phName);
 	  
 	  // Step 2 - Delete the created device placeholder
 	  testFuncs.myDebugPrinting("Step 2 - Delete the created device placeholder");
@@ -125,6 +128,34 @@ public class Test137__duplicate_device_placeholders {
 	  map.put("skipVerifyDelete", "true");
 	  testFuncs.setMultipleUsersAction(driver, map);
 	  testFuncs.searchStr(driver, srcUserName.toLowerCase() + "@" + testVars.getDomain() + " Finished");
+  }
+  
+  /**
+  *  Add an existing device placeholder to existing registered user
+  *  @param driver   - given driver
+  *  @param userName - pre-create registered user
+  *  @param phName   - placeholder name
+  */
+  private void addDevicePlaceholder(WebDriver driver, String userName, String phName) {
+	    
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div[2]/a"), 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/form/div/div[1]/h3", "Change IP Phone Device Placeholder");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_all']/thead/tr/th"						 , "Please select a device");
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='table_all']/tbody/tr[1]/td[2]/div/input"), userName, 2000);
+	  driver.findElement(By.xpath("//*[@id='table_all']/tbody/tr[1]/td[2]/div/input")).sendKeys(Keys.ENTER);	    
+	  testFuncs.myWait(20000);		  
+	  Actions action = new Actions(driver);
+	  WebElement element=driver.findElement(By.xpath("//*[@id='devices_body']/tr/td[3]/b[1]"));
+	  action.doubleClick(element).perform();
+	  Select devKey = new Select(driver.findElement(By.xpath("//*[@id='key']")));
+	  
+	  // Verify that the already been created placeholder is not appear at Select element
+	  for (int i = 0; i < devKey.getAllSelectedOptions().size(); ++i) {
+			
+		  String currPhName = devKey.getAllSelectedOptions().get(0).getText();
+		  testFuncs.myDebugPrinting("currPhName - " + currPhName, enumsClass.logModes.MINOR);  
+		  testFuncs.myAssertTrue("<" + phName + "> was detected !!", !currPhName.contains("phName"));		
+	  }
   }
   
   /**

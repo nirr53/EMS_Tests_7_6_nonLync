@@ -9,7 +9,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -165,7 +165,7 @@ public class Test47__Monitoring_device_placeholders {
 	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");  
-	  testFuncs.deleteDevicePlaceholder(driver, srcUserName, phName, phValue);
+	  deleteDevicePlaceholder(driver, srcUserName, phName, phValue);
 	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
 	  testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	  map.put("action"	 ,  "Delete Users");
@@ -175,6 +175,33 @@ public class Test47__Monitoring_device_placeholders {
 	  srcUserName = srcUserName.toLowerCase();
 	  testFuncs.setMultipleUsersAction(driver, map);  
   }
+  
+  /**
+   *  Delete an existing device placeholder
+   *  @param driver     - given driver
+   *  @param userName   - pre-create registered user
+   *  @param phName     - existing placeholder name for edit
+   *  @param phNewValue - new value for the placeholder
+   */
+   private void deleteDevicePlaceholder(WebDriver driver, String userName, String phName, String phNewValue) {
+ 	  
+ 	  // Delete the device Placeholder
+	  testFuncs.myDebugPrinting("Delete the device Placeholder", enumsClass.logModes.MINOR);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/input"), userName, 2000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/span/button"), 5000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='placeholders_body']/tr/td[8]/a"), 5000);  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete item: " + phName);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete this value?");
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);  
+ 	
+ 	  // Verify delete
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/input"), userName, 2000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[2]/form/div/span/button"), 5000);
+	  testFuncs.searchStr(driver, "There are no placeholders at present");
+ 	  String bodyText = driver.findElement(By.tagName("body")).getText();
+ 	  testFuncs.myAssertTrue("PH name is still detecetd !!\nbodyText - "  + bodyText, !bodyText.contains(phName));
+ 	  testFuncs.myAssertTrue("PH value is still detected !!\nbodyText - " + bodyText, !bodyText.contains(phNewValue));  
+   }
   
   @After
   public void tearDown() throws Exception {

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -83,27 +83,27 @@ public class Test155__mainpage_links {
 	  
     // Step 1 - Press the Facebook Icon
 	testFuncs.myDebugPrinting("Step 1 - Press the Facebook Icon");
-    pressIcon(" /html/body/div/div[3]/ul/li[1]/a", "https://www.facebook.com/audiocodes");
+    pressIcon(" /html/body/div/div[3]/ul/li[1]/a", "https://www.facebook.com/", "audiocodes");
 
     // Step 2 - Press the Twitter Icon
 	testFuncs.myDebugPrinting("Step 2 - Press the Twitter Icon");
-    pressIcon(" /html/body/div/div[3]/ul/li[2]/a", "https://twitter.com/audiocodes");
+    pressIcon(" /html/body/div/div[3]/ul/li[2]/a", "https://twitter.com/", "audiocodes");
     
     // Step 3 - Press the Youtube Icon
 	testFuncs.myDebugPrinting("Step 3 - Press the Youtube Icon");
-    pressIcon(" /html/body/div/div[3]/ul/li[3]/a", "https://www.youtube.com/channel/UCZFOqdMjlnmqmiwoSmHXAAg");
+    pressIcon(" /html/body/div/div[3]/ul/li[3]/a", "https://www.youtube.com/channel/UCZFOqdMjlnmqmiwoSmHXAAg", "");
     
     // Step 4 - Press the Linkedin Icon
 	testFuncs.myDebugPrinting("Step 4 - Press the Linkedin Icon");
-    pressIcon(" /html/body/div/div[3]/ul/li[4]/a", "https://www.linkedin.com/company/audiocodes");
+    pressIcon(" /html/body/div/div[3]/ul/li[4]/a", "https://www.linkedin.com/", "audiocodes");
     
     // Step 5 - Press the Google plus Icon
 	testFuncs.myDebugPrinting("Step 5 - Press the Google plus Icon");
-    pressIcon(" /html/body/div/div[3]/ul/li[5]/a", "https://plus.google.com/117386317157355405525");
+    pressIcon(" /html/body/div/div[3]/ul/li[5]/a", "https://plus.google.com/117386317157355405525", "");
   }
 
   // Press the Audiocodes product button
-  private void pressIcon(String xpath, String searchedUrl) {
+  private void pressIcon(String xpath, String searchedUrl, String substr) {
 	
       String winHandleBefore = driver.getWindowHandle();
       
@@ -117,7 +117,12 @@ public class Test155__mainpage_links {
 	  String tempCurrUrl = driver.getCurrentUrl();
       testFuncs.myDebugPrinting("tempCurrUrl - " + tempCurrUrl, enumsClass.logModes.MINOR);
       testFuncs.myDebugPrinting("searchedUrl - " + searchedUrl, enumsClass.logModes.MINOR);
-	  testFuncs.myAssertTrue("Wanted url was not detected !! current url - <" + tempCurrUrl + ">", tempCurrUrl.contains(searchedUrl)); 
+	  testFuncs.myAssertTrue("Wanted url was not detected !! current url - <" + tempCurrUrl + ">", tempCurrUrl.contains(searchedUrl));  
+	  if (!substr.isEmpty()) {
+		 
+		  testFuncs.myAssertTrue("Wanted url did not lead to Audiocodes page !! - " + tempCurrUrl + ">", tempCurrUrl.contains(substr));    
+	  }
+	  
 	  driver.close();
 	  
 	  // Return to OVOC

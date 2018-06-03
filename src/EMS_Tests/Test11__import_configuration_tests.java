@@ -1,14 +1,19 @@
 package EMS_Tests;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.support.ui.Select;
+
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -17,15 +22,13 @@ import EMS_Tests.enumsClass.browserTypes;
 * Tests:
 * 	 - Login and enter the Import configuration menu.
 * 	 1. Import existing configuration
-* 	 2. Check headers of the import-result
-* 	 3. Remove a value from each of the sections, and verify that the import action re-add them
+* 	 2. Remove values from each of the sections and verify that the import action re-add them
+*    3. Re-import configuration and check imported data
 * 
 * Results:
 * 	 1. Import should end successfully.
-* 	 2. All headers should be displayed
-* 
-* 
-* 	 4.  Delete should be ended successfully.
+* 	 2. All removes should end  successfully
+* 	 3. Re-import should end successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -78,180 +81,249 @@ public class Test11__import_configuration_tests {
   public void Import_configuration() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
+	Map<String, String> map = new HashMap<String, String>();
 	String path        	  	 = "";
 	String xpathUploadField  = "//*[@id='fileToUpload']";
 	String xpathUploadButton = "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/input";
-
+	map = buildConfMap(map);
+	
     // Login enter the Import users menu and upload Configuration file
 	testFuncs.myDebugPrinting("Login enter the Import users menu and upload Configuration file");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	
 	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
 	
-	// Step 1 - Check headers of the import-result
-	testFuncs.myDebugPrinting("Step 1 - Check headers of the import-result");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[1]/h1", "Import Result");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/div/label", "Tenants");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[3]/div/div/label", "Regions");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[4]/div/div/label", "Sites");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[5]/div/div/label", "Templates");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[6]/div/div/label", "System Settings");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[7]/div/div/label", "Template Placeholders");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[8]/div/div/label", "Tenant Placeholders");
-	testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[10]/div/div/label", "Phone Firmware Files");
-	checkData();
+	// Step 1 - Check headers of the Import result
+	testFuncs.myDebugPrinting("Step 1 - Check headers of the Import-result");
+	checkHeaders();
+	checkData(map);
 	
-    // Step 3 - Remove a value from each of the sections, and verify that the import action re-add them
- 	testFuncs.myDebugPrinting("Step 2 - Remove a value from each of the sections, and verify that the import action re-add them");
-//	
-// 	// Delete Templates
-//	testFuncs.myDebugPrinting("Delete Templates", enumsClass.logModes.NORMAL);
-// 	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
-//	testFuncs.deleteTemplate(driver, templatesName);
-//	
-	// Change MWI number
-	testFuncs.myDebugPrinting("Change MWI number", enumsClass.logModes.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
-	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
-	
-	// Change System Settings
-	testFuncs.myDebugPrinting("Change System Settings", enumsClass.logModes.NORMAL);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
-	testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234", 2000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
-//	
-//	// Delete Template place-holders
-//	testFuncs.myDebugPrinting("Delete Template placeholders", enumsClass.logModes.NORMAL);
-//	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
-//    testFuncs.deleteTemplatePlaceholder(driver, tempPhTemplate, tempPhName);
-//
-//    // Delete Tenant place-holders
-//	testFuncs.myDebugPrinting("Delete Tenant placeholders", enumsClass.logModes.NORMAL);
-//	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
-//	testFuncs.selectTenant(driver, tenPhTenant);
-//	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
-//
-//	// Delete Site-place-holders
-//	testFuncs.myDebugPrinting("Delete Site-placeholders", enumsClass.logModes.NORMAL);
-//	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
-//	testFuncs.selectSite(driver, siteForSearch);
-//	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, siteForDelete);
-//
-//	// Delete from Phone-firmware-files
-//	testFuncs.myDebugPrinting("Delete from Phone-firmware-files", enumsClass.logModes.NORMAL);
-//	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
-//	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
-//
-//	// Re-import	
-//	testFuncs.myDebugPrinting("Re-import", enumsClass.logModes.NORMAL);
-//	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
-//	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
-//	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
-//	
-//	// Tenants
-//	testFuncs.searchStr(driver, "NirTest1 Tenant that used for Nir auto testing " + "Exist");
-//	
-//	// Regions
-//	testFuncs.searchStr(driver, "Test1Region Test1 Test1Region " 										   		+ "Exist");
-//	testFuncs.searchStr(driver, "AutoDetection Nir This region is intended for automatic detection nodes " 		+ "Exist");
-//	testFuncs.searchStr(driver, "AutoDetection NirTest1 This region is intended for automatic detection nodes " + "Exist");
-//	
-//	// Sites
-//	testFuncs.searchStr(driver, "Test1Site Test1Site Test1 Test1Region " + "Exist");
-//	testFuncs.searchStr(driver, "AutoDetection Nir AutoDetection " 		 + "Exist");
-//	testFuncs.searchStr(driver, "AutoDetection NirTest1 AutoDetection "  + "Exist");
-//
-//	// Templates		
-//	testFuncs.searchStr(driver, templatesName + " Template for Import configuration tests");
-//
-//	// System Settings
-//	testFuncs.searchStr(driver, "MwiVmNumber 888 "     + "Exist");
-//	testFuncs.searchStr(driver, "ntpserver 10.1.1.10 " + "Exist");
-//
-//	// Template place-holders
-//	testFuncs.searchStr(driver, tempPhName + " " +  tempPhValue + " Template PH that used for configuration import tests " + tempPhTemplate + " Added");
-//
-//	// Tenant place-holders
-//	testFuncs.searchStr(driver, tenPhName + " " + tenPhValue + " Nir " + "Added");
-//	
-//	// Site place-holders
-//	testFuncs.searchStr(driver, sitePhName + " " + sitePhValue + " " + sitePhSite + " Added");
-//
-//	// Phone Firmware Files
-//	testFuncs.searchStr(driver, firmName + " " + firmDesc + " " + firmVersion + " /data/NBIF/ippmanager/generate//firmware/430HD.img " + "Added");
+    // Step 2 - Remove values from each of the sections and verify that the import action re-add them
+ 	testFuncs.myDebugPrinting("Step 2 - Remove values from each of the sections and verify that the import action re-add them");
+ 	deleteValues(map);
+ 	
+	// Step 3 - Re-import configuration and check imported data
+	testFuncs.myDebugPrinting("Step 3 - Re-import configuration and check imported data");
+	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
+	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
+	checkImportedData(map);
   }
   
-  private void checkData() {
+  // Check imported data
+  private void checkImportedData(Map<String, String> map) {
 	  
-	  // Tenants
-	  testFuncs.myDebugPrinting("Check Tenants", enumsClass.logModes.NORMAL);
+	  // Check imported data
+	  testFuncs.myDebugPrinting("Check imported data", enumsClass.logModes.NORMAL);
+	  	 		
+	  // Check import of Template
+	  testFuncs.myDebugPrinting("Check import of Template", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	  testFuncs.searchStr(driver, map.get("tempName"));
+	
+	  // Check re-edit of System-settings
+	  testFuncs.myDebugPrinting("Check re-edit of System-settings", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.myDebugPrinting("mwi - " + driver.findElement(By.xpath("//*[@id='MwiVmNumber']")).getText(), enumsClass.logModes.MINOR);
+	  testFuncs.myDebugPrinting("ntpserver - " + driver.findElement(By.xpath("//*[@id='ntpserver']")).getText(), enumsClass.logModes.MINOR);
+	  Select select = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
+	  WebElement option = select.getFirstSelectedOption();
+	  String defaultItem = option.getText();
+	  System.out.println(defaultItem );
+	  
+	  // Check import of Template placeholders
+	  testFuncs.myDebugPrinting("Check import of Template placeholders", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	  new Select(driver.findElement(By.xpath("//*[@id='models']"))).selectByVisibleText(map.get("tempPHTemp"));
+	  testFuncs.myWait(5000); 
+	  testFuncs.searchStr(driver, map.get("tempPHName"));
+	  
+	  // Check import of Tenant placeholders
+	  testFuncs.myDebugPrinting("Check import of Tenant placeholders", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	  testFuncs.selectTenant(driver, map.get("tenPHTenant"));
+	  testFuncs.searchStr(driver, map.get("tenPHName"));
+	
+//	  // Delete Site-place-holders	
+//	  testFuncs.myDebugPrinting("Delete Site-placeholders", enumsClass.logModes.MINOR);	
+//	  testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");	
+//	  String sitePhSite     = map.get("sitePHSite");
+//	  String sitePhSiteMsg  = map.get("sitePHSiteMsg");
+//	  String sitePhName  	= map.get("sitePHName");
+//	  String sitePhValue 	= map.get("sitePHValue");
+//	  testFuncs.selectSite(driver, sitePhSite);	
+//	  testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, sitePhSiteMsg);  
+	  
+	  // Check import of Phone-firmware-files
+	  testFuncs.myDebugPrinting("Check import of Phone-firmware-files", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	  testFuncs.searchStr(driver, map.get("firmName"));
+  }
+
+  // Delete values
+  private void deleteValues(Map<String, String> map) throws IOException {
+	  
+	  // Delete and modify values before import
+	  testFuncs.myDebugPrinting("Delete and modify values before import", enumsClass.logModes.NORMAL);
+	  	 		
+	  // Delete Templates
+	  testFuncs.myDebugPrinting("Delete Templates", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	  String templatesName = map.get("tempName");
+	  testFuncs.deleteTemplate(driver, templatesName);
+
+	  // Change System Settings
+	  testFuncs.myDebugPrinting("Change System Settings", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
+	  sysLangs.selectByVisibleText("Russian");
+	  testFuncs.myWait(3000);	
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ntpserver']")  , "1.2.3.4", 2000);	
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='MwiVmNumber']"), "1234"   , 2000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 5000);
+	  
+	  // Delete Template place-holders
+	  testFuncs.myDebugPrinting("Delete Template placeholders", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	  String tempPhName = map.get("tempPHName");
+	  String tempPhTemp  = map.get("tempPHTemp");
+	  testFuncs.deleteTemplatePlaceholder(driver, tempPhTemp, tempPhName);
+	  
+	  // Delete Tenant place-holders
+	  testFuncs.myDebugPrinting("Delete Tenant placeholders", enumsClass.logModes.MINOR);
+	  testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	  String tenPhName   = map.get("tenPHName");
+	  String tenPhValue  = map.get("tenPHValue");
+	  String tenPhTenant = map.get("tenPHTenant");
+	  testFuncs.selectTenant(driver, tenPhTenant);
+	  testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
+		
+//	  // Delete Site-place-holders	
+//	  testFuncs.myDebugPrinting("Delete Site-placeholders", enumsClass.logModes.MINOR);	
+//	  testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");	
+//	  String sitePhSite     = map.get("sitePHSite");
+//	  String sitePhSiteMsg  = map.get("sitePHSiteMsg");
+//	  String sitePhName  	= map.get("sitePHName");
+//	  String sitePhValue 	= map.get("sitePHValue");
+//	  testFuncs.selectSite(driver, sitePhSite);	
+//	  testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, sitePhSiteMsg);
+	  
+	  // Delete from Phone-firmware-files
+	  testFuncs.myDebugPrinting("Delete from Phone-firmware-files", enumsClass.logModes.NORMAL);
+	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	  String firmName    = map.get("firmName");	  
+	  String firmDesc    = map.get("firmDesc");
+	  String firmVersion = map.get("firmVersion"); 
+	  testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);  
+  }
+
+  // Build configuration map
+  private Map<String, String> buildConfMap(Map<String, String> map) {
+	  
+	  testFuncs.myDebugPrinting("Build configuration", enumsClass.logModes.NORMAL);
+	  map.put("tempName"   		 , "importtemplate");	  
+	  map.put("mwiVMnumber"		 , "4718");
+	  map.put("ippLanguage"		 , "English");
+	  map.put("ntpServer"  		 , "10.1.1.11"); 
+	  map.put("tempPHName" 		 , "importTemplatePH");
+	  map.put("tempPHValue"		 , "12345678");
+	  map.put("tempPHDesc" 		 , "Value for import configuration test");
+	  map.put("tempPHTemp" 		 , "NirTemplate445");
+	  map.put("tenPHName"  		 , "importTenantPH");
+	  map.put("tenPHValue" 		 , "1234");
+	  map.put("tenPHTenant"		 , "Nir");
+	  map.put("sitePHName" 		 , "importSitePH");
+	  map.put("sitePHValue"      , "123456");
+	  map.put("sitePHSitePrefix" , "AutoDetection");
+	  map.put("sitePHSite" 		 , "AutoDetection [AutoDetection] / Nir");
+	  map.put("sitePHSiteMsg" 	 , "AutoDetection [AutoDetection]");
+	  map.put("firmName"   		 , "importFirmware");
+	  map.put("firmDesc"   		 , "Firmware for testing the import configuration");
+	  map.put("firmVersion"		 , "430HDUC_2.0.13.121");
+	  return map;
+  }
+ 
+  // Check headers of imported data
+  private void checkHeaders() {
+	  
+	  testFuncs.myDebugPrinting("Check headers", enumsClass.logModes.NORMAL);
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[1]/h1", "Import Result");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/div/label", "Tenants");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[3]/div/div/label", "Regions");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[4]/div/div/label", "Sites");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[5]/div/div/label", "Templates");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[6]/div/div/label", "System Settings");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[7]/div/div/label", "Template Placeholders");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[8]/div/div/label", "Tenant Placeholders");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[9]/div/div/label", "Site Placeholders");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[3]/div[10]/div/div/label", "Phone Firmware Files");
+  }
+
+  // Check imported data
+  private void checkData(Map<String, String> map) {
+	  
+	  // Check imported data
+	  testFuncs.myDebugPrinting("Check imported data", enumsClass.logModes.NORMAL);
+	  
+	  // Tenants and sites
+	  testFuncs.myDebugPrinting("Check Tenants and sites", enumsClass.logModes.MINOR);	
 	  testFuncs.searchStr(driver, "Nir Tenant for Nir auto testing");
 	  testFuncs.searchStr(driver, "NirTest1 Non default Tenant for Nir auto testing");
 	  testFuncs.searchStr(driver, "NirTest2 Non default Tenant for Nir auto testing");
-		
-	  // Regions
-	  testFuncs.myDebugPrinting("Check Regions", enumsClass.logModes.NORMAL);
 	  testFuncs.searchStr(driver, "AutoDetection This region is intended for automatic detection nodes NirTest1");
-		
-	  // Sites
-	  testFuncs.myDebugPrinting("Check Sites", enumsClass.logModes.NORMAL);
 	  testFuncs.searchStr(driver, "AutoDetection Nir NirRegion");
-	  testFuncs.searchStr(driver, "Nir_()'<>/\":*&^%#@!~ Nir AutoDetection");
+	  testFuncs.searchStr(driver, "Nir_()'<>/\\\":*&^%#@!~ Nir AutoDetection");
 
-		// Templates
-		testFuncs.myDebugPrinting("Check Templates", enumsClass.logModes.NORMAL);
-		String templatesName = "Template_for_configuration_test";
-//		testFuncs.myDebugPrinting("templatesName - " + templatesName, enumsClass.logModes.MINOR);
-//		testFuncs.searchStr(driver, templatesName + " Template for Import configuration tests");
+	  // Templates	
+	  testFuncs.myDebugPrinting("Check Templates", enumsClass.logModes.MINOR);	
+	  String templatesName = map.get("tempName");
+	  testFuncs.myDebugPrinting("templatesName - " + templatesName, enumsClass.logModes.MINOR);
+	  testFuncs.searchStr(driver, templatesName + " Template for import configuration test");
 			
-		// System Settings
-		testFuncs.myDebugPrinting("Check System Settings", enumsClass.logModes.NORMAL);
-		testFuncs.searchStr(driver, "MwiVmNumber 7521");
-		testFuncs.searchStr(driver, "ntpserver 10.1.1.10");
+	  // System Settings
+	  testFuncs.myDebugPrinting("Check System Settings", enumsClass.logModes.MINOR);	
+	  testFuncs.searchStr(driver, "MwiVmNumber 4718");
+	  testFuncs.searchStr(driver, "ipplanguage English");
+	  testFuncs.searchStr(driver, "ntpserver 10.1.1.11");
 
-//		// Template place-holders
-//		testFuncs.myDebugPrinting("Check Template place-holders", enumsClass.logModes.NORMAL);
-//		String tempPhName 	  = "ConfTest_ph";
-//		String tempPhValue	  = "1234";
-//		String tempPhTemplate = "Audiocodes_430HD";
-//		testFuncs.myDebugPrinting("tempPhName - "  + tempPhName, enumsClass.logModes.MINOR);
-//		testFuncs.myDebugPrinting("tempPhValue - " + tempPhValue, enumsClass.logModes.MINOR);
-//		testFuncs.searchStr(driver, tempPhName + " " +  tempPhValue + " Template PH that used for configuration import tests " + tempPhTemplate + "");
+	  // Template place-holders
+	  testFuncs.myDebugPrinting("Check Template place-holders", enumsClass.logModes.MINOR);	
+	  String tempPhName  = map.get("tempPHName");
+	  String tempPhValue = map.get("tempPHValue");
+	  String tempPhDesc  = map.get("tempPHDesc");
+	  String tempPhTemp  = map.get("tempPHTemp");
+	  testFuncs.searchStr(driver, tempPhName + " " +  tempPhValue + " " + tempPhTemp + " " + tempPhDesc);
 
-//		// Tenant place-holders
-//		testFuncs.myDebugPrinting("Check Tenant place-holders", enumsClass.logModes.NORMAL);
-//		String tenPhName   = "ConfTest_Tenant_ph_key";
-//		String tenPhValue  = "1234";
-//		String tenPhTenant = "Nir";
-//		testFuncs.searchStr(driver, tenPhName + " " + tenPhValue + " " + tenPhTenant + "");
-	//	
-//		// Site place-holders
-//		testFuncs.myDebugPrinting("Check Site place-holders", enumsClass.logModes.NORMAL);
-//		String sitePhName    = "ConfTest_Site_ph_key";
-//		String sitePhValue   = "1234";
-//		String sitePhSite    = "AutoDetection";
-//		String siteForDelete = sitePhSite + " [" + sitePhSite + "]";
-//		String siteForSearch = sitePhSite + " [" + sitePhSite + "] / Nir";
-//		testFuncs.searchStr(driver, sitePhName + " " + sitePhValue + " " + sitePhSite + "");
-
-		// Phone Firmware Files
-		testFuncs.myDebugPrinting("Check Phone Firmware Files", enumsClass.logModes.NORMAL);
-		String firmName    = "430HDUC_2.0.13.121";
-		testFuncs.searchStr(driver, firmName);
-	
-
+	  // Tenant place-holders
+	  testFuncs.myDebugPrinting("Check Tenant place-holders", enumsClass.logModes.MINOR);	
+	  String tenPhName   = map.get("tenPHName");
+	  String tenPhValue  = map.get("tenPHValue");
+	  String tenPhTenant = map.get("tenPHTenant");
+	  testFuncs.searchStr(driver, tenPhName + " " + tenPhValue + " " + tenPhTenant);
+		
+	  // Site place-holders
+	  testFuncs.myDebugPrinting("Check Site place-holders", enumsClass.logModes.MINOR);
+	  String sitePhName  = map.get("sitePHName");
+	  String sitePhValue = map.get("sitePHValue");
+	  String sitePhSite  = map.get("sitePHSitePrefix");
+	  testFuncs.searchStr(driver, sitePhName + " " + sitePhValue + " " + sitePhSite);
+		
+	  // Phone Firmware Files	
+	  testFuncs.myDebugPrinting("Check Phone Firmware Files", enumsClass.logModes.MINOR);	
+	  String firmName    = map.get("firmName");
+	  String firmVersion = map.get("firmVersion");
+	  testFuncs.searchStr(driver, firmName + " " + firmVersion);
   }
 
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -77,7 +77,7 @@ public class Test63__Operation_export_tests {
   public void Operation_export_users() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 
 	    // Login via an Operation user (System)
 		testFuncs.myDebugPrinting("Login via an Operation user (System)");

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -179,7 +179,7 @@ public class Test108__alarms_tests {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

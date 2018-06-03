@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -120,7 +120,7 @@ public class Test117__user_configuration {
 							   dispPrefix + "_3@" + testVars.getDomain()};
 	String confNames[] =  {confName,  confName , confName};
 	String confValues[] = {confValue, confValue, confValue};
-	testFuncs.verifyConfValues(driver, usersFullNames, confNames, confValues, false);
+	verifyConfValues(driver, usersFullNames, confNames, confValues, false);
 	
     // Step 2 - Try to create a new configuration key with pressing the Save button
 	testFuncs.myDebugPrinting("Step 2 - Try to create a new configuration key with pressing the Save button");
@@ -128,7 +128,7 @@ public class Test117__user_configuration {
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
 	testFuncs.createNewConfValue(driver, confName, confValue);
 	testFuncs.saveConfValues(driver, usersFullNames);
-	testFuncs.verifyConfValues(driver, usersFullNames, confNames, confValues, true);
+	verifyConfValues(driver, usersFullNames, confNames, confValues, true);
 	
     // Step 3 - Delete configuration key
 	testFuncs.myDebugPrinting("Step 3 - Delete configuration key");
@@ -150,6 +150,55 @@ public class Test117__user_configuration {
     testFuncs.searchStr(driver, dispPrefix + "_1@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, dispPrefix + "_2@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, dispPrefix + "_3@" + testVars.getDomain() + " Finished");
+  }
+  
+  /**
+  *  Verify the create of configuration values
+  *  @param driver       - given driver
+  *  @param usersFullNames  - given array of users names
+  *  @param confNames  		- given array of configuration names
+  *  @param confValues  	- given array of configuration values
+  *  @param confValues  	- given Boolean value to detect if value exists
+  */
+  private void verifyConfValues(WebDriver driver, String[] usersFullNames, String[] confNames, String[] confValues, Boolean isValuesExist) {
+	    
+	  int usersNUmber = usersFullNames.length;
+	  
+	  // Loop on all users and verify their create one after another
+	  testFuncs.myDebugPrinting("Loop on all users and verify their create one after another", enumsClass.logModes.MINOR);	
+	  for (int i = 0; i < usersNUmber; ++i) {
+		  
+		  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");		  
+		  String[] parts = usersFullNames[i].split("@");
+		  testFuncs.searchUser(driver, parts[0]);  		  
+		  if (isValuesExist) {
+			  
+			  testFuncs.myDebugPrinting("isValuesExist - TRUE", enumsClass.logModes.MINOR);
+			  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a/i"), 3000);		  		    
+		  } else {
+			  
+			  testFuncs.myDebugPrinting("isValuesExist - FALSE", enumsClass.logModes.MINOR);
+			  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[2]")			 , 3000);	  
+			  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[1]/a"), 3000);	
+		  }
+		  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + usersFullNames[i] + ")");
+		  
+		  // Verify delete
+		  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);
+		  if (isValuesExist) {
+			  
+			  testFuncs.myDebugPrinting("isValuesExist - TRUE", enumsClass.logModes.MINOR);	  
+			  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confNames[i]);
+			  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValues[i]);
+			  
+		  } else {
+		  
+			  testFuncs.myDebugPrinting("isValuesExist - FALSE", enumsClass.logModes.MINOR);
+			  String txt = driver.findElement(By.tagName("body")).getText();
+			  testFuncs.myAssertTrue("Values was not detcted !!", !txt.contains(confNames[i]) && !txt.contains(confValues[i]));  
+		  }		  
+		  testFuncs.myDebugPrinting("Delete succeded !!", enumsClass.logModes.MINOR);
+	  }
   }
 
   @After

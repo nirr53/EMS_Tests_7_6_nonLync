@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -128,7 +128,7 @@ public class Test143__generate_exists_user_configuration_tests {
  	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
  	testFuncs.searchUser(driver, regPrefix);  
  	String newConfValue = "new" + confValue;
- 	testFuncs.editUserConfigurationValue(driver, regPrefix + "@" + testVars.getDomain(), confName, confValue, newConfValue);
+ 	editUserConfigurationValue(driver, regPrefix + "@" + testVars.getDomain(), confName, confValue, newConfValue);
 
  	// Step 2 - Verify that old value (before the edit) still exists at the configuration file
  	testFuncs.myDebugPrinting("Step 2 - Verify that old value (before the edit) still exists at the configuration file");
@@ -170,6 +170,41 @@ public class Test143__generate_exists_user_configuration_tests {
     testFuncs.setMultipleUsersAction(driver, map);
     regPrefix = regPrefix.toLowerCase();
     testFuncs.searchStr(driver, regPrefix + "@" + testVars.getDomain() + " Finished");
+  }
+  
+  /**
+  *  Edit user configuration value
+  *  @param driver       - given driver
+  *  @param userName     - given user-name (with domain) of the edited configuration value
+  *  @param confName  	 - configuration value name for edit
+  *  @param confValue	 - configuration value name for edit
+  *  @param newConfValue - new configuration value
+  */
+  public void editUserConfigurationValue(WebDriver driver, String userName, String confName, String confValue, String newConfValue) {
+		 
+	  // Enter the configuration-value menu of the user
+	  testFuncs.myDebugPrinting("Enter the configuration-value menu of the user", enumsClass.logModes.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a"), 5000);	  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + userName + ")");			  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValue);			  
+
+	  // Edit the user
+	  testFuncs.myDebugPrinting("Edit the user", enumsClass.logModes.MINOR);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confName    , 4000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), newConfValue, 4000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div[2]/div[1]/div[3]/a/span"), 5000);	  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Add Setting");			  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "This setting name is already in use.\nAre you sure you want to replace " + confValue + " to " + newConfValue); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + userName + " )");			  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "User configuration was saved successfully."); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  
+	  // Verify the edit
+	  testFuncs.myDebugPrinting("Verify the edit", enumsClass.logModes.MINOR);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", newConfValue);
   }
 
   @After

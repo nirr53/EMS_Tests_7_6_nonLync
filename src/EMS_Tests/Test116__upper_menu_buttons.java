@@ -9,7 +9,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -108,8 +108,22 @@ public class Test116__upper_menu_buttons {
 	
 	// Step 4 - Press the EMS-OVOC button
 	testFuncs.myDebugPrinting("Step 4 - Press the EMS-OVOC button");
-	testFuncs.pressEMSButton(driver);
+	pressEMSButton();
   }
+  
+  // Press the EMS Button
+  private void pressEMSButton() {
+		  
+	  testFuncs.myWait(3000);		  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[1]/header/a/img"), 7000);
+	  for(String winHandle : driver.getWindowHandles()) {
+	    	
+	        driver.switchTo().window(winHandle);  
+	  }
+	  testFuncs.searchStr(driver, "USERNAME");
+	  testFuncs.searchStr(driver, "PASSWORD");
+	  testFuncs.searchStr(driver, "Log In"); 	  
+  } 
 
   @After
   public void tearDown() throws Exception {

@@ -12,7 +12,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------

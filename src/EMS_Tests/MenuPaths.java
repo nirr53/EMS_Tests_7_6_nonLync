@@ -64,8 +64,7 @@ public class MenuPaths {
 			case "General_Informatiom_logout":
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MAINPAGE_USER_LOGOUT_BUTTON;
-            	break;
-            	
+            	break;          	
 			case "Monitoring_General_Informatiom_logout":
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MONITOR_MAINPAGE_USER_LOGOUT_BUTTON;

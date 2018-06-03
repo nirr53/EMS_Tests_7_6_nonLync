@@ -1,5 +1,6 @@
 package EMS_Tests;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -10,7 +11,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import EMS_Tests.enumsClass.browserTypes;
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -77,8 +78,11 @@ public class Test10__system_logs_tests {
 
   @Test
   public void System_logs() throws Exception {
-	  
+	  	  
 	Log.startTestCase(this.getClass().getName());
+	String fileName;
+	String txt;
+	int numOfFiles;
 	 
     // Step 1 - Enter the System Logs menu & check its appearance
 	testFuncs.myDebugPrinting("Step 1 - Enter the System Logs menu & check its appearance");
@@ -90,14 +94,14 @@ public class Test10__system_logs_tests {
     testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/form/table/tbody/tr[2]/td[1]/span/b", "Activity");
 
     // Step 2.1 - Check the Web admin menu and download last file
-	if (browserTypes.IE != null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 	  	testFuncs.myDebugPrinting("Step 2.1 - Check the Web admin menu and download last file"); 	
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getSysLogsPrefix());
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/form/table/tbody/tr[1]/td[2]/a")												, 2000);
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/a"), 2000);
 	  	testFuncs.myWait(120000);
-	  	String fileName = testFuncs.getLatestFilefromDir(testVars.getDownloadsPath()).getName();
+	  	fileName = getLatestFilefromDir(testVars.getDownloadsPath()).getName();
 	    testFuncs.myDebugPrinting("fileName - " + fileName, enumsClass.logModes.MINOR);
 	    testFuncs.myAssertTrue("Downloaded file does not matches:\n" +
 	    		          	   "fileName - "                         + fileName 													     + "   \n" +
@@ -129,14 +133,14 @@ public class Test10__system_logs_tests {
 
     // Step 2.3 - Download Archive files
   	testFuncs.myWait(7000);
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 		testFuncs.myDebugPrinting("Step 2.3 - Download Archive files");
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/a"), 3000);
 		testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/form/table/thead/tr/th", "Web Admin Archive Files");	
-		String txt = driver.findElement(By.tagName("body")).getText();
+		txt = driver.findElement(By.tagName("body")).getText();
 		testFuncs.myDebugPrinting("txt - " + txt, enumsClass.logModes.MINOR);
-		int numOfFiles = txt.length() - txt.replace(".txt", "aaa").length();
+		numOfFiles = txt.length() - txt.replace(".txt", "aaa").length();
 		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, enumsClass.logModes.MINOR);
 		for (int j = 1; j < numOfFiles; ++j) {
 			
@@ -152,14 +156,14 @@ public class Test10__system_logs_tests {
   	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[3]/button"), 10000);
   	
     // Step 2.4 - Check the Activity logs menu and download last file
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 	  	testFuncs.myDebugPrinting("Step 2.4 - Check the Activity logs menu and download last file"); 	
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getSysLogsActPre());
 	  	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/form/table/tbody/tr[2]/td[2]/a")												, 30000);
 	  	driver.findElement(By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/a")).click();
 	  	testFuncs.myWait(120000);
-	  	String fileName = testFuncs.getLatestFilefromDir(testVars.getDownloadsPath()).getName();
+	  	fileName = getLatestFilefromDir(testVars.getDownloadsPath()).getName();
 	    testFuncs.myDebugPrinting("fileName - " + fileName, enumsClass.logModes.MINOR);
 	    testFuncs.myAssertTrue("Downloaded file does not matches:\n" +
 	          	   "fileName - "                         + fileName 													     + "   \n" +
@@ -181,14 +185,14 @@ public class Test10__system_logs_tests {
 	}
 	
     // Step 2.6 - Download Archive files
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 		testFuncs.myDebugPrinting("Step 2.6 - Download Archive files");
 	 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div[2]/div[2]/form/table/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/a"), 3000);
 	 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/form/table/thead/tr/th", "Activity Archive Files");
-		String txt = driver.findElement(By.tagName("body")).getText();
+		txt = driver.findElement(By.tagName("body")).getText();
 		testFuncs.myDebugPrinting("txt - " + txt, enumsClass.logModes.MINOR);
-		int numOfFiles = txt.length() - txt.replace(".csv", "aaa").length();
+		numOfFiles = txt.length() - txt.replace(".csv", "aaa").length();
 		testFuncs.myDebugPrinting("numOfFiles - " + numOfFiles, enumsClass.logModes.MINOR);
 	 	for (int j = 1; j <= numOfFiles; ++j) {
 	 		
@@ -201,6 +205,31 @@ public class Test10__system_logs_tests {
   }
   
   /**
+  *  Get last file save on given path
+  *  @param  dirPath - directory path
+  *  @return  		 - last modified file-name or NULL
+  */
+  private File getLatestFilefromDir(String dirPath) {
+	
+	    File dir = new File(dirPath);
+	    File[] files = dir.listFiles();
+	    if (files == null || files.length == 0) {
+	    	
+	        return null;
+	    }
+	    File lastModifiedFile = files[0];
+	    for (int i = 1; i < files.length; i++) {
+	    	
+	       if (lastModifiedFile.lastModified() < files[i].lastModified()) {
+	    	   
+	           lastModifiedFile = files[i];
+	       }
+	    }
+	    
+	    return lastModifiedFile;
+  }
+  
+  /**
   *  Get System logs name of the log
   *  @param  logPrefix      - suffix of the log (I.e. IPP.Manage.Activity.)
   *  @param  suffix         - suffix of the log (I.e. .csv or . log)
@@ -208,7 +237,7 @@ public class Test10__system_logs_tests {
   *  @return Current name of the System logs log
   */
   @SuppressWarnings("deprecation")
-  public String getSystemLogsFilename(String logPrefix, String suffix, Boolean isAddDayNeeded) {
+  private String getSystemLogsFilename(String logPrefix, String suffix, Boolean isAddDayNeeded) {
 	  
 	int addedvalue = 0;
     Date   date  = new Date();
@@ -225,7 +254,7 @@ public class Test10__system_logs_tests {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

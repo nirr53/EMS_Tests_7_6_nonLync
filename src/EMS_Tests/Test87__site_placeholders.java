@@ -1,5 +1,8 @@
 package EMS_Tests;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -8,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -95,11 +98,70 @@ public class Test87__site_placeholders {
 	
 	// Step 2 - Edit the created Site Placeholder
 	testFuncs.myDebugPrinting("Step 2 - Edit the created Site Placeholder");
-	testFuncs.editSitePH(driver, sitePhName, sitePhNewValue);
+	editSitePH(driver, sitePhName, sitePhNewValue);
 	
 	// Step 3 - Delete the created Site Placeholder
 	testFuncs.myDebugPrinting("Step 3 - Delete the created Site Placeholder");
 	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getDefSite() + " [" + testVars.getDefSite() + "]");
+  }
+  
+  
+  /**
+  *  Edit a Site-PH with given variables
+  *  @param driver         - given element
+  *  @param sitePhName     - given Site-ph name
+  *  @param sitePhNewValue - new given Site-ph value
+  *  @throws IOException 
+  */
+  public void editSitePH(WebDriver driver, String sitePhName, String sitePhNewValue) throws IOException {
+	  
+	  // Get idx for edit
+	  testFuncs.myDebugPrinting("Get idx for edit", enumsClass.logModes.NORMAL);  
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='sites1-filtering']"), " " , 6000);
+	  BufferedReader r = new BufferedReader(new StringReader(driver.findElement(By.tagName("body")).getText()));
+	  String l = null;
+	  int i = 1;
+	  while ((l = r.readLine()) != null) {
+			
+		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);	
+		  if (l.contains(sitePhName)) {
+						  
+			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);	
+			  break;
+		  }
+			
+		  if (l.contains(" %ITCS_" )) {
+					
+			  ++i;		
+		  }
+	  }
+		
+	//	// Check if the current user is "Monitoring" if so - edit should fail
+	//	myDebugPrinting("Check if the current user is \"Monitoring\" if so - edit should fail", enumsClass.logModes.NORMAL);  
+	//	if (sitePhName.contains("tenMonitPhName")) {
+	//			
+	//		String editButton = driver.findElement(By.xpath("//*[@id='tenants1']/tbody[1]/tr[" + i + "]/td[6]/button[1]")).getAttribute("class");
+	//		myAssertTrue("Edit button is not deactivated !!\neditButton - " + editButton, editButton.contains("not-active"));
+	//		return;
+	//	}
+		    
+	  testFuncs.myDebugPrinting("xpath - " + "//*[@id='sites1']/tbody[1]/tr[" + i + "]/td[7]/button[1]", enumsClass.logModes.DEBUG);  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='sites1']/tbody[1]/tr[" + i + "]/td[7]/button[1]"), 5000);
+				
+	  // Fill data
+	  testFuncs.myDebugPrinting("Fill data", enumsClass.logModes.MINOR);  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Edit placeholder");
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ph_value']"), sitePhNewValue, 2000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Placeholder.");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update placeholder successfully: " + sitePhName);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+				
+	  // Verify the create
+	  testFuncs.myDebugPrinting("Verify the create", enumsClass.logModes.MINOR);  
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='sites1-filtering']"), sitePhName , 6000);
+	  testFuncs.searchStr(driver, "%ITCS_" + sitePhName + "%");
+	  testFuncs.searchStr(driver, sitePhNewValue);
   }
   
   @After

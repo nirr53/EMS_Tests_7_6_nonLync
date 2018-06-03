@@ -10,7 +10,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
-import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.support.ui.Select;
+
+import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -99,17 +101,94 @@ public class Test147__templates_mapping {
 	newDataMap.put("isDefault",  "true"); 
 	newDataMap.put("modelType" , usedModel); 
 	newDataMap.put("tenantType", usedTenant); 
-	testFuncs.addMapping(driver, usedTemplate, newDataMap);
+	addMapping(driver, usedTemplate, newDataMap);
 	
 	// Step 3 - Verify Mapping
 	testFuncs.myDebugPrinting("Step 3 - Verify Mapping");
-	testFuncs.verifyMapping(driver, usedModel, usedTenant);
+	verifyMapping(driver, usedModel, usedTenant, "Nir_445HD.cfg");
+	
+	// Step 3 - Add another mapping
+	testFuncs.myDebugPrinting("Step 2 - Add mapping");
+	newDataMap.put("isDefault",  "true"); 
+	newDataMap.put("modelType" , usedModel); 
+	newDataMap.put("tenantType", usedTenant); 
+	addMapping(driver, usedTemplate, newDataMap);
+  }
+  
+  /**
+  *  Add a mapping value by given parameters
+  *  @param driver       - given driver
+  *  @param usedTemplate - given used template
+  *  @param newDataMap   - array of data for default mapping
+  */
+  private void addMapping(WebDriver driver, String usedTemplate, Map<String, String> newDataMap) {
+	
+	// Set a Template
+	testFuncs.myDebugPrinting("Set a Template <" + usedTemplate + ">", enumsClass.logModes.MINOR);
+	new Select(driver.findElement(By.xpath("//*[@id='templates-def']"))).selectByVisibleText(usedTemplate);
+	testFuncs.myWait(5000);
+	
+	// Set extra data
+	testFuncs.myDebugPrinting("Set extra data", enumsClass.logModes.MINOR);
+	if (newDataMap.containsKey("isDefault") && newDataMap.get("isDefault").contains("true")) {
+			
+		// Mapping is default - Check the checkbox if needed
+		testFuncs.myDebugPrinting("Mapping is default - Check the checkbox if needed", enumsClass.logModes.MINOR);		
+		WebElement cbIsDef = driver.findElement(By.xpath("//*[@id='is_default']"));
+		if (cbIsDef.getAttribute("value").contains("false")) {
+			
+			cbIsDef.click();
+			testFuncs.myWait(2000);
+		}
+		
+		// Set model
+		testFuncs.myDebugPrinting("Set model", enumsClass.logModes.MINOR);		
+		new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[3]/select"))).selectByVisibleText(newDataMap.get("modelType"));
+		testFuncs.myWait(5000);
+		
+		// Set Tenant
+		testFuncs.myDebugPrinting("Set Tenant", enumsClass.logModes.MINOR);		
+		new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[5]/select"))).selectByVisibleText(newDataMap.get("tenantType"));
+		testFuncs.myWait(5000);	
+	}
+	
+	// Confirm
+	testFuncs.myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Template");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to update the template of tenant and type");		
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+  }
+  
+  /**
+  *  Verify a mapping value by given parameters
+  *  @param driver       - given driver
+  *  @param usedTemplate - given used template
+  *  @param usedTenant   - given used tenant
+  *  @param	confName	 - wanted configuration file name for search
+  */
+  public void verifyMapping(WebDriver driver, String usedModel, String usedTenant, String confName) {
+	  
+	  // Verify headers of Test-Mapping section		
+	  testFuncs.myDebugPrinting("Verify headers of Test-Mapping section", enumsClass.logModes.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a"), 5000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[1]/h3", "Choose TENANT and MODEL and click test for the TEMPLATE");		
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");	
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");
+	  
+	  // Select the tested model and tested tenant, and test the mapping
+	  testFuncs.myDebugPrinting("Select the tested model and tested tenant, and test the mapping", enumsClass.logModes.MINOR);		  
+	  testFuncs.mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[1]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedModel , 4000);
+	  testFuncs.mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[2]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedTenant, 4000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[3]/buttton"), 5000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Test Tenant URL");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", confName);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
 
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

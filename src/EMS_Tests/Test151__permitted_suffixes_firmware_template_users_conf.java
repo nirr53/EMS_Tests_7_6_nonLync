@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -37,6 +37,8 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
   private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
+  String permittedSuffixes = ".cab,.cfg,.csv,.id,.img,.zip";
+
   
   // Default constructor for print the name of the used browser 
   public Test151__permitted_suffixes_firmware_template_users_conf(browserTypes browser) {
@@ -78,19 +80,21 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String path  				= testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("35.2");
-	String permittedSuffixes    = ".cab,.cfg,.csv,.id,.img,.zip";
-	String Id 				    = testFuncs.getId();
-	String firmName    		    = "myFirmName"  + Id;
-	String firmDesc     	    = "myFirmDesc"  + Id;
-	String firmVersion  	    = String.valueOf(testFuncs.getNum(128)) + "." + 
-						          String.valueOf(testFuncs.getNum(128)) + "." +
-						          String.valueOf(testFuncs.getNum(128)) + "." +
-						          String.valueOf(testFuncs.getNum(128));
-	String firmRegion   	    = testVars.getNonDefTenant(0);	
-	String xpathUploadField  	= "//*[@id='file_source']";
-	String xpathUploadButton    = "//*[@id='uploadForm']/div[2]/a";
-	String[] confirmMessageStrs = {"Import Users & Devices", "The process might take a few minutes. Do you want to continue?"};
+	String path  				 = testVars.getImportFile("35.2");
+	String fullPath  			 = testVars.getSrcFilesPath() + "\\" + path;
+	String Id 				     = testFuncs.getId();
+	String firmName    		     = "permittedName"  + Id;
+	String firmDesc     	     = "permittedDesc"  + Id;
+	String firmVersion  	     =  String.valueOf(testFuncs.getNum(128)) + "." + 
+						            String.valueOf(testFuncs.getNum(128)) + "." +
+						            String.valueOf(testFuncs.getNum(128)) + "." +
+						            String.valueOf(testFuncs.getNum(128));
+	String firmRegion   	     = testVars.getNonDefTenant(0);	
+	String xpathUploadField  	 = "//*[@id='file_source']";
+	String xpathUploadButton     = "//*[@id='uploadForm']/div[2]/a";
+	String confXpathUploadField  = "//*[@id='fileToUpload']";
+	String confXpathUploadButton = "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[3]/input";
+	String[] confirmMessageStrs = {"Import Users and Devices", "Please choose a *.zip or *.csv file."};
 	 
     // Enter the System configuration menu and add jpeg suffix file to the permitted-list
 	testFuncs.myDebugPrinting("Enter the System configuration menu and add jpeg suffix file to the permitted-list");
@@ -103,20 +107,24 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	testFuncs.myDebugPrinting("Step 1 - Try to upload a jpeg file to Firmware menu");
 	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
 	testFuncs.addNewFirmware(driver, firmName, firmDesc, firmVersion, firmRegion, path);
-	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
+	
+	// Step 2 - Try to upload a jpeg file to Templates menu
+	testFuncs.myDebugPrinting("Step 1 - Try to upload a jpeg file to Firmware menu");
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+  	uploadNonCfgToTemplates(driver, fullPath); 	
 	
 	// Nir VI 153182
 	// Step 3 - Try to upload a jpeg file to Import-users menu
 	testFuncs.myDebugPrinting("Step 3 - Try to upload a jpeg file to Import-users menu");
 	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
-	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
+	testFuncs.uploadFile(driver, fullPath, xpathUploadField, xpathUploadButton, confirmMessageStrs);
 	
 	// Nir VI 153182
 	// Step 4 - Try to upload a jpeg file to Import-configuration menu
 	testFuncs.myDebugPrinting("Step 4 - Try to upload a jpeg file to Import-configuration menu");
 	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
-	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
-
+	testFuncs.uploadFile(driver, fullPath, confXpathUploadField, confXpathUploadButton, null);
+	testFuncs.searchStr(driver, "Please select the Configuration ZIP file.");
   }
   
   // Edit the Permitted-Suffixes menu
@@ -129,11 +137,45 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", msgBoxHdr2);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
+  
+  /**
+  *  Upload non-cfg file to created Template
+  *  @param driver         - A given driver
+  *  @param nonCfgFileName -  An invalid file path
+  */
+  private void uploadNonCfgToTemplates(WebDriver driver, String nonCfgFileName) {
+	  
+	  // Try to edit one of the Templates by uploading a file
+	  testFuncs.myDebugPrinting("Try to edit one of the Templates by uploading a file", enumsClass.logModes.MINOR);
+	  testFuncs.myDebugPrinting("nonCfgFileName - " + nonCfgFileName, enumsClass.logModes.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='tenants1']/tbody/tr[3]/td[8]/div/buttton[1]")							 , 5000);  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/a[3]"), 5000);
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Upload IP Phone Template "); 
+	  WebElement fileInput = driver.findElement(By.name("uploadedfile"));
+	  fileInput.sendKeys(nonCfgFileName);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
+	  testFuncs.myWait(7000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Upload IP Phone Template Audiocodes");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "The IP Phone template has been uploaded successfully.");	  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000); 
+	  
+	  
+	  // Restore configuration to default
+	  testFuncs.myClick(driver, By.xpath("//*[@id='restoreToDefId']"), 5000); 
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Reset the IP Phone template");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to reset the IP Phone template?");	    
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000); 				  
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update configuration template");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Succesfull to reset the configuration template to default file content.");	    
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+  }
 
   @After
   public void tearDown() throws Exception {
-	  
-//    driver.quit();
+	    
+	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");	
+	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

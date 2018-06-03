@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.openqa.selenium.*;import EMS_Tests.enumsClass.browserTypes;
+import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
@@ -86,7 +86,7 @@ public class Test84__Operation_alarms {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
 	
 	// Step 1 - Test the Export button
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 		testFuncs.myDebugPrinting("Step 1 - Test the Export button");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getAlarmsExport());
@@ -112,7 +112,7 @@ public class Test84__Operation_alarms {
 	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
 	
 	// Step 3 - Test the Export button
-	if (browserTypes.IE == null) {
+	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 		
 		testFuncs.myDebugPrinting("Step 3 - Test the Export button");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), testVars.getAlarmsExport());
