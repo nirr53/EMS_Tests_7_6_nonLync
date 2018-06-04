@@ -11,7 +11,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-
 import EMS_Tests.enumsClass.*;
 
 /**
@@ -20,10 +19,15 @@ import EMS_Tests.enumsClass.*;
 * ----------------
 * Tests:
 * 	 - Login and enter the Template mapping menu a registered user with registered device 
-* 	 1. 
+* 	 1. Check headers
+*    2. Add and verify mapping
+*    3. Update the created mapping
+*    4. Disable the created mapping
 * 
 * Results:
-* 	 1. As described.
+* 	 1. All headers should be detected.
+*    2. Mapping should be created and detected successfully.
+*    3. Mapping should be updated and detected successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -73,14 +77,14 @@ public class Test147__templates_mapping {
   }
 
   @Test
-  public void Tenant_site_configuration_during_create_tests() throws Exception {
+  public void Templates_mapping_tests() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String usedTemplate = "NirTemplate445";
-	String usedModel 	= "445HD";
-	String usedTenant = testVars.getDefTenant();
+	String usedTemplate  = "importtemplate";
+	String usedModels[]  = {"445HD", "450HD"};
+	String usedTenants[] = {testVars.getNonDefTenant(0), testVars.getNonDefTenant(1)};
 
 	// Login the system and enter the Template mapping menu
 	testFuncs.myDebugPrinting("Login the system and enter the Template mapping menu");
@@ -89,32 +93,115 @@ public class Test147__templates_mapping {
 
 	// Step 1 - Check headers
 	testFuncs.myDebugPrinting("Step 1 - Check headers");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"			 	  , "Zero Touch Templates Mapping");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[1]/a", "Setup Template");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a", "Templates Mapping");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a", "Test");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='def']/div/div/div[1]/h3"								 	  , "Default template per model and tenant");
-
-	// Step 2 - Add mapping
-	testFuncs.myDebugPrinting("Step 2 - Add mapping");
+	checkheaders();
+	
+	// Step 2 - Add and verify mapping
+	testFuncs.myDebugPrinting("Step 2 - Add and verify mapping");
 	Map<String, String> newDataMap = new HashMap<String, String>();
-	newDataMap.put("isDefault",  "true"); 
-	newDataMap.put("modelType" , usedModel); 
-	newDataMap.put("tenantType", usedTenant); 
+	newDataMap.put("isDefault"    ,  "true"); 
+	newDataMap.put("modelType"    , usedModels[0]); 
+	newDataMap.put("tenantType"   , usedTenants[0]);
+	newDataMap.put("confMsgHeader", "Enable zero touch"); 
+	newDataMap.put("confMsgBody"  , "Successful to enable new zero touch default template of tenant and type"); 
 	addMapping(driver, usedTemplate, newDataMap);
+	verifyMapping(driver, usedModels[0], usedTenants[0], usedTenants[0] + "_" + usedModels[0] + ".cfg");
 	
-	// Step 3 - Verify Mapping
-	testFuncs.myDebugPrinting("Step 3 - Verify Mapping");
-	verifyMapping(driver, usedModel, usedTenant, "Nir_445HD.cfg");
-	
-	// Step 3 - Add another mapping
-	testFuncs.myDebugPrinting("Step 2 - Add mapping");
-	newDataMap.put("isDefault",  "true"); 
-	newDataMap.put("modelType" , usedModel); 
-	newDataMap.put("tenantType", usedTenant); 
+	// Step 3 - Update the created mapping
+	testFuncs.myDebugPrinting("Step 3 - Update the created mapping");
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[1]/a"), 3000);
+	newDataMap.put("isDefault"    , "true"); 
+	newDataMap.put("modelType"    , usedModels[1]); 
+	newDataMap.put("tenantType"   , usedTenants[1]);	
+	newDataMap.put("confMsgHeader", "Update Template"); 
+	newDataMap.put("confMsgBody"  , "Successful to update the template of tenant and type"); 
 	addMapping(driver, usedTemplate, newDataMap);
+	verifyMapping(driver, usedModels[1], usedTenants[1], usedTenants[1] + "_" + usedModels[1] + ".cfg");
+	
+	// Step 4 - Disable the created mapping
+	testFuncs.myDebugPrinting("Step 4 - Disable the created mapping");
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a"), 3000);
+	disableMapping(driver, usedModels[1], usedTenants[1]);
   }
   
+  /**
+  *  Disable a mapping by given parameters
+  *  @param driver     - given driver
+  *  @param usedModel  - given used Model
+  *  @param usedTenant - given used Tenant
+  */
+  private void disableMapping(WebDriver driver, String usedModel, String usedTenant) {
+	  
+	  int numOfMappings = driver.findElement(By.tagName("body")).getText().split("405", -1).length - 1;
+	  testFuncs.myDebugPrinting("numOfMappings - " + numOfMappings, enumsClass.logModes.MINOR);
+	  for (int i = 1 ; i <= numOfMappings; ++i) {
+		    
+		  Select modelSelect = new Select(driver.findElement(By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[2]/div/select")));
+		  String currModel = modelSelect.getFirstSelectedOption().getText();
+		  Select tenantSelect = new Select(driver.findElement(By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[4]/div/select")));
+		  String currTenant = tenantSelect.getFirstSelectedOption().getText();
+		  testFuncs.myDebugPrinting("currModel - "  + currModel , enumsClass.logModes.MINOR);
+		  testFuncs.myDebugPrinting("currTenant - " + currTenant, enumsClass.logModes.MINOR);
+
+		  // Seek for a matching row
+		  if (usedModel.equals(currModel) && usedTenant.equals(currTenant)) {
+			  
+			  testFuncs.myDebugPrinting("Match was detected !!", enumsClass.logModes.MINOR);
+			  if (driver.findElement(By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[1]/div/input")).isSelected()) {
+				  
+				  // Disable the mapping
+				  testFuncs.myDebugPrinting("Disable the mapping", enumsClass.logModes.MINOR);
+				  testFuncs.myClick(driver, By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[1]/div/input")  , 4000);
+				  testFuncs.myClick(driver, By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[6]/div/buttton"), 4000);
+				  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Disable zero touch");		
+				  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to disable the zero touch default template of tenant " + usedTenant + " and type " + usedModel);		
+				  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);  
+				  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Disable zero touch");		
+				  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to disable the zero touch default template of tenant " + usedTenant + " and type " + usedModel);		
+				  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000); 
+				  
+				  // Verify the disable
+				  testFuncs.myDebugPrinting("Verify the disable", enumsClass.logModes.MINOR);	
+				  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a"), 3000);
+				  testFuncs.myAssertTrue("", !driver.findElement(By.xpath("//*[@id='zero']/div/div/div[2]/table/tbody/tr[" + i + "]/td[1]/div/input")).isSelected());
+			  }	  
+		  }		  
+	  }
+  }
+  
+  // Check page headers
+  private void checkheaders() {
+	    
+	  // Check help section
+	  testFuncs.myDebugPrinting("Check help section", enumsClass.logModes.MINOR);
+	  testFuncs.searchStr(driver, "After creating the TENANTs we need to map the TEMPLATE for each device.");
+	  testFuncs.searchStr(driver, "The TEMPALTE will be chosen according to the {MODEL + TENANT}.");
+	  testFuncs.searchStr(driver, "With this mapping a new device that registered to the IPP Manager,");
+	  testFuncs.searchStr(driver, "will get the TEMPLATE according to its {MODEL + TENANT}. ");
+	  testFuncs.searchStr(driver, "This is a part of the Zero Touch process.");
+		
+	  // Setup Template section
+	  testFuncs.myDebugPrinting("Check Setup Template section", enumsClass.logModes.MINOR);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"			 	  , "Zero Touch Templates Mapping");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[1]/a", "Setup Template");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a", "Templates Mapping");		
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a", "Test");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='def']/div/div/div[1]/h3"								 	  , "Default template per model and tenant");
+		
+	  // Templates Mapping section
+	  testFuncs.myDebugPrinting("Check Templates Mapping section", enumsClass.logModes.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[2]/a"), 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='zero']/div/div/div[1]/h3"							  , "Map TEMPLATE to {MODEL + TENANT}");			
+	  testFuncs.searchStr(driver, "Map TEMPLATE to {MODEL + TENANT}");
+
+	  // Test section
+	  testFuncs.myDebugPrinting("Check Test section", enumsClass.logModes.MINOR);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a"), 3000);
+	  testFuncs.searchStr(driver, "Choose TENANT and MODEL and click test for the TEMPLATE");	
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");	
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");	
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[1]/a"), 3000);
+  }
+
   /**
   *  Add a mapping value by given parameters
   *  @param driver       - given driver
@@ -154,8 +241,8 @@ public class Test147__templates_mapping {
 	
 	// Confirm
 	testFuncs.myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Template");
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to update the template of tenant and type");		
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , newDataMap.get("confMsgHeader"));
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", newDataMap.get("confMsgBody"));		
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
   
