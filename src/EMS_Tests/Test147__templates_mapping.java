@@ -18,7 +18,7 @@ import EMS_Tests.enumsClass.*;
 * This test tests the Template mapping menu
 * ----------------
 * Tests:
-* 	 - Login and enter the Template mapping menu a registered user with registered device 
+* 	 - Login and enter the Template mapping menu 
 * 	 1. Check headers
 *    2. Add and verify mapping
 *    3. Update the created mapping
@@ -28,6 +28,7 @@ import EMS_Tests.enumsClass.*;
 * 	 1. All headers should be detected.
 *    2. Mapping should be created and detected successfully.
 *    3. Mapping should be updated and detected successfully.
+*    4. Mapping should be deleted and detected successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
