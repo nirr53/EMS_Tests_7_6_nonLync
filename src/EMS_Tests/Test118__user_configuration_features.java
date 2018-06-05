@@ -23,11 +23,12 @@ import EMS_Tests.enumsClass.*;
 *    2. Add Telnet value
 *    3. Add PIN Access value
 *    4. Add CAP profile value
-*    5. Delete all values
+*    5  Add & delete VOCA value
+*    6. Delete all values
 * 
 * Results:
-* 	 1+4. Values should be added successfully.
-* 	   5. Configuration values should be deleted successfully.
+* 	 1+5. Values should be added successfully.
+* 	   6. Configuration values should be deleted successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -130,11 +131,80 @@ public class Test118__user_configuration_features {
 	deleteAllValues(driver);
 	addCAPProfile(driver, false);	
 	
-    // Step 5 - Delete all values
-	testFuncs.myDebugPrinting("Step 5 - Delete all values");
+    // Step 5 - Add VOCA value
+	testFuncs.myDebugPrinting("Step 5 - Add VOCA value");
+	String vocaLabel  = "label" + Id;
+	String vocaNumber = Id;
+	String vocaIp     = testFuncs.getRandomIp();
+	String vocaPort   = testFuncs.getRandomPort();
+	addVOCA(vocaLabel, vocaNumber, enumsClass.vocaModes.TCP, true,  vocaIp, vocaPort);
+	addVOCA(vocaLabel, vocaNumber, enumsClass.vocaModes.TLS, false, vocaIp, vocaPort);
+	addVOCA(vocaLabel, vocaNumber, enumsClass.vocaModes.UDP, true,  vocaIp, vocaPort);
+	deleteVOCA(vocaLabel);	
+	
+    // Step 6 - Delete all values
+	testFuncs.myDebugPrinting("Step 6 - Delete all values");
 	deleteAllValues(driver);
   }
+ 
+  // Delete a VOCA values
+  private void deleteVOCA(String vocaLabel) {
+	  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[5]/div[1]/button"), 3000);		
+	  testFuncs.myClick(driver, By.xpath("//*[@id='voca']")											    , 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']", "VOCA");	  
 
+	  // Delete VOCA data
+	  testFuncs.myDebugPrinting("Delete VOCA data", enumsClass.logModes.MINOR);			
+	  testFuncs.myClick(driver, By.xpath("//*[@id='modalContentId']/div/label[2]/input"), 3000);	  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "VOCA");
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete?");
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  
+	  // Verify delete
+	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);
+	  String txt = driver.findElement(By.tagName("body")).getText();
+	  testFuncs.myAssertTrue("VOCA value still detected !! <" + txt + ">", !txt.contains(vocaLabel));  
+  }
+
+  // Create a VOCA values by given data 
+  private void addVOCA(String vocaLabel, String vocaNumber, vocaModes mode, Boolean isEnableVocserver, String vocaIp, String vocaPort) {
+	  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='personalInfoTR']/td/div/div[1]/div[5]/div[1]/button"), 3000);		
+	  testFuncs.myClick(driver, By.xpath("//*[@id='voca']")											    , 3000);
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']", "VOCA");	  
+	  
+	  // Fill VOCA data
+	  testFuncs.myDebugPrinting("Fill VOCA data", enumsClass.logModes.MINOR);			
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='voip_services_vocanom_label']") , vocaLabel , 3000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='voip_services_vocanom_number']"), vocaNumber, 3000);
+	  testFuncs.mySelect(driver,
+					   	 By.xpath("//*[@id='voip_services_vocanom_transport_mode']"),
+					     enumsClass.selectTypes.GIVEN_TEXT,
+					     mode.toString(),
+					     3000);
+	  
+	  if (( driver.findElement(By.xpath("//*[@id='voip_services_vocanom_server_enabled']")).isSelected() && !isEnableVocserver) ||
+		  (!driver.findElement(By.xpath("//*[@id='voip_services_vocanom_server_enabled']")).isSelected() &&  isEnableVocserver)) {
+		  
+		  testFuncs.myClick(driver, By.xpath("//*[@id='voip_services_vocanom_server_enabled']"), 3000);
+	  }
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='voip_services_vocanom_server_ip_address']"), vocaIp , 3000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='voip_services_vocanom_server_port']")      , vocaPort, 3000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")	   			         , 10000);
+	  
+	  // Verify create
+	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);
+	  String isEnableVocserverStr = (isEnableVocserver) ? "1" : "0";
+	  testFuncs.searchStr(driver, "voip_services_vocanom_label "  			 + vocaLabel);
+	  testFuncs.searchStr(driver, "voip_services_vocanom_number " 			 + vocaNumber);	
+	  testFuncs.searchStr(driver, "voip_services_vocanom_transport_mode " 	 + mode.toString());	  
+	  testFuncs.searchStr(driver, "voip_services_vocanom_server_enabled "    + isEnableVocserverStr);
+	  testFuncs.searchStr(driver, "voip_services_vocanom_server_ip_address " + vocaIp);
+	  testFuncs.searchStr(driver, "voip_services_vocanom_server_port "       + vocaPort);
+  }
+  
   // Add CAP profile
   private void addCAPProfile(WebDriver driver, boolean isSelectAll) {
 	  
@@ -198,7 +268,6 @@ public class Test118__user_configuration_features {
 			  testFuncs.myClick(driver, By.xpath("//*[@id='lync_userSetting_prevent_user_sign_out']"), 1000);		  	  
 		  }
 		  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")	   			   , 1000);
-
 	  
 		  // Verify create
 		  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);			

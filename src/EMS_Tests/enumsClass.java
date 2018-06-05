@@ -4,16 +4,14 @@ public class enumsClass {
 	
 		
 	// Select types
-	public enum selectTypes {
-	         
-		INDEX, NAME, GIVEN_TEXT; 
-	}
+	public enum selectTypes  { INDEX, NAME, GIVEN_TEXT;}
 	
 	// Browser types
-	public enum browserTypes {
-	         
-		CHROME, FF, IE; 
-	}
+	public enum browserTypes { CHROME, FF, IE; }
+	
+	  
+	// VOCA modes
+	public enum vocaModes    { TLS, TCP, UDP;  }
 	  
 	// Log modes
 	public enum logModes {

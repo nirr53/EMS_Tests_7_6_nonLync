@@ -387,6 +387,31 @@ public class GlobalFuncs {
 		  Random rand = new Random();	  
 		  return (rand.nextInt(limit) + 1);
 	  }
+	  
+	  /**
+	  *  Get a Random IP address
+	  *  @return - random IP address
+	  */
+	  public String getRandomIp() {
+		  	  
+		  return  (String.valueOf(getNum(128)) + "." +
+				   String.valueOf(getNum(128)) + "." +
+				   String.valueOf(getNum(128)) + "." +			 
+				   String.valueOf(getNum(128)));
+	  
+	  }
+	  
+	  /**
+	  *  Get a Random Port (at range of 1000-9999 range)
+	  *  @return - random Port number
+	  */
+	  public String getRandomPort() {
+		  	  
+		  return  (String.valueOf(getNum(9)) +
+				   String.valueOf(getNum(9)) +
+				   String.valueOf(getNum(9)) +			 
+				   String.valueOf(getNum(9)));
+	  }
 	
 	  /**
 	  *  Verify the create /non-create of POST user
