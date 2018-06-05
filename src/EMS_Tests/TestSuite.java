@@ -160,7 +160,8 @@ import org.junit.runners.Suite;
 	Test152__different_USBHeadsetType_status.class					,
 	Test153__different_HRSSpeakerModel_status.class					,
 	Test154__different_HRSSpeakerFW_status.class					,
-	Test155__mainpage_links.class
+	Test155__mainpage_links.class									,
+	Test156__setup_wizard_configuration_value.class
 
 })
 
