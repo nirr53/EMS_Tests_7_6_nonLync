@@ -81,21 +81,21 @@ public class Test43__Monitoring_Operation_Logs {
 	  // Step 1 - Login with a  Monitoring user (system), check that you cannot see the menu and logout
 	  testFuncs.myDebugPrinting("Step 1 - Login with a  Monitoring user (system) and check that you cannot see the menu");
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr()          , "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Troubleshoot_system_diagnostics", "Unauthorized");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.TROUBLESHOOT_SYSTEM_DIAGNOSTICS, "Unauthorized");
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 2 - Login with a  Monitoring user (Tenant), check that you cannot see the menu and logout
 	  testFuncs.myDebugPrinting("Step 2 - Login with a  Monitoring user (Tenant) and check that you cannot see the menu");
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr()    , "https://", this.usedBrowser);
 	  String bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Troubleshot system menu is displayed !!\bbodyText - " + bodyText, !bodyText.contains("TROUBLESHOT"));
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 3 - Login with a  Operation user (system), check that you can see the Logs menu and logout
 	  testFuncs.myDebugPrinting("Step 3 - Login with a  Operation user (system), check that you can see the Logs menu and logout");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr()             , "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Troubleshoot_system_diagnostics", "System Logs");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.TROUBLESHOOT_SYSTEM_DIAGNOSTICS, "System Logs");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[1]/h3"					  , "System Logs");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/form/table/thead/tr/th", "System Logs");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/form/table/tbody/tr[1]/td[1]/span/b", "Web Admin");

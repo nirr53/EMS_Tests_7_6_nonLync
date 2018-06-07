@@ -81,7 +81,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 	
 	// Step 1 - Try to Upload non-cfg file to the Template
   	testFuncs.myDebugPrinting("Step 1 - Try to Upload non-cfg file to the Template");
@@ -100,7 +100,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	// Login and enter the Phone configuration menu
 	testFuncs.myDebugPrinting("Login and enter the Phone configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	  
 	// Step 2 - Try to Upload non-cfg file to the Phone configuration
   	testFuncs.myDebugPrinting("Step 2 - Try to Upload non-cfg file to the Phone configuration");

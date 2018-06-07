@@ -89,7 +89,7 @@ public class Test40__Monitoring_user_tests {
 	// Login the system via a Monitoring user (system)
 	testFuncs.myDebugPrinting("Login the system via a Monitoring user (system)");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 
 	// Step 1 - Try to add a user
   	testFuncs.myDebugPrinting("Step 1 - Try to add a user");
@@ -115,9 +115,9 @@ public class Test40__Monitoring_user_tests {
    	
    	// Logout and re-login the system via a Monitoring user (tenant)
  	testFuncs.myDebugPrinting("Logout and re-login the system via a Monitoring user (tenant)");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
  	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
- 	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+ 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 
  	// Step 4 - Try to add a user
    	testFuncs.myDebugPrinting("Step 4 - Try to add a user");

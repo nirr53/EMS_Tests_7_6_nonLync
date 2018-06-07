@@ -95,7 +95,7 @@ public class Test123__change_status {
 			 												 testVars.getDefPhoneModel(),
 			 												 testVars.getDefTenant()    ,
 			 												 location);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     testFuncs.verifyPostUserCreate(driver, chngSttsUsername, chngSttsUsername, true);
     
     // Step 1 -  Change the user's device status to 'Offline'
@@ -110,7 +110,7 @@ public class Test123__change_status {
 								  "offline"						 ,
 								  location						 ,
 								  phoneNumber);
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + chngSttsUsername.trim(), 5000);
     driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
     String attClass = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[7]/i")).getAttribute("class");
@@ -128,7 +128,7 @@ public class Test123__change_status {
 								  "registered"						 ,
 								  location						 ,
 								  phoneNumber);
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + chngSttsUsername.trim(), 5000);
     driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
     String attClass2 = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[7]/i")).getAttribute("class");
@@ -136,7 +136,7 @@ public class Test123__change_status {
      
     // Step 3 - Delete the created users
   	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, chngSttsUsername, "1");
 	Map<String, String> map = new HashMap<String, String>();
     map.put("startIdx"   	  ,  String.valueOf(1));

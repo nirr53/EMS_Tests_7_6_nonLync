@@ -92,7 +92,7 @@ public class Test17__multiple_users_update_change_configuration {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -106,7 +106,7 @@ public class Test17__multiple_users_update_change_configuration {
     
     // Step 2 - Update configuration
   	testFuncs.myDebugPrinting("Step 2 - Update configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     testFuncs.myWait(1000);
     map.put("action"  , "Update Configuration Files");
@@ -117,14 +117,14 @@ public class Test17__multiple_users_update_change_configuration {
     
     // Step 3 - Change configuration
   	testFuncs.myDebugPrinting("Step 3 - Change configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"  , "Generate IP Phones Configuration Files");
     testFuncs.setMultipleUsersAction(driver, map);
     
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

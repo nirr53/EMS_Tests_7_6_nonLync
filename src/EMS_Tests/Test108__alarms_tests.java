@@ -85,13 +85,13 @@ public class Test108__alarms_tests {
 	String Id 		= testFuncs.getId();
 	String username = ("rgAlrt" + Id).toLowerCase(); 
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
-    // Create a registered and un-registered users using POST method
-	testFuncs.myDebugPrinting("Create a registered and un-registered users using POST method");
+    // Create a registered user using POST method
+	testFuncs.myDebugPrinting("Create a registered user using POST method");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
-			 												 " 1"				    	,
+			 												 "1"				    	,
 			 												 username 					,
 			 												 testVars.getDomain()       ,
 			 												 "registered"               ,
@@ -106,7 +106,7 @@ public class Test108__alarms_tests {
 	testFuncs.myDebugPrinting("Step 1 - Create an alarm that sent from an unknown MAC address");
 	String alertPrefix = "unknownMac";
 	String []alertsForSearch = {alertPrefix + "_" + Id};
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 															  testVars.getPort()							 ,
 															  "00908f123456"								 ,
@@ -119,7 +119,7 @@ public class Test108__alarms_tests {
 		
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", alertPrefix  , alertsForSearch);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create an alarm with different special characters
 	testFuncs.myDebugPrinting("Step 2 - Create an alarm with different special characterss");	
@@ -128,7 +128,7 @@ public class Test108__alarms_tests {
 								 alertPrefix2 + "=?^`" + "_"  + Id,
 								 alertPrefix2 + "{|}~" + "_"  + Id,
 								 alertPrefix2 + ";*+"  + "_" + Id};
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Create alarms with different sets of characters
 	testFuncs.myDebugPrinting("Create alarms with different sets of characters", enumsClass.logModes.MINOR);
@@ -149,7 +149,7 @@ public class Test108__alarms_tests {
 		// Search the created alert
 		String[] searchedAlerts = {alertsForSearch2[i]};
 		testFuncs.myDebugPrinting("Search the created alert", enumsClass.logModes.MINOR);
-		testFuncs.searchAlarm(driver, "Description", alertPrefix2  , searchedAlerts);
+		testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertPrefix2  , searchedAlerts);
 	}
 	
 	// Step 3 - Delete the created alarms
@@ -162,7 +162,7 @@ public class Test108__alarms_tests {
 	
 	// Step 4 - Delete the created and user
 	testFuncs.myDebugPrinting("Step 4 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, username, "1");
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("usersPrefix"	  , username);  
@@ -179,7 +179,7 @@ public class Test108__alarms_tests {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

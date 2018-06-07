@@ -90,7 +90,7 @@ public class Test34__import_stop_continue {
     // Create several users using POST query
 	testFuncs.myDebugPrinting("Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -104,7 +104,7 @@ public class Test34__import_stop_continue {
   	
     // Step 1 - Delete users, stop at middle and than continue delete
   	testFuncs.myDebugPrinting("Step 1 - Delete users, stop at middle and than continue delete");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, "6");
     map.put("srcUsername"	  , "Finished");
     map.put("usersPrefix"	  , dispPrefix);

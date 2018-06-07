@@ -92,7 +92,7 @@ public class Test136__duplicate_site_configuration_ph {
 	// Login and  Add new Site configuration and Site PH
 	testFuncs.myDebugPrinting("Login and  Add new Site configuration and Site PH");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, site);
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);
 	testFuncs.addSitePH(driver, sitePhName, sitePhValue, site, tenant);
@@ -107,7 +107,7 @@ public class Test136__duplicate_site_configuration_ph {
     
 	// Step 3 - Delete the Site PH and Site value
 	testFuncs.myDebugPrinting("Step 3 - Delete the Site PH and Site value");
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");   
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");   
 	testFuncs.selectSite(driver, site);
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());    
 	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getDefSite() + " [" + testVars.getDefSite() + "]");

@@ -80,27 +80,27 @@ public class Test0__all_users {
     // Step 1 - login system via Administrator user
     testFuncs.myDebugPrinting("Step 1 - login system via Administrator user");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
   
 	// Step 2 - login system via Operation (system) user
     testFuncs.myDebugPrinting("Step 2 - login system via Operation (system) user");
     testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-    testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	// Step 3 - login system via Operation (tenant) user
     testFuncs.myDebugPrinting("Step 3 - login system via Operation (tenant) user");
     testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-    testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
  
 	// Step 4 - login system via Monitoring (system) user
 	testFuncs.myDebugPrinting("Step 4 - login system via Monitoring (system) user");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-    testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	// Step 5 - login system via Monitoring (tenant) user
 	testFuncs.myDebugPrinting("Step 5 - login system via Monitoring (tenant) user");
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-    testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
   }
 
   @After

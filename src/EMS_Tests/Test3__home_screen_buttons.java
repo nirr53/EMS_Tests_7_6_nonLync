@@ -20,6 +20,7 @@ import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 *    3. Test the 'Help' button
 *    4. Test the 'Home' button
 *    5. Test the Audiocodes product button
+*    6. Test the upper links of main menu
 * 
 * Results:
 *    1. 'Log off' should disconnect you from the system.
@@ -27,6 +28,7 @@ import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 *    3. Pop-up with Help message should appear.
 *    4. Pressing the Home button should return you to the main menu.
 *    5. Pressing the AC products button should open you a menu of Audicodes products.
+*    6. Pressing the links, will lead you to System-Settings \ Alarms menus.
 *    
 * @author Nir Klieman
 * @version 1.00
@@ -83,7 +85,7 @@ public class Test3__home_screen_buttons {
     // Step 3.1 - press the Log off button
 	testFuncs.myDebugPrinting("Step 3.1 - press the Log off button");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
     // Step 3.2 - Check version number
 	testFuncs.myDebugPrinting("Step 3.2 - Check version number");
@@ -97,12 +99,28 @@ public class Test3__home_screen_buttons {
 	
 	// Step 3.4 - Home button
 	testFuncs.myDebugPrinting("Step 3.4 - Home button");
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	testFuncs.pressHomeButton(driver);
 	
 	// Step 3.5 - Audiocodes products button
 	testFuncs.myDebugPrinting("Step 3.5 - Audiocodes products button");
 	pressAudcProductsButton(driver);
+	testFuncs.pressHomeButton(driver);
+	
+	// Step 3.6 - Main menu upper links
+	testFuncs.myDebugPrinting("Step 3.6 - Main menu upper links");
+	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[2]/div/div/div[2]/div[1]/div[1]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
+	testFuncs.pressHomeButton(driver);
+	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[2]/div/div/div[2]/div[1]/div[3]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
+	testFuncs.pressHomeButton(driver);
+	pressMainMenuUpperLinks(driver, "//*[@id='totalspan']/a", "//*[@id='trunkTBL']/div/div[1]/h3", "Alarms");
+  }
+
+  // Check links
+  private void pressMainMenuUpperLinks(WebDriver driver, String xpath, String headerXpath, String header) {
+	  
+	  testFuncs.myClick(driver, By.xpath(xpath), 5000);   
+	  testFuncs.verifyStrByXpath(driver, headerXpath, header);
   }
 
   // Press the Audiocodes product button
@@ -148,7 +166,7 @@ public class Test3__home_screen_buttons {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

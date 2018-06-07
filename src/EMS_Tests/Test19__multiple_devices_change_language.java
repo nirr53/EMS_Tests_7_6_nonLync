@@ -89,7 +89,7 @@ public class Test19__multiple_devices_change_language {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -103,7 +103,7 @@ public class Test19__multiple_devices_change_language {
     
     // Step 2 - change language
   	testFuncs.myDebugPrinting("Step 2 - change language");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change Language");
     map.put("language"    ,  "Hebrew");
@@ -114,7 +114,7 @@ public class Test19__multiple_devices_change_language {
     
     // Step 3 - Delete the created users
   	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

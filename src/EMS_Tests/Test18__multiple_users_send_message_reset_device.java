@@ -93,7 +93,7 @@ public class Test18__multiple_users_send_message_reset_device {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -108,7 +108,7 @@ public class Test18__multiple_users_send_message_reset_device {
     
     // Step 2 - send message
   	testFuncs.myDebugPrinting("Step 2 - Send message");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Send Message");
     map.put("message"    ,  "myMessage");
@@ -119,7 +119,7 @@ public class Test18__multiple_users_send_message_reset_device {
 	  
     // Step 3 - Reset device - Graceful mode
   	testFuncs.myDebugPrinting("Step 3 - Reset device - Graceful mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Restart Devices");
     map.put("resMode"    ,  "Graceful");
@@ -130,7 +130,7 @@ public class Test18__multiple_users_send_message_reset_device {
     
     // Step 4 - Reset device - Force mode
   	testFuncs.myDebugPrinting("Step 4 - Reset device - Force mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Restart Devices");
     map.put("resMode"    ,  "Force");
@@ -141,7 +141,7 @@ public class Test18__multiple_users_send_message_reset_device {
 
     // Step 5 - Reset device - Scheduled mode
   	testFuncs.myDebugPrinting("Step 5 - Reset device - Scheduled mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Restart Devices");
     map.put("resMode"    ,  "Scheduled");
@@ -150,7 +150,7 @@ public class Test18__multiple_users_send_message_reset_device {
 
     // Step 6 - Delete the created users
   	testFuncs.myDebugPrinting("Step 6 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

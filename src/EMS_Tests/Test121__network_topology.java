@@ -89,7 +89,7 @@ public class Test121__network_topology {
 	// Login and create 2 registered users and 2 unregistered users
 	testFuncs.myDebugPrinting(" Login and create 2 registered users and 2 unregistered users");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												usersNumber				    ,
@@ -101,7 +101,7 @@ public class Test121__network_topology {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);    
     String ip1 = testFuncs.readFile("ip_1.txt");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 												 testVars.getPort()    	    ,
 			 												 usersNumber				,
@@ -111,7 +111,7 @@ public class Test121__network_topology {
 			 												 testVars.getDefPhoneModel(),
 			 												 testVars.getDefTenant()    ,
 			 												 "myLocation");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "Manage Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
     testFuncs.verifyPostUserCreate(driver, unregPrefix, unregPrefix, false);
     String ip2 = testFuncs.readFile("ip_1.txt");    
     
@@ -137,7 +137,7 @@ public class Test121__network_topology {
   
 	// Step 3 - Delete all created users
  	testFuncs.myDebugPrinting("Step 3 - Delete all created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

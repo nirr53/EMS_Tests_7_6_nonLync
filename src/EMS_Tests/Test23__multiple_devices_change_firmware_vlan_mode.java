@@ -94,7 +94,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -108,7 +108,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
 
     // Step 2 - change firmware
   	testFuncs.myDebugPrinting("Step 2 - change firmware");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change Firmware");
     map.put("firmware"   ,  testVars.getDefPhoneModel());
@@ -117,7 +117,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     
     // Step 3.1 - Change VLAN discovery mode - disabled
   	testFuncs.myDebugPrinting("Step 3.1 - Change VLAN discovery mode - disabled");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change VLAN Discovery Mode");
     map.put("vlanMode"   ,  "Disabled");
@@ -133,7 +133,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     
     // Step 3.3 - Change VLAN discovery mode - automatic LLDP
   	testFuncs.myDebugPrinting("Step 3.3 - Change VLAN discovery mode - automatic LLDP");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change VLAN Discovery Mode");
     map.put("vlanMode"   ,  "Automatic - LLDP");
@@ -142,7 +142,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     
     // Step 3.4 - Change VLAN discovery mode - automatic CDP and LLDP
   	testFuncs.myDebugPrinting("Step 3.4 - Change VLAN discovery mode - automatic CDP and LLDP");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change VLAN Discovery Mode");
     map.put("vlanMode"   ,  "Automatic - CDP LLDP");
@@ -151,7 +151,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     
     // Step 3.5 - Change VLAN discovery mode - Manual Configuration
   	testFuncs.myDebugPrinting("Step 3.5 - Change VLAN discovery mode - Manual Configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"       , "Change VLAN Discovery Mode");
     map.put("vlanMode"     , "Manual Configuration");
@@ -162,7 +162,7 @@ public class Test23__multiple_devices_change_firmware_vlan_mode {
     
     // Step 5 - Delete the created users
   	testFuncs.myDebugPrinting("Step 5 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

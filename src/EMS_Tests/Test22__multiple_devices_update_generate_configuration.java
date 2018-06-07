@@ -89,7 +89,7 @@ public class Test22__multiple_devices_update_generate_configuration {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -103,7 +103,7 @@ public class Test22__multiple_devices_update_generate_configuration {
     
     // Step 2 - update configuration
   	testFuncs.myDebugPrinting("Step 2 - update configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Update Configuration file");
     testFuncs.setMultipleDevicesAction(driver, map);
@@ -113,7 +113,7 @@ public class Test22__multiple_devices_update_generate_configuration {
         
     // Step 3 - generate configuration
   	testFuncs.myDebugPrinting("Step 3 - generate configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber); 
     map.put("action"     ,  "Generate IP Phones Configuration Files");
     testFuncs.setMultipleDevicesAction(driver, map);
@@ -123,7 +123,7 @@ public class Test22__multiple_devices_update_generate_configuration {
       
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

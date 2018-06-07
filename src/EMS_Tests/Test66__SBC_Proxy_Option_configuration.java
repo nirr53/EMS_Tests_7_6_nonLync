@@ -89,7 +89,7 @@ public class Test66__SBC_Proxy_Option_configuration {
 	  // Enter System settings and SBC proxy configuration menu
 	  testFuncs.myDebugPrinting("Enter System settings and SBC proxy configuration menu");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_sbc_conf", "Proxy DHCP Options Configuration");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_CONF, "Proxy DHCP Options Configuration");
 	  
 	  // Step 1 - Edit SBC proxy configuration template
 	  testFuncs.myDebugPrinting("Step 1 - Edit SBC proxy configuration template");

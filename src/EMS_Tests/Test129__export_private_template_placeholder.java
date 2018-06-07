@@ -98,7 +98,7 @@ public class Test129__export_private_template_placeholder {
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 	
 	// Create a phone Template and add a private placeholder to it.
 	testFuncs.myDebugPrinting("Create a phone Template and add a private placeholder to it");
@@ -109,21 +109,21 @@ public class Test129__export_private_template_placeholder {
 	
 	// Step 1 - Enter the Export-configuration menu and export the System configuration
 	testFuncs.myDebugPrinting("Step 1 - Enter the Export-configuration menu and export the System configuration");
-	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_export", "To export phone configuration files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT, "To export phone configuration files");
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), dwnldFle);
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/button"), 300000);		
 	testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), dwnldFle));
 
 	// Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import
 	testFuncs.myDebugPrinting("Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import");	
-	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	String path  = testVars.getDownloadsPath() + "\\" + dwnldFle;
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
 	testFuncs.searchStr(driver, prCfgKey);
 
 	// Step 3 - Delete the created Template
 	testFuncs.myDebugPrinting("Step 3 - Delete the created Template");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
 	testFuncs.deleteTemplate(driver, tempName);
   }
 

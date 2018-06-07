@@ -79,28 +79,28 @@ public class Test39__Monitoring_Operation_Phone_configuration_menu {
 	  // Step 1 - Login with a  Monitoring user (system), check that you cannot see the menu and logout
 	  testFuncs.myDebugPrinting("Step 1 - Login with a  Monitoring user (system) and check that you cannot see the menu");
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Unauthorized");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Unauthorized");
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 2 - Login with a  Monitoring user (Tenant), check that you cannot see the menu and logout
 	  testFuncs.myDebugPrinting("Step 2 - Login with a  Monitoring user (Tenant) and check that you cannot see the menu");
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Unauthorized");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Unauthorized");
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 3 - Login with an  Operation user (System), check that you can see the menu and logout
 	  testFuncs.myDebugPrinting("Step 3 - Login with an  Operation user (System), check that you can see the menu and logout");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 4 - Login with an  Operation user (Tenant), check that you can see the menu
 	  testFuncs.myDebugPrinting("Step 4 - Login with a  Operation user (Tenant) and check that you cannot see the menu");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
   }
 
   @After

@@ -98,7 +98,7 @@ public class Test54__Operation_import {
 	  // Login via Operation-user (system )and enter the Import users-devices menu
 	  testFuncs.myDebugPrinting("Login via Operation-user (system )and enter the Import users-devices menu");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	  
 	  // Step 1 - Import users+devices
 	  testFuncs.myDebugPrinting("Step 1 - Import users+devices");
@@ -112,14 +112,14 @@ public class Test54__Operation_import {
 	  
 	  // Step 2 - Import configuration
 	  testFuncs.myDebugPrinting("Step 2 - Import condiguration");
-	  testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	  path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11"); 
 	  testFuncs.uploadFile(driver, path, confXpathUploadField, confXpathUploadButton);
 	  checkData();
 	  
 	  // Step 3 - Delete the created users
 	  testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
 	  map.put("usersPrefix"	  , prefixUser + "_");
 	  map.put("usersNumber"	  , usersNumber);    
@@ -136,9 +136,9 @@ public class Test54__Operation_import {
 	  
 	  // Logout, and re-login via Operation-user (tenant) and enter the Import users-devices menu
 	  testFuncs.myDebugPrinting("Logout, and re-login via Operation-user (tenant) and enter the Import users-devices menu");	
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 
 	  // Step 4 - Import users+devices
 	  testFuncs.myDebugPrinting("Step 4 - Import users+devices");
@@ -152,7 +152,7 @@ public class Test54__Operation_import {
 	  
 	  // Step 5 - Import configuration should be forbidden
 	  testFuncs.myDebugPrinting("Step 5 - Import configuration should be forbidden");
-	  testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	  path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("54.2");
 	  testFuncs.uploadFile(driver, path, confXpathUploadField, confXpathUploadButton);  
 	  testFuncs.searchStr(driver, "Unauthorized");
@@ -160,9 +160,9 @@ public class Test54__Operation_import {
 	  
 	  // Step 6 - Logout, re-login and delete the created users
 	  testFuncs.myDebugPrinting("Step 6 - Logout, re-login and delete the created users");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
 	  map.put("usersPrefix"	  , prefixUser + "_");
 	  map.put("usersNumber"	  , usersNumber);    

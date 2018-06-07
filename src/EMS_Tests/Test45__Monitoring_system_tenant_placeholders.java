@@ -90,24 +90,24 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	// Login via an Administrator user, create a tenant-PH and logout
 	testFuncs.myDebugPrinting("Login via an Administrator user, create a tenant-PH and logout");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addTenantPH(driver, tenPhName, tenPhValue, tenTenant);
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+    testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	
 	// Step 1 - Login via a Monitoring user (system) and try to add a new Tenant Placeholder
 	testFuncs.myDebugPrinting("Step 1 - Login via a Monitoring user (system) and try to add a new Tenant Placeholder");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	addTenantPHMonitoring(driver);
 
 	// Step 2 - Try to copy tenant-PH from another Tenant
 	testFuncs.myDebugPrinting("Step 2 - Try to copy tenant-PH from another Tenant");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	copyTenantPHMonitoring(driver);
 	
 	// Step 3 - Try to edit a Tenant-PH
 	testFuncs.myDebugPrinting("Step 3 - Try to edit a Tenant-PH");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	Select tenId = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	tenId.selectByVisibleText(tenTenant);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='tenants1-filtering']"), tenPhName , 6000);	
@@ -115,7 +115,7 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	
 	// Step 4 - Try to delete a Tenant-PH
 	testFuncs.myDebugPrinting("Step 4 - Try to delete a Tenant-PH");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
 	
 	// Step 5 - Verify that Actions menu is disabled
@@ -135,9 +135,9 @@ public class Test45__Monitoring_system_tenant_placeholders {
 
 	// Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH
 	testFuncs.myDebugPrinting("Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	tenId = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	tenId.selectByVisibleText(tenTenant);
 	testFuncs.deleteTenantPH(driver, tenPhName, "Forced");
@@ -155,24 +155,24 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	// Login via an Administrator user, create a tenant-PH and logout
 	testFuncs.myDebugPrinting("Login via an Administrator user, create a tenant-PH and logout");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addTenantPH(driver, tenPhName, tenPhValue, tenTenant);
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	
 	// Step 1 - Login via a Monitoring user (tenant) and try to add a new Tenant Placeholder
 	testFuncs.myDebugPrinting("Step 1 - Login via a Monitoring user (tenant) and try to add a new Tenant Placeholder");
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	addTenantPHMonitoring(driver);
 
 	// Step 2 - Try to copy tenant-PH from another Tenant
 	testFuncs.myDebugPrinting("Step 2 - Try to copy tenant-PH from another Tenant");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	copyTenantPHMonitoring(driver);
 	
 	// Step 3 - Try to edit a Tenant-PH
 	testFuncs.myDebugPrinting("Step 3 - Try to edit a Tenant-PH");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	Select tenId = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	tenId.selectByVisibleText(tenTenant);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='tenants1-filtering']"), tenPhName , 6000);	
@@ -180,7 +180,7 @@ public class Test45__Monitoring_system_tenant_placeholders {
 	
 	// Step 4 - Try to delete a Tenant-PH
 	testFuncs.myDebugPrinting("Step 4 - Try to delete a Tenant-PH");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
 	
 	// Step 5 - Verify that Actions menu is disabled
@@ -200,9 +200,9 @@ public class Test45__Monitoring_system_tenant_placeholders {
 
 	// Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH
 	testFuncs.myDebugPrinting("Step 8 - Logout, re-login as an Administrator and delete the Tenant-PH");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	tenId = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	tenId.selectByVisibleText(tenTenant);
 	testFuncs.deleteTenantPH(driver, tenPhName, "Forced");

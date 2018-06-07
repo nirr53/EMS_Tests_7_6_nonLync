@@ -89,7 +89,7 @@ public class Test152__different_USBHeadsetType_status {
 	String usbHdstTypeLong 	  = prefixName + "long"    + Id;
 
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with randomize USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize USBHeadsetType status");
@@ -110,7 +110,7 @@ public class Test152__different_USBHeadsetType_status {
 	
     // Step 2 - Create a user using POST query with unknown USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with unknown USBHeadsetType status");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
@@ -126,7 +126,7 @@ public class Test152__different_USBHeadsetType_status {
 	
     // Step 3 - Create a user using POST query without USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query without USBHeadsetType status");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			testVars.getIp()           ,
 			testVars.getPort()    	   ,
@@ -142,7 +142,7 @@ public class Test152__different_USBHeadsetType_status {
 
     // Step 4 - Create a user using POST query with randomize USBHeadsetType value 129 characters long
 	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with randomize USBHeadsetType value 129 characters long");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
@@ -167,7 +167,7 @@ public class Test152__different_USBHeadsetType_status {
     map.put("usersPrefix"     , prefixName);
     map.put("usersNumber"	  , usersNumber); 
     map.put("startIdx"   	  , String.valueOf(1));  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);  
     testFuncs.searchStr(driver, usbHdstTypeStts.toLowerCase()    + "@" + testVars.getDomain() + " Finished");

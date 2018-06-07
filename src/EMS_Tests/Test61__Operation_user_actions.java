@@ -108,7 +108,7 @@ public class Test61__Operation_user_actions {
 	  
 	  // Step 5 - Logout and re-login via an Operation user (system) and create a user
 	  testFuncs.myDebugPrinting("Step 5 - Logout and re-login via an Operation user (system) and create a user");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.addUser(driver, userName, "1q2w3e$r", userName, testVars.getDefTenant());
 	  

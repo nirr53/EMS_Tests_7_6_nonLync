@@ -93,7 +93,7 @@ public class Test59__Operation_system_tenant_templates {
 	  // Login via Operation user (system) and enter the Phone Templates menu
 	  testFuncs.myDebugPrinting("Login via Operation user (system) and enter the Phone Templates menu");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 		  
 	  // Step 1 - Add a template
 	  testFuncs.myDebugPrinting("Step 1 - Add a template");	
@@ -112,9 +112,9 @@ public class Test59__Operation_system_tenant_templates {
 	  
 	  // Logout, re-login via Operation user (tenant) and enter the Phone Templates menu
 	  testFuncs.myDebugPrinting("Logout, re-login via Operation user (tenant) and enter the Phone Templates menu");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 		  
 	  // Step 4 - Add a template
 	  testFuncs.myDebugPrinting("Step 4 - Add a template");	

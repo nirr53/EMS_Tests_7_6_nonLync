@@ -98,7 +98,7 @@ public class Test145__site_configuration_generate {
 	// Login, create a registered user and Site-configuration value
 	testFuncs.myDebugPrinting("Login, create a registered user and Site-configuration value");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												 usersNumber				    ,
@@ -110,7 +110,7 @@ public class Test145__site_configuration_generate {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, site);
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);
 	
@@ -126,7 +126,7 @@ public class Test145__site_configuration_generate {
     
 	// Step 2 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 2 - Generate the user configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("action"  , "Generate IP Phones Configuration Files");
     testFuncs.setMultipleUsersAction(driver, map);
@@ -143,13 +143,13 @@ public class Test145__site_configuration_generate {
     
 	// Step 4 - Delete Site configuration value
 	testFuncs.myDebugPrinting("Step 4 - Delete Site configuration value");
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, site);
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());
 	
 	// Step 5 - Delete the created user
  	testFuncs.myDebugPrinting("Step 5 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

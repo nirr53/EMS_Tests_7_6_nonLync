@@ -97,7 +97,7 @@ public class Test120__private_placeholders {
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 	map.put("cloneFromtemplate", "Audiocodes_" + "420HD");
 	testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getNonDefTenant(0), "420HD", map);
   	
@@ -109,7 +109,7 @@ public class Test120__private_placeholders {
 	
 	// Step 2 - Enter the Template-place holders menu and verify that only private PH is added
 	testFuncs.myDebugPrinting("Step 2 - Enter the Template-place holders menu and verify that only private PH is added");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders"); 	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders"); 	
 	new Select(driver.findElement(By.xpath("//*[@id='models']"))).selectByVisibleText(tempName);
 	String bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Private PH was not detected !! \nbodyText - " + bodyText,  bodyText.contains("%ITCS_P_" + prCfgKey 	 + "% Edit Delete"));
@@ -117,7 +117,7 @@ public class Test120__private_placeholders {
 
 	// Step 3 - Delete the created Template
 	testFuncs.myDebugPrinting("Step 3 - Delete the created Template");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
 	testFuncs.deleteTemplate(driver, tempName);
   }
 

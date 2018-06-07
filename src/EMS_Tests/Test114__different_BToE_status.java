@@ -89,7 +89,7 @@ public class Test114__different_BToE_status {
 	String btoeManPaired  = prefixName + "_manual_" + Id;
 	String btoeNotPaired  = prefixName + "_not_"    + Id;
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with \"BToE disabled\" status");
@@ -107,7 +107,7 @@ public class Test114__different_BToE_status {
 	
     // Step 2 - Create a user using POST query with "auto paired" status
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with \"auto paired\" status");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 			 testVars.getPort()    		,
 			 "1"				   		,
@@ -122,7 +122,7 @@ public class Test114__different_BToE_status {
 	
     // Step 3 - Create a user using POST query with "manual paired" status
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with \"manual paired\" status.");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 			 testVars.getPort()    		,
 			 "1"				   		,
@@ -137,7 +137,7 @@ public class Test114__different_BToE_status {
 	
     // Step 4 - Create a user using POST query with "not paired" status
 	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with \"not paired\"    status.");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 			 testVars.getPort()    		,
 			 "1"				   		,
@@ -158,7 +158,7 @@ public class Test114__different_BToE_status {
     map.put("usersPrefix"     , "btoe");
     map.put("usersNumber"	  , usersNumber); 
     map.put("startIdx"   	  , String.valueOf(1));  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, "btoe", usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);  
     testFuncs.searchStr(driver, btoeDisabled.toLowerCase()   + "@" + testVars.getDomain() + " Finished");

@@ -94,7 +94,7 @@ public class Test14__search_tests {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 												 testVars.getPort()         ,
 			 												 usersNumber		        ,
@@ -111,7 +111,7 @@ public class Test14__search_tests {
 
     // Step 2 - Search the user by its name
 	testFuncs.myDebugPrinting("Step 2 - Search the user by its name");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='filterinput']"), dispPrefix, 2000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 7000);
      bodyText = driver.findElement(By.tagName("body")).getText();
@@ -137,7 +137,7 @@ public class Test14__search_tests {
 	
     // Step 4 - Search the user by its MAC
 	testFuncs.myDebugPrinting("Step 4 - Search the user by its MAC");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	for (int i = 1; i < lim ; ++i) {
 		
 		testFuncs.mySendKeys(driver, By.xpath("//*[@id='filterinput']"), macs[i-1], 2000);

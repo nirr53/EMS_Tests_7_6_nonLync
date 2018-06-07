@@ -96,7 +96,7 @@ public class Test144__tenant_configuration_generate {
 	// Login, create a registered user and tenant-configuration value
 	testFuncs.myDebugPrinting("Login, create a registered user and tenant-configuration value");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												 usersNumber				    ,
@@ -108,7 +108,7 @@ public class Test144__tenant_configuration_generate {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
 	
  	// Step 1 -  Verify that created Tenant-configuration-value is not displayed at the user configuration file
@@ -123,7 +123,7 @@ public class Test144__tenant_configuration_generate {
     
 	// Step 2 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 2 - Generate the user configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("action"  , "Generate IP Phones Configuration Files");
     testFuncs.setMultipleUsersAction(driver, map);
@@ -140,12 +140,12 @@ public class Test144__tenant_configuration_generate {
     
 	// Step 4 - Delete Tenant configuration value
 	testFuncs.myDebugPrinting("Step 4 - Delete Tenant configuration value");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
     testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getDefTenant());
     
 	// Step 5 - Delete the created user
  	testFuncs.myDebugPrinting("Step 5 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

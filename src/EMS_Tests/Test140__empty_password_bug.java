@@ -90,7 +90,7 @@ public class Test140__empty_password_bug {
 	// Login and create a registered user
 	testFuncs.myDebugPrinting("Login and create a registered user");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												 usersNumber				    ,
@@ -111,7 +111,7 @@ public class Test140__empty_password_bug {
 	
  	// Step 1 -  Verify that the generated file appears at Configuration-files menu
  	testFuncs.myDebugPrinting("Step 1 - Verify that the generated file appears at Configuration-files menu");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), mac, 7000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='fbody']/tr[1]/td[3]/a[2]", mac);
 	
@@ -127,7 +127,7 @@ public class Test140__empty_password_bug {
  	
 	// Step 3 - Delete all created users
  	testFuncs.myDebugPrinting("Step 3 - Delete all created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

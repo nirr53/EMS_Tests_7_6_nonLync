@@ -78,7 +78,7 @@ public class Test102__device_status_filter_columns {
 	// Login via Administrator and create a user using POST query
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	
 	// Step 1 - Select all the columns via Display-Columns and verify that they displayed
 	testFuncs.myDebugPrinting("Step 1 - Select all the columns via Display-Columns and verify that they displayed");  

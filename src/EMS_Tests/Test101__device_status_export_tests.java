@@ -93,7 +93,7 @@ public class Test101__device_status_export_tests {
 	// Login via Administrator and create a user using POST query
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
 				 				testVars.getPort()    						 ,
 				 				usersNumberStr				   			     ,

@@ -1,5 +1,7 @@
 package EMS_Tests;
 
+import EMS_Tests.enumsClass.menuNames;
+
 public class MenuPaths {
 	
 	// Setup section
@@ -46,9 +48,8 @@ public class MenuPaths {
 	// Troubleshoot section
 	private String TROUBLESHOOT_SECTION 				 = "//*[@id='navbar-collapse']/ul[1]/li[3]/a";
 	private String TROUBLESHOOT_WEB_ADMIN_LOGS_MENU		 = "//*[@id='left-nav']/ul/li/ul/li[1]/a/span[1]";
-	
-	// Main Switch-Case function
-	public String[] getPaths(String menuName) {
+
+	public String[] getPaths(menuNames menuName) {
 		
 		String[] paths = {"", "", "", ""};
 		switch (menuName) {
@@ -58,191 +59,185 @@ public class MenuPaths {
 			// Mainpage section
 			//
 			// -----------------
-			case "Dashboard_Alarms":
+			case MAINPAGE_DASHBOARD_ALARMS:
             	paths[0] = MAINPAGE_ALERTS_BUTTON;
-            	break;     	
-			case "General_Informatiom_logout":
+            	break;
+			case MAINPAGE_GEN_INFOR_LOGOUT:
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MAINPAGE_USER_LOGOUT_BUTTON;
-            	break;          	
-			case "Monitoring_General_Informatiom_logout":
+				break;
+			case MAINPAGE_MONITOR_GEN_INFOR_LOGOUT:
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MONITOR_MAINPAGE_USER_LOGOUT_BUTTON;
-            	break;
-			case "Monitoring_General_Informatiom_logout2":
+				break;
+			case MAINPAGE_MONITOR_GEN_INFOR_LOGOUT2:
             	paths[0] = MAINPAGE_USER_DETAILS;
             	paths[1] = MONITOR_MAINPAGE_USER_LOGOUT_BUTTON2;
-            	break;
-            		
-    		// -----------------
-            //
-            // Setup section
-           	//
-    		// -----------------	
-			case "Setup_Wizard":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_WIZARD_SECTION;   
-	            paths[2] = SETUP_WIZARD;
-	            break;  
-            	
-			case "Setup_Manage_users":
-	            paths[0] = SETUP_SECTION;
-	            break;         
-            	
-            // Users Devices menu
-			case "Setup_Manage_multiple_users":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_USERS_DEVICES_MANAGE_MULTI_USRS;
-	            break;
-			case "Setup_Manage_multiple_devices":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_USERS_DEVICES_MANAGE_MULTI_DVCS;
-	            break;
-	            
-	        // Phone Configuration menus
-			case "Setup_Phone_conf_section":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_PHONE_CONF_SECTION;
-	            break; 
-			case "Setup_Phone_conf_templates":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_PHONE_CONF_SECTION;
-	            paths[2] = SETUP_PHONE_CONF_TEMPLATES;
-	            break;      
-			case "Templates_mapping":
-	            paths[0] = SETUP_SECTION;
-	            paths[1] = SETUP_PHONE_CONF_SECTION;
-	            paths[2] = SETUP_PHONE_CONF_TEMPLATES_MAPPING;
-	            break;          
-			case "Setup_Phone_conf_system_settings":
+				break;			
+	    		
+			// -----------------
+	        //
+	        // Setup section
+	        //
+	    	// -----------------	
+			case SETUP_SETUP_WIZARD:	          
+				paths[0] = SETUP_SECTION;
+				paths[1] = SETUP_WIZARD_SECTION;   
+				paths[2] = SETUP_WIZARD;
+				break;	            	
+			case SETUP_MANAGE_USERS:
+				paths[0] = SETUP_SECTION;        
+				break;
+				
+	        // Users Devices menu
+			case SETUP_MANAGE_MULTIPE_USERS:  
+				paths[0] = SETUP_SECTION;	            
+				paths[1] = SETUP_USERS_DEVICES_MANAGE_MULTI_USRS;		            
+				break;			
+			case SETUP_MANAGE_MULTIPE_DEVICES:	            
+				paths[0] = SETUP_SECTION;	            
+				paths[1] = SETUP_USERS_DEVICES_MANAGE_MULTI_DVCS;	            
+				break;		
+		        
+			// Phone Configuration menus
+			case SETUP_PHONE_CONF_SECTION: 
+				paths[0] = SETUP_SECTION;		            
+				paths[1] = SETUP_PHONE_CONF_SECTION;		           
+				break;			
+			case SETUP_PHONE_CONF_TEMPLATES:		            
+				paths[0] = SETUP_SECTION;		            
+				paths[1] = SETUP_PHONE_CONF_SECTION;		            
+				paths[2] = SETUP_PHONE_CONF_TEMPLATES;		            
+				break;
+			case SETUP_TEMPLATES_MAPPING:		            
+				paths[0] = SETUP_SECTION;		            
+				paths[1] = SETUP_PHONE_CONF_SECTION;		            
+				paths[2] = SETUP_PHONE_CONF_TEMPLATES_MAPPING;		            
+				break;
+			case SETUP_PHONE_CONF_SYSTEM_SETTINGS:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_SYS_SETTINGS;
 	            break;    
-			case "Setup_Phone_conf_dhcp_options_configuration":
+			case SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIG;
 	            break;	
-			case "Setup_Phone_conf_system_settings_sbc_conf":
+			case SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_CONF:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_SYS_SETTINGS;
 	            paths[3] = SETUP_PHONE_CONF_SBC_SETTINGS;            
-	            break;	
-			case "Setup_Phone_conf_system_settings_ldap":
+	            break;            
+			case SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_SYS_SETTINGS;
 	            paths[3] = SETUP_PHONE_CONF_LDAP_SETTINGS;            
 	            break;	
-			case "Setup_Phone_conf_templates_placeholders":
+			case SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_TEMPLATES_PHS;
 	            break;                      
-			case "Tenant_configuration":
+			case SETUP_TENANT_CONFIGURATION:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_TENANT_CONFIGURATION;
 	            break;    
-			case "Site_configuration":
+			case SETUP_SITE_CONFIGURATION:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_SITE_CONFIGURATION;
-	            break;      
-			case "Setup_user_configuration":
+	            break;       
+			case SETUP_USER_CONFIGURATION:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_USER_CONFIGURATION;
 	            break;    
-			case "Setup_Phone_conf_phone_device_placeholders":
+			case SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_DEVICE_PLACEHOLDERS;
 	            break;            
-			case "Setup_Phone_conf_phone_configuration_files":
+			case SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_PHONE_CONF_FILES;
 	            break;
-			case "Setup_Phone_conf_phone_firmware_files":
+			case SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_PHONE_CONF_SECTION;
 	            paths[2] = SETUP_PHONE_CONF_PHONE_FIRMWARE_FILES;
 	            break;
 	            
 		    // Import export menus
-			case "Setup_Import_export_configuration_import":
+			case SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_IMPORT_EXPORT_SECTION;
 	            paths[2] = SETUP_IMPORT_EXPORT_CONF_IMPORT;
 	            break; 
-			case "Setup_Import_export_configuration_export":
+			case SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_IMPORT_EXPORT_SECTION;
 	            paths[2] = SETUP_IMPORT_EXPORT_CONF_EXPORT;
 	            break; 
-			case "Setup_Import_export_users_devices_import":
+			case SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_IMPORT_EXPORT_SECTION;
 	            paths[2] = SETUP_IMPORT_EXPORT_USRS_DVCS_IMPORT;
 	            break; 
-			case "Setup_Import_export_users_devices_export":
+			case SETUP_IMPORT_EXPORT_USRS_DEVICES_EXPORT:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_IMPORT_EXPORT_SECTION;
 	            paths[2] = SETUP_IMPORT_EXPORT_USRS_DVCS_EXPORT;
-	            break;
-	            
-		    // System menus            
-	        case "Setup_System_section":
+	            break;    
+	                
+	        // System menus            
+	        case SETUP_SYSTEM_SECTION:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_SYSTEM_SECTION;
 	            break;             
-	        case "Setup_System_view_tenants":
+	        case SETUP_SYSTEM_VIEW_TENANTS:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_SYSTEM_SECTION;
 	            paths[2] = SETUP_SYSTEM_VIEW_TENATS;
 	            break; 
-	        case "Setup_System_view_sites":
+	        case SETUP_SYSTEM_VIEW_SITES:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_SYSTEM_SECTION;
 	            paths[2] = SETUP_SYSTEM_VIEW_SITES;
 	            break;
-	        case "Setup_System_license":
+	        case SETUP_SYSTEM_LICENSE:
 	            paths[0] = SETUP_SECTION;
 	            paths[1] = SETUP_SYSTEM_SECTION;
 	            paths[2] = SETUP_SYSTEM_LICENSE;
-	            break; 
+	            break;	        
 	            
-	    	// -----------------
-	        //
-	        // Monitor section
-	        //
-	   		// -----------------
-			case "Monitor_device_status":
-		            paths[0] = MONITOR_SECTION;
-		            paths[1] = MONITOR_DEVICE_STATUS_MENU;
-		            break;
-		            
+		    // -----------------
+		    //
+		    // Monitor section
+		    //
+		   	// -----------------
+			case MONITOR_DEVICE_STATUS:
+			    paths[0] = MONITOR_SECTION;
+		        paths[1] = MONITOR_DEVICE_STATUS_MENU;
+		        break;
+			            
 			// -----------------
 			//
 			// Troubleshoot section
-			//
-			// -----------------
-		    case "Troubleshoot_system_diagnostics":		            
-		    	paths[0] = TROUBLESHOOT_SECTION;				            
-		    	break;	    	
-		    case "Troubleshoot_web_admin_logs_menu":		            
-		    	paths[0] = TROUBLESHOOT_SECTION;				            
-		    	paths[1] = TROUBLESHOOT_WEB_ADMIN_LOGS_MENU;				            
-		    	break;
-	            
-	         default:
-	        	 GlobalFuncs testFuncs = new GlobalFuncs();
-	             testFuncs.myFail("Menu name is not recognized !!");    
-			}
+			//				// -----------------
+		    case TROUBLESHOOT_SYSTEM_DIAGNOSTICS:		            
+		    	paths[0] = TROUBLESHOOT_SECTION;				            	
+		    	break;	    				    
+		    case TROUBLESHOOT_WEB_ADMIN_LOGS_MENU:		            
+			    paths[0] = TROUBLESHOOT_SECTION;				            
+			   	paths[1] = TROUBLESHOOT_WEB_ADMIN_LOGS_MENU;				            
+			   	break;
+		}		
 		
-		return paths;      
-     }
+		return paths;
+	}
 }

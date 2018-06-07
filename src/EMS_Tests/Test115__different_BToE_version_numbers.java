@@ -85,7 +85,7 @@ public class Test115__different_BToE_version_numbers {
 	String btoeDisabled   = prefixName + "_dis_"    + Id;
 	String btoeAutoPaired = prefixName + "_auto_"   + Id;
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status with version
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with \"BToE disabled\" status with version.");
@@ -105,7 +105,7 @@ public class Test115__different_BToE_version_numbers {
     // Step 2 - Create a user using POST query with "auto paired" status with characters version
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with \"auto paired\" status with characters version");
 	String version2 = "UC_abcdef";
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 			 testVars.getPort()    		,
 			 "1"				   		,
@@ -127,7 +127,7 @@ public class Test115__different_BToE_version_numbers {
     map.put("usersPrefix"     , "btoe");
     map.put("usersNumber"	  , usersNumber); 
     map.put("startIdx"   	  , String.valueOf(1));  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, "btoe", usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);
     testFuncs.searchStr(driver, btoeDisabled.toLowerCase()   + "@" + testVars.getDomain() + " Finished");

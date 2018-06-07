@@ -93,7 +93,7 @@ public class Test47__Monitoring_device_placeholders {
 	  // Login via Administrator, create a user with a POST query and add a device-PH to it
 	  testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					  testVars.getIp()           ,
 			  					  testVars.getPort()         ,
@@ -105,16 +105,16 @@ public class Test47__Monitoring_device_placeholders {
 			  					  testVars.getDefTenant()    ,
 				 				  "myLocation");
 	  testFuncs.verifyPostUserCreate(driver, srcUserName + "@" + testVars.getDomain(), srcUserName, true);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 	  String phName  = "DayLightActivate";
 	  String phValue = "18";
 	  testFuncs.addDevicePlaceholder(driver, srcUserName, phName, phValue);
 	  
 	  // Log off , re-login via a Monitoring user (system) and enter the device-PH menu
 	  testFuncs.myDebugPrinting("Log off , re-login via a Monitoring user (system) and enter the device-PH menu");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 
 	  // Step 1 - Try to add a device-PH
 	  testFuncs.myDebugPrinting("Step 1 - Try to add a device-PH");
@@ -123,7 +123,7 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  // Step 2 - Try to edit an existing device-PH
 	  testFuncs.myDebugPrinting("Step 2 - Try to edit an existing device-PH");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");    
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='placeholders_body']/tr/td[7]/button")				   , 6000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[3]/button[2]"), 6000);
 	  testFuncs.searchStr(driver, "Unauthorized");
@@ -131,15 +131,15 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  // Step 3 - Try to delete an existing device-PH
 	  testFuncs.myDebugPrinting("Step 3 - Try to delete an existing device-PH");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");  
 	  String deleteButton = driver.findElement(By.xpath("//*[@id='placeholders_body']/tr[1]/td[8]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("Delete device-PH button is not deactivated !! (" + deleteButton + ")", deleteButton.contains("not-active"));
 
 	  // Log off , re-login via a Monitoring user (tenant) and enter the device-PH menu
 	  testFuncs.myDebugPrinting("Log off , re-login via a Monitoring user (tenant) and enter the device-PH menu");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 
 	  // Step 4 - Try to add a device-PH
 	  testFuncs.myDebugPrinting("Step 4 - Try to add a device-PH");
@@ -148,7 +148,7 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  // Step 5 - Try to edit an existing device-PH
 	  testFuncs.myDebugPrinting("Step 5 - Try to edit an existing device-PH");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");    
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");    
 	  testFuncs.myClick(driver, By.xpath("//*[@id='placeholders_body']/tr/td[7]/button")				   , 6000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[3]/button[2]"), 6000);
 	  testFuncs.searchStr(driver, "Unauthorized");
@@ -156,17 +156,17 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  // Step 6 - Try to delete an existing device-PH
 	  testFuncs.myDebugPrinting("Step 6 - Try to delete an existing device-PH");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");  
 	  deleteButton = driver.findElement(By.xpath("//*[@id='placeholders_body']/tr[1]/td[8]/a")).getAttribute("class");
 	  testFuncs.myAssertTrue("Delete device-PH button is not deactivated !! (" + deleteButton + ")", deleteButton.contains("not-active"));
 	  
 	  // Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user
 	  testFuncs.myDebugPrinting("Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");  
 	  deleteDevicePlaceholder(driver, srcUserName, phName, phValue);
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	  testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	  map.put("action"	 ,  "Delete Users");
 	  map.put("srcUsername",  "Finished");

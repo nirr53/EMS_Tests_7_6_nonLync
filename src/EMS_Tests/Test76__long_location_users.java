@@ -81,7 +81,7 @@ public class Test76__long_location_users {
 		// Set variables + login
 		String usersPrefix      = "location";
 		testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		Map<String, String> map = new HashMap<String, String>();
 	    map.put("usersNumber",  "2"); 
 	    map.put("startIdx"   ,  String.valueOf(1));
@@ -101,7 +101,7 @@ public class Test76__long_location_users {
 	    
 	  	// Step 2 - Create a user with Location field in 2049 characters
 		testFuncs.myDebugPrinting("Step 2 - Create a user with Location field in 2049 characters");
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
 				 												 testVars.getPort()     ,
 				 												 "1"				    ,
@@ -115,7 +115,7 @@ public class Test76__long_location_users {
 
 	    // Step 3 - Delete the users
 	  	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-		testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	    testFuncs.selectMultipleUsers(driver, usersPrefix, "2");
 	    map.put("usersPrefix"	  , usersPrefix);
 	    map.put("usersNumber"	  , "2"); 

@@ -96,15 +96,15 @@ public class Test89__Monitoring_tenant_site_configuration {
 	// Enter the Site Configuration menu, add new site CFG key and new Site PH and logout
 	testFuncs.myDebugPrinting("Enter the Site Configuration menu, add new site CFG key and new Site PH and logout");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite);  
 	testFuncs.addSitePH(driver, sitePhName, sitePhValue, sitePHSite, sitePHTenant);
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	//  Login via Monitoring user (tenant) and enter the Site configuration menu
 	testFuncs.myDebugPrinting("Login via Monitoring user (tenant) and enter the Site configuration menu");
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	
 	// Nir 28/1/18 - VI 149365
 	//	Step 1 - Verify that Add Site-Configuration-key is disabled
@@ -119,7 +119,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000); 
 	testFuncs.searchStr(driver, "Unauthorized");
 	testFuncs.searchStr(driver, "You do not have permission to modify this item"); 
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	
 	// Step 3 - Verify that Features menu is disabled
 	testFuncs.myDebugPrinting("Step 3 - Verify that Features menu is disabled");
@@ -153,9 +153,9 @@ public class Test89__Monitoring_tenant_site_configuration {
 	
 	// Step 9 - Logout, re-login as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH 
 	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH");	
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration"); 
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration"); 
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite, testVars.getDefSite());
 	testFuncs.selectSite(driver, sitePHSite);
 	testFuncs.deleteSitePH(driver, sitePhName, sitePhValue, testVars.getDefSite() + " [" + testVars.getDefSite() + "]");

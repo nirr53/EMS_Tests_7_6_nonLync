@@ -89,7 +89,7 @@ public class Test110__alarms_tests3 {
 	String user1  = prefix + "1_" + testFuncs.getId();
 	String user2  = prefix + "2_" + testFuncs.getId();
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered users from two different tenants
 	testFuncs.myDebugPrinting("Create a registered users from two different tenants");
@@ -104,7 +104,7 @@ public class Test110__alarms_tests3 {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, user1, user1, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 												 testVars.getPort()         ,
 			 												 "1"				        ,
@@ -122,7 +122,7 @@ public class Test110__alarms_tests3 {
 	testFuncs.myDebugPrinting("Step 1 - Create an alarm for the first and second users and search for them according to the Tenant");
 	String []alertsForSearch1 = {user1};
 	String []alertsForSearch2 = {user2};
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 															  testVars.getPort()							 ,
 															  mac1								 			 ,
@@ -141,8 +141,8 @@ public class Test110__alarms_tests3 {
 															  "info2"	 									 ,
 															  "info1"	 									 ,
 															  "minor");
-	testFuncs.searchAlarm(driver, "Tenant", testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
-	testFuncs.searchAlarm(driver, "Tenant", testVars.getNonDefTenant(0).toLowerCase(), alertsForSearch2);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.TENANT, testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.TENANT, testVars.getNonDefTenant(0).toLowerCase(), alertsForSearch2);
 
 	// Step 2 - Check The Clear-filter button of the page
 	testFuncs.myDebugPrinting("Step 2 - Check The Clear-filter button of the page");
@@ -152,7 +152,7 @@ public class Test110__alarms_tests3 {
 	
 	// Step 3 - Check The Clear-filter button at Filter menu
 	testFuncs.myDebugPrinting("Step 3 - Check The Clear-filter button at Filter menu");
-	testFuncs.searchAlarm(driver, "Tenant", testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.TENANT, testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    , 3000); 
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[2]"), 3000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[1]"), 5000);
@@ -161,11 +161,11 @@ public class Test110__alarms_tests3 {
 
 	// Step 4 - Check for no output
 	testFuncs.myDebugPrinting("Step 4 - Check for no output");
-	testFuncs.searchAlarm(driver, "Description", "unknownMac", alertsForSearch1);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, "unknownMac", alertsForSearch1);
 
 	// Step 5 - Check Telnet connection for the created Alarm
 	testFuncs.myDebugPrinting("Step 5 - Check Telnet connection for the created Alarm");
-	testFuncs.searchAlarm(driver, "Tenant", testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.TENANT, testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
 	testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a")		   , 3000);
 	testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[2]/a"), 3000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[1]", "Telnet (DEBUG)");
@@ -181,7 +181,7 @@ public class Test110__alarms_tests3 {
 	testFuncs.myDebugPrinting("Step 6 - Delete the created alarms and users");
 	testFuncs.deleteAlarm(driver, alertsForSearch1[0]);	
 	testFuncs.deleteAlarm(driver, alertsForSearch2[0]);	
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, prefix, "2");
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("usersPrefix"	  , prefix);  

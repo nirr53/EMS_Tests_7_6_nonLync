@@ -92,7 +92,7 @@ public class Test107__system_settings_http_https {
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		
 	// Create a user using POST query
 	testFuncs.myDebugPrinting("Create a user using POST query");
@@ -109,12 +109,12 @@ public class Test107__system_settings_http_https {
 	  
     // Enter the system settings menu and set the system to work with HTTPS
 	testFuncs.myDebugPrinting("Enter the system settings menu and set the system to work with HTTPS");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	setHttpOrhttps(true);
 	  
 	// Step 1 - Enter the DHCP option configuration menu and check that urls are changed respectively
 	testFuncs.myDebugPrinting("Step 1 - Enter the DHCP option configuration menu and check that urls are changed respectively");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_dhcp_options_configuration", "DHCP Options Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION, "DHCP Options Configuration");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/thead/tr/th"	 , "System URLs");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/tbody/tr[1]/td[2]/b/span"  , "https://" + testVars.getIp() + "/firmwarefiles;ipp/dhcpoption160.cfg");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/tbody/tr[2]/td[2]/b/span"  , "https://SBC_PROXY_IP:SBC_PROXY_PORT/firmwarefiles;ipp/httpproxy/");
@@ -124,19 +124,19 @@ public class Test107__system_settings_http_https {
 
 	// Step 2 - Enter the devices menu, select the create device and verify that its admin is opened with https
 	testFuncs.myDebugPrinting("Step 2 - Enter the devices menu, select the create device and verify that its admin is opened with https");
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	searchAndSelectDevice(driver, userName);
 	openWebAdminDevice("https");
 	
     // Enter the system settings menu and set the system to work with HTTP
 	testFuncs.myDebugPrinting("Enter the system settings menu and set the system to work with HTTP");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	setHttpOrhttps(false);
 	
 	// Step 3 - Enter the DHCP option configuration menu and check that urls are changed respectively
 	testFuncs.myDebugPrinting("Step 3 - Enter the DHCP option configuration menu and check that urls are changed respectively");
 	testFuncs.pressHomeButton(driver);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_dhcp_options_configuration", "DHCP Options Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION, "DHCP Options Configuration");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/thead/tr/th"	 , "System URLs");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/tbody/tr[1]/td[2]/b/span"  , "http://" + testVars.getIp() + "/firmwarefiles;ipp/dhcpoption160.cfg");
     testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[3]/div/div[2]/table[1]/tbody/tr[2]/td[2]/b/span"  , "http://SBC_PROXY_IP:SBC_PROXY_PORT/firmwarefiles;ipp/httpproxy/");
@@ -146,13 +146,13 @@ public class Test107__system_settings_http_https {
 
 	// Step 4 - Enter the devices menu, select the create device and verify that its admin is opened with https
 	testFuncs.myDebugPrinting("Step 4 - Enter the devices menu, select the create device and verify that its admin is opened with https");
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	searchAndSelectDevice(driver, userName);
 	openWebAdminDevice("http");
 	
     // Step 5 - Delete the created user
   	testFuncs.myDebugPrinting("Step 5 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 
@@ -199,7 +199,7 @@ public class Test107__system_settings_http_https {
 	  
 	  // Search device
 	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
-	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
+	  testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
 	  testFuncs.myWait(7000);

@@ -96,7 +96,7 @@ public class Test65__import_diffrent_langs_users {
     // Login and Enter the Import-export users+devices menu
 	testFuncs.myDebugPrinting("Login and Enter the Import-export users+devices menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser); 
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	
 	// Step 1 - Import users+devices
 	testFuncs.myDebugPrinting("Step 1 - Import users+devices");  
@@ -110,7 +110,7 @@ public class Test65__import_diffrent_langs_users {
 		
 	// Step 2 - Delete the created users
 	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
 	map.put("usersPrefix"	    , prefixUser);
 	map.put("usersNumber"	    , usersNumber);    

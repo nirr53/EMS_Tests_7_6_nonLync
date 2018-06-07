@@ -91,7 +91,7 @@ public class Test109__alarms_tests2 {
 	// Set variables and login
 	String Id = testFuncs.getId();
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered and un-registered users using POST method
 	testFuncs.myDebugPrinting("Create a registered and un-registered users using POST method");
@@ -106,7 +106,7 @@ public class Test109__alarms_tests2 {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, "regAlert" + Id, "regAlert" + Id, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 												 testVars.getPort()    	    ,
 			 												 "1"				   	    ,
@@ -123,7 +123,7 @@ public class Test109__alarms_tests2 {
 	testFuncs.myDebugPrinting("Step 1 - Enter the alarms menu and create alarms that sent from a registered / un-registered user");
 	String regAlertPrefix = "regAlert";
 	String []alertsForSearch = {regAlertPrefix + "_1_" + Id, regAlertPrefix + "_2_" + Id};
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	testFuncs.createAlarmViaPost(testVars.getAlarmsBatName(), testVars.getIp()  							 ,
 															  testVars.getPort()							 ,
 															  mac1								 			 ,
@@ -145,7 +145,7 @@ public class Test109__alarms_tests2 {
 		
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", regAlertPrefix  , alertsForSearch);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, regAlertPrefix  , alertsForSearch);
 	
 	// Step 2 - Create alarms on different severity types
 	testFuncs.myDebugPrinting("Step 2 - Create alarms on different severity types");
@@ -167,8 +167,7 @@ public class Test109__alarms_tests2 {
 																  "info2"	 									 ,
 																  "info1"	 									 ,
 																  alertsSeverity[i]);
-		testFuncs.searchAlarm(driver, "Severity", alertsSeverity[i], alarmNames);
-
+		testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.SEVERITY, alertsSeverity[i], alarmNames);
 	}
 
 	// Step 3.1 - Create an alarm with 67 characters long description
@@ -184,7 +183,7 @@ public class Test109__alarms_tests2 {
 															  "info2"	 									 ,
 															  "info1"	 									 ,
 															  "minor");
-	testFuncs.searchAlarm(driver, "Description", alertsForSearch2[0]  , alertsForSearch2);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertsForSearch2[0]  , alertsForSearch2);
 	
 	// Step 3.2 - Create an alarm with more than 67 characters long description
 	testFuncs.myDebugPrinting("Step 3.2 - Create an alarm with more than 67 characters long description");
@@ -198,7 +197,7 @@ public class Test109__alarms_tests2 {
 															  "info2"	 									 ,
 															  "info1"	 									 ,
 															  "minor");
-	testFuncs.searchAlarm(driver, "Description", alertsForSearch3[0]  , alertsForSearch3);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertsForSearch3[0]  , alertsForSearch3);
 	
 	// Step 4 - Delete the created alarms
 	testFuncs.myDebugPrinting("Step 4 - Delete the created alarms");
@@ -214,7 +213,7 @@ public class Test109__alarms_tests2 {
 	
 	// Step 6 - Delete the created users
 	testFuncs.myDebugPrinting("Step 6 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, Id, "1");
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("usersPrefix"	  , regAlertPrefix);  

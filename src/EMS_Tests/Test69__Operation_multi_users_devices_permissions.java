@@ -95,7 +95,7 @@ public class Test69__Operation_multi_users_devices_permissions {
 	// Login via Administrator, create a user of default Tenant with a POST query
 	testFuncs.myDebugPrinting("Login via Administrator, create a user of default Tenant with a POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
 			  					testVars.getPort()         ,
@@ -109,7 +109,7 @@ public class Test69__Operation_multi_users_devices_permissions {
 	
 	// Create another user with non-default Tenant with a POST query
 	testFuncs.myDebugPrinting("Create another user with non-default Tenant with a POST query");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
 			  					testVars.getPort()         ,
@@ -123,43 +123,43 @@ public class Test69__Operation_multi_users_devices_permissions {
 		 
     // Logout, re-login via an Operation user (system)
 	testFuncs.myDebugPrinting("Logout, re-login via an Operation user (system)");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
    
     // Step 1 - Enter Manage multiple devices changes menu and verify that both devices are displayed
   	testFuncs.myDebugPrinting("Enter Manage multiple devices changes menu and verify that both devices are displayed");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, defTenantUser	  , "1");
     testFuncs.selectMultipleUsers(driver, nonDefTenantUser, "1");
   	
 	// Step 2 - Enter Manage multiple users changes menu and verify that both users are displayed
 	testFuncs.myDebugPrinting("Step 2 - Enter Manage multiple users changes menu and verify that both users are displayed");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, defTenantUser	  , "1");
     testFuncs.selectMultipleUsers(driver, nonDefTenantUser, "1");
     
     // Logout, re-login via an Operation user (tenant)
    	testFuncs.myDebugPrinting("Logout, re-login via an Operation user (tenant)");
-   	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+   	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
    	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
     
     // Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed
   	testFuncs.myDebugPrinting("Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
   	testFuncs.selectMultipleDevices(driver, defTenantUser   , "1");
   	testFuncs.selectMultipleDevices(driver, nonDefTenantUser, "0");
   	
     // Step 4 - Enter Manage multiple users changes menu and verify that only device of default-Tenant is displayed
   	testFuncs.myDebugPrinting("Step 4 - Enter Manage multiple users changes menu and verify that only device of default-Tenant is displayed");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
   	testFuncs.selectMultipleUsers(driver, defTenantUser   , "1");
   	testFuncs.selectMultipleUsers(driver, nonDefTenantUser, "0");
   	
     // Step 5 - Logout, re-login as Administrator and delete the created users
   	testFuncs.myDebugPrinting("Step 5 - Logout, re-login as Administrator and delete the created users");
-   	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+   	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
   	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-  	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+  	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, Id, "2");
     Map<String, String> map = new HashMap<String, String>();
     map.put("usersPrefix"	  , prefix);

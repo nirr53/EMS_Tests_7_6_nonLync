@@ -106,7 +106,7 @@ public class Test122__registered_unregistered_users_number {
 				 												 testVars.getDefPhoneModel(),
 				 												 testVars.getDefTenant()	,
 				 												 "myLocation");
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	    testFuncs.verifyPostUserCreate(driver, regUserName, regUserName, true);
 		testFuncs.pressHomeButton(driver);
 		
@@ -142,9 +142,9 @@ public class Test122__registered_unregistered_users_number {
 				 												 testVars.getDefPhoneModel(),
 				 												 testVars.getDefTenant()	,
 				 												 "myLocation");
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		testFuncs.pressHomeButton(driver);	
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "Manage Users");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
 	    testFuncs.verifyPostUserCreate(driver, unRegUserName, unRegUserName, false);
 		testFuncs.pressHomeButton(driver);	
 
@@ -183,7 +183,7 @@ public class Test122__registered_unregistered_users_number {
 		
 	    // Step 3 - Delete the users
 	  	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-		testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	    testFuncs.selectMultipleUsers(driver, usersPrefix, "1");
 		Map<String, String> map = new HashMap<String, String>();
 	    map.put("usersPrefix"	  , usersPrefix);

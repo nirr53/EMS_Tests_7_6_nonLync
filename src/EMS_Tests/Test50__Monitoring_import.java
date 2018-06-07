@@ -86,7 +86,7 @@ public class Test50__Monitoring_import {
     // Login via a Monitoring user (system) and enter Import users+devices menu
 	testFuncs.myDebugPrinting("Login via a Monitoring user (system) and enter Import users+devices menu");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	
 	// Step 1 - Verify that you cannot import a zip file
 	testFuncs.myDebugPrinting("Step 1 - Verify that you cannot import a zip file");
@@ -95,7 +95,7 @@ public class Test50__Monitoring_import {
 	
 	// Step 2 - Enter the import-configuration menu and verify that you cannot import a zip file
 	testFuncs.myDebugPrinting("Step 2 - Enter the import-configuration menu and verify that you cannot import a zip file");
-	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
     testFuncs.searchStr(driver, "Unauthorized");
@@ -103,9 +103,9 @@ public class Test50__Monitoring_import {
 	  
 	// Logout and re-login via a Monitoring user (tenant) and enter Import users+devices menu
 	testFuncs.myDebugPrinting("Logout and re-login via a Monitoring user (tenant) and enter Import users+devices menu"); 
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 
 	// Step 3 - Verify that you cannot import a zip file
 	testFuncs.myDebugPrinting("Step 3 - Verify that you cannot import a zip file");
@@ -114,7 +114,7 @@ public class Test50__Monitoring_import {
 	
 	// Step 4 - Enter the import-configuration menu and verify that you cannot import a zip file
 	testFuncs.myDebugPrinting("Step 4 - Enter the import-configuration menu and verify that you cannot import a zip file");
-	testFuncs.enterMenu(driver, "Setup_Import_export_configuration_import", "To Import Phone Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
     testFuncs.searchStr(driver, "Unauthorized");

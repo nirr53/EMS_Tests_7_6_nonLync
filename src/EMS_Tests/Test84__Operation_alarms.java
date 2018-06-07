@@ -83,7 +83,7 @@ public class Test84__Operation_alarms {
 	// Login via Operation-user (system), enter the Alarms menu
 	testFuncs.myDebugPrinting("Login via Operation-user (system), enter the Alarms menu");
 	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 1 - Test the Export button
 	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
@@ -100,16 +100,16 @@ public class Test84__Operation_alarms {
 		
     // Step 2 - Test the Alarms link from the main-page
 	testFuncs.myDebugPrinting("Step 2 - Test the Alarms link from the main-page");	
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a/i"), 3000);
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/span[2]/a/button"), 3000);
 	testFuncs.searchStr(driver, "Alarms");
 	
 	// Logout, re-login via Operation-user (tenant), and enter the Alarms menu
 	testFuncs.myDebugPrinting("Logout, re-login via Operation-user (tenant), and enter the Alarms menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 3 - Test the Export button
 	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
@@ -126,7 +126,7 @@ public class Test84__Operation_alarms {
 		
     // Step 4 - Test the Alarms link from the main-page
 	testFuncs.myDebugPrinting("Step 4 - Test the Alarms link from the main-page");	
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a/i"), 3000);
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/span[2]/a/button"), 3000);
 	testFuncs.searchStr(driver, "Alarms");

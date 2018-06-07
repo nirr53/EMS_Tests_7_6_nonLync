@@ -96,7 +96,7 @@ public class Test96__template_features {
     // Login, enter the Phone Templates menu, add a Template and select the create template
 	testFuncs.myDebugPrinting("Login, enter the Phone Templates menu, add a Template and select the create template");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
   	testFuncs.addTemplate(driver, "my" + "420HD" + "Template_" + Id, "my" + "420HD" + "desc", testVars.getNonDefTenant(0), "420HD", map);
   	pressEditOfCreatedTemplate(driver, "my" + "420HD" + "Template_" + Id);
   	
@@ -120,7 +120,7 @@ public class Test96__template_features {
 
 	// Step 4 - Delete the created template  		
   	testFuncs.myDebugPrinting("Step 4 -  Delete the created template");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
 	testFuncs.deleteTemplate(driver, "my" + "420HD" + "Template_" + Id);
   }
   

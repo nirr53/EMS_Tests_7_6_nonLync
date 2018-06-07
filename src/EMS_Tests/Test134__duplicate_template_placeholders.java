@@ -86,7 +86,7 @@ public class Test134__duplicate_template_placeholders {
     // Add a new Template placeholder
 	testFuncs.myDebugPrinting("Add a new Template placeholder");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");	
     testFuncs.addTemplatePlaceholder(driver, tempName, tempPhName, tempPhValue, tempPhDescription);
 
     // Step 1 - Add another Template placeholder with the same name
@@ -95,7 +95,7 @@ public class Test134__duplicate_template_placeholders {
     
 	// Step 2 - Delete a Template placeholder
 	testFuncs.myDebugPrinting("Step 2 - Delete a Template placeholder");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
     testFuncs.deleteTemplatePlaceholder(driver, tempName, tempPhName);
   }
   

@@ -86,7 +86,7 @@ public class Test52__Operation_System_Settings {
 	  // Login via an Operation user (tenant) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Login via an Operation user (tenant) and the enter System settings menu");
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	  
 	  // Step 1 - Try to edit one of the values
 	  testFuncs.myDebugPrinting("Step 1 - Try to edit one of the values");
@@ -96,12 +96,12 @@ public class Test52__Operation_System_Settings {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 2000);
 	  testFuncs.searchStr(driver, "Unauthorized");
 	  testFuncs.searchStr(driver, "You do not have permission to modify this item");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());  
 	  
 	  // Login via an Operation user (system) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Login via an Operation user (system) and the enter System settings menu");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 
 	  // Step 2 - Try to edit one of the values
 	  testFuncs.myDebugPrinting("Step 2 - Try to edit one of the values");
@@ -117,7 +117,7 @@ public class Test52__Operation_System_Settings {
 
 	  //  Step 3 - Reset system language to English
 	  testFuncs.myDebugPrinting(" Step 3 - Reset system language to English");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	  sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
 	  sysLangs.selectByVisibleText("English");
 	  testFuncs.myWait(5000);

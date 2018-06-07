@@ -77,7 +77,7 @@ public class Test80__view_tenants {
 	
 	// Set variables
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_System_view_tenants", "Tenant List");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 		
 	// Step 1 - Check headers of the menu
 	testFuncs.myDebugPrinting("Step 1 - Check headers of the menu");

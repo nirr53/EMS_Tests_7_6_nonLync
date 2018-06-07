@@ -111,7 +111,7 @@ public class Test5__add_user_tests {
 			 												 testVars.getDefTenant()    ,
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, prefix + "1_" + Id, prefix + "1_" + Id, true);
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     
     // Step 3 - Create an unregistered user using POST method
 	testFuncs.myDebugPrinting("Step 3 - Create an unregistered user using POST method");  
@@ -124,13 +124,13 @@ public class Test5__add_user_tests {
 			 												 testVars.getDefPhoneModel(),
 			 												 testVars.getDefTenant()    ,
 			 												 "myLocation");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "Manage Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
     testFuncs.verifyPostUserCreate(driver, prefix + "2_" + Id, prefix + "2_" + Id, false);
     
     // Step 4 - Verify that configuration file is not created for unregistered user
  	testFuncs.myDebugPrinting("Step 4 - Verify that configuration file is not created for unregistered user");  
     mac = testFuncs.readFile("mac_1.txt");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), mac  , 7000);
 	testFuncs.myAssertTrue("Configuration file was detected !!", !driver.findElement(By.tagName("body")).getText().contains(mac));
   }
@@ -140,7 +140,7 @@ public class Test5__add_user_tests {
 	  
 	  //  Delete the users	  
 	  testFuncs.myDebugPrinting("Delete the created users");		
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefix, "2"); 
 	  map.put("usersPrefix"	  , prefix);	  
 	  map.put("srcUsername"	  , "Finished");	  

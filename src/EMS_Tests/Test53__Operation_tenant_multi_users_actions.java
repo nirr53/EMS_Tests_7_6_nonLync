@@ -87,7 +87,7 @@ public class Test53__Operation_tenant_multi_users_actions {
 	// Login via Administrator, create a user of default tenant with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user default tenant with a POST query and add a device-PH to it");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
 			  					testVars.getPort()         ,
@@ -98,12 +98,12 @@ public class Test53__Operation_tenant_multi_users_actions {
 			  					testVars.getDefPhoneModel(),
 			  					testVars.getDefTenant()    ,
 				 				"myLocation");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 		 
     // Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.
 	testFuncs.myDebugPrinting("Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.");
 	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 
     // Step 1 - Verify that Change-tenant action is active.
   	testFuncs.myDebugPrinting("Step 1 - Verify that Change-tenant action is active.");
@@ -120,7 +120,7 @@ public class Test53__Operation_tenant_multi_users_actions {
     
     // Step 2 - Verify that Reset-password action is active.
   	testFuncs.myDebugPrinting("Step 2 - Verify that Reset-password action is active.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetPasswords");
     testFuncs.myWait(2000);
@@ -136,7 +136,7 @@ public class Test53__Operation_tenant_multi_users_actions {
  	for (String resMode : resModes) {
  		
  	 	testFuncs.myDebugPrinting("resMode - " + resMode, enumsClass.logModes.NORMAL);
-	 	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	  	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetIpPhones");
 	    testFuncs.myWait(2000);
@@ -151,7 +151,7 @@ public class Test53__Operation_tenant_multi_users_actions {
  	
     // Step 4 - Verify that Generate-configuration-users action is active.
    	testFuncs.myDebugPrinting("Step 4 - Verify that Generate-configuration-users action is active.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("setIpPhones");
     testFuncs.myWait(2000);
@@ -163,7 +163,7 @@ public class Test53__Operation_tenant_multi_users_actions {
  	
     // Step 5 - Verify that Update-configuration-users action is active.
    	testFuncs.myDebugPrinting("Step 5 - Verify that Update-configuration-users action is active.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("updateConfigFiles");
     testFuncs.myWait(2000);
@@ -175,7 +175,7 @@ public class Test53__Operation_tenant_multi_users_actions {
  
     // Step 6 - Verify that Send-message action is active.
 	testFuncs.myDebugPrinting("Step 6 - Verify that Send-message action is active.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("sendMessage");
     testFuncs.myWait(2000);  
@@ -189,7 +189,7 @@ public class Test53__Operation_tenant_multi_users_actions {
     // Step 7 - Verify that Delete-users action is active.
     // Nir 28\1\18 VI 146554
   	testFuncs.myDebugPrinting("Step 7 - Verify that Delete-users action is active.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("deleteUsers");
     testFuncs.myWait(2000);  

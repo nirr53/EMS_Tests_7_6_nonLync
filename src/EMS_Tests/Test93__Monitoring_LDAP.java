@@ -90,7 +90,7 @@ public class Test93__Monitoring_LDAP {
 	// Login via Monitoring-user (system), an enter the LDAP menu
 	testFuncs.myDebugPrinting("Login via Monitoring-user (system), an enter the LDAP menu");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_ldap", "LDAP Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 
 	// Step 1 - Verify that you cannot edit the LDAP properties
 	testFuncs.myDebugPrinting("Step 1 - Verify that you cannot edit the LDAP properties");
@@ -100,7 +100,7 @@ public class Test93__Monitoring_LDAP {
 	
 	// Step 2 - test the Test-LDAP button
 	testFuncs.myDebugPrinting("Step 2 - test the Test-LDAP button");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_ldap", "LDAP Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_SERVER_ADDRESS']"), ldapAddress , 2000);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_USER_NAME']")     , ldapUsername, 2000);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_PASSWORD']")      , ldapPassword, 2000);
@@ -118,7 +118,7 @@ public class Test93__Monitoring_LDAP {
 	// Login via Monitoring-user (tenant), an enter the LDAP menu
 	testFuncs.myDebugPrinting("Login via Monitoring-user (tenant), an enter the LDAP menu");
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_ldap", "LDAP Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 
 	// Step 3 - Verify that you cannot edit the LDAP properties
 	testFuncs.myDebugPrinting("Step 3 - Verify that you cannot edit the LDAP properties");
@@ -128,7 +128,7 @@ public class Test93__Monitoring_LDAP {
 	
 	// Step 4 - test the Test-LDAP button
 	testFuncs.myDebugPrinting("Step 4 - test the Test-LDAP button");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings_ldap", "LDAP Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_SERVER_ADDRESS']"), ldapAddress , 2000);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_USER_NAME']")     , ldapUsername, 2000);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='LDAP_PASSWORD']")      , ldapPassword, 2000);

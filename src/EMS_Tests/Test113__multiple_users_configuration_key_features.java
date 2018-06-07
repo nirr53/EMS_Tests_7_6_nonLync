@@ -99,7 +99,7 @@ public class Test113__multiple_users_configuration_key_features {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -113,7 +113,7 @@ public class Test113__multiple_users_configuration_key_features {
     
     // Step 2 - Add Daylight-configuration-keys
   	testFuncs.myDebugPrinting("Add Daylight-configuration-keys");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "User configuration");
     map.put("confKey"   , "features");
@@ -122,7 +122,7 @@ public class Test113__multiple_users_configuration_key_features {
         
     // Step 3 - Add Telnet-access configuration-keys
   	testFuncs.myDebugPrinting("Step 3 - Add Telnet-access configuration-keys");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "User configuration");
     map.put("confKey"   , "features");
@@ -132,7 +132,7 @@ public class Test113__multiple_users_configuration_key_features {
     
     // Step 4 - Add PIN-lock configuration-keys
   	testFuncs.myDebugPrinting("Step 4 - Add PIN-lock configuration-keys");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "User configuration");
    map.put("confKey"   , "features");
@@ -142,7 +142,7 @@ public class Test113__multiple_users_configuration_key_features {
     
     // Step 5 - Add CAP-profile keys
   	testFuncs.myDebugPrinting("Step 5 - Add CAP-profile keys");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "User configuration");
     map.put("confKey"   , "features");
@@ -160,7 +160,7 @@ public class Test113__multiple_users_configuration_key_features {
    
     // Step 7 - Delete the created users
   	testFuncs.myDebugPrinting("Step 7 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("srcUsername"	  , "Finished");

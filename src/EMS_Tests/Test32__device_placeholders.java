@@ -90,7 +90,7 @@ public class Test32__device_placeholders {
 	  // Login and create a user with a POST query
 	  testFuncs.myDebugPrinting("Login and create a user with a POST query");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					  testVars.getIp()           ,
 			  					  testVars.getPort()         ,
@@ -102,7 +102,7 @@ public class Test32__device_placeholders {
 			  					  testVars.getDefTenant()    ,
 				 				  "myLocation");
 	  testFuncs.verifyPostUserCreate(driver, srcUserName + "@" + testVars.getDomain(), srcUserName, true);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 
 	  // Step 1 - Add a new device placeholder
 	  testFuncs.myDebugPrinting("Step 1 - Add a new device placeholder");
@@ -121,7 +121,7 @@ public class Test32__device_placeholders {
 	  
 	  // Step 4 - Delete the created user
 	  testFuncs.myDebugPrinting("Step 4 - Delete the created user");
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	  testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	  map.put("action"	 ,  "Delete Users");
 	  map.put("srcUsername",  "Finished");

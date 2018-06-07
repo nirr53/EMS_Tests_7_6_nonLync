@@ -98,7 +98,7 @@ public class Test105__device_status_filter_tests {
     // Create a user+device on default tenant using POST query
 	testFuncs.myDebugPrinting("Create a user+device on default tenant using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumberStr		        ,
@@ -114,7 +114,7 @@ public class Test105__device_status_filter_tests {
     // Create a user+device on non-default tenant using POST query
 	testFuncs.myDebugPrinting("Create a user+device on non-default tenant using POST query");
 	String dispPrefix2 = "__nnDfTnUsr" + testFuncs.getId();
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumberStr		        ,
@@ -164,7 +164,7 @@ public class Test105__device_status_filter_tests {
 	
     // Step 5 - Delete the created users
   	testFuncs.myDebugPrinting("Step 5 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumberStr);
     map.put("usersNumber"	  , usersNumberStr); 
     map.put("usersPrefix"	  , dispPrefix);

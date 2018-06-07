@@ -90,7 +90,7 @@ public class Test138__duplicate_phone_firmware_files {
     // Enter the Phone firmware files menu and add a new IP Phone firmware
 	testFuncs.myDebugPrinting("Enter the Phone firmware files menu and add a new IP Phone firmware");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 	testFuncs.addNewFirmware(driver, firmName, firmDesc, firmVersion, firmRegion, firmFileName); 	
 	
 	// Step 1 - Try to create a firmware with the same name
@@ -99,7 +99,7 @@ public class Test138__duplicate_phone_firmware_files {
 		
 	// Step 2 - Delete a firmware
   	testFuncs.myDebugPrinting("Step 2 - Delete a firmware");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 	testFuncs.deleteFirmware(driver,  firmName, firmDesc, firmVersion);
   }
   

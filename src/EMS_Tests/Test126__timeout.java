@@ -96,7 +96,7 @@ public class Test126__timeout {
     // Set the Timeout value to be 3 minutes and create a registered-user
 	testFuncs.myDebugPrinting("Set the Timeout value to be 3 minutes and create a registered-user");
 	setTimeout(timeoutMin);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
 				 				testVars.getPort()    						 ,
 				 				"1"				   							 ,
@@ -151,7 +151,7 @@ public class Test126__timeout {
   // Set Timeout value 
   private void setTimeout(String timeoutValue) {
 	  
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='disconnected_timeout']"), timeoutValue, 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
@@ -164,7 +164,7 @@ public class Test126__timeout {
 	    
 	  // Delete the created users & Set timeout to be 10 again
 	  testFuncs.myDebugPrinting("Step 3 - Delete the created users");		
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	  testFuncs.selectMultipleUsers(driver, userName, "1");
 	  map.put("usersPrefix"	  , userName);  
 	  map.put("usersNumber"	  , "1"); 

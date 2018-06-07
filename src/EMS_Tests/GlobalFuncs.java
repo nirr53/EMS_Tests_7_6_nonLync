@@ -27,8 +27,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 import EMS_Tests.enumsClass.*;
-import EMS_Tests.enumsClass.logModes;
-import EMS_Tests.enumsClass.selectTypes;
 
 /**
 * This class holds all the functions which been used by the tests
@@ -307,7 +305,7 @@ public class GlobalFuncs {
 	  public void addUser(WebDriver 	driver, String currUsername, String userPass, String userDisName, String tenant) {
 		
 		// Enter the Manage-users menu & Add-User menu
-		enterMenu(driver, "Setup_Manage_users", "New User");
+		enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/a"), 5000);
 		verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "Add User");
 				
@@ -446,7 +444,7 @@ public class GlobalFuncs {
 
 		// Verify that the device was also created
 	    myDebugPrinting("Verify that the device was also created", enumsClass.logModes.MINOR);
-		enterMenu(driver, "Monitor_device_status", "Devices Status");
+		enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	    if (username.contains("location")) {
 	    	
 			mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "mac:" + readFile("mac_1.txt"), 5000);	
@@ -794,17 +792,17 @@ public class GlobalFuncs {
 			}
 		}  
 	  }
-
+	  
 	  /**
 	  *  Enter a menu
 	  *  @param driver       - given driver for make all tasks
-	  *  @param menuName 	 - given menu name for the paths function
+	  *  @param mainpageDashboardAlarms 	 - given menu name for the paths function
 	  *  @param verifyHeader - string for verify that enter the menu succeeded
 	  */
-	  public void enterMenu(WebDriver 	driver, String menuName, String verifyHeader) {
+	  public void enterMenu(WebDriver 	driver, menuNames mainpageDashboardAlarms, String verifyHeader) {
 		  
-		  myDebugPrinting("enterMenu  - " +  menuName, enumsClass.logModes.NORMAL);
-		  String paths[] = testMenuPaths.getPaths(menuName);
+		  myDebugPrinting("enterMenu  - " +  mainpageDashboardAlarms, enumsClass.logModes.NORMAL);
+		  String paths[] = testMenuPaths.getPaths(mainpageDashboardAlarms);
 		  int length = paths.length;
 		  for (int i = 0; i < length; ++i) {
 		  
@@ -826,7 +824,7 @@ public class GlobalFuncs {
 			  Assert.assertTrue("Title was not found (" + title + ")", title.contains(verifyHeader));
 		  }
 		  myWait(9000);
-		  myDebugPrinting("enterMenu  - " +  menuName + " ended successfully !!", enumsClass.logModes.NORMAL);
+		  myDebugPrinting("enterMenu  - " +  mainpageDashboardAlarms + " ended successfully !!", enumsClass.logModes.NORMAL);
       }
 
 	  /**
@@ -1928,7 +1926,7 @@ public class GlobalFuncs {
 
 			  // Verify create
 			  myDebugPrinting("Verify create", enumsClass.logModes.MINOR);		  
-			  enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+			  enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 			  searchStr(driver, firmName);
 			  searchStr(driver, firmDesc);
 			  searchStr(driver, firmDesc);	  
@@ -2563,33 +2561,52 @@ public class GlobalFuncs {
 	  /**
 	  *  Search for an Alert using given detector
 	  *  @param driver          - given driver
-	  *  @param searchMode      - given searchMode (I.e. description, severity)
+	  *  @param info            - given searchMode (I.e. description, severity)
 	  *  @param alertData       - search criteria
 	  *  @param alertsForSearch - array of alert descriptions for search
 	  **/
-	  public void searchAlarm(WebDriver driver, String searchMode, String alertData, String []alertsForSearch) {
+	  public void searchAlarm(WebDriver driver, alarmFilterModes info, String alertData, String []alertsForSearch) {
 		  
 		  // Enter the filter menu & clear it before a new search
 		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    , 7000);
 		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[2]"), 7000);
-		  switch (searchMode) {
-			  case "Description":	
-				  myDebugPrinting("Search according to description - " + alertData, enumsClass.logModes.MINOR);
+		  switch (info) {
+			  case DESCRPTION:	
+				  myDebugPrinting("Search according to description <" + alertData + ">", enumsClass.logModes.MINOR);
 				  mySendKeys(driver, By.xpath("//*[@id='inputDescription']"), alertData, 2000);
 				  break;
 				  
-			  case "Severity":	
-				  myDebugPrinting("Search according to Severity", enumsClass.logModes.MINOR);	  
+			  case SEVERITY:	
+				  myDebugPrinting("Search according to Severity <" + alertData + ">", enumsClass.logModes.MINOR);	  
 				  new Select(driver.findElement(By.xpath("//*[@id='inputStatus']"))).selectByVisibleText(alertData);
 				  myWait(5000);
 				  break;
 				  
-			  case "Tenant":	
-				  myDebugPrinting("Search according to Tenant", enumsClass.logModes.MINOR);	  
+			  case TENANT:	
+				  myDebugPrinting("Search according to Tenant <" + alertData + ">", enumsClass.logModes.MINOR);	  
 				  new Select(driver.findElement(By.xpath("//*[@id='inputTenant']"))).selectByVisibleText(alertData);
 				  myWait(5000);
+				  break; 
+				  
+			  case INFO:	  
+				  myDebugPrinting("Search according to Info <" + alertData + ">", enumsClass.logModes.MINOR);	
+				  mySendKeys(driver, By.xpath("//*[@id='inputInfo']"), alertData, 2000);
+				  break;
+				  
+			  case REMOTE_HOST:	  
+				  myDebugPrinting("Search according to Remote Host <" + alertData + ">", enumsClass.logModes.MINOR);	
+				  mySendKeys(driver, By.xpath("//*[@id='inputRemoteHost']"), alertData, 2000);
+				  break;
+				  
+			  case SOURCE:	  
+				  myDebugPrinting("Search according to Source <" + alertData + ">", enumsClass.logModes.MINOR);	
+				  mySendKeys(driver, By.xpath("//*[@id='inputSource']"), alertData, 2000);
 				  break;  
 				  
+			  case NAME:	  
+				  myDebugPrinting("Search according to Name <" + alertData + ">", enumsClass.logModes.MINOR);	
+				  mySendKeys(driver, By.xpath("//*[@id='inputAlarm']"), alertData, 2000);
+				  break; 	  
 		  }
 		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[1]"), 5000);
 
@@ -2617,7 +2634,7 @@ public class GlobalFuncs {
 		  // Search for the alert according to description
 		  myDebugPrinting("Search for the alert according to description", enumsClass.logModes.MINOR);
 		  String[] alertsForSearch = {alertDesc};
-		  searchAlarm(driver, "Description", alertDesc, alertsForSearch); 
+		  searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertDesc, alertsForSearch); 
 		   
 		  // Delete the alarm
 		  myDebugPrinting("Delete the alarm", enumsClass.logModes.MINOR);
@@ -2711,7 +2728,7 @@ public class GlobalFuncs {
 	public void verifyPostUsersCreate(WebDriver driver, String userNamePrefix, String dispNamePrefix, boolean isRegistered, int usersNumber) {
 		  
 		  String username, dispName;
-		  enterMenu(driver, "Setup_Manage_users", "New User");
+		  enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		  for (int idx = 1; idx <= usersNumber; ++idx) {
 			  
 				// Search user
@@ -2739,7 +2756,7 @@ public class GlobalFuncs {
 			    } 
 		  }
 		  	
-		  enterMenu(driver, "Monitor_device_status", "Devices Status");
+		  enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 		  for (int idx = 1; idx <= usersNumber; ++idx) {
 			  
 			  // Search device	  	

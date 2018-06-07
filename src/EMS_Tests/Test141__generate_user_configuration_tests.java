@@ -97,7 +97,7 @@ public class Test141__generate_user_configuration_tests {
 	// Login and create a registered user
 	testFuncs.myDebugPrinting("Login and create a registered user");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												 usersNumber				    ,
@@ -113,13 +113,13 @@ public class Test141__generate_user_configuration_tests {
 	
  	// Step 1 - Verify that the configuration file of the user appears at Configuration-files menu while ZT create
  	testFuncs.myDebugPrinting("Step 1 - Verify that the configuration file of the user appears at Configuration-files menu while ZT create");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchInput']"), mac  , 7000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='fbody']/tr[1]/td[3]/a[2]", mac);
 	
     // Step 2 - Create a user-configuration value (Add+Save)
 	testFuncs.myDebugPrinting("Step 2 - Create a user-configuration value (Add+Save)");
-	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
 	testFuncs.createNewConfValue(driver, confName, confValue);
 	testFuncs.saveConfValues(driver, usersFullName);
@@ -136,7 +136,7 @@ public class Test141__generate_user_configuration_tests {
     
 	// Step 4 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 4 - Generate the user configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("action"  , "Generate IP Phones Configuration Files");
     testFuncs.setMultipleUsersAction(driver, map);
@@ -153,7 +153,7 @@ public class Test141__generate_user_configuration_tests {
  	
 	// Step 6 - Delete the created user
  	testFuncs.myDebugPrinting("Step 6 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

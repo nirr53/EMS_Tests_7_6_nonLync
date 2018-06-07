@@ -88,7 +88,7 @@ public class Test46__Monitoring_template_placeholders {
     // Login via Monitoring user (system) and enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Login via Monitoring user (system) and enter the Add new template placeholder menu");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 1 - Try to add a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 1 - Try to add a Template PH via a Monitoring user");
@@ -96,17 +96,17 @@ public class Test46__Monitoring_template_placeholders {
 
 	// Step 2 - Try to edit a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 2 - Try to edit a Template PH via a Monitoring user");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	editTemplatePHMonitoring(driver);
 	
 	// Step 3 - Try to delete a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 3 - Try to delete a Template PH via a Monitoring user");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	deleteTemplatePHMonitoring(driver);
 	
     // Step 4 - Verify that Show placeholders button is still active
  	testFuncs.myDebugPrinting("Step 4 - Verify that Show placeholders button is still active");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[8]/div[2]/table/tbody/tr[1]/td/table/tbody/tr[2]/td/div/a[2]"), 3000);
 	ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
 	driver.switchTo().window((String) tabs.get(1));
@@ -119,9 +119,9 @@ public class Test46__Monitoring_template_placeholders {
     // Switch back to main frame, logout and re-login via Monitoring user (tenant) and enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Switch back to main frame, logout and re-login via Monitoring user (tenant) and enter the Add new template placeholder menu");
 	driver.switchTo().window((String) tabs.get(0));
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 5 - Try to add a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 5 - Try to add a Template PH via a Monitoring user");
@@ -129,17 +129,17 @@ public class Test46__Monitoring_template_placeholders {
 
 	// Step 6 - Try to edit a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 6 - Try to edit a Template PH via a Monitoring user");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	editTemplatePHMonitoring(driver);
 	
 	// Step 7 - Try to delete a Template PH via a Monitoring user
 	testFuncs.myDebugPrinting("Step 7 - Try to delete a Template PH via a Monitoring user");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	deleteTemplatePHMonitoring(driver);
 	
     // Step 8 - Verify that Show placeholders button is still active
  	testFuncs.myDebugPrinting("Step 8 - Verify that Show placeholders button is still active");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
  	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[8]/div[2]/table/tbody/tr[1]/td/table/tbody/tr[2]/td/div/a[2]"), 3000);
 	ArrayList<?> tabs2 = new ArrayList<Object> (driver.getWindowHandles());
 	driver.switchTo().window((String) tabs2.get(1));

@@ -91,7 +91,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -105,7 +105,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
     
     // Step 2 - change Template
   	testFuncs.myDebugPrinting("Step 2 - change Template");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Change Template");
     map.put("phoneType"  ,  "Audiocodes_440HD");
@@ -116,7 +116,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
     
     // Step 3.1 - reset device - Graceful mode
 	testFuncs.myDebugPrinting("Step 3.1 - reset device - Graceful mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"     ,  "Restart Devices");
     map.put("resMode"    ,  "Graceful");
@@ -127,7 +127,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
         
     // Step 3.2 - reset device - Force mode
   	testFuncs.myDebugPrinting("Step 3.2 - reset device - Force mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("resMode"    ,  "Force");
     testFuncs.setMultipleDevicesAction(driver, map);
@@ -137,7 +137,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
     
     // Step 3.3 - reset device - Scheduled mode
   	testFuncs.myDebugPrinting("Step 3.3 - reset device - Scheduled mode");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("resMode"    ,  "Scheduled");
     map.put("schTime"    ,  "2 sec");
@@ -148,7 +148,7 @@ public class Test21__multiple_devices_change_phone_type_reset_device {
 
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

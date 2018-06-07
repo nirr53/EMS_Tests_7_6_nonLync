@@ -86,7 +86,7 @@ public class Test27__system_settings {
     // Enter System settings menu and fill data
 	testFuncs.myDebugPrinting("Enter System settings menu and fill data");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
 	sysLangs.selectByVisibleText(usedLang);
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='ntpserver']")  , ntpServer  , 2000);
@@ -119,7 +119,7 @@ public class Test27__system_settings {
 	  
 	// Restore system language to English
 	testFuncs.myDebugPrinting("Restore system language to English");	
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
 	sysLangs.selectByVisibleText("English");
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 15000);

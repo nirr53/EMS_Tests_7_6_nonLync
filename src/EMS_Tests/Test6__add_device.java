@@ -95,7 +95,7 @@ public class Test6__add_device {
 	
     // Step 2 - Delete the created user
   	testFuncs.myDebugPrinting("Step 2 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber"     ,  "1"); 

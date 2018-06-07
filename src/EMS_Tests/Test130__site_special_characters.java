@@ -89,7 +89,7 @@ public class Test130__site_special_characters {
 	// Login and enter the View-Sites menu
 	testFuncs.myDebugPrinting("Enter the Add new region placeholders menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, sitePHSite);
 
 	// Step 1 - Add a new site CFG key

@@ -75,7 +75,7 @@ public class Test75__system_licsense {
 	  
 	  // Login and enter the System license
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_System_license", "License Properties");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_LICENSE, "License Properties");
 	  
 	  // Check headers
 	  testFuncs.myDebugPrinting("Check headers");

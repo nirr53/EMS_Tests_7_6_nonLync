@@ -108,7 +108,7 @@ public class Test127__templates_with_special_characters {
 		String tempDesc = prefixDesc + suffixes[i];
 		testFuncs.myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);
 		testFuncs.myDebugPrinting("tempDesc - " + tempDesc, enumsClass.logModes.MINOR);
-		testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
   		map.put("cloneFromtemplate", "Audiocodes_" + type + "_LYNC");
   		testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), type, map);
   		testFuncs.myWait(3000);

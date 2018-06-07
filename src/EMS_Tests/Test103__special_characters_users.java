@@ -97,7 +97,7 @@ public class Test103__special_characters_users {
 	for (int i = 0; i < len; ++i) {
 		
 		testFuncs.myDebugPrinting("Step " + i + " - Create a user using POST query with " + suffixes[i] + " characters");
-		testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		String temPUsername  = prefixName + suffixes[i];
 		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 				 testVars.getPort()    		,
@@ -113,7 +113,7 @@ public class Test103__special_characters_users {
 	   
 	// Step 9 - Delete the users
 	testFuncs.myDebugPrinting("Step 9 - Delete the users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, String.valueOf(suffixes.length));
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("action"	 ,  "Delete Users");

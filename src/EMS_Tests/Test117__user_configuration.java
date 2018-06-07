@@ -98,7 +98,7 @@ public class Test117__user_configuration {
     // Login, create several users using POST query and enter the Generate-Configuration menu
 	testFuncs.myDebugPrinting("Login, create several users using POST query and enter the Generate-Configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -109,7 +109,7 @@ public class Test117__user_configuration {
 			 testVars.getDefTenant()    ,
 			 "myLocation");
 	testFuncs.verifyPostUsersCreate(driver,  dispPrefix,  dispPrefix, true, Integer.valueOf(usersNumber));	
-	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 
     // Step 1 - Try to create a new configuration key without pressing the Save button
 	testFuncs.myDebugPrinting("Step 1 - Try to create a new configuration key without pressing the Save button");
@@ -124,7 +124,7 @@ public class Test117__user_configuration {
 	
     // Step 2 - Try to create a new configuration key with pressing the Save button
 	testFuncs.myDebugPrinting("Step 2 - Try to create a new configuration key with pressing the Save button");
-	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
 	testFuncs.createNewConfValue(driver, confName, confValue);
 	testFuncs.saveConfValues(driver, usersFullNames);
@@ -132,13 +132,13 @@ public class Test117__user_configuration {
 	
     // Step 3 - Delete configuration key
 	testFuncs.myDebugPrinting("Step 3 - Delete configuration key");
-	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
 	testFuncs.deleteConfValue(driver, usersFullNames, confNames, confValues);
 	
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 
@@ -168,7 +168,7 @@ public class Test117__user_configuration {
 	  testFuncs.myDebugPrinting("Loop on all users and verify their create one after another", enumsClass.logModes.MINOR);	
 	  for (int i = 0; i < usersNUmber; ++i) {
 		  
-		  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");		  
+		  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");		  
 		  String[] parts = usersFullNames[i].split("@");
 		  testFuncs.searchUser(driver, parts[0]);  		  
 		  if (isValuesExist) {

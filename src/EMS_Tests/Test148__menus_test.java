@@ -2,6 +2,8 @@ package EMS_Tests;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -76,57 +78,62 @@ public class Test148__menus_test {
 	
 	// Set variables
 	int menuIdx = 0;
-	String menuNames[][] = {{"Dashboard_Alarms"								,"Export"},  	
-							{"Setup_Wizard"									,"System Properties"},
-							{"Setup_Manage_users"							,"New User"},
-							{"Setup_Manage_multiple_users"					,"Manage Multiple Users"},
-							{"Setup_Manage_multiple_devices"				,"Manage Multiple Devices"},
-							{"Setup_Phone_conf_section"						,"Phones Configuration"},
-							{"Setup_Phone_conf_templates"					,"IP Phones Configuration Templates"},     
-							{"Templates_mapping"							,"Zero Touch Templates Mapping"},        
-							{"Setup_Phone_conf_system_settings"			    ,"System Settings"},   
-							{"Setup_Phone_conf_dhcp_options_configuration"  ,"DHCP Options Configuration"},
-							{"Setup_Phone_conf_system_settings_sbc_conf"    ,"Proxy DHCP Options Configuration"},	
-							{"Setup_Phone_conf_system_settings_ldap"		,"LDAP Configuration"},	
-							{"Setup_Phone_conf_templates_placeholders"		,"Template Placeholders"},                     
-							{"Tenant_configuration"							,"Tenant Configuration"},   
-							{"Site_configuration"							,"Site Configuration"},     
-							{"Setup_user_configuration"						,"Manage Multiple Users - User Configuration"},   
-							{"Setup_Phone_conf_phone_device_placeholders"	,"Manage Devices Placeholders"},          
-							{"Setup_Phone_conf_phone_configuration_files"	,"Manage Configuration Files"},
-							{"Setup_Phone_conf_phone_firmware_files"		,"Phone firmware files"},
-							{"Setup_Import_export_configuration_import"		,"To Import Phone Configuration Files"},
-							{"Setup_Import_export_configuration_export"		,"To export phone configuration files"},
-							{"Setup_Import_export_users_devices_import"		,"Import Users and Devices information"},
-							{"Setup_Import_export_users_devices_export"		,"Export Users and Devices information"},          
-							{"Setup_System_section"							,"System"},         
-							{"Setup_System_view_tenants"					,"Tenant List"},
-							{"Setup_System_view_sites"						,"View Sites"},
-							{"Setup_System_license"							,"License Properties"},
-							{"Monitor_device_status"						,"Devices Status"},
-							{"Troubleshoot_system_diagnostics"				,"System Logs"}};
+    Map<menuNames, String> menusMap 	= new HashMap<menuNames, String>();
+    menusMap.put(enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS					 , "Export");
+    menusMap.put(enumsClass.menuNames.SETUP_SETUP_WIZARD						 , "System Properties");
+    menusMap.put(enumsClass.menuNames.SETUP_MANAGE_USERS						 , "New User" );
+	menusMap.put(enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS				 , "Manage Multiple Users" );
+	menusMap.put(enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES				 , "Manage Multiple Devices" );
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_SECTION	   				 , "Phones Configuration" );
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES				 , "IP Phones Configuration Templates" );     
+	menusMap.put(enumsClass.menuNames.SETUP_TEMPLATES_MAPPING					 , "Zero Touch Templates Mapping" );        
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS		     , "System Settings" );   
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION, "DHCP Options Configuration" );
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_CONF  , "Proxy DHCP Options Configuration" );	
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP  , "LDAP Configuration" );	
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS    , "Template Placeholders" );                     
+	menusMap.put(enumsClass.menuNames.SETUP_TENANT_CONFIGURATION				 , "Tenant Configuration" );   
+	menusMap.put(enumsClass.menuNames.SETUP_SITE_CONFIGURATION				     , "Site Configuration" );     
+	menusMap.put(enumsClass.menuNames.SETUP_USER_CONFIGURATION				     , "Manage Multiple Users - User Configuration" );   
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS , "Manage Devices Placeholders" );          
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES , "Manage Configuration Files" );
+	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES , "Phone firmware files" );
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT	 , "To Import Phone Configuration Files" );
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT	 , "To Import Phone Configuration Files" );
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT	 , "Import Users and Devices information" );
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_EXPORT	 , "To export phone configuration files" );          
+	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_SECTION						 , "System" );         
+	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS				     , "Tenant List" );
+	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES					 , "View Sites" );
+	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_LICENSE						 , "License Properties" );
+	menusMap.put(enumsClass.menuNames.MONITOR_DEVICE_STATUS					     , "Devices Status" );		   
+	menusMap.put(enumsClass.menuNames.TROUBLESHOOT_SYSTEM_DIAGNOSTICS			 , "System Logs");
 
 	// Login the system and enter Setup-Wizard menu
 	testFuncs.myDebugPrinting("Login the system and enter Setup-Wizard menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Wizard", "System Properties");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SETUP_WIZARD, "System Properties");
 
 	// Step 1 - Move between all menus
 	testFuncs.myDebugPrinting("Step 1 - Move between all menus");
-	for (String[] menuData : menuNames) {
-		
+    for (menuNames key : menusMap.keySet()) {
+    	
+    	System.out.println(key.toString() + "---" + menusMap.get(key));
+    	
+    	
 		testFuncs.pressHomeButton(driver);
-		testFuncs.myDebugPrinting(menuIdx + ".Enter menu - "      + menuData[0], enumsClass.logModes.NORMAL);
-		testFuncs.myDebugPrinting(menuIdx + ".Seek for header - " + menuData[1], enumsClass.logModes.MINOR);
-		testFuncs.enterMenu(driver, menuData[0], menuData[1]);
-		menuIdx++;
-	}
+		String tempHeader = menusMap.get(key);
+		testFuncs.myDebugPrinting(menuIdx + ".Enter menu - "      + key.toString(), enumsClass.logModes.NORMAL);
+		testFuncs.myDebugPrinting(menuIdx + ".Seek for header - " + tempHeader, enumsClass.logModes.MINOR);
+		testFuncs.enterMenu(driver, key, tempHeader);
+		++menuIdx;
+    }
   }
 
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

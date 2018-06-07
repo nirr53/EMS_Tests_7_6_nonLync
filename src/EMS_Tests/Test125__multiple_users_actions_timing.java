@@ -91,7 +91,7 @@ public class Test125__multiple_users_actions_timing {
     // Create several users using POST query
 	testFuncs.myDebugPrinting("Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -105,7 +105,7 @@ public class Test125__multiple_users_actions_timing {
  
     // Step 1 - Update configuration with 5 seconds timeout
   	testFuncs.myDebugPrinting("Step 1 - Update configuration with 5 seconds timeout");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     testFuncs.myWait(1000);
     map.put("action"  , "Update Configuration Files");
@@ -115,7 +115,7 @@ public class Test125__multiple_users_actions_timing {
     
     // Step 2 - Update configuration with 30 seconds timeout
   	testFuncs.myDebugPrinting("Step 2 - Update configuration with 30 seconds timeout");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     testFuncs.myWait(1000);
     map.put("action"  , "Update Configuration Files");
@@ -125,7 +125,7 @@ public class Test125__multiple_users_actions_timing {
     
     // Step 3 - Update configuration with 300 seconds timeout
   	testFuncs.myDebugPrinting("Step 3 - Update configuration with 300 seconds timeout");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     testFuncs.myWait(1000);
     map.put("action"  , "Update Configuration Files");
@@ -135,7 +135,7 @@ public class Test125__multiple_users_actions_timing {
      
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

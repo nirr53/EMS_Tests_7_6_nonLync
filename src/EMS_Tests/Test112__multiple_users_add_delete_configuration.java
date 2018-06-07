@@ -93,7 +93,7 @@ public class Test112__multiple_users_add_delete_configuration {
     // Step 1 - Create several users using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
 			 testVars.getPort()         ,
 			 usersNumber		        ,
@@ -107,7 +107,7 @@ public class Test112__multiple_users_add_delete_configuration {
     
     // Step 2 - Add configuration-key
   	testFuncs.myDebugPrinting("Step 2 - Update configuration");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "User configuration");
     map.put("confKey"   , "confKey"   + Id);
@@ -117,7 +117,7 @@ public class Test112__multiple_users_add_delete_configuration {
         
     // Step 3 - Delete configuration key
   	testFuncs.myDebugPrinting("Step 3 - Delete configuration key");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", "Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
 	testFuncs.myWait(3000);
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("action"    , "Delete User configuration");
@@ -125,7 +125,7 @@ public class Test112__multiple_users_add_delete_configuration {
     
     // Step 4 - Delete the created users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
     map.put("usersPrefix"	  , dispPrefix + "_");
     map.put("usersNumber"	  , usersNumber); 

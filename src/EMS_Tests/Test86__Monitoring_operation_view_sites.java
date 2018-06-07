@@ -84,29 +84,29 @@ public class Test86__Monitoring_operation_view_sites {
 	// Step 1 - Login the system via Monitoring user (system) and verify in the View-sites menu that the menu is displayed properly
 	testFuncs.myDebugPrinting("Step 1 - Login the system via Monitoring user (system) and verify in the View-sites menu that the menu is displayed properly");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_System_view_sites", "View Sites");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");	
 	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
 	
 	// Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify in the View-sites menu that the menu is displayed properly
 	testFuncs.myDebugPrinting("Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify in the View-sites menu that the menu is displayed properly");  
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_System_view_sites", "View Sites");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
 	// Known VI
 	//	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
 
 	// Step 3 - Logout, re-login the system via Operation user (system) and verify in the View-sites menu that the menu is displayed properly
 	testFuncs.myDebugPrinting("Step 3 - Logout, re-login the system via Operation user (system) and verify that the menu is displayed properly");  
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_System_view_sites", "View Sites");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
 	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
 
 	// Step 4 - Logout, re-login the system via Operation user (tenant) and verify in the View-sites menu that the menu is displayed properly
 	testFuncs.myDebugPrinting("Step 4 - Logout, re-login the system via Operation user (tenant) and verify in the View-sites menu that the menu is displayed properly");  
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_System_view_sites", "View Sites");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
 	// Known VI
 	//	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
   }

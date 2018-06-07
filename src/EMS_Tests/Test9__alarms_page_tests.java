@@ -80,7 +80,7 @@ public class Test9__alarms_page_tests {
 
     // Step 1 - Enter the Alarms menu
 	testFuncs.myDebugPrinting("Step 1 - Enter the Alarms menu");
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 2 - Test the Export button
 	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
@@ -97,7 +97,7 @@ public class Test9__alarms_page_tests {
 	
     // Step 3 - Test the Alarms link from the main-page
 	testFuncs.myDebugPrinting("Step 3 - Test the Alarms link from the main-page");	
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[2]/a/i"), 3000);
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/span[2]/a/button"), 3000);
 	testFuncs.searchStr(driver, "Alarms");	

@@ -88,7 +88,7 @@ public class Test104__alarms_icons {
 	String username 		 = ("alIcnTst" + Id).toLowerCase(); 
 	String []alertsForSearch = {"alert1" + "_" + Id, "alert2" + "_" + Id};	
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered user using POST method
 	testFuncs.myDebugPrinting("Create a registered user using POST method");
@@ -145,7 +145,7 @@ public class Test104__alarms_icons {
 	
 	// Step 4 - Delete the created and user
 	testFuncs.myDebugPrinting("Step 4 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, username, "1");
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("usersPrefix"	  , username);  

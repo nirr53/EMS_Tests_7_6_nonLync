@@ -92,9 +92,9 @@ public class Test153__different_HRSSpeakerModel_status {
 	// Login and check the HRS Speaker Model check-box
 	testFuncs.myDebugPrinting("Login and check the HRS Speaker Model check-box");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.selectColumn(driver, "//*[@id='HRS_SPEAKER_MODEL']", true);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with randomize HRSSpeakerModel value
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize HRSSpeakerModel value");
@@ -116,7 +116,7 @@ public class Test153__different_HRSSpeakerModel_status {
 	// Nir 14\5\18 VI 153259
     // Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
@@ -135,7 +135,7 @@ public class Test153__different_HRSSpeakerModel_status {
 	
     // Step 3 - Create a user using POST query with empty HRSSpeakerModel value
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with empty HRSSpeakerModel value");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
@@ -151,7 +151,7 @@ public class Test153__different_HRSSpeakerModel_status {
 
     // Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters
 	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
 								testVars.getPort()    	   ,
@@ -176,7 +176,7 @@ public class Test153__different_HRSSpeakerModel_status {
     map.put("usersPrefix"     , prefixName);
     map.put("usersNumber"	  , usersNumber); 
     map.put("startIdx"   	  , String.valueOf(1));  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);  
     testFuncs.searchStr(driver, hrsSpeakerModelStts.toLowerCase()  + "@" + testVars.getDomain() + " Finished");

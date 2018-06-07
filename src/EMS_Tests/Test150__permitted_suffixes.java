@@ -85,7 +85,7 @@ public class Test150__permitted_suffixes {
     // Enter the System configuration menu
 	testFuncs.myDebugPrinting("Enter the System configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 
 	// Step 1 - Check headers of the Permitted-Suffix section
 	testFuncs.myDebugPrinting("Step 1 - Check headers of the Permitted-Suffix section");
@@ -105,16 +105,16 @@ public class Test150__permitted_suffixes {
 	// Step 4 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system
 	testFuncs.myDebugPrinting("Step 4 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
 	editPermSuffixesField(permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.jpeg, *.zip. Configuration standard file extension(s): *.cfg");
 	testFuncs.uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
 	testFuncs.deleteConfigurationFile(driver,  usedFile);
 
 	// Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system
 	testFuncs.myDebugPrinting("Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_configuration_files", "Manage Configuration Files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.zip. Configuration standard file extension(s): *.cfg.");
 	testFuncs.uploadNonCfgToPhoneConfiguration(driver,  testVars.getSrcFilesPath() + "\\" + usedFile); 
   }
@@ -133,7 +133,7 @@ public class Test150__permitted_suffixes {
   @After
   public void tearDown() throws Exception {
 	  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
     driver.quit();
     System.clearProperty("webdriver.chrome.driver");

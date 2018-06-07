@@ -85,32 +85,32 @@ public class Test85__Monitoring_Opeartion_license {
 	  // Step 1 - Login the system via Monitoring user (system) and verify that the system-license menu is displayed properly
 	  testFuncs.myDebugPrinting("Step 1 - Login the system via Monitoring user (system) and verify that the system-license menu is displayed properly");
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_System_license", "License Properties");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_LICENSE, "License Properties");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[2]", "Property");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[3]", "Value");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[4]", "Description"); 
 	  
 	  // Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify that the system-license menu is not displayed
 	  testFuncs.myDebugPrinting("Step 2 - Logout, re-login the system via Monitoring user (tenant) and verify that the system-license menu is not displayed");  
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	  testFuncs.enterMenu(driver, "Setup_System_section", "System");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_SECTION, "System");
 	  testFuncs.myAssertTrue("License menu is detected !!", !driver.findElement(By.tagName("body")).getText().contains("License"));
 	
 	  // Step 3 - Logout, re-login the system via Operation user (system) and verify that the system-license is displayed properly
 	  testFuncs.myDebugPrinting("Step 3 - Logout, re-login the system via Operation user (system) and verify that the system-license is displayed properly");  
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	  testFuncs.enterMenu(driver, "Setup_System_license", "License Properties");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_LICENSE, "License Properties");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[2]", "Property");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[3]", "Value");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div/table/thead/tr/th[4]", "Description"); 
 
 	  // Step 4 - Logout, re-login the system via Operation user (tenant) and verify that the system-license menu is not displayed
 	  testFuncs.myDebugPrinting("Step 4 - Logout, re-login the system via Operation user (tenant) and verify that the system-license menu is not displayed");  
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
-	  testFuncs.enterMenu(driver, "Setup_System_section", "System");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_SECTION, "System");
 	  testFuncs.myAssertTrue("License menu is detected !!", !driver.findElement(By.tagName("body")).getText().contains("License"));
   }
   

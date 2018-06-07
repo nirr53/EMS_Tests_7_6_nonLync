@@ -83,7 +83,7 @@ public class Test82__site_configuration {
 	
 	testFuncs.myDebugPrinting("Enter the Site Configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 
 	// Step 1 - Add a new site CFG key
 	testFuncs.myDebugPrinting("Step 1 - Add a new site CFG key");

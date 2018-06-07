@@ -79,7 +79,7 @@ public class Test13__export_tests {
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices
 		String downloadedFile = "users.zip";
 		testFuncs.myDebugPrinting("Step 1 - Enter the Export-Users-Devices menu and export users+devices");
-		testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_export", "Export Users and Devices information");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_EXPORT, "Export Users and Devices information");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile);
 		testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/div[2]/a"), 60000);
 		testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), downloadedFile));
@@ -88,7 +88,7 @@ public class Test13__export_tests {
 	    // Step 2 - Enter the Export-Configuration menu and export configuration
 		String downloadedFile2 = "Configuration.zip";
 		testFuncs.myDebugPrinting("Step 2 - Enter the Export-Configuration menu and export configuration");
-		testFuncs.enterMenu(driver, "Setup_Import_export_configuration_export", "To export phone configuration files");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT, "To export phone configuration files");
 		testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), downloadedFile2);
 		testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/button"), 60000);		
 		testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), downloadedFile2));

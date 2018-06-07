@@ -89,7 +89,7 @@ public class Test79__edit_zero_tuch_user {
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		
 	// Step 1 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
@@ -106,7 +106,7 @@ public class Test79__edit_zero_tuch_user {
     
     // Step 2 - Try to edit its username and display name
 	testFuncs.myDebugPrinting("Step 2 - Try to edit its username and display name");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.searchUser(driver, userName); 
 	testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[9]/a[2]"), 3000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3/label", "Edit User " + userName);
@@ -138,7 +138,7 @@ public class Test79__edit_zero_tuch_user {
 	
     // Step 4 - Delete the users
   	testFuncs.myDebugPrinting("Step 4 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 

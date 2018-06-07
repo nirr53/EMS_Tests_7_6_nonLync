@@ -87,7 +87,7 @@ public class Test133__delete_device_status_tests {
 
 	  // Create users with a POST query
 	  testFuncs.myDebugPrinting("Create users with a POST query");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
 					 										   testVars.getPort()     ,
 					 									       "2"				      ,
@@ -101,7 +101,7 @@ public class Test133__delete_device_status_tests {
 
 	  // Step 1 - Delete a user via Manage user page
 	  testFuncs.myDebugPrinting("Step 1 - Delete a user via Manage user page");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.searchUser(driver, userName1); 
 	  deleteUserManMenu(userName1 + "@" + testVars.getDomain());
 	  
@@ -111,7 +111,7 @@ public class Test133__delete_device_status_tests {
 	     
 	  // Step 2 - Delete a user via Manage-multiple-users menu
 	  testFuncs.myDebugPrinting("Step 2 - Delete a user via Manage-multiple-users menu");		
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefix, "1");
 	  map.put("usersPrefix"	  , prefix);  
 	  map.put("usersNumber"	  , "1"); 
@@ -130,7 +130,7 @@ public class Test133__delete_device_status_tests {
   // Verify delete of device-status
   private void verifyDeleteDevStatus(String userName) {
 	  
-	  testFuncs.enterMenu(driver, "Monitor_device_status", "Devices Status");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	  testFuncs.myDebugPrinting("Verify that the device was also created", enumsClass.logModes.MINOR);			    
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);			    
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	     

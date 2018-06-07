@@ -84,7 +84,7 @@ public class Test73__templates_sherfiles_link {
 	  // Step 1 - Login, enter the Phone Templates menu and add A Template
 	  testFuncs.myDebugPrinting("Step 1 - Login and enter the Phone Templates menu");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  	
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 	  map.put("cloneFromtemplate", "Audiocodes_" + "430HD" + "_LYNC");
 	  testFuncs.addTemplate(driver, "my430HD Template_" + testFuncs.getId(), "my430HD desc", testVars.getNonDefTenant(0), "430HD", map);
   }

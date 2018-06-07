@@ -90,7 +90,7 @@ public class Test67__DHCP_Option_configuration {
 	  // Enter System settings and DHCP option configuration menu
 	  testFuncs.myDebugPrinting("Enter System settings and DHCP option configuration menu");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_dhcp_options_configuration", "DHCP Options Configuration");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION, "DHCP Options Configuration");
   
 	  // Step 1 - Edit configuration template
 	  testFuncs.myDebugPrinting("Step 1 - Edit configuration template");
@@ -98,7 +98,7 @@ public class Test67__DHCP_Option_configuration {
 	  
 	  // Step 2 - Restore configuration template
 	  testFuncs.myDebugPrinting("Step 2 - Restore configuration template");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_dhcp_options_configuration", "DHCP Options Configuration");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_DHCP_OPTIONS_CONFIGURATION, "DHCP Options Configuration");
 	  restoreDHCPConfigurationTemplate(driver, strForEdit);
 	  
 	  // Step 3 - Upload configuration template

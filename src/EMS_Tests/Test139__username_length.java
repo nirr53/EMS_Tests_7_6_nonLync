@@ -108,11 +108,11 @@ public class Test139__username_length {
 			 												 testVars.getDefTenant()    ,
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, userNamePost, userNamePost, true);
-    testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+    testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     
     // Step 3 - Create an unregistered user using POST method
 	testFuncs.myDebugPrinting("Step 3 - Create an unregistered user using POST method");  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	testFuncs.selectMultipleUsers(driver, prefix, "2"); 
 	map.put("usersPrefix"	  , prefix);	  
 	map.put("srcUsername"	  , "Finished");	  

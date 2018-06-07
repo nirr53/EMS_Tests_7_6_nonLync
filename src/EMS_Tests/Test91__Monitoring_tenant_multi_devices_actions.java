@@ -97,7 +97,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
 	// Login via Administrator, create a user with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
 			  					testVars.getPort()         ,
@@ -108,12 +108,12 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
 			  					testVars.getDefPhoneModel(),
 			  					testVars.getDefTenant()    ,
 				 				"myLocation");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	
     // Login via a Monitoring user (tenant) and enter Multi-devices-changes menu
 	testFuncs.myDebugPrinting("Login via a Monitoring user (tenant) and enter Multi-user-changes menu");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     
     // Step 1 - Verify that Delete-devices action is deactivated.
   	testFuncs.myDebugPrinting("Step 1 - Verify that Delete-devices action is deactivated.");
@@ -125,7 +125,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
 	
     // Step 2 - Verify that Change-IP-phone-type action is deactivated.
   	testFuncs.myDebugPrinting("Step 2 - Verify that Change-IP-phone-type action is deactivated.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeType");
     testFuncs.myWait(2000);
@@ -136,7 +136,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
 
 	// Step 3 - Verify that Change-language action is deactivated.
 	testFuncs.myDebugPrinting("Step 3 - Verify that Change-language action is deactivated.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeLanguage");
     testFuncs.myWait(2000);
@@ -150,7 +150,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
    	String resModes[] = {"Graceful", "Force", "Scheduled"};
    	for (String resMode : resModes) {
    		
-   		testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+   		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
    	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
    		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetIpPhones");
    	    testFuncs.myWait(2000);  		
@@ -162,7 +162,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
    	
    	// Step 5 - Verify that Generate-configuration-users action is deactivated.
   	testFuncs.myDebugPrinting("Step 5 - Verify that Generate-configuration-users action is deactivated.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("setIpPhones");
     testFuncs.myWait(2000); 
@@ -172,7 +172,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
 	
     // Step 6 - Verify that Update-configuration-users action is deactivated.
   	testFuncs.myDebugPrinting("Step 6 - Verify that Update-configuration-users action is deactivated.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("updateConfigFiles");
     testFuncs.myWait(2000);
@@ -181,7 +181,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
       
     // Step 7 - Verify that Send-message action is deactivated.
   	testFuncs.myDebugPrinting("Step 7 - Verify that Send-message action is deactivated");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("sendMessage");
     testFuncs.myWait(2000);
@@ -191,7 +191,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
     
 	// Step 8 - Verify that Change-firmware action is deactivated.
 	testFuncs.myDebugPrinting("Step 8 - Verify that Change-firmware action is deactivated.");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("updateFirmware");
     testFuncs.myWait(2000);
@@ -205,7 +205,7 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
  	String vlanModes[] = {"MANUAL", "CDP", "LLDP", "CDP_LLDP"};
  	for (String vlanMode : vlanModes) {
  		
- 		testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+ 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
  	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
  		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeVlan");
  	    testFuncs.myWait(2000);  		
@@ -217,9 +217,9 @@ public class Test91__Monitoring_tenant_multi_devices_actions {
  	
  	// Step 10 - Logout. login as Administrator and delete the created user
  	testFuncs.myDebugPrinting("Step 10 - Logout. login as Administrator and delete the created user");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	map.put("action"	      ,  "Delete Users");
 	map.put("srcUsername"     ,  "Finished");

@@ -92,7 +92,7 @@ public class Test137__duplicate_device_placeholders {
 	  // Login, create a user with a POST query and add a device placeholder to it
 	  testFuncs.myDebugPrinting("Login, create a user with a POST query and add a device placeholder to it");
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					  testVars.getIp()           ,
 			  					  testVars.getPort()         ,
@@ -104,7 +104,7 @@ public class Test137__duplicate_device_placeholders {
 			  					  testVars.getDefTenant()    ,
 				 				  "myLocation");
 	  testFuncs.verifyPostUserCreate(driver, srcUserName + "@" + testVars.getDomain(), srcUserName, true);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 	  String phName  = "DayLightActivate";
 	  String phValue = "18";
 	  testFuncs.addDevicePlaceholder(driver, srcUserName, phName, phValue);
@@ -115,12 +115,12 @@ public class Test137__duplicate_device_placeholders {
 	  
 	  // Step 2 - Delete the created device placeholder
 	  testFuncs.myDebugPrinting("Step 2 - Delete the created device placeholder");
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_device_placeholders", "Manage Devices Placeholders");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 	  deleteDevicePlaceholder(driver, srcUserName, phName, phValue);
 	  
 	  // Step 3 - Delete the created user
 	  testFuncs.myDebugPrinting("Step 3 - Delete the created user");
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	  testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	  map.put("action"	 ,  "Delete Users");
 	  map.put("srcUsername",  "Finished");

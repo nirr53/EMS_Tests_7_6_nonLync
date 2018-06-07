@@ -86,8 +86,8 @@ public class Test149__setup_wizard {
 	// Login the system and enter Setup-Wizard menu
 	testFuncs.myDebugPrinting("Login the system and enter Setup-Wizard menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Wizard", "System Properties");
-
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SETUP_WIZARD, "System Properties");
+	
 	// Step 1 - Check Step-1 menu headers
 	testFuncs.myDebugPrinting("Step 1 - Check Step-1 menu headers");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='step-0']/h2"					  , "System Properties");	

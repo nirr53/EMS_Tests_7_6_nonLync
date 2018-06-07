@@ -112,7 +112,7 @@ public class Test64__long_name_users {
 	  
 	// Step 3 - Delete the created users
 	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 	testFuncs.selectMultipleUsers(driver, longPrefix, "2");
 	map.put("action"	 	  , "Delete Users");
 	map.put("skipVerifyDelete", "true");

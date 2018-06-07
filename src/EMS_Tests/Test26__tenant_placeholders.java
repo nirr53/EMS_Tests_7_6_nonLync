@@ -91,7 +91,7 @@ public class Test26__tenant_placeholders {
 	
 	testFuncs.myDebugPrinting("Enter the Tenants configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	 	
 	// Step 1 - Add a new Tenant Placeholder
 	testFuncs.myDebugPrinting("Step 1 - Add a new Tenant Placeholder");

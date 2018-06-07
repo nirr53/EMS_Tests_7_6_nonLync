@@ -83,7 +83,7 @@ public class Test29__tenant_configuration {
 	// Enter the Add new Tenant configuration menu
 	testFuncs.myDebugPrinting("Enter the Add new Tenant configuration menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	String Id = testFuncs.getId();
 	String cfgKeyName      = "user_name" + Id;
 	String cfgKeyValue     = "userValue" + Id;

@@ -82,22 +82,22 @@ public class Test38__Monitoring_tenant_permissions {
 	  // Step 1 - Login with a  Monitoring user (System), check the all tenants are displayed and logout
 	  testFuncs.myDebugPrinting("Step 1 - Login with a  Monitoring user (System), check the all tenants are displayed and logout");
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_System_view_tenants", "Tenant List");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  String bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant1));
 	  testFuncs.myAssertTrue("Tenant <" + tenant2 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant2));
 	  testFuncs.myAssertTrue("Tenant <" + tenant3 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant3));
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	  // Step 2 - Login with a  Monitoring user (Tenant), check that only the tenant which associate with the user is displayed and logout
 	  testFuncs.myDebugPrinting("Step 2 - Login with a  Monitoring user (Tenant), check that only the tenant which associate with the user is displayed and logout");
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_System_view_tenants", "Tenant List");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText,  bodyText.contains(tenant1));
 	  testFuncs.myAssertTrue("Tenant <" + tenant2 + "> was found !!\nbodyText - "     + bodyText, !bodyText.contains(tenant2));
 	  testFuncs.myAssertTrue("Tenant <" + tenant3 + "> was found !!\nbodyText - "     + bodyText, !bodyText.contains(tenant3));
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
   }
 
   @After

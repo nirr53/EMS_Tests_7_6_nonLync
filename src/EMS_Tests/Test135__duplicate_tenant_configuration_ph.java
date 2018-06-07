@@ -93,7 +93,7 @@ public class Test135__duplicate_tenant_configuration_ph {
 	// Login and  Add new Tenant configuration and Tenant PH
 	testFuncs.myDebugPrinting("Login and  Add new Tenant configuration and Tenant PH");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenTenant);
 	testFuncs.addTenantPH(driver, tenPhName, tenPhValue, tenTenant);
 
@@ -107,7 +107,7 @@ public class Test135__duplicate_tenant_configuration_ph {
 
 	// Step 3 - Delete the Tenant PH and Tenant value
 	testFuncs.myDebugPrinting("Step 3 - Delete the Tenant PH and Tenant value");
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
 	testFuncs.deleteTenantPH(driver, tenPhName, tenPhValue);
   }

@@ -83,7 +83,7 @@ public class Test77__full_search {
 	  String prefix 		   = "fulsrch";
 	  String srcUserName1      = prefix + "1" + testFuncs.getId();
 	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 
 	  // Create a user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");
@@ -102,7 +102,7 @@ public class Test77__full_search {
 
 	  // Step 1 - Search the user by its MAC address without check the Search all
 	  testFuncs.myDebugPrinting(" Step 1 - Search the user by its MAC address without check the Search all");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchtext']"), userMacAddr, 7000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='searchusersform']/div/div/div/div/span/a/button"), 7000);
 	  testFuncs.searchStr(driver, "No users found");
@@ -125,7 +125,7 @@ public class Test77__full_search {
 
 	  // Step 2 - Search the user by its MAC address with check the Search all
 	  testFuncs.myDebugPrinting(" Step 2 - Search the user by its MAC address with check the Search all");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='searchtext']"), userMacAddr, 7000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='search_concept_users']")							, 3000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='all_search']/li[2]/a")							, 3000);
@@ -135,7 +135,7 @@ public class Test77__full_search {
 	     
 	  // Step 4 - Delete the created users
 	  testFuncs.myDebugPrinting("Step 4 - Delete the created users");		
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefix, "2");
 	  Map<String, String> map = new HashMap<String, String>();
 	  map.put("usersPrefix"	  , prefix);  

@@ -97,7 +97,7 @@ public class Test12__import_users_devices_tests {
 	// Login and enter the Import users+devices menu
 	testFuncs.myDebugPrinting("Login and enter the Import users-devices menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
   
 	// Step 1 - Import users+devices
 	testFuncs.myDebugPrinting("Step 1 - Import users+devices");
@@ -112,7 +112,7 @@ public class Test12__import_users_devices_tests {
 	
 	// Step 2 - Import existing users+devices
 	testFuncs.myDebugPrinting("Step 2 - Import existing users+devices");
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.1");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
 	usersNumberInt = Integer.valueOf(usersNumber);
@@ -124,7 +124,7 @@ public class Test12__import_users_devices_tests {
 
     // Step 3 - Delete the created users
   	testFuncs.myDebugPrinting("Step 3 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
     map.put("usersPrefix"	  , prefixUser + "_");
     map.put("usersNumber"	  , usersNumber); 
@@ -142,7 +142,7 @@ public class Test12__import_users_devices_tests {
  
 	// Step 4 - Import 1000 users
 	testFuncs.myDebugPrinting("Step 4 - Import 1000 users");
-	testFuncs.enterMenu(driver, "Setup_Import_export_users_devices_import", "Import Users and Devices information");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("12.2");
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton, confirmMessageStrs);
 	testFuncs.waitTillString(driver, "Performing...");
@@ -166,7 +166,7 @@ public class Test12__import_users_devices_tests {
 	
     // Step 5 - Delete the created users
   	testFuncs.myDebugPrinting("Step 5 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
     map.put("usersNumber"	  , usersNumber); 
     testFuncs.setMultipleUsersAction(driver, map);

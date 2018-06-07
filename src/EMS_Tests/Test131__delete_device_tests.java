@@ -90,7 +90,7 @@ public class Test131__delete_device_tests {
 
 	  // Create first user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
 					 										   testVars.getPort()     ,
 					 									       "1"				      ,
@@ -104,7 +104,7 @@ public class Test131__delete_device_tests {
 	  
 	  // Create second user with a POST query
 	  testFuncs.myDebugPrinting("Create second user with a POST query");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
 					 										   testVars.getPort()     ,
 					 									       "1"				      ,
@@ -118,7 +118,7 @@ public class Test131__delete_device_tests {
 
 	  // Step 1 - Delete a device via Manage user page
 	  testFuncs.myDebugPrinting("Step 1 - Delete a device via Manage user page");
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");	
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");	
 	  testFuncs.searchUser(driver, userName1);   
 	  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[2]/a"), 2000);  
 	  testFuncs.myClick(driver, By.xpath("//*[@id='tr" + userName1 + "@" + testVars.getDomain() + "device']/td[2]/table/tbody/tr/td/div/table/tbody/tr[5]/td/a[2]"), 2000);
@@ -131,26 +131,26 @@ public class Test131__delete_device_tests {
 	  String deletedDevice = driver.findElement(By.xpath("//*[@id='results']/tbody/tr/td[2]")).getText();
 	  testFuncs.myAssertTrue("Device was not deleted !! <" + deletedDevice + ">", deletedDevice.contains("---"));
 	  testFuncs.myDebugPrinting("deletedDevice - " + deletedDevice);
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
 	  testFuncs.selectMultipleDevices(driver, userName1, "0");
 
 	  // Step 2 - Delete a device via Manage multiple devices
 	  testFuncs.myDebugPrinting("Step 1 - Delete a device via Manage user page");
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_devices", "Manage Multiple Devices");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
 	  testFuncs.selectMultipleUsers(driver, userName2, "1");
 	  map.put("action"     ,  "Delete Devices");  
 	  testFuncs.setMultipleDevicesAction(driver, map);    
 	  testFuncs.searchStr(driver, userName2 + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 
 	  // Verify delete
-	  testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");	
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");	
 	  testFuncs.searchUser(driver, userName2); 
 	  deletedDevice = driver.findElement(By.xpath("//*[@id='results']/tbody/tr/td[2]")).getText(); 
 	  testFuncs.myAssertTrue("Device was not deleted !! <" + deletedDevice + ">", deletedDevice.contains("---"));
 	     
 	  // Step 3 - Delete the created users
 	  testFuncs.myDebugPrinting("Step 3 - Delete the created users");		
-	  testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");  
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, id, "2");
 	  map.put("usersPrefix"	  , prefix);  
 	  map.put("usersNumber"	  , "2"); 

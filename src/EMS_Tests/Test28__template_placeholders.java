@@ -91,7 +91,7 @@ public class Test28__template_placeholders {
     // Enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Enter the Add new template placeholder menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 1 - Add a new Template placeholder
 	testFuncs.myDebugPrinting("Step 1 - Add a new Template placeholder");

@@ -84,7 +84,7 @@ public class Test42__Monitoring_System_settings {
 	  // Login via an Monitoring user (tenant) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Login via an Monitoring user (tenant) and the enter System settings menu");
 	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 
 	  // Step 1 - Try to edit one of the values
 	  testFuncs.myDebugPrinting("Step 1 - Try to edit one of the values");
@@ -97,9 +97,9 @@ public class Test42__Monitoring_System_settings {
 	  
 	  // Logout and re-login via an Monitoring user (system) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Logout and re-login via an Monitoring user (system) and the enter System settings menu");
-	  testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, "Setup_Phone_conf_system_settings", "System Settings");
+	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 
 	  // Step 2 - Try to edit one of the values
 	  testFuncs.myDebugPrinting("Step 2 - Try to edit one of the values");

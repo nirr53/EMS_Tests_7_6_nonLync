@@ -84,7 +84,7 @@ public class Test41__Monitoring_phone_firmware_files {
     // Login via a Monitoring user (system) and enter the Phone firmware files menu
 	testFuncs.myDebugPrinting("Login via a Monitoring (system) user and enter the Phone firmware files menu");
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 	 
 	// Step 1 - Verify that you cannot upload a Phone firmware
 	testFuncs.myDebugPrinting("Step 1 - Verify that you cannot upload a Phone firmware");
@@ -101,16 +101,16 @@ public class Test41__Monitoring_phone_firmware_files {
 
 	// Step 3 - Verify that you cannot delete a Phone firmware
   	testFuncs.myDebugPrinting("Step 3 - Verify that you cannot delete a Phone firmware");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_phone_firmware_files", "Phone firmware files");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
   	int i2 = getIdx(driver, testVars.getDefPhoneModel());
 	classTtxt = driver.findElement(By.xpath("//*[@id='tbTemps']/tbody/tr[2]/td/table/tbody/tr[" + i2 + "]/td[8]/a")).getAttribute("class");
 	testFuncs.myAssertTrue("Delete-Firmware button is active !!", classTtxt.contains("not-active"));	
 	
     // Step 4 - Logout, re-login via a Monitoring user (tenant) and verify that the Phone firmware files menu is not displayed
 	testFuncs.myDebugPrinting("Step 4 - Logout, re-login via a Monitoring user (tenant) and enter the Phone firmware files menu");
-	testFuncs.enterMenu(driver, "General_Informatiom_logout", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_section", "Phones Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SECTION, "Phones Configuration");
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Delete-Firmware button is active !!", !txt.contains("Phone firmware files"));	
   }

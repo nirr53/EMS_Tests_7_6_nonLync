@@ -100,7 +100,7 @@ public class Test128__template_exisiting_configuration_and_ph {
     // Login, enter the Phone Templates menu, add a Template and select the create template
 	testFuncs.myDebugPrinting("Login, enter the Phone Templates menu, add a Template and select the create template");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
   	testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), "420HD", map);
   	pressEditOfCreatedTemplate(driver, tempName);
   	
@@ -118,7 +118,7 @@ public class Test128__template_exisiting_configuration_and_ph {
 	String tempPhName        = "myPHolderName"  	  + Id;
 	String tempPhValue       = "myPHolderValue" 	  + Id;
 	String tempPhDescription = "myPHolderDescription" + Id;
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
     testFuncs.addTemplatePlaceholder(driver, tempName, tempPhName, tempPhValue, tempPhDescription);
 
     // Step 4 - Try to create another Template-PH
@@ -132,9 +132,9 @@ public class Test128__template_exisiting_configuration_and_ph {
 
 	// Step 5 - Delete the created template-PH and Template
   	testFuncs.myDebugPrinting("Step 5 - Delete the created template-PH and Template");
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates_placeholders", "Template Placeholders");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
     testFuncs.deleteTemplatePlaceholder(driver, tempName, tempPhName);
-	testFuncs.enterMenu(driver, "Setup_Phone_conf_templates", "IP Phones Configuration Templates");		
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");		
 	testFuncs.deleteTemplate(driver,tempName);
   }
   

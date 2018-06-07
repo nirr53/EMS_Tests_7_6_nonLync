@@ -90,7 +90,7 @@ public class Test147__templates_mapping {
 	// Login the system and enter the Template mapping menu
 	testFuncs.myDebugPrinting("Login the system and enter the Template mapping menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Templates_mapping", "Zero Touch Templates Mapping");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TEMPLATES_MAPPING, "Zero Touch Templates Mapping");
 
 	// Step 1 - Check headers
 	testFuncs.myDebugPrinting("Step 1 - Check headers");

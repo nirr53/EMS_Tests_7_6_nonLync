@@ -93,7 +93,7 @@ public class Test116__upper_menu_buttons {
     // Step 2 - Press the 'Generate configuration' menu
 	testFuncs.myDebugPrinting("Press the 'Generate configuration' menu");
 	testFuncs.pressHomeButton(driver);
-	testFuncs.enterMenu(driver, "Setup_user_configuration", "Manage Multiple Users - User Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 	String selectAction2 = new Select(driver.findElement(By.xpath("//*[@id='action']"))).getFirstSelectedOption().getText();
 	testFuncs.myDebugPrinting("selectAction2 - " + selectAction2, enumsClass.logModes.MINOR);
 	testFuncs.myAssertTrue("Generate configuration option is not selected !! (selectAction2 - " + selectAction2 + ")", selectAction2.equals("User configuration"));

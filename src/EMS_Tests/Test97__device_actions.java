@@ -95,7 +95,7 @@ public class Test97__device_actions {
 	// Login via Administrator and create a user using POST query
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
 				 				testVars.getPort()    						 ,
 				 				"1"				   							 ,
@@ -149,7 +149,7 @@ public class Test97__device_actions {
 	
     // Step 9 - Delete the users
   	testFuncs.myDebugPrinting("Step 9 - Delete the created users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 
@@ -315,7 +315,7 @@ public class Test97__device_actions {
 	  
 	  // Search device
 	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
-	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
+	  testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	  
 	  testFuncs.myWait(5000);

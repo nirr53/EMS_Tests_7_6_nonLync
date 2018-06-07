@@ -102,15 +102,15 @@ public class Test146__configuration_vals_during_create {
 
 	// Create Site and Tenant configuration values
 	testFuncs.myDebugPrinting("Create Site and Tenant configuration values");
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, site);
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site);  
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addNewCfgKey(driver, tenantCfgKeyName, tenantCfgKeyValue, tenant);
 
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
 			 												 testVars.getPort()     	,
 			 												 usersNumber				    ,
@@ -138,15 +138,15 @@ public class Test146__configuration_vals_during_create {
     
 	// Step 2 - Delete Site and Tenant configuration value
 	testFuncs.myDebugPrinting("Step 2 - Delete Site and Tenant configuration value");
-	testFuncs.enterMenu(driver, "Site_configuration", "Site Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	testFuncs.selectSite(driver, site);
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, site, testVars.getDefSite());
-	testFuncs.enterMenu(driver, "Tenant_configuration", "Tenant Configuration");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
     testFuncs.deleteAllConfValues(driver , tenantCfgKeyName, tenant);
 	
 	// Step 3 - Delete the created user
  	testFuncs.myDebugPrinting("Step 3 - Delete the created user");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

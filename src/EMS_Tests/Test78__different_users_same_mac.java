@@ -88,7 +88,7 @@ public class Test78__different_users_same_mac {
 	String firstUsername  = prefixName + "_1_" + Id;
 	String secondUsername = prefixName + "_2_" + Id;
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
@@ -106,7 +106,7 @@ public class Test78__different_users_same_mac {
 	
     // Step 2 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
 			 testVars.getPort()    		,
 			 "1"				   		,
@@ -126,7 +126,7 @@ public class Test78__different_users_same_mac {
 
 	// Step 4 - Verify that in the Manage-Multiple-Users-Changes menu both users exist
 	testFuncs.myDebugPrinting("Step 4 - Verify that in the Manage-Multiple-Users-Changes menu both users exist");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, "2");
     
    // Step 5 - Delete the user

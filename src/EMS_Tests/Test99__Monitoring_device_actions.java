@@ -108,7 +108,7 @@ public class Test99__Monitoring_device_actions {
 	// Login via an Administrator user and create a registered user using a POST query
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
 				 				testVars.getPort()    						 ,
 				 				"1"				   							 ,
@@ -122,9 +122,9 @@ public class Test99__Monitoring_device_actions {
 	
 	// Logout, re-login via Monitoring user (system) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (system) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT2, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
+	testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
 	
 	// Step 1 - Change Tenant via Device-status menu
 	testFuncs.myDebugPrinting("Step 1 - Change Tenant via Device-status menu");
@@ -168,9 +168,9 @@ public class Test99__Monitoring_device_actions {
 	
     // Step 9 - Logout, re-login as Administrator user and delete the created user
   	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator user and delete the created user");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT2, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 
@@ -195,7 +195,7 @@ public class Test99__Monitoring_device_actions {
 	// Login via an Administrator user and create a registered user using a POST query
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
 				 				testVars.getPort()    						 ,
 				 				"1"				   							 ,
@@ -209,9 +209,9 @@ public class Test99__Monitoring_device_actions {
 	
 	// Logout, re-login via Monitoring user (tenant) and enter the Device-Status menu
 	testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (tenant) and enter the Device-Status menu");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT2, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
+	testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
 	
 	// Step 1 - Change Tenant via Device-status menu
 	testFuncs.myDebugPrinting("Step 1 - Change Tenant via Device-status menu");
@@ -255,9 +255,9 @@ public class Test99__Monitoring_device_actions {
 	
     // Step 9 - Logout, re-login as Administrator user and delete the created user
   	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator user and delete the created user");
-	testFuncs.enterMenu(driver, "Monitoring_General_Informatiom_logout2", testVars.getMainPageStr());
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT2, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, userName, "1");
     map.put("usersPrefix"	  , userName);
     map.put("usersNumber"	  , "1"); 
@@ -354,7 +354,7 @@ public class Test99__Monitoring_device_actions {
 	  
 	  // Search device
 	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
-	  testFuncs.enterMenu(driver , "Monitor_device_status", "Devices Status");   
+	  testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[8]", userName.trim()); 

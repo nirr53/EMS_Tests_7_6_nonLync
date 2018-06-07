@@ -85,7 +85,7 @@ public class Test119__alarms_tests4 {
 	String Id     = testFuncs.getId();
 	String prefix = "regAlert" + Id;
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
-	testFuncs.enterMenu(driver, "Setup_Manage_users", "New User");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered user using POST method
 	testFuncs.myDebugPrinting("Create a registered user using POST method");
@@ -100,7 +100,7 @@ public class Test119__alarms_tests4 {
 			 												 "myLocation");
     testFuncs.verifyPostUserCreate(driver, prefix, prefix, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
-	testFuncs.enterMenu(driver, "Dashboard_Alarms", "Export");	
+	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 1 - Create an alarm with special info field
 	testFuncs.myDebugPrinting("Step 1 - Create an alarm with special info field");	
@@ -119,7 +119,7 @@ public class Test119__alarms_tests4 {
 
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", alartNames[0]  , alartNames);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alartNames[0]  , alartNames);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames[0]);	
 	
@@ -140,7 +140,7 @@ public class Test119__alarms_tests4 {
 
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", alartNames2[0]  , alartNames2);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alartNames2[0]  , alartNames2);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames2[0]);	
 	
@@ -161,7 +161,7 @@ public class Test119__alarms_tests4 {
 
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", alartNames3[0]  , alartNames3);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alartNames3[0]  , alartNames3);
 	testFuncs.searchStr(driver, info1);
 	testFuncs.deleteAlarm(driver, alartNames3[0]);	
 	
@@ -182,13 +182,13 @@ public class Test119__alarms_tests4 {
 
 	// Search the alerts according to their description
 	testFuncs.myDebugPrinting("Search the alerts according to their description", enumsClass.logModes.MINOR);
-	testFuncs.searchAlarm(driver, "Description", alartNames4[0]  , alartNames4);
+	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alartNames4[0]  , alartNames4);
 	testFuncs.searchStr(driver, "IPPhone/" + mac1 + " " + Inet4Address.getLocalHost().getHostAddress());
 	testFuncs.deleteAlarm(driver, alartNames4[0]);
 	
 	// Step 5 - Delete the created alarms and users
 	testFuncs.myDebugPrinting("Step 5 - Delete the created alarms and users");
-	testFuncs.enterMenu(driver, "Setup_Manage_multiple_users", " Manage Multiple Users");    
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, prefix, "1");
 	Map<String, String> map = new HashMap<String, String>();
 	map.put("usersPrefix"	  , prefix);  
