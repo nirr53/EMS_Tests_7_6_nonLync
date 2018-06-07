@@ -88,8 +88,10 @@ ConsoleWrite("" & @TAB &  _NowTime() & "  " & "$target2 - " & $target2 & @TAB & 
 $Socket = _HTTPConnect($IP)
 _HTTPPost($IP, $target2, $Socket, $PostData0)
 $recv = _HTTPRead($Socket,0)
+ConsoleWrite("$recv - " & $recv & @LF)
 _HTTPClose($Socket)
-
+ Sleep(5000)
+ConsoleWrite("exit createUserViaPost()" & @LF)
 ;--------------------------------------------------------------------------------------------------
 Func markEnd($sFilePath)
 

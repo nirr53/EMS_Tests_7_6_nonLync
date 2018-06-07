@@ -162,7 +162,8 @@ import org.junit.runners.Suite;
 	Test154__different_HRSSpeakerFW_status.class					,
 	Test155__mainpage_links.class									,
 	Test156__setup_wizard_configuration_value.class					,
-	Test157__alarms_advanced_filter_tests.class
+	Test157__alarms_advanced_filter_tests.class						,
+	Test158__alarms_types.class
 
 })
 

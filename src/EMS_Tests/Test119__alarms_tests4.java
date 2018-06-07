@@ -23,11 +23,11 @@ import EMS_Tests.enumsClass.*;
 * 	 2. Create an alarm that with special-characters info field
 * 	 3. Create an alarm that with very long languages info field
 *  	 4. Create an alarm that with empty info field
-* 	 5. Delete all the created Alarms
+* 	 5. Step 5 - Delete the created alarms and users
 * 
 * Results:
 * 	1-4. Alert should be displayed as it sent
-* 	  5. All data should be deleted
+* 	  5. All created data should be deleted
 *
 * @author Nir Klieman
 * @version 1.00

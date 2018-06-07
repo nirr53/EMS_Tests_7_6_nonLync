@@ -28,7 +28,7 @@ import EMS_Tests.enumsClass.*;
 * 
 * Results:
 * 	1+4. Alert should be filtered correctly.
-*     5. All the alerts should be created successfully.
+*     5. All the alerts should be deleted successfully.
 *     6. User should be deleted.
 * 
 * @author Nir Klieman
@@ -165,7 +165,7 @@ public class Test157__alarms_advanced_filter_tests {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();
