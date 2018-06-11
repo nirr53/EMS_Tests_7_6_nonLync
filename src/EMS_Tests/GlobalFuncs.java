@@ -811,9 +811,9 @@ public class GlobalFuncs {
 				  break;
 			  }
 			  myDebugPrinting("paths[" + i + "] - " +  paths[i], enumsClass.logModes.MINOR);
-			  myWait(5000);
+			  myWait(6000);
 			  markElemet(driver, driver.findElement(By.xpath(paths[i])));
-			  myWait(5000);
+			  myWait(6000);
 		      driver.findElement(By.xpath(paths[i])).click();
 			  myWait(7000);
 		  }
@@ -1429,9 +1429,10 @@ public class GlobalFuncs {
 		}
 	  
 		// Is clone from other template is needed
-		if (!map.get("cloneFromtemplate").isEmpty() && map.get("cloneFromtemplate").equals("true")) {
+		if (!map.get("cloneFromtemplate").isEmpty() /*&& map.get("cloneFromtemplate").equals("true")*/) {
 			
-			myDebugPrinting("cloneFromtemplate is not empty, clone starts !", enumsClass.logModes.MINOR);		
+			myDebugPrinting("cloneFromtemplate is not empty, clone starts !"      , enumsClass.logModes.MINOR);
+			myDebugPrinting("cloneFromtemplate - " +  map.get("cloneFromtemplate"), enumsClass.logModes.MINOR);		
 			Select cloneTempName = new Select (driver.findElement(By.xpath("//*[@id='clone_model_id']")));
 			cloneTempName.selectByVisibleText(map.get("cloneFromtemplate"));
 			myWait(5000);

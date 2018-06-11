@@ -131,7 +131,7 @@ public class Test2__invalid_login {
 		  testFuncs.searchStr(driver, "Invalid user");		  
 	  } else {
 		  
-		  testFuncs.searchStr(driver, "Invalid credentials");	  
+		  testFuncs.searchStr(driver, "Login has failed due to wrong user name or password");	  
 	  }  
 	  testFuncs.myAssertTrue("Login succedded ..", !driver.findElement(By.tagName("body")).getText().contains("NETWORK"));
   }
@@ -139,7 +139,7 @@ public class Test2__invalid_login {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

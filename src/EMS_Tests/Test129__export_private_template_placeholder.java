@@ -116,12 +116,14 @@ public class Test129__export_private_template_placeholder {
 
 	// Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import
 	testFuncs.myDebugPrinting("Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import");	
+	testFuncs.pressHomeButton(driver);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	String path  = testVars.getDownloadsPath() + "\\" + dwnldFle;
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
 	testFuncs.searchStr(driver, prCfgKey);
 
 	// Step 3 - Delete the created Template
+	testFuncs.pressHomeButton(driver);
 	testFuncs.myDebugPrinting("Step 3 - Delete the created Template");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
 	testFuncs.deleteTemplate(driver, tempName);

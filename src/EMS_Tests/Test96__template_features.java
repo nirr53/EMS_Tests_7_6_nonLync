@@ -238,6 +238,7 @@ public class Test96__template_features {
   // Delete all configuration values
   private void deleteAllConfValues(WebDriver driver, String prefix) {
 
+	  
 	  // Delete all Configuration values
 	  testFuncs.myDebugPrinting("Delete all Configuration values", enumsClass.logModes.NORMAL);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[5]/div[2]/button")    , 3000);
@@ -245,11 +246,9 @@ public class Test96__template_features {
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration settings");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete all configuration settings and save empty content?");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
-	  
-//	   Nir - bug 7.4.245 7.4.17 (VI 145708)
-	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
-	   testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Failed to save the template new configuration settings");
-	   testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
+	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	
 
 	  // verify delete
 	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);

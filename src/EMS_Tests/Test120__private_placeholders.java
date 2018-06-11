@@ -92,14 +92,13 @@ public class Test120__private_placeholders {
     Map<String, String> map = new HashMap<String, String>();
     map.put("isRegionDefault"		   ,  "false");
     map.put("isDownloadSharedTemplates",  "false");
-  	map.put("cloneFromtemplate"		   , "Audiocodes_420HD");
+  	map.put("cloneFromtemplate"		   , "Audiocodes_430HD_LYNC");
 
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
-	map.put("cloneFromtemplate", "Audiocodes_" + "420HD");
-	testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getNonDefTenant(0), "420HD", map);
+	testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), testVars.getDefPhoneModel(), map);
   	
 	// Step 1 - Add private placeholder and normal place holder
 	testFuncs.myDebugPrinting("Step 1 - Add private placeholder and normal place holder");

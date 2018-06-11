@@ -99,9 +99,9 @@ public class Test148__menus_test {
 	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES , "Manage Configuration Files" );
 	menusMap.put(enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES , "Phone firmware files" );
 	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT	 , "To Import Phone Configuration Files" );
-	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT	 , "To Import Phone Configuration Files" );
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT	 , "To export phone configuration files" );
 	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT	 , "Import Users and Devices information" );
-	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_EXPORT	 , "To export phone configuration files" );          
+	menusMap.put(enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_EXPORT	 , "Export Users and Devices information" );          
 	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_SECTION						 , "System" );         
 	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS				     , "Tenant List" );
 	menusMap.put(enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES					 , "View Sites" );
@@ -117,9 +117,6 @@ public class Test148__menus_test {
 	// Step 1 - Move between all menus
 	testFuncs.myDebugPrinting("Step 1 - Move between all menus");
     for (menuNames key : menusMap.keySet()) {
-    	
-    	System.out.println(key.toString() + "---" + menusMap.get(key));
-    	
     	
 		testFuncs.pressHomeButton(driver);
 		String tempHeader = menusMap.get(key);

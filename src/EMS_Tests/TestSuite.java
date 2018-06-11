@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	
-	Test0__all_users.class											,
+//	Test0__all_users.class											,
 	Test1__login_1.class											,
 	Test2__invalid_login.class										,
 	Test3__home_screen_buttons.class								,

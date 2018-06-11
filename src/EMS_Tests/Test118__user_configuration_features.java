@@ -132,6 +132,7 @@ public class Test118__user_configuration_features {
 	addCAPProfile(driver, false);	
 	
     // Step 5 - Add VOCA value
+	// Nir 10/6/18 - VI 542
 	testFuncs.myDebugPrinting("Step 5 - Add VOCA value");
 	String vocaLabel  = "label" + Id;
 	String vocaNumber = Id;

@@ -126,6 +126,7 @@ public class Test3__home_screen_buttons {
   // Press the Audiocodes product button
   private void pressAudcProductsButton(WebDriver driver2) {
 	
+	  String winHandleBefore = driver.getWindowHandle();
 	  testFuncs.myClick(driver, By.xpath("//*[@id='GuideBanner']/a/img"), 2000);    
 	  for(String winHandle : driver.getWindowHandles()) {
 	    	
@@ -141,7 +142,9 @@ public class Test3__home_screen_buttons {
 //	  testFuncs.searchStr(driver, "440HD IP Phone");
 //	  testFuncs.searchStr(driver, "450HD IP Phone");
 	  
-	  testFuncs.searchStr(driver, "Request unsuccessful. Incapsula incident");  
+	  testFuncs.searchStr(driver, "Request unsuccessful. Incapsula incident");   
+	  driver.close();
+	  driver.switchTo().window(winHandleBefore);
   }
 
   // Press the Help button
