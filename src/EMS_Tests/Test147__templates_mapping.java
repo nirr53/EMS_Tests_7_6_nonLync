@@ -104,8 +104,8 @@ public class Test147__templates_mapping {
 	newDataMap.put("tenantType"   , usedTenants[0]);
 	newDataMap.put("confMsgHeader", "Enable zero touch"); 
 	newDataMap.put("confMsgBody"  , "Successful to enable new zero touch default template of tenant and type"); 
-	addMapping(driver, usedTemplate, newDataMap);
-	verifyMapping(driver, usedModels[0], usedTenants[0], usedTenants[0] + "_" + usedModels[0] + ".cfg");
+	testFuncs.addMapping(driver, usedTemplate, newDataMap);
+	testFuncs.verifyMapping(driver, usedModels[0], usedTenants[0], usedTenants[0] + "_" + usedModels[0] + ".cfg");
 	
 	// Step 3 - Update the created mapping
 	testFuncs.myDebugPrinting("Step 3 - Update the created mapping");
@@ -115,8 +115,8 @@ public class Test147__templates_mapping {
 	newDataMap.put("tenantType"   , usedTenants[1]);	
 	newDataMap.put("confMsgHeader", "Update Template"); 
 	newDataMap.put("confMsgBody"  , "Successful to update the template of tenant and type"); 
-	addMapping(driver, usedTemplate, newDataMap);
-	verifyMapping(driver, usedModels[1], usedTenants[1], usedTenants[1] + "_" + usedModels[1] + ".cfg");
+	testFuncs.addMapping(driver, usedTemplate, newDataMap);
+	testFuncs.verifyMapping(driver, usedModels[1], usedTenants[1], usedTenants[1] + "_" + usedModels[1] + ".cfg");
 	
 	// Step 4 - Disable the created mapping
 	testFuncs.myDebugPrinting("Step 4 - Disable the created mapping");
@@ -201,76 +201,6 @@ public class Test147__templates_mapping {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");	
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");	
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[1]/a"), 3000);
-  }
-
-  /**
-  *  Add a mapping value by given parameters
-  *  @param driver       - given driver
-  *  @param usedTemplate - given used template
-  *  @param newDataMap   - array of data for default mapping
-  */
-  private void addMapping(WebDriver driver, String usedTemplate, Map<String, String> newDataMap) {
-	
-	// Set a Template
-	testFuncs.myDebugPrinting("Set a Template <" + usedTemplate + ">", enumsClass.logModes.MINOR);
-	new Select(driver.findElement(By.xpath("//*[@id='templates-def']"))).selectByVisibleText(usedTemplate);
-	testFuncs.myWait(5000);
-	
-	// Set extra data
-	testFuncs.myDebugPrinting("Set extra data", enumsClass.logModes.MINOR);
-	if (newDataMap.containsKey("isDefault") && newDataMap.get("isDefault").contains("true")) {
-			
-		// Mapping is default - Check the checkbox if needed
-		testFuncs.myDebugPrinting("Mapping is default - Check the checkbox if needed", enumsClass.logModes.MINOR);		
-		WebElement cbIsDef = driver.findElement(By.xpath("//*[@id='is_default']"));
-		if (cbIsDef.getAttribute("value").contains("false")) {
-			
-			cbIsDef.click();
-			testFuncs.myWait(2000);
-		}
-		
-		// Set model
-		testFuncs.myDebugPrinting("Set model", enumsClass.logModes.MINOR);		
-		new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[3]/select"))).selectByVisibleText(newDataMap.get("modelType"));
-		testFuncs.myWait(5000);
-		
-		// Set Tenant
-		testFuncs.myDebugPrinting("Set Tenant", enumsClass.logModes.MINOR);		
-		new Select(driver.findElement(By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[5]/select"))).selectByVisibleText(newDataMap.get("tenantType"));
-		testFuncs.myWait(5000);	
-	}
-	
-	// Confirm
-	testFuncs.myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , newDataMap.get("confMsgHeader"));
-	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", newDataMap.get("confMsgBody"));		
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
-  }
-  
-  /**
-  *  Verify a mapping value by given parameters
-  *  @param driver       - given driver
-  *  @param usedTemplate - given used template
-  *  @param usedTenant   - given used tenant
-  *  @param	confName	 - wanted configuration file name for search
-  */
-  public void verifyMapping(WebDriver driver, String usedModel, String usedTenant, String confName) {
-	  
-	  // Verify headers of Test-Mapping section		
-	  testFuncs.myDebugPrinting("Verify headers of Test-Mapping section", enumsClass.logModes.MINOR);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a"), 5000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[1]/h3", "Choose TENANT and MODEL and click test for the TEMPLATE");		
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");	
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");
-	  
-	  // Select the tested model and tested tenant, and test the mapping
-	  testFuncs.myDebugPrinting("Select the tested model and tested tenant, and test the mapping", enumsClass.logModes.MINOR);		  
-	  testFuncs.mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[1]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedModel , 4000);
-	  testFuncs.mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[2]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedTenant, 4000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[3]/buttton"), 5000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Test Tenant URL");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", confName);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
 
   @After

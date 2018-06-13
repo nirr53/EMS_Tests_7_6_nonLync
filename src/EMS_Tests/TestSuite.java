@@ -163,8 +163,10 @@ import org.junit.runners.Suite;
 	Test155__mainpage_links.class									,
 	Test156__setup_wizard_configuration_value.class					,
 	Test157__alarms_advanced_filter_tests.class						,
-	Test158__alarms_types.class
-
+	Test158__alarms_types.class										,
+	Test159__alarms_date_time.class									,
+	Test160__device_advanced_filter_options.class					,
+	Test161__device_advanced_filter_options2.class
 })
 
 public class TestSuite {

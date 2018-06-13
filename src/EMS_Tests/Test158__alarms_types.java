@@ -18,14 +18,14 @@ import EMS_Tests.enumsClass.*;
 * ----------------
 * Tests:
 * 	- Create a registered user via POST query
-* 	 1-6. Create an alarm with different name sent to the user we created.
-* 	   7. Delete all the created Alarms
-* 	   8. Delete the created user 
+* 	 1-9. Create an alarm with different name sent to the user we created.
+* 	  10. Delete all the created Alarms
+* 	  11. Delete the created user 
 * 
 * Results:
-* 	1+6. Alert should be displayed correctly.
-*     7. All the alerts should be deleted successfully.
-*     8. User should be deleted.
+* 	1+9. Alert should be displayed correctly.
+*    10. All the alerts should be deleted successfully.
+*    11. User should be deleted.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -111,8 +111,8 @@ public class Test158__alarms_types {
     testFuncs.verifyPostUserCreate(driver, username, username, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
 
-	// Loop on all alarm names and create an Alarm for each one of them
-	testFuncs.myDebugPrinting("Loop on all alarm names and create an Alarm for each one of them");
+	// Steps 1- 9 Loop on all alarm names and create an Alarm for each one of them
+	testFuncs.myDebugPrinting("Steps 1-9 Loop on all alarm names and create an Alarm for each one of them");
 	String []alarmsForSearch = {"infoAlarm" + "_" + Id};
 	for (String alarmName : alarmNamesMap.keySet()) {
 		
@@ -134,12 +134,12 @@ public class Test158__alarms_types {
 		testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
 	}
 	
-	// Step 5 - Delete the created alarms
-	testFuncs.myDebugPrinting("Step 5 - Delete the created alarm");			
+	// Step 10 - Delete the created alarms
+	testFuncs.myDebugPrinting("Step 10 - Delete the created alarm");			
 	testFuncs.deleteAlarm(driver, alarmsForSearch[0]);	
 	
-	// Step 6 - Delete the created and user
-	testFuncs.myDebugPrinting("Step 6 - Delete the created user");
+	// Step 11 - Delete the created and user
+	testFuncs.myDebugPrinting("Step 11 - Delete the created user");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, username, "1");
 	Map<String, String> map = new HashMap<String, String>();

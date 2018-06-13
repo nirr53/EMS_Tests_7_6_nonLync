@@ -52,12 +52,20 @@ $usersNumber 					= Number($usersNumber)
 $sFilePath = @WorkingDir & "\" & "success.txt"
 FileDelete($sFilePath)
 myToolTip("Activate main()", 150, 150, $testDescLevel)
+myToolTip("$usersPrefixName - " & $usersPrefixName, 150, 150, $testDescLevel)
 
 ; Take BToE version from 'Location' field.
 if StringInStr($usersPrefixName, "BToE_user_version") Then
    myToolTip("Take BToE version from 'Location' field", 150, 150, $innerFunctionLevel)
    $emsPostVersion = $location
    $location 	   = "mylocation"
+
+EndIf
+
+; Change the version field.
+if StringInStr($usersPrefixName, "dvFilter2") Then
+   myToolTip("Change the regular Version field", 150, 150, $innerFunctionLevel)
+   $emsPostVersion = "UC_3.1.0.478"
 
 EndIf
 
