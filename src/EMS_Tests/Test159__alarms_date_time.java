@@ -1,11 +1,8 @@
 package EMS_Tests;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -87,7 +84,7 @@ public class Test159__alarms_date_time {
 	  
 	// Set variables and login
 	String Id 		 = testFuncs.getId();
-//	String Id 		 = "10001106";
+	ArrayList<String> times;
 
 	String username  = ("alrmsDateUsr" + Id).toLowerCase();
 	String alarmName = "IPPHONE REGISTRATION FAILURE";
@@ -129,12 +126,13 @@ public class Test159__alarms_date_time {
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alarmsForSearch[0], alarmsForSearch);
 	String currDispTime = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[11]")).getText();
 	testFuncs.myDebugPrinting("currDispTime - " + currDispTime, enumsClass.logModes.MINOR);	
-	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(getCurrdate()));
-	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(getCurrHours().get(0)) ||
-			  																  currDispTime.contains(getCurrHours().get(1)) ||
-			  																  currDispTime.contains(getCurrHours().get(2)) ||
-			  																  currDispTime.contains(getCurrHours().get(3)) ||
-			  																  currDispTime.contains(getCurrHours().get(4)));
+	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(testFuncs.getCurrdate()));
+	times = testFuncs.getCurrHours();
+	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(times.get(0)) ||
+																			  currDispTime.contains(times.get(1)) ||
+																			  currDispTime.contains(times.get(2)) ||
+																			  currDispTime.contains(times.get(3)) ||
+																			  currDispTime.contains(times.get(4)));
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
 	testFuncs.myWait(120000);
 	
@@ -156,12 +154,13 @@ public class Test159__alarms_date_time {
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alarmsForSearch[0], alarmsForSearch);
 	currDispTime = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[11]")).getText();
 	testFuncs.myDebugPrinting("currDispTime - " + currDispTime, enumsClass.logModes.MINOR);	
-	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(getCurrdate()));
-	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(getCurrHours().get(0)) ||
-																			  currDispTime.contains(getCurrHours().get(1)) ||
-																			  currDispTime.contains(getCurrHours().get(2)) ||
-																			  currDispTime.contains(getCurrHours().get(3)) ||
-																			  currDispTime.contains(getCurrHours().get(4)));
+	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(testFuncs.getCurrdate()));
+	times = testFuncs.getCurrHours();
+	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(times.get(0)) ||
+																			  currDispTime.contains(times.get(1)) ||
+																			  currDispTime.contains(times.get(2)) ||
+																			  currDispTime.contains(times.get(3)) ||
+																			  currDispTime.contains(times.get(4)));
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
 	
 	// Step 3 - Delete the created alarms
@@ -182,33 +181,6 @@ public class Test159__alarms_date_time {
 	testFuncs.setMultipleUsersAction(driver, map);
 	username = username.toLowerCase();
 	testFuncs.searchStr(driver, username + "@" + testVars.getDomain() + " Finished");	  
-  }
-
-  // get current time in HH:MM format
-  private ArrayList<String> getCurrHours() {
-	  
-	  DateFormat timeFormat 	   = new SimpleDateFormat("HH:mm");    
-	  Date time     			   = new Date();  
-	  ArrayList<String> delayTimes = new ArrayList<String>();
-	  String origTime     		   = timeFormat.format(time);
-	  
-	  delayTimes.add(origTime);
-	  for (int i = 0; i < 5; ++i) {
-		  
-		  String tempTime = timeFormat.format(new Date(time.getTime() + (i * 60000) + (1 * 3600*1000)));
-		  delayTimes.add(tempTime);
-	  }
-	  return delayTimes;
-  }
-
-  // Get current data in dd.MM.YYYY format
-  private String getCurrdate() {
-	  
-	  DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");    
-	  Date date     		= new Date();   
-	  String myDate     	= dateFormat.format(date);
-	  testFuncs.myDebugPrinting("date - " + myDate, enumsClass.logModes.MINOR);
-	  return myDate;
   }
 
   @After

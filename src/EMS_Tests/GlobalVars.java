@@ -93,6 +93,7 @@ public class GlobalVars {
 	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
 	private  String defPhoneModel    = "430HD";
 	private  String version			 = "7.4.3080";
+	private  String firmVersion      = "UC_2.0.13.121";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
@@ -275,6 +276,12 @@ public class GlobalVars {
     *  @return version
     */
 	public String getVersion()       { return  version;        }
+	
+    /**
+    *  Default method for return the default firmware version of phone
+    *  @return firmVesrion
+    */
+	public String getFirmVersion()   { return  firmVersion;    }
 	
     /**
     *  Default method for return the downloads path

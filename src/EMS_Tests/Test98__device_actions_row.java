@@ -128,10 +128,10 @@ public class Test98__device_actions_row {
 	searchAndSelectDevice(driver, userName);
 	updateDeviceFirmware(userName, testVars.getDefPhoneModel());
 	
-	// Step 4 - Open web admin via Device-status menu
-	testFuncs.myDebugPrinting("Step 4 - Open web admin via Device-status menu");
-	searchAndSelectDevice(driver, userName);
-	openWebAdminDevice();
+//	// Step 4 - Open web admin via Device-status menu
+//	testFuncs.myDebugPrinting("Step 4 - Open web admin via Device-status menu");
+//	searchAndSelectDevice(driver, userName);
+//	openWebAdminDevice();
 	
 	// Step 5 - Set a nickname via Device-status menu
 	testFuncs.myDebugPrinting("Step 5 - Set a nickname via Device-status menu");
@@ -315,14 +315,14 @@ public class Test98__device_actions_row {
 	  
 	  // Reset device
 	  testFuncs.myDebugPrinting("Open Web Admin of device", enumsClass.logModes.NORMAL); 
-	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 5000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 200000);
 	  String ip = testFuncs.readFile("ip_1.txt");
 	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
 	  String parentHandle = driver.getWindowHandle();
 	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
-	  driver.switchTo().window((String) tabs.get(1));
 	  testFuncs.myWait(100000);
+	  driver.switchTo().window((String) tabs.get(1));
 	
 	  // Verify the correct IP is opened
 	  testFuncs.myDebugPrinting("Verify the correct IP is opened", enumsClass.logModes.MINOR); 
@@ -387,7 +387,7 @@ public class Test98__device_actions_row {
 	  // Search device
 	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 5000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 7000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
 	  testFuncs.myWait(7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[8]", userName.trim());

@@ -171,7 +171,8 @@ public class Test122__registered_unregistered_users_number {
 				  					  testVars.getDomain()        	 ,
 				  					  "offline"						 ,
 				  					  "myLocation"					 ,
-				  					  "+97239764713");
+				  					  "+97239764713"				 ,
+				  					  testVars.getFirmVersion());
 		String newUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();
 		testFuncs.myAssertTrue("Unregistered device number was not changed !!", (Integer.valueOf(totalUnregDeviceNumber) + 1) == Integer.valueOf(newUnregDeviceNumber));
 		

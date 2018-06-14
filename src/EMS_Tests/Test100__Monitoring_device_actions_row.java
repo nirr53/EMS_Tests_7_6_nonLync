@@ -197,7 +197,7 @@ public class Test100__Monitoring_device_actions_row {
     testFuncs.setMultipleUsersAction(driver, map);
     testFuncs.searchStr(driver, userName + "@" + testVars.getDomain() + " Finished");
   }
-  
+ 
   @Test
   public void Monitoring_tenant_Device_status_actions() throws Exception {
 	 
@@ -361,11 +361,11 @@ public class Test100__Monitoring_device_actions_row {
 	  
 	  // Reset device
 	  testFuncs.myDebugPrinting("Open Web Admin of device", enumsClass.logModes.NORMAL); 
+	  String parentHandle = driver.getWindowHandle();
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/a"), 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);
 	  String ip = testFuncs.readFile("ip_1.txt");
 	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
-	  String parentHandle = driver.getWindowHandle();
 	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
 	  driver.switchTo().window((String) tabs.get(1));
 	  testFuncs.myWait(100000);

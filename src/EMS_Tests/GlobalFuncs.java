@@ -2693,23 +2693,25 @@ public class GlobalFuncs {
 	  *  @param devStatus	  - Status of device we want to update
 	  *  @param location	  - Name of the location we want to update
 	  *  @param phoneNumber	  - Name of the phone-number we want to update
+	  *  @param version		  - Version of the device
 	  **/
 	  public void sendKeepAlivePacket(String kpAlveBatName, String ip		 , String port      ,
 									  String macAddress	  , String deviceName, String phoneModel,
 									  String domain		  , String devStatus , String location  ,
-									  String phoneNumber) throws IOException {
-
-		 	myDebugPrinting("kpAlveBatName - " + System.getProperty("user.dir") + "\\" + testVars.getKpAlveBatName(), enumsClass.logModes.MINOR);
-		 	Process process = new ProcessBuilder(System.getProperty("user.dir") + "\\" + testVars.getKpAlveBatName(), 
-					 ip  	   ,
-					 port	   ,
-					 macAddress,
-					 deviceName   ,
-					 phoneModel    ,   
-					 domain  ,
-					 devStatus ,
-					 location    ,
-					 phoneNumber).start();
+									  String phoneNumber  , String version) throws IOException {
+	 	
+		  myDebugPrinting("kpAlveBatName - " + System.getProperty("user.dir") + "\\" + testVars.getKpAlveBatName(), enumsClass.logModes.MINOR); 	
+		  Process process = new ProcessBuilder(System.getProperty("user.dir") + "\\" + testVars.getKpAlveBatName(), 
+					 						   ip	   															  ,
+										       port																  ,
+											   macAddress														  ,
+											   deviceName   													  ,
+											   phoneModel    													  ,   
+											   domain  														      ,
+											   devStatus 														  ,
+											   location    														  ,
+											   phoneNumber														  ,
+											   version).start();
 		    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		    String line;
 		    while ((line = br.readLine()) != null) {
@@ -3003,4 +3005,196 @@ public class GlobalFuncs {
 		  myDebugPrinting("Submit ..", enumsClass.logModes.MINOR);			
 		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);   
 	  }
+	  
+	  /**
+	  *  Filter the devices by given filter and data
+	  *  @param driver       - A given driver
+	  *  @param deviceFilter - enum value of wanted filter criteria
+	  *  @param isCheck	     - extra data which might be needed for the filter
+	  *  @param srDevice     - device for search
+	  */
+	  public void deviceFilter(WebDriver driver, deviceFilter filterOption, String[] data, String srDevice) {
+		  
+		  // Filter by given criteria
+		  myDebugPrinting("Filter device by <" + filterOption.toString() + ">", enumsClass.logModes.MINOR);			
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")			, 5000);  	  
+		  myClick(driver, By.xpath("//*[@id='searchForm']/div[1]/div/button[2]"), 5000);  
+		  switch (filterOption) {
+		  
+			  	case USER:
+			  		mySendKeys(driver, By.xpath("//*[@id='inputUser']")		  , data[0], 2500);
+			  		break; 				
+			  	case PHONE_NUMBER:
+			  		mySendKeys(driver, By.xpath("//*[@id='inputPhoneNumber']"), data[0], 2500);
+			  		break;
+			  	case MAC_ADDRESS:
+			  		mySendKeys(driver, By.xpath("//*[@id='inputmac']")		  , data[0], 2500);
+			  		break;
+			  	case IP_ADDRESS:
+			  		mySendKeys(driver, By.xpath("//*[@id='inputip']")		  , data[0], 2500);
+			  		break;
+			  	case TENANT:
+			  		mySelect(driver,
+			  				By.xpath("//*[@id='searchForm']/div[11]/div/select"),
+			  				enumsClass.selectTypes.GIVEN_TEXT,
+			  				data[0],
+			  				4000);
+			  		break;
+			  	case VERSION:
+			  		mySelect(driver,
+			  				By.xpath("//*[@id='inputFWVer']"),
+			  				enumsClass.selectTypes.GIVEN_TEXT,
+			  				data[0],
+			  				4000);
+			  		break;
+			  	case SITE:
+			  		mySelect(driver,
+			  				By.xpath("//*[@id='inputSite']"),
+			  				enumsClass.selectTypes.GIVEN_TEXT,
+			  				data[0],
+			  				4000);
+			  		break;
+			  	default:
+			  		break;
+		  }
+		  myClick(driver, By.xpath("//*[@id='searchForm']/div[15]/div/button[1]"), 5000);   
+		
+		  // Search the results for wanted device
+		  myDebugPrinting("Search the results for wanted device <" + srDevice + ">", enumsClass.logModes.MINOR);			
+		  searchStr(driver, srDevice);
+	  }
+	   
+	  /**
+	  *  Add a mapping value by given parameters
+	  *  @param driver       - given driver
+	  *  @param usedTemplate - given used template
+	  *  @param newDataMap   - array of data for default mapping
+	  */
+	  public void addMapping(WebDriver driver, String usedTemplate, Map<String, String> newDataMap) {
+	 	
+	 	// Set a Template
+	 	myDebugPrinting("Set a Template <" + usedTemplate + ">", enumsClass.logModes.MINOR);
+	 	mySelect(driver,
+	 			By.xpath("//*[@id='templates-def']"),
+	 			enumsClass.selectTypes.GIVEN_TEXT,
+	 			usedTemplate,
+	 			5000);
+	 	
+	 	// Set extra data
+	 	myDebugPrinting("Set extra data", enumsClass.logModes.MINOR);
+	 	if (newDataMap.containsKey("isDefault") && newDataMap.get("isDefault").contains("true")) {
+	 			
+	 		// Mapping is default - Check the checkbox if needed
+	 		myDebugPrinting("Mapping is default - Check the checkbox if needed", enumsClass.logModes.MINOR);		
+	 		WebElement cbIsDef = driver.findElement(By.xpath("//*[@id='is_default']"));
+	 		if (cbIsDef.getAttribute("value").contains("false")) {
+	 			
+	 			cbIsDef.click();
+	 			myWait(2000);
+	 		}
+	 		
+	 		// Set model
+	 		myDebugPrinting("Set model - " + newDataMap.get("modelType"), enumsClass.logModes.MINOR);			
+		 	mySelect(driver,
+		 			By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[3]/select"),
+		 			enumsClass.selectTypes.GIVEN_TEXT,
+		 			newDataMap.get("modelType"),
+		 			5000);
+	 		
+	 		// Set Tenant
+	 		myDebugPrinting("Set Tenant - " + newDataMap.get("tenantType"), enumsClass.logModes.MINOR);
+		 	mySelect(driver,
+		 			By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[5]/select"),
+		 			enumsClass.selectTypes.GIVEN_TEXT,
+		 			newDataMap.get("tenantType"),
+		 			5000);
+	 	}
+	 	
+	 	// Confirm
+	 	myClick(driver, By.xpath("//*[@id='def']/div/div/div[2]/table/tbody/tr/td[2]/div/table/tbody[1]/tr/td[6]/button"), 5000);
+	 	verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , newDataMap.get("confMsgHeader"));
+	 	verifyStrByXpath(driver, "//*[@id='modalContentId']", newDataMap.get("confMsgBody"));		
+	 	myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	   }
+	  
+	   /**
+	   *  Verify a mapping value by given parameters
+	   *  @param driver       - given driver
+	   *  @param usedTemplate - given used template
+	   *  @param usedTenant   - given used tenant
+	   *  @param	confName	 - wanted configuration file name for search
+	   */
+	   public void verifyMapping(WebDriver driver, String usedModel, String usedTenant, String confName) {
+	 	  	  
+		   // Verify headers of Test-Mapping section		
+		   myDebugPrinting("Verify headers of Test-Mapping section", enumsClass.logModes.MINOR);
+		   myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a"), 5000);
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[1]/h3", "Choose TENANT and MODEL and click test for the TEMPLATE");		
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");		 	  
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");
+	 	  	  
+		   // Select the tested model and tested tenant, and test the mapping
+		   myDebugPrinting("Select the tested model and tested tenant, and test the mapping", enumsClass.logModes.MINOR);		  
+		   mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[1]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedModel , 4000);
+		   mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[2]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedTenant, 4000);	 	  
+		   myClick(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[3]/buttton"), 5000);	 	  
+		   verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Test Tenant URL"); 	  
+		   verifyStrByXpath(driver, "//*[@id='modalContentId']", confName);
+		   myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);  
+	   }
+	   
+	   /**
+	   *  Verify a mapping value by given parameters
+	   *  @param driver       - given driver
+	   *  @param usedTemplate - given used template
+	   *  @param usedTenant   - given used tenant
+	   *  @param	confName	 - wanted configuration file name for search
+	   */
+	   public void verifyMappingWizard(WebDriver driver, String usedModel, String usedTenant, String confName) {
+	 	  	  
+		   // Verify headers of Test-Mapping section		
+		   myDebugPrinting("Verify headers of Test-Mapping section", enumsClass.logModes.MINOR);
+		   myClick(driver, By.xpath("//*[@id='step-4']/div/div/div[2]/ul/li[2]/a"), 5000);
+		   myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/ul/li[3]/a"), 5000);
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[1]/h3", "Choose TENANT and MODEL and click test for the TEMPLATE");		
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[1]", "Model");		 	  
+		   verifyStrByXpath(driver, "//*[@id='test']/div/div/div/div[2]/table/thead/tr/th[2]", "Tenant");
+	 	  	  
+		   // Select the tested model and tested tenant, and test the mapping
+		   myDebugPrinting("Select the tested model and tested tenant, and test the mapping", enumsClass.logModes.MINOR);		  
+		   mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[1]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedModel , 4000);
+		   mySelect(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[2]/select"), enumsClass.selectTypes.GIVEN_TEXT, usedTenant, 4000);	 	  
+		   myClick(driver, By.xpath("//*[@id='test']/div/div/div/div[2]/table/tbody/tr/td[3]/buttton"), 5000);	 	  
+		   verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Test Tenant URL"); 	  
+		   verifyStrByXpath(driver, "//*[@id='modalContentId']", confName);
+		   myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);  
+	   }
+	   
+	   // get current time in HH:MM format
+	   public ArrayList<String> getCurrHours() {
+	 	  
+	 	  DateFormat timeFormat 	   = new SimpleDateFormat("HH:mm");    
+	 	  Date time     			   = new Date();  
+	 	  ArrayList<String> delayTimes = new ArrayList<String>();
+	 	  String origTime     		   = timeFormat.format(time);
+	 	  
+	 	  delayTimes.add(origTime);
+	 	  for (int i = 0; i < 5; ++i) {
+	 		  
+	 		  String tempTime = timeFormat.format(new Date(time.getTime() + (i * 60000) + (1 * 3600*1000)));
+	 		  delayTimes.add(tempTime);
+			  myDebugPrinting(i + ". tempTime - " + tempTime, enumsClass.logModes.MINOR);		  
+	 	  }
+	 	  return delayTimes;
+	   }
+	   
+	   // Get current data in dd.MM.YYYY format
+	   public String getCurrdate() {
+	 	  
+	 	  DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");    
+	 	  Date date     		= new Date();   
+	 	  String myDate     	= dateFormat.format(date);
+	 	  myDebugPrinting("date - " + myDate, enumsClass.logModes.MINOR);
+	 	  return myDate;
+	   }
 }

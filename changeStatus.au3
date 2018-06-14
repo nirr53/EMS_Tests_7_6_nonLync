@@ -9,15 +9,16 @@
 #include <http.au3>
 
 ; Set arguments via command line
-$IP	 		  = $CmdLine[1]  ; I.e.  10.21.51.12
-$PORT	 	  = $CmdLine[2]  ; I.e.  8081
-$MAC_ADDRESS   = $CmdLine[3]  ; I.e.  00908f06c006
-$DEVICE_NAME   = $CmdLine[4]  ; I.e.  changeStatus1
-$PHONE_TYPE 	  = $CmdLine[5]  ; I.e.  430HD
-$DOMAIN_NAME   = $CmdLine[6]  ; I.e.  cloudbond365b.com
-$DEVICE_STATUS = $CmdLine[7]  ; I.e.  registered
-$LOCATION 	  = $CmdLine[8]  ; I.e.  Location12
-$PHONE_NUMBER  = $CmdLine[9]  ; I.e.  +97239764713
+$IP	 		   	  = $CmdLine[1]  ; I.e.  10.21.51.12
+$PORT	 	   	  = $CmdLine[2]  ; I.e.  8081
+$MAC_ADDRESS   	  = $CmdLine[3]  ; I.e.  00908f06c006
+$DEVICE_NAME   	  = $CmdLine[4]  ; I.e.  changeStatus1
+$PHONE_TYPE    	  = $CmdLine[5]  ; I.e.  430HD
+$DOMAIN_NAME   	  = $CmdLine[6]  ; I.e.  cloudbond365b.com
+$DEVICE_STATUS 	  = $CmdLine[7]  ; I.e.  registered
+$LOCATION 	   	  = $CmdLine[8]  ; I.e.  Location12
+$PHONE_NUMBER  	  = $CmdLine[9]  ; I.e.  +97239764713
+$EMS_POST_VERSION = $CmdLine[10] ; I.e.  UC_2.0.13.121
 
 ;~ $IP	 			  = "10.21.8.32"
 ;~ $PORT	 		  = "8081"
@@ -29,9 +30,12 @@ $PHONE_NUMBER  = $CmdLine[9]  ; I.e.  +97239764713
 ;~ $LOCATION		  = "Location12"
 ;~ $PHONE_NUMBER	  = "+97239764713"
 
+If $EMS_POST_VERSION = "" Then
+    $EMS_POST_VERSION = "UC_2.0.13.121"
+EndIf
+
 ;~ Global data
 Global $EMS_POST_URL	 = "/rest/v1/ipphoneMgrStatus/keep-alive"									; URL for the second POST query that sent when creating a user via POST query
-Global $EMS_POST_VERSION = "UC_2.0.13.121"							 								; Version number for users which created via POST query
 Global $EMS_USER_AGENT	 = "AUDC-IPPhone-" & $PHONE_TYPE & "_"  & $EMS_POST_VERSION & "/1.0.0000.0"	; User-agent for users which created via POST query
 Global $EMS_PASSWORD	 = "3f6d0199102b53ca0a37a527f0efc221"										; Password for users which created via POST query
 Global $EMS_USERNAME 	 = 'system'

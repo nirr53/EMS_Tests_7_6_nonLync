@@ -65,5 +65,11 @@ public class enumsClass {
 		TROUBLESHOOT_SYSTEM_DIAGNOSTICS,
 		TROUBLESHOOT_WEB_ADMIN_LOGS_MENU;
 	}
+
+	// Device Filter enums
+	public enum deviceFilter {
+		
+		USER, PHONE_NUMBER, MAC_ADDRESS, IP_ADDRESS, VERSION, TENANT, SITE, TEMPLATE;
+	}
 }
 

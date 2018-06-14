@@ -109,7 +109,8 @@ public class Test123__change_status {
 								  testVars.getDomain()        	 ,
 								  "offline"						 ,
 								  location						 ,
-								  phoneNumber);
+								  phoneNumber					 ,
+			  					  testVars.getFirmVersion());
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + chngSttsUsername.trim(), 5000);
     driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    
@@ -125,9 +126,10 @@ public class Test123__change_status {
 								  chngSttsUsername				 ,
 								  testVars.getDefPhoneModel()	 ,
 								  testVars.getDomain()        	 ,
-								  "registered"						 ,
+								  "registered"					 ,
 								  location						 ,
-								  phoneNumber);
+								  phoneNumber					 ,
+								  testVars.getFirmVersion());
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + chngSttsUsername.trim(), 5000);
     driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	    

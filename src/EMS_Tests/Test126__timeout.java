@@ -119,7 +119,8 @@ public class Test126__timeout {
 			  					  testVars.getDomain()        	 ,
 			  					  "offline"						 ,
 			  					  location						 ,
-			  					  phoneNumber);
+			  					  phoneNumber					 ,
+			  					  testVars.getFirmVersion());
 	testFuncs.sendKeepAlivePacket(testVars.getKpAlveBatName(),
 			  					  testVars.getIp()               ,
 			  					  testVars.getPort()           	 ,
@@ -127,9 +128,10 @@ public class Test126__timeout {
 			  					  userName				 		 ,
 			  					  testVars.getDefPhoneModel()	 ,
 			  					  testVars.getDomain()        	 ,
-			  					  "registered"						 ,
+			  					  "registered"					 ,
 			  					  location						 ,
-			  					  phoneNumber);
+			  					  phoneNumber					 ,
+			  					  testVars.getFirmVersion());
 	
     // Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive
 	testFuncs.myDebugPrinting("Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive");
