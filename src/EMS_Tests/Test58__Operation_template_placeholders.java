@@ -92,8 +92,8 @@ public class Test58__Operation_template_placeholders {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String tempName          = "Audiocodes_440HD";
-	String tempWeCopyTo      = "Audiocodes_420HD";
+	String tempName          = "NirTemplate420";
+	String tempWeCopyTo      = "NirTemplate430";
 	String Id 			     = testFuncs.getId();
 	String tempPhName        = "myPHolderName"        + Id;
 	String tempPhValue       = "myPHolderValue"       + Id;

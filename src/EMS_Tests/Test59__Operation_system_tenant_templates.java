@@ -97,11 +97,10 @@ public class Test59__Operation_system_tenant_templates {
 		  
 	  // Step 1 - Add a template
 	  testFuncs.myDebugPrinting("Step 1 - Add a template");	
-	  map.put("cloneFromtemplate", "Audiocodes_" + phoneType + "_LYNC");
-	  testFuncs.addTemplate(driver, "my" + phoneType + "Template_" + Id, "my" + phoneType + "desc", testVars.getNonDefTenant(0), phoneType, map);
+	  map.put("cloneFromtemplate", "NirTemplate430");
+	  testFuncs.addTemplate(driver, "my" + phoneType + "Template_" + Id, "my" + phoneType + "desc", testVars.getDefTenant(), phoneType, map);
 
 	  // Step 2 - Edit a template
-	  map.put("tenant", testVars.getNonDefTenant(1));	
 	  testFuncs.myDebugPrinting("Step 2 - Edit a template");
 	  map.put("model", phoneType);	
 	  testFuncs.editTemplate(driver,  "my" + phoneType + "Template_" + Id, map);	  	
@@ -118,13 +117,13 @@ public class Test59__Operation_system_tenant_templates {
 		  
 	  // Step 4 - Add a template
 	  testFuncs.myDebugPrinting("Step 4 - Add a template");	
-	  map.put("cloneFromtemplate", "Audiocodes_" + phoneType + "_LYNC");
-	  testFuncs.addTemplate(driver, "my" + phoneType + "Template_" + Id, "my" + phoneType + "desc", testVars.getNonDefTenant(0), phoneType, map);
+	  map.put("cloneFromtemplate", "NirTemplate440");
+	  testFuncs.addTemplate(driver, "my" + phoneType + "Template_" + Id, "my" + phoneType + "desc", testVars.getDefTenant(), phoneType, map);
 
 	  // Step 5 - Edit a template
-	  map.put("tenant", testVars.getNonDefTenant(1));	
 	  testFuncs.myDebugPrinting("Step 5 - Edit a template");
 	  map.put("model", phoneType);	
+	  map.put("tenant", testVars.getDefTenant());	
 	  testFuncs.editTemplate(driver,  "my" + phoneType + "Template_" + Id, map);	  	
 
 	  // Step 6 - Delete a template		

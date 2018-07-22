@@ -133,7 +133,7 @@ public class Test16__multiple_users_changes_change_tenant {
   @After
   public void tearDown() throws Exception {
 	  
-	driver.quit();
+//	driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

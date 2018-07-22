@@ -601,7 +601,7 @@ public class GlobalFuncs {
 	   *  Wait till the given string not displayed on the screen
 	   *  @param driver  - given driver
 	   *  @param string  - given string that indicate if we should stop the loop
-	   */
+	  */
 	  public void waitTillString(WebDriver driver, String string) {
 		
 		String bodyText = "";
@@ -624,6 +624,38 @@ public class GlobalFuncs {
 		}
 	    myWait(2000);		
 	  }
+	  
+	  /**
+	  *  Wait till the download finishes
+	  *  @param driver  - given driver
+	  *  @param string  - given fileName that finishes the loop
+	  */
+	  public void waitTillDownloadFinishesString(WebDriver driver, String fileName, int timeOut) {
+		
+		int idx         = 0;
+		myDebugPrinting("waitTillDownloadFinishesString()", enumsClass.logModes.MINOR);
+		while (true) {
+			
+			myDebugPrinting("TRUE loop", enumsClass.logModes.DEBUG);
+			if (findFilesByGivenPrefix(testVars.getDownloadsPath(), fileName)) {
+					    	  
+				myDebugPrinting("<" + fileName + "> was detected after <" + (idx / 1000) + "> seconds !!", enumsClass.logModes.MINOR);
+				break;
+				
+			} else {
+				
+				if (idx > timeOut) {
+					
+					myFail("Timeout <" + timeOut + "> was passed, and <" + fileName + "> download not finished !!");
+				} else{
+					
+					myDebugPrinting(fileName + " is still not detected after " + (idx / 1000 ) + " seconds", enumsClass.logModes.DEBUG);
+					myWait(5000);  
+					idx += 5000;
+				}
+			}		
+		}
+	  }
 	
 	  /**
 	  *  Upload file with given path displayed on the screen
@@ -636,7 +668,7 @@ public class GlobalFuncs {
 	      		  
 		myDebugPrinting("path -   " + path, enumsClass.logModes.MINOR);
 		mySendKeys(driver, By.xpath(uploadFieldXpath), path  , 2000);
-		myClick(driver   , By.xpath(uploadButtonXpath)		 , 300000);
+		myClick(driver   , By.xpath(uploadButtonXpath)		 , 200000);
 		if (driver.findElement(By.tagName("body")).getText().contains("Failed to import from selected file.")) {
 			
 			myFail("Upload configuration-file was failed !!");
@@ -1402,14 +1434,15 @@ public class GlobalFuncs {
 	  *  @param tempName - given template name
 	  *  @param tempDesc - given template description
 	  *  @param tenant   - given template tenant
+	  *  @param model    - given template model
 	  *  @param map      - object for all the optional parameters
 	  */
-	  public void addTemplate(WebDriver driver, String tempName, String tempDesc, String tenant, String type, Map<String, String> map) {
+	  public void addTemplate(WebDriver driver, String tempName, String tempDesc, String tenant, String model, Map<String, String> map) {
 		  
 		// Create new template
 		myDebugPrinting("Create new template"    , enumsClass.logModes.MINOR);
 		myDebugPrinting("tempName - "  + tempName, enumsClass.logModes.MINOR);
-		myDebugPrinting("type - "      + type    , enumsClass.logModes.MINOR);
+		myDebugPrinting("model - "     + model    , enumsClass.logModes.MINOR);
 		
 		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/buttton"), 4000);
 		verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3"		   , "Add new Template");
@@ -1419,7 +1452,7 @@ public class GlobalFuncs {
 		tenantType.selectByVisibleText(tenant);
 		myWait(5000);
 		Select tempType = new Select (driver.findElement(By.xpath("//*[@id='model_type']")));
-		tempType.selectByVisibleText(type);
+		tempType.selectByVisibleText(model);
 		myWait(5000);
 	  
 		// Check region default template check-box
@@ -1429,12 +1462,13 @@ public class GlobalFuncs {
 		}
 	  
 		// Is clone from other template is needed
-		if (!map.get("cloneFromtemplate").isEmpty() /*&& map.get("cloneFromtemplate").equals("true")*/) {
+		String tempTemplate = map.get("cloneFromtemplate");
+		if (!tempTemplate.isEmpty() /*&& map.get("cloneFromtemplate").equals("true")*/) {
 			
 			myDebugPrinting("cloneFromtemplate is not empty, clone starts !"      , enumsClass.logModes.MINOR);
-			myDebugPrinting("cloneFromtemplate - " +  map.get("cloneFromtemplate"), enumsClass.logModes.MINOR);		
+			myDebugPrinting("cloneFromtemplate - " + tempTemplate , enumsClass.logModes.MINOR);		
 			Select cloneTempName = new Select (driver.findElement(By.xpath("//*[@id='clone_model_id']")));
-			cloneTempName.selectByVisibleText(map.get("cloneFromtemplate"));
+			cloneTempName.selectByVisibleText(tempTemplate);
 			myWait(5000);
 		}
 	  
@@ -2070,7 +2104,7 @@ public class GlobalFuncs {
 	  */
 	  public void addDevicePlaceholder(WebDriver driver, String userName, String phName, String phValue) {
 		    
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div[2]/a"), 3000);
+		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[2]/div[2]/a"), 7000);
 		  verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/form/div/div[1]/h3", "Change IP Phone Device Placeholder");
 		  verifyStrByXpath(driver, "//*[@id='table_all']/thead/tr/th"						 , "Please select a device");
 		  mySendKeys(driver, By.xpath("//*[@id='table_all']/tbody/tr[1]/td[2]/div/input"), userName, 2000);
@@ -2489,7 +2523,7 @@ public class GlobalFuncs {
 		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
 		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000); 
-		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']",   "Save Configuration ( " + currSiteOnly + " )");
+		  verifyStrByXpathContains(driver, "//*[@id='modalTitleId']",   "Save Configuration ( " + currSiteOnly + " [" + currSiteOnly + "] / " + currTenant);
 		  verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");  
 		  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 				  

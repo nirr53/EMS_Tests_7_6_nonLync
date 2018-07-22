@@ -2,9 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests/apache-log4j-2.7-bin/log4j-api-2.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests/apache-log4j-2.7-bin/log4j-core-2.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests/apache-log4j-2.7-bin/log4j-1.2-api-2.7.jar" sourcepath="apache-log4j-2.7-bin/log4j-1.2-api-2.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-java-3.0.1/lib/cglib-nodep-3.2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-java-3.0.1/lib/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-java-3.0.1/lib/commons-exec-1.3.jar"/>
@@ -40,5 +37,8 @@
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-java-3.0.1/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-java-3.0.1/client-combined-3.0.1-nodeps.jar"/>
 	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/Selenium/selenium-server-standalone-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests_7_6_nonLync/apache-log4j-2.7-bin/log4j-1.2-api-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests_7_6_nonLync/apache-log4j-2.7-bin/log4j-api-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/nirk/Desktop/myEclipseProjects/EMS_Tests_7_6_nonLync/apache-log4j-2.7-bin/log4j-core-2.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

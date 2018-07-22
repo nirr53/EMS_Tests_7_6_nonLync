@@ -95,7 +95,7 @@ public class Test128__template_exisiting_configuration_and_ph {
 	String confValue = "confvalue" + Id;
     map.put("isRegionDefault"		   ,  "false");
     map.put("isDownloadSharedTemplates",  "false");
-  	map.put("cloneFromtemplate"		   , "Audiocodes_420HD_LYNC");
+  	map.put("cloneFromtemplate"		   , "Audiocodes_420HD");
 
     // Login, enter the Phone Templates menu, add a Template and select the create template
 	testFuncs.myDebugPrinting("Login, enter the Phone Templates menu, add a Template and select the create template");

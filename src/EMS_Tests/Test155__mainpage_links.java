@@ -7,7 +7,6 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
 import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 
 /**
@@ -87,29 +86,31 @@ public class Test155__mainpage_links {
 
     // Step 2 - Press the Twitter Icon
 	testFuncs.myDebugPrinting("Step 2 - Press the Twitter Icon");
+    driver.get("https://" + testVars.getUrl());
     pressIcon(" /html/body/div/div[3]/ul/li[2]/a", "https://twitter.com/", "audiocodes");
     
     // Step 3 - Press the Youtube Icon
 	testFuncs.myDebugPrinting("Step 3 - Press the Youtube Icon");
+    driver.get("https://" + testVars.getUrl());
     pressIcon(" /html/body/div/div[3]/ul/li[3]/a", "https://www.youtube.com/channel/UCZFOqdMjlnmqmiwoSmHXAAg", "");
     
     // Step 4 - Press the Linkedin Icon
 	testFuncs.myDebugPrinting("Step 4 - Press the Linkedin Icon");
+    driver.get("https://" + testVars.getUrl());
     pressIcon(" /html/body/div/div[3]/ul/li[4]/a", "https://www.linkedin.com/", "audiocodes");
     
     // Step 5 - Press the Google plus Icon
 	testFuncs.myDebugPrinting("Step 5 - Press the Google plus Icon");
+    driver.get("https://" + testVars.getUrl());
     pressIcon(" /html/body/div/div[3]/ul/li[5]/a", "https://plus.google.com/117386317157355405525", "");
   }
 
   // Press the Audiocodes product button
   private void pressIcon(String xpath, String searchedUrl, String substr) {
-	
-      String winHandleBefore = driver.getWindowHandle();
       
       // Press the icon
       testFuncs.myDebugPrinting("Press the icon", enumsClass.logModes.NORMAL);
-	  testFuncs.myClick(driver, By.xpath(xpath), 10000);    
+	  testFuncs.myClick(driver, By.xpath(xpath), 10000);
 	  for(String winHandle : driver.getWindowHandles()) {
 	    	
 	        driver.switchTo().window(winHandle);  
@@ -117,18 +118,11 @@ public class Test155__mainpage_links {
 	  String tempCurrUrl = driver.getCurrentUrl();
       testFuncs.myDebugPrinting("tempCurrUrl - " + tempCurrUrl, enumsClass.logModes.MINOR);
       testFuncs.myDebugPrinting("searchedUrl - " + searchedUrl, enumsClass.logModes.MINOR);
-	  testFuncs.myAssertTrue("Wanted url was not detected !! current url - <" + tempCurrUrl + ">", tempCurrUrl.contains(searchedUrl));  
+	  testFuncs.myAssertTrue("Wanted url was not detected !! current url - <" + tempCurrUrl + ">\nsearched url - <" + searchedUrl + ">", tempCurrUrl.contains(searchedUrl));  
 	  if (!substr.isEmpty()) {
 		 
 		  testFuncs.myAssertTrue("Wanted url did not lead to Audiocodes page !! - " + tempCurrUrl + ">", tempCurrUrl.contains(substr));    
 	  }
-	  
-	  driver.close();
-	  
-	  // Return to OVOC
-      testFuncs.myDebugPrinting("Return to OVOC", enumsClass.logModes.NORMAL);
-      driver.switchTo().window(winHandleBefore);
-      testFuncs.myWait(3000);
   }
 
   @After

@@ -87,8 +87,9 @@ public class Test81__view_sites {
 	
     // Step 2 - Check the Change-Sites-Via-EMS button.
 	testFuncs.myDebugPrinting("Step 2 - Check the Change-Sites-Via-EMS button.");
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/h4/a"), 3000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div/h4/a"), 10000);
 	ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
+	testFuncs.myWait(20000);
 	driver.switchTo().window((String) tabs.get(1));
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("USERNAME"));

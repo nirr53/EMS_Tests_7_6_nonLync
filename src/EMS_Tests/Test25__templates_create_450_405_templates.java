@@ -82,7 +82,7 @@ public class Test25__templates_create_450_405_templates {
 	// Set variables
 	int i               = 1;
 	String Id 			= testFuncs.getId();
-	String phoneTypes[] = {"405", "450HD"};	
+	String phoneTypes[] = {"405", "445HD", "450HD"};	
     Map<String, String> map = new HashMap<String, String>();
     map.put("isRegionDefault"		   ,  "false");
     map.put("cloneFromtemplate"        ,  ""); 
@@ -97,7 +97,7 @@ public class Test25__templates_create_450_405_templates {
   	for (String type : phoneTypes) {
   		
   		testFuncs.myDebugPrinting("Step 1." + i + " - Add a " + type + " template");
-  		map.put("cloneFromtemplate", "Audiocodes_" + type + "_LYNC");
+  		map.put("cloneFromtemplate", "Audiocodes_" + type);
   		testFuncs.addTemplate(driver, "my" + type + "Template_" + Id, "my" + type + "desc", testVars.getNonDefTenant(0), type, map);
   		testFuncs.myWait(3000);
   		++i;

@@ -93,7 +93,6 @@ public class Test39__Monitoring_Operation_Phone_configuration_menu {
 	  // Step 3 - Login with an  Operation user (System), check that you can see the menu and logout
 	  testFuncs.myDebugPrinting("Step 3 - Login with an  Operation user (System), check that you can see the menu and logout");
 	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
-	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	  
 	  // Step 4 - Login with an  Operation user (Tenant), check that you can see the menu

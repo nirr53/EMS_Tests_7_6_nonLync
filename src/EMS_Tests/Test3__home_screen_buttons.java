@@ -18,17 +18,18 @@ import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 * 	 1. Test the 'Log off' button.
 * 	 2. Test the displayed version number
 *    3. Test the 'Help' button
-*    4. Test the 'Home' button
-*    5. Test the Audiocodes product button
-*    6. Test the upper links of main menu
+*    4. Test the Audiocodes product button
+*    5. Test the upper links of main menu
+*    6. Test the 'Home' button
+
 * 
 * Results:
 *    1. 'Log off' should disconnect you from the system.
 *    2. The current version number should be displayed.
-*    3. Pop-up with Help message should appear.
-*    4. Pressing the Home button should return you to the main menu.
-*    5. Pressing the AC products button should open you a menu of Audicodes products.
-*    6. Pressing the links, will lead you to System-Settings \ Alarms menus.
+*    3. Pressing the Home button should return you to the main menu.
+*    4. Pressing the AC products button should open you a menu of Audicodes products.
+*    5. Pressing the links, will lead you to System-Settings \ Alarms menus.
+*    6. Pop-up with Help message should appear.
 *    
 * @author Nir Klieman
 * @version 1.00
@@ -92,28 +93,28 @@ public class Test3__home_screen_buttons {
 	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Version <" + testVars.getVersion() + "> was not detected !! (" + txt + ")", txt.contains(testVars.getVersion()));
-
-	// Step 3.3 - Help Button
-	testFuncs.myDebugPrinting("Step 3.3 - Help button");
-	pressHelpButton(driver);
 	
-	// Step 3.4 - Home button
-	testFuncs.myDebugPrinting("Step 3.4 - Home button");
+	// Step 3.3 - Home button
+	testFuncs.myDebugPrinting("Step 3.3 - Home button");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	testFuncs.pressHomeButton(driver);
 	
-	// Step 3.5 - Audiocodes products button
-	testFuncs.myDebugPrinting("Step 3.5 - Audiocodes products button");
+	// Step 3.4 - Audiocodes products button
+	testFuncs.myDebugPrinting("Step 3.4 - Audiocodes products button");
 	pressAudcProductsButton(driver);
 	testFuncs.pressHomeButton(driver);
 	
-	// Step 3.6 - Main menu upper links
-	testFuncs.myDebugPrinting("Step 3.6 - Main menu upper links");
-	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[2]/div/div/div[2]/div[1]/div[1]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
+	// Step 3.5 - Main menu upper links
+	testFuncs.myDebugPrinting("Step 3.5 - Main menu upper links");
+	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[3]/div/div/div[2]/div[1]/div[1]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
 	testFuncs.pressHomeButton(driver);
-	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[2]/div/div/div[2]/div[1]/div[3]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
+	pressMainMenuUpperLinks(driver, "//*[@id='contentwrapper']/section/div[3]/div/div/div[2]/div[1]/div[3]/a", "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3", "System Settings");
 	testFuncs.pressHomeButton(driver);
 	pressMainMenuUpperLinks(driver, "//*[@id='totalspan']/a", "//*[@id='trunkTBL']/div/div[1]/h3", "Alarms");
+  
+	// Step 3.6 - Help Button
+	testFuncs.myDebugPrinting("Step 3.6 - Help button");
+	pressHelpButton(driver);
   }
 
   // Check links
@@ -134,15 +135,7 @@ public class Test3__home_screen_buttons {
 	  }
 	  
 	  // Verify login to the Products page
-//	  testFuncs.searchStr(driver, "Management Applications");
-//	  testFuncs.searchStr(driver, "RELATED PRODUCTS");
-//	  testFuncs.searchStr(driver, "405HD IP Phone");
-//	  testFuncs.searchStr(driver, "420HD IP Phone");
-//	  testFuncs.searchStr(driver, "430HD IP Phone");
-//	  testFuncs.searchStr(driver, "440HD IP Phone");
-//	  testFuncs.searchStr(driver, "450HD IP Phone");
-	  
-	  testFuncs.searchStr(driver, "Request unsuccessful. Incapsula incident");   
+//	  testFuncs.searchStr(driver, "Management Products & Solutions");   
 	  driver.close();
 	  driver.switchTo().window(winHandleBefore);
   }
@@ -152,7 +145,6 @@ public class Test3__home_screen_buttons {
 	  
 	  // Test the Help button at right side of page
 	  testFuncs.myDebugPrinting("Step 3.3.1 - Test the Help button at right side of page", enumsClass.logModes.NORMAL);
-	  String winHandleBefore = driver.getWindowHandle();
 	  testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[3]/li[4]/a"), 8000);
 	  for(String winHandle : driver.getWindowHandles()) {
 	    	
@@ -162,8 +154,6 @@ public class Test3__home_screen_buttons {
 	  // Verify Help headers
 	  testFuncs.myDebugPrinting("Verify Help headers", enumsClass.logModes.MINOR);
 	  testFuncs.searchStr(driver, "Welcome to AudioCodes Technical Document Library");  
-	  driver.close();
-	  driver.switchTo().window(winHandleBefore); 
   }
 
   @After

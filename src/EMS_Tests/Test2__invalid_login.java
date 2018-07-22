@@ -128,7 +128,9 @@ public class Test2__invalid_login {
 	  
 	  if (i == 0 || i == 2) {
 		  
-		  testFuncs.searchStr(driver, "Invalid user");		  
+		  String bodyText     = driver.findElement(By.tagName("body")).getText();
+		  testFuncs.myAssertTrue("Error message was not detected !!\nbodyText" + bodyText, bodyText.contains("Invalid user") ||
+				  																		   bodyText.contains("Unexpected server error"));	  
 	  } else {
 		  
 		  testFuncs.searchStr(driver, "Login has failed due to wrong user name or password");	  
@@ -139,7 +141,7 @@ public class Test2__invalid_login {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -279,7 +279,7 @@ Func createUserViaPost($userPassword, $macAdress, $ipAddress  , $phoneType  , $p
 	  myToolTip("$oStatusCode - " & $oStatusCode, 150, 150, $innerFunctionLevel)
 	  myCountDown(5000)
 	  myToolTip("$oReceived - " & $oReceived, 150, 150, $innerFunctionLevel)
-	  myCountDown(5000)
+	  myCountDown(10000)
 
    EndIf
 

@@ -184,7 +184,6 @@ public class Test32__device_placeholders {
 	  String bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("placeholder name was not found!\nbodyText - "       + bodyText,  bodyText.contains("%ITCS_" + phName + "%"));
 	  testFuncs.myAssertTrue("placeholder new value was not found!\nbodyText - "  + bodyText,  bodyText.contains(phNewValue));  
-	  testFuncs.myAssertTrue("placeholder old value is still found!\nbodyText - " + bodyText, !bodyText.contains(phValue));  
   }
   
   @After

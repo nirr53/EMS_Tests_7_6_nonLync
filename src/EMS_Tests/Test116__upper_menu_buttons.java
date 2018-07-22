@@ -1,5 +1,6 @@
 package EMS_Tests;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -115,11 +116,10 @@ public class Test116__upper_menu_buttons {
   private void pressEMSButton() {
 		  
 	  testFuncs.myWait(3000);		  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[1]/header/a/img"), 7000);
-	  for(String winHandle : driver.getWindowHandles()) {
-	    	
-	        driver.switchTo().window(winHandle);  
-	  }
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[1]/header/a/img"), 7000);		
+	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());	
+	  testFuncs.myWait(20000);	
+	  driver.switchTo().window((String) tabs.get(0));
 	  testFuncs.searchStr(driver, "USERNAME");
 	  testFuncs.searchStr(driver, "PASSWORD");
 	  testFuncs.searchStr(driver, "Log In"); 	  

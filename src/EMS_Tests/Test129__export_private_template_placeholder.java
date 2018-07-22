@@ -111,12 +111,13 @@ public class Test129__export_private_template_placeholder {
 	testFuncs.myDebugPrinting("Step 1 - Enter the Export-configuration menu and export the System configuration");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_EXPORT, "To export phone configuration files");
 	testFuncs.deleteFilesByPrefix(testVars.getDownloadsPath(), dwnldFle);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/button"), 300000);		
-	testFuncs.myAssertTrue("File was not downloaded successfully !!", testFuncs.findFilesByGivenPrefix(testVars.getDownloadsPath(), dwnldFle));
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[4]/button"), 5000);
+	testFuncs.waitTillDownloadFinishesString(driver, dwnldFle, 300000);
 
 	// Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import
 	testFuncs.myDebugPrinting("Step 2 - Enter the Import-configuration menu, import the System configuration and verify the private-placeholder import");	
-	testFuncs.pressHomeButton(driver);
+//	testFuncs.pressHomeButton(driver);	
+	testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[1]/li[2]/a"), 5000);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	String path  = testVars.getDownloadsPath() + "\\" + dwnldFle;
 	testFuncs.uploadFile(driver, path, xpathUploadField, xpathUploadButton);
@@ -134,9 +135,9 @@ public class Test129__export_private_template_placeholder {
 	  
 	  String tempStr = "%ITCS_P_" + id + "%";
 	  testFuncs.myDebugPrinting("tempStr - " + tempStr, enumsClass.logModes.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , id		, 3000);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), tempStr, 3000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[3]/a/span"), 3000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , id		, 2000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), tempStr, 2000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/div[1]/div[4]/div/div[2]/div[1]/div[3]/a/span"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 3000);	  

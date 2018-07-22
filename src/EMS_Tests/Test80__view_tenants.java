@@ -89,6 +89,7 @@ public class Test80__view_tenants {
 	testFuncs.myDebugPrinting("Step 2 - Check the Change-Tenants-Via-EMS button.");
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div[2]/div/h4/a"), 10000);
 	ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
+	testFuncs.myWait(20000);
 	driver.switchTo().window((String) tabs.get(1));
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Txt was not detected !! ("  + txt + ")", txt.contains("USERNAME"));

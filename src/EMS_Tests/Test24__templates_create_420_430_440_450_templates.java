@@ -97,7 +97,7 @@ public class Test24__templates_create_420_430_440_450_templates {
   	for (String type : phoneTypes) {
   		
   		testFuncs.myDebugPrinting("Step 1." + i + " - Add a " + type + " template");
-  		map.put("cloneFromtemplate", "Audiocodes_" + type + "_LYNC");
+  		map.put("cloneFromtemplate", "Audiocodes_" + type);
   		testFuncs.addTemplate(driver, "my" + type + "Template_" + Id, "my" + type + "desc", testVars.getNonDefTenant(0), type, map);
   		testFuncs.myWait(3000);
   		++i;

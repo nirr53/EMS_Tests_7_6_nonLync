@@ -93,7 +93,7 @@ public class Test86__Monitoring_operation_view_sites {
 	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
 	// Known VI
-	//	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
+	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
 
 	// Step 3 - Logout, re-login the system via Operation user (system) and verify in the View-sites menu that the menu is displayed properly
 	testFuncs.myDebugPrinting("Step 3 - Logout, re-login the system via Operation user (system) and verify that the menu is displayed properly");  
@@ -107,8 +107,7 @@ public class Test86__Monitoring_operation_view_sites {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
-	// Known VI
-	//	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
+	testFuncs.searchStr(driver, testVars.getDefSite() + " [" + testVars.getDefSite() + "] " + testVars.getDefTenant());
   }
   
   @After

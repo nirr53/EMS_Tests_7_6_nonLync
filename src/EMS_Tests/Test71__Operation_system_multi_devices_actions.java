@@ -89,6 +89,7 @@ public class Test71__Operation_system_multi_devices_actions {
 	
 	// Set variables
 	String srcUserName      = "opssmldvc" + testFuncs.getId();
+	String tempName			= "NirTemplate430";
 	
 	// Login via Administrator, create a user with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
@@ -111,52 +112,52 @@ public class Test71__Operation_system_multi_devices_actions {
 	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
    
-//    // Step 1 - Verify that Change-IP-phone-type action is active.
-//  	testFuncs.myDebugPrinting("Step 1 - Verify that Change-IP-phone-type action is active.");
-//    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
-//	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeType");
-//    testFuncs.myWait(2000);
-//	new Select(driver.findElement(By.xpath("//*[@id='ipptype']"))).selectByVisibleText("Audiocodes_430HD");
-//    testFuncs.myWait(2000);    
-//    testFuncs.myClick(driver, By.xpath("//*[@id='changeTypeTR']/td/div[1]/a[2]"), 5000);
-//	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Template");
-//	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the Template of the selected devices?");
-//	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
-//    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
-//	
-//	// Step 2 - Verify that Change-language action is active.
-//	testFuncs.myDebugPrinting("Step 2 - Verify that Change-language action is active.");
-//	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
-//    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
-//	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeLanguage");
-//    testFuncs.myWait(2000);
-//	new Select(driver.findElement(By.xpath("//*[@id='deviceLanguage']"))).selectByVisibleText("English");
-//    testFuncs.myWait(2000);  
-//    testFuncs.myClick(driver, By.xpath("//*[@id='changeLanguageTR']/td/div[1]/a[2]"), 5000);
-//   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Language");
-//   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the device's language?");
-//   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
-//    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
+    // Step 1 - Verify that Change-IP-phone-type action is active.
+  	testFuncs.myDebugPrinting("Step 1 - Verify that Change-IP-phone-type action is active.");
+    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
+	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeType");
+    testFuncs.myWait(2000);
+	new Select(driver.findElement(By.xpath("//*[@id='ipptype']"))).selectByVisibleText(tempName);
+    testFuncs.myWait(2000);    
+    testFuncs.myClick(driver, By.xpath("//*[@id='changeTypeTR']/td/div[1]/a[2]"), 5000);
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Template");
+	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the Template of the selected devices?");
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 	
-//    // Step 3 - Verify that Restart-devices action is active.
-//   	testFuncs.myDebugPrinting("Step 3 - Verify that Restart-devices action is active");
-//	testFuncs.myWait(2000);
-//	String resModes[] = {"Graceful", "Force", "Scheduled"};
-//	for (String resMode : resModes) {
-//		
-//		testFuncs.myDebugPrinting("resMode - " + resMode, enumsClass.logModes.NORMAL);
-//		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
-//	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
-//		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetIpPhones");
-//	    testFuncs.myWait(2000);
-//		new Select(driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/select"))).selectByVisibleText(resMode);
-//	    testFuncs.myWait(2000);
-//	    testFuncs.myClick(driver, By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/a"), 5000);
-//	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart Devices");
-//	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Note: restart command will work only on supported IP Phones.\nAre you sure you want to restart the selected IP Phones?");
-//	   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
-//	    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
-//	}
+	// Step 2 - Verify that Change-language action is active.
+	testFuncs.myDebugPrinting("Step 2 - Verify that Change-language action is active.");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
+    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
+	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("changeLanguage");
+    testFuncs.myWait(2000);
+	new Select(driver.findElement(By.xpath("//*[@id='deviceLanguage']"))).selectByVisibleText("English");
+    testFuncs.myWait(2000);  
+    testFuncs.myClick(driver, By.xpath("//*[@id='changeLanguageTR']/td/div[1]/a[2]"), 5000);
+   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Language");
+   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the device's language?");
+   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
+	
+    // Step 3 - Verify that Restart-devices action is active.
+   	testFuncs.myDebugPrinting("Step 3 - Verify that Restart-devices action is active");
+	testFuncs.myWait(2000);
+	String resModes[] = {"Graceful", "Force", "Scheduled"};
+	for (String resMode : resModes) {
+		
+		testFuncs.myDebugPrinting("resMode - " + resMode, enumsClass.logModes.NORMAL);
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
+	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
+		new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("resetIpPhones");
+	    testFuncs.myWait(5000);
+		new Select(driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/select"))).selectByVisibleText(resMode);
+	    testFuncs.myWait(5000);
+	    testFuncs.myClick(driver, By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/a"), 5000);
+	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart Devices");
+	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Note: restart command will work only on supported IP Phones.\nAre you sure you want to restart the selected IP Phones?");
+	   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
+	}
    	
     // Step 4 - Verify that Generate-configuration-users action is active.
   	testFuncs.myDebugPrinting("Step 4 - Verify that Generate-configuration-users action is active.");

@@ -77,8 +77,6 @@ public class Test44__Operation_tenant_permissions {
 	  // Set variables
 	  String bodyText;
 	  String tenant1 = testVars.getDefTenant(); 	// The default Tenant of the system
-	  String tenant2 = testVars.getNonDefTenant(0);	// Another Tenant. Non default
-	  String tenant3 = testVars.getNonDefTenant(1);	// Another Tenant. Non default
 	  
 	  // Step 1 - Login with a  Operation user (System), check the all tenants are displayed and logout
 	  testFuncs.myDebugPrinting("Step 1 - Login with a  Operation user (System), check the all tenants are displayed and logout");
@@ -86,8 +84,6 @@ public class Test44__Operation_tenant_permissions {
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant1));
-	  testFuncs.myAssertTrue("Tenant <" + tenant2 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant2));
-	  testFuncs.myAssertTrue("Tenant <" + tenant3 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant3));
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	  // Step 2 - Login with a  Operation user (Tenant), check that only the tenant which associate with the user is displayed
@@ -96,8 +92,6 @@ public class Test44__Operation_tenant_permissions {
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText,  bodyText.contains(tenant1));
-	  testFuncs.myAssertTrue("Tenant <" + tenant2 + "> was found !!\nbodyText - "     + bodyText, !bodyText.contains(tenant2));
-	  testFuncs.myAssertTrue("Tenant <" + tenant3 + "> was found !!\nbodyText - "     + bodyText, !bodyText.contains(tenant3));
   }
 
   @After

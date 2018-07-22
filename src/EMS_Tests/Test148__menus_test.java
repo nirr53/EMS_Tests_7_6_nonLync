@@ -116,10 +116,12 @@ public class Test148__menus_test {
 
 	// Step 1 - Move between all menus
 	testFuncs.myDebugPrinting("Step 1 - Move between all menus");
+	int mapSize = menusMap.size();
     for (menuNames key : menusMap.keySet()) {
     	
 		testFuncs.pressHomeButton(driver);
 		String tempHeader = menusMap.get(key);
+		testFuncs.myDebugPrinting("<" + menuIdx + "--" + mapSize + ">", enumsClass.logModes.NORMAL);
 		testFuncs.myDebugPrinting(menuIdx + ".Enter menu - "      + key.toString(), enumsClass.logModes.NORMAL);
 		testFuncs.myDebugPrinting(menuIdx + ".Seek for header - " + tempHeader, enumsClass.logModes.MINOR);
 		testFuncs.enterMenu(driver, key, tempHeader);

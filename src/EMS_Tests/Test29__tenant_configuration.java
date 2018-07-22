@@ -88,10 +88,10 @@ public class Test29__tenant_configuration {
 	String cfgKeyName      = "user_name" + Id;
 	String cfgKeyValue     = "userValue" + Id;
 
-//	// Step 1 - Add a new CFG key
-//	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
-//	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
-//    
+	// Step 1 - Add a new CFG key
+	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
+	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+    
 //	// Step 2 - Delete a CFG key
 //	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
 //	testFuncs.deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
@@ -100,11 +100,11 @@ public class Test29__tenant_configuration {
 	testFuncs.myDebugPrinting("Step 3 - Copy a CFG key from other tenant");
     copyCFGkey(driver, testVars.getDefTenant(), testVars.getNonDefTenant(0), cfgKeyName, cfgKeyValue);
 	
-//	// Step 4 - Delete  configuration values from the tenants
-//	testFuncs.myDebugPrinting("Step 4 - Delete  configuration values from the tenants");
-//    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getDefTenant());
-//    testFuncs.selectTenant(driver, testVars.getNonDefTenant(0));
-//    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getNonDefTenant(0));
+	// Step 4 - Delete  configuration values from the tenants
+	testFuncs.myDebugPrinting("Step 4 - Delete  configuration values from the tenants");
+    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getDefTenant());
+    testFuncs.selectTenant(driver, testVars.getNonDefTenant(0));
+    testFuncs.deleteAllConfValues(driver , cfgKeyName, testVars.getNonDefTenant(0));
   }
   
   // Copy a configuration value from other tenant
@@ -144,7 +144,7 @@ public class Test29__tenant_configuration {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

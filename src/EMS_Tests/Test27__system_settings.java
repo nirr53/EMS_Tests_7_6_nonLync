@@ -117,11 +117,13 @@ public class Test27__system_settings {
   @After
   public void tearDown() throws Exception {
 	  
-	// Restore system language to English
+//	// Restore system language to English
 	testFuncs.myDebugPrinting("Restore system language to English");	
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
-	sysLangs.selectByVisibleText("English");
+	sysLangs.selectByVisibleText("English");	
+	Select dayLightSwitch = new Select(driver.findElement(By.xpath("//*[@id='DLSW']")));
+	dayLightSwitch.selectByVisibleText("Disable");
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 15000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");

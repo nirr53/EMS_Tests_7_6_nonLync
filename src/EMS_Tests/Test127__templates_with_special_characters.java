@@ -109,7 +109,7 @@ public class Test127__templates_with_special_characters {
 		testFuncs.myDebugPrinting("tempName - " + tempName, enumsClass.logModes.MINOR);
 		testFuncs.myDebugPrinting("tempDesc - " + tempDesc, enumsClass.logModes.MINOR);
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
-  		map.put("cloneFromtemplate", "Audiocodes_" + type + "_LYNC");
+  		map.put("cloneFromtemplate", "Audiocodes_" + type);
   		testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getDefTenant(), type, map);
   		testFuncs.myWait(3000);
 	}

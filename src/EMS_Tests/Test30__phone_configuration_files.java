@@ -90,11 +90,12 @@ public class Test30__phone_configuration_files {
  	testFuncs.myDebugPrinting("Step 2 - Display configuration file");
  	String currUrl  = driver.getCurrentUrl();
  	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
+ 	testFuncs.myDebugPrinting("<" + "https://" + testVars.getIp() + "//configfiles//" + usedFile + ">", enumsClass.logModes.MINOR);
     driver.get("https://" + testVars.getIp() + "//configfiles//" + usedFile);
  	testFuncs.myWait(5000);
  	testFuncs.searchStr(driver, "network/lan/vlan/period=30");
     driver.get(currUrl);
-
+    
 	// Step 3 - Delete a phone configuration file
   	testFuncs.myDebugPrinting("Step 3 - Delete a phone configuration file");
 	testFuncs.deleteConfigurationFile(driver, usedFile);

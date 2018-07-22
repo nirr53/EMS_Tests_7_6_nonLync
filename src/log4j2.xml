@@ -7,7 +7,7 @@
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p - %msg%n" />
 		</Console>
  
-		<RollingFile name="RollingFile" filename="log/EMS_7_4_web_admin.log"
+		<RollingFile name="RollingFile" filename="log/EMS_7_6_nonLync_.log"
 			filepattern="${logPath}/%d{yyyyMMddHHmmss}-fargo.log">
 			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p - %msg%n" />
 			<Policies>

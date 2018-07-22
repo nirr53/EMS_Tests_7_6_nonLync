@@ -61,7 +61,7 @@ public class GlobalVars {
 	*  srcDhcpCnfFile - Source File name for import DHCP configuration file
 	*  srcSbcConfFile - Source File name for import SBC configuration file
 	*/
-	private  String ip               = "10.21.8.35";
+	private  String ip               = "10.21.8.32";
 	private  String port             = "8081";
 	private  String domain           = "cloudbond365b.com";
     private  String url  		     = ip + "/ipp/admin/AudioCodes_files/login.php";
@@ -69,8 +69,8 @@ public class GlobalVars {
     private  String crAlrmsBatName   = "alertEngine.exe";
     private  String crKpAlvBatName   = "changeStatus.exe";
     private  String mainPageStr		 = "Login to IP Phone Manager Pro";
-    private  String sysUsername      = "acladmin2";
-	private  String sysPassword      = "pass_12345";
+    private  String sysUsername      = "nir";
+	private  String sysPassword      = "1q2w3e$r";
     private  String monitUsername    = "Nir_Monitoring4";
 	private  String monitPassword    = "1q2w3e4r5t6y";
     private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";
@@ -85,14 +85,14 @@ public class GlobalVars {
 	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
 	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
 	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
-	private  String srcFilesPath     = "C:\\Users\\nirk\\Desktop\\myEclipseProjects\\EMS_Tests_7_4\\sourceFiles\\EMS";	
+	private  String srcFilesPath     = "C:\\Users\\nirk\\Desktop\\myEclipseProjects\\EMS_Tests_7_6_nonLync\\sourceFiles\\EMS";	
 	private  String acMacPrefix      = "00908f";	
 	private  String defTenant      	 = "Nir";
 	private  String defSite			 = "AutoDetection";
 	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
-	private  String nonDefTeanants[] = {"NirTest1", "NirTest2"};
+	private  String nonDefTeanants[] = {"NirTest3", "NirTest2"};
 	private  String defPhoneModel    = "430HD";
-	private  String version			 = "7.4.3080";
+	private  String version			 = "7.6.49";
 	private  String firmVersion      = "UC_2.0.13.121";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
@@ -100,7 +100,7 @@ public class GlobalVars {
 	private  String sysLogsActPre    = "IPP.Manage.Activity.";
 	private  String shFilesFiName    = "Files.zip";
 	private  String srcImpConf       = "Configuration.zip";
-	private  String srcImpUserDvcs   = "users.zip";
+	private  String srcImpUserDvcs   = "users.csv";
 	private  String invalidCfg   	 = "users.jpeg";
 	private  String srcImp1000Usrs   = "users1000.zip";
 	private  String srcConfFile      = "my.cfg";

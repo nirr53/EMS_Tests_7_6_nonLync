@@ -92,7 +92,7 @@ public class Test120__private_placeholders {
     Map<String, String> map = new HashMap<String, String>();
     map.put("isRegionDefault"		   ,  "false");
     map.put("isDownloadSharedTemplates",  "false");
-  	map.put("cloneFromtemplate"		   , "Audiocodes_430HD_LYNC");
+  	map.put("cloneFromtemplate"		   , "Audiocodes_430HD");
 
     // Login and enter the Phone Templates menu
 	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
