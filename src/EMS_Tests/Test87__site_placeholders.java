@@ -89,7 +89,7 @@ public class Test87__site_placeholders {
 	String sitePHTenant	  = testVars.getDefTenant();
 	
 	testFuncs.myDebugPrinting("Enter the Sites configuration menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	 	
 	// Step 1 - Add a new Site Placeholder

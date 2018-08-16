@@ -93,7 +93,7 @@ public class Test55__Operation_tenant_placeholders {
 	
 	// Login as Operation user (system) and enter the Tenant configuration menu
 	testFuncs.myDebugPrinting("Login as Operation user (system) and enter the Tenant configuration menu");
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	
 	// Set Tenant
@@ -126,7 +126,7 @@ public class Test55__Operation_tenant_placeholders {
 	// Logout, re-login as Operation user (tenant) and enter the Tenant configuration menu
 	testFuncs.myDebugPrinting("Logout, re-login as Operation user (tenant) and enter the Tenant configuration menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	 	
 	// Step 5 - Add a new Tenant Placeholder

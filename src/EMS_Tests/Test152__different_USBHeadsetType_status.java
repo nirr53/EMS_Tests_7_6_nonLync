@@ -88,7 +88,7 @@ public class Test152__different_USBHeadsetType_status {
 	String usbHdstTypeWithout = prefixName + "empty" + Id;
 	String usbHdstTypeLong 	  = prefixName + "long"    + Id;
 
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with randomize USBHeadsetType status

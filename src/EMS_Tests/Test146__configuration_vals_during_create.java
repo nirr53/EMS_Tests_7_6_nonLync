@@ -98,7 +98,7 @@ public class Test146__configuration_vals_during_create {
 
 	// Login the system
 	testFuncs.myDebugPrinting("Login the system");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 
 	// Create Site and Tenant configuration values
 	testFuncs.myDebugPrinting("Create Site and Tenant configuration values");

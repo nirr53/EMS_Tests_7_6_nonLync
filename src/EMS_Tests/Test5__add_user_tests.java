@@ -92,7 +92,7 @@ public class Test5__add_user_tests {
 	String mac				= "";
 
 	// login
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Step 1 - Create user manually
 	testFuncs.myDebugPrinting("Step 1 - Create user manually");

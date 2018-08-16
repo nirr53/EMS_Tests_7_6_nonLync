@@ -91,7 +91,7 @@ public class Test137__duplicate_device_placeholders {
 	  
 	  // Login, create a user with a POST query and add a device placeholder to it
 	  testFuncs.myDebugPrinting("Login, create a user with a POST query and add a device placeholder to it");
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					  testVars.getIp()           ,

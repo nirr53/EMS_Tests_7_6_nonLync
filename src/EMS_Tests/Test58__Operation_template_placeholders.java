@@ -101,7 +101,7 @@ public class Test58__Operation_template_placeholders {
 	 
     // Login via Operation user (system) and enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Login via Operation user (system) and enter the Add new template placeholder menu");
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 1 - Add a new Template placeholder
@@ -128,7 +128,7 @@ public class Test58__Operation_template_placeholders {
     // Logout and re-login via Operation user (tenant) and enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Logout and re-login via Operation user (tenant) and enter the Add new template placeholder menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 5 - Add a new Template placeholder

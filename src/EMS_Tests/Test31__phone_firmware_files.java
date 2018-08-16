@@ -90,7 +90,7 @@ public class Test31__phone_firmware_files {
 	 
     // Enter the Phone firmware files menu
 	testFuncs.myDebugPrinting("Enter the Phone firmware files menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 
 	// Step 1 - Add new IP Phone firmware

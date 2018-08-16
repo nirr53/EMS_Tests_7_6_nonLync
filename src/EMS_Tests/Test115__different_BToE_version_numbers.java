@@ -84,7 +84,7 @@ public class Test115__different_BToE_version_numbers {
 	String usersNumber	  = "2";
 	String btoeDisabled   = prefixName + "_dis_"    + Id;
 	String btoeAutoPaired = prefixName + "_auto_"   + Id;
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status with version

@@ -88,7 +88,7 @@ public class Test114__different_BToE_status {
 	String btoeAutoPaired = prefixName + "_auto_"   + Id;
 	String btoeManPaired  = prefixName + "_manual_" + Id;
 	String btoeNotPaired  = prefixName + "_not_"    + Id;
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status

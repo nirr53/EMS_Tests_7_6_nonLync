@@ -82,7 +82,7 @@ public class Test83__Monitoring_alarms {
 	
 	// Login via Monitoring-user (system), enter the Alarms menu
 	testFuncs.myDebugPrinting("Login via Monitoring-user (system), enter the Alarms menu");
-	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 1 - Test the Export button
@@ -108,7 +108,7 @@ public class Test83__Monitoring_alarms {
 	// Logout, re-login via Monitoring-user (tenant), and enter the Alarms menu
 	testFuncs.myDebugPrinting("Logout, re-login via Monitoring-user (tenant), and enter the Alarms menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 3 - Test the Export button

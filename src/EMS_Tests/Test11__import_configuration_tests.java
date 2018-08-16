@@ -89,7 +89,7 @@ public class Test11__import_configuration_tests {
 	
     // Login enter the Import users menu and upload Configuration file
 	testFuncs.myDebugPrinting("Login enter the Import users menu and upload Configuration file");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
 	path  = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("11");

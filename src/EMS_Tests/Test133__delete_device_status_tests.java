@@ -83,7 +83,7 @@ public class Test133__delete_device_status_tests {
 	  String userName1 = prefix + "_1";
 	  String userName2 = prefix + "_2";
 	  String usersNumber   	= "2";
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser); 
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser); 
 
 	  // Create users with a POST query
 	  testFuncs.myDebugPrinting("Create users with a POST query");

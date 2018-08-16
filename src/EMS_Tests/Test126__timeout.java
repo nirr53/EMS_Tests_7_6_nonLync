@@ -91,7 +91,7 @@ public class Test126__timeout {
 	int timeoutInt 			= Integer.valueOf(timeoutMin);
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  
     // Set the Timeout value to be 3 minutes and create a registered-user
 	testFuncs.myDebugPrinting("Set the Timeout value to be 3 minutes and create a registered-user");

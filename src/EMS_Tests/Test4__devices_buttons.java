@@ -73,7 +73,7 @@ public class Test4__devices_buttons {
   public void Device_menus_buttons() throws Exception {
 	  
 	Log.startTestCase(this.getClass().getName());
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 
     // Step 4.1 - press the Registered devices button
 	testFuncs.myDebugPrinting("Step 4.1 - press the Registered devices button");

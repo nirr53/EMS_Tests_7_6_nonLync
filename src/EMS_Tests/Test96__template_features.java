@@ -95,7 +95,7 @@ public class Test96__template_features {
 
     // Login, enter the Phone Templates menu, add a Template and select the create template
 	testFuncs.myDebugPrinting("Login, enter the Phone Templates menu, add a Template and select the create template");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");	
   	testFuncs.addTemplate(driver, "my" + "420HD" + "Template_" + Id, "my" + "420HD" + "desc", testVars.getDefTenant(), "420HD", map);
   	pressEditOfCreatedTemplate(driver, "my" + "420HD" + "Template_" + Id);

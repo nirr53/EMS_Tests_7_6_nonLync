@@ -86,7 +86,7 @@ public class Test53__Operation_tenant_multi_users_actions {
 	
 	// Login via Administrator, create a user of default tenant with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user default tenant with a POST query and add a device-PH to it");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
@@ -102,7 +102,7 @@ public class Test53__Operation_tenant_multi_users_actions {
 		 
     // Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.
 	testFuncs.myDebugPrinting("Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.");
-	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
 
     // Step 1 - Verify that Change-tenant action is active.

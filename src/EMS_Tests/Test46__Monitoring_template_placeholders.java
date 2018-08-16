@@ -87,7 +87,7 @@ public class Test46__Monitoring_template_placeholders {
 	 
     // Login via Monitoring user (system) and enter the Add new template placeholder menu
 	testFuncs.myDebugPrinting("Login via Monitoring user (system) and enter the Add new template placeholder menu");
-	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 1 - Try to add a Template PH via a Monitoring user
@@ -120,7 +120,7 @@ public class Test46__Monitoring_template_placeholders {
 	testFuncs.myDebugPrinting("Switch back to main frame, logout and re-login via Monitoring user (tenant) and enter the Add new template placeholder menu");
 	driver.switchTo().window((String) tabs.get(0));
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES_PLACEHOLDERS, "Template Placeholders");
 	
 	// Step 5 - Try to add a Template PH via a Monitoring user

@@ -81,7 +81,7 @@ public class Test94__tenant_configuration_features {
 			
 	// Enter the Add new Tenant configuration menu
 	testFuncs.myDebugPrinting("Enter the Add new Tenant configuration menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	
 	// Step 1 - Add Daylight value

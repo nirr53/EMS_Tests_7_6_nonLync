@@ -85,10 +85,10 @@ public class Test110__alarms_tests3 {
 	Log.startTestCase(this.getClass().getName());
 	  
 	// Set variables and login
-	String prefix = "tlntAlrt";
-	String user1  = prefix + "1_" + testFuncs.getId();
-	String user2  = prefix + "2_" + testFuncs.getId();
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	String prefix = "tlntAlrt" + testFuncs.getId();
+	String user1  = prefix + "_1_";
+	String user2  = prefix + "_2_";
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered users from two different tenants
@@ -146,7 +146,7 @@ public class Test110__alarms_tests3 {
 
 	// Step 2 - Check The Clear-filter button of the page
 	testFuncs.myDebugPrinting("Step 2 - Check The Clear-filter button of the page");
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 10000);
 	testFuncs.searchStr(driver, user1);
 	testFuncs.searchStr(driver, user2);
 	

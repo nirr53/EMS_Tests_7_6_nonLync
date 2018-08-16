@@ -1,6 +1,5 @@
 package EMS_Tests;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -75,7 +74,7 @@ public class Test107__system_settings_http_https {
 	testVars  = new GlobalVars();
     testFuncs = new GlobalFuncs(); 
     System.setProperty("webdriver.chrome.driver", testVars.getchromeDrvPath());
-	System.setProperty("webdriver.ie.driver"    , testVars.getIeDrvPath());
+	
 	testFuncs.myDebugPrinting("Enter setUp(); usedbrowser - " + this.usedBrowser);
 	driver = testFuncs.defineUsedBrowser(this.usedBrowser);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -91,7 +90,7 @@ public class Test107__system_settings_http_https {
 	Map<String, String> map = new HashMap<String, String>();
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		
 	// Create a user using POST query
@@ -126,7 +125,8 @@ public class Test107__system_settings_http_https {
 	testFuncs.myDebugPrinting("Step 2 - Enter the devices menu, select the create device and verify that its admin is opened with https");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	searchAndSelectDevice(driver, userName);
-	openWebAdminDevice("https");
+	openWebAdminDevice("https", "http://" + testVars.getUrl());
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Enter the system settings menu and set the system to work with HTTP
 	testFuncs.myDebugPrinting("Enter the system settings menu and set the system to work with HTTP");
@@ -148,7 +148,8 @@ public class Test107__system_settings_http_https {
 	testFuncs.myDebugPrinting("Step 4 - Enter the devices menu, select the create device and verify that its admin is opened with https");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	searchAndSelectDevice(driver, userName);
-	openWebAdminDevice("http");
+	openWebAdminDevice("http", "http://" + testVars.getUrl());
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Step 5 - Delete the created user
   	testFuncs.myDebugPrinting("Step 5 - Delete the created user");
@@ -166,7 +167,7 @@ public class Test107__system_settings_http_https {
   }
   
   // Open Web Admin of device
-  private void openWebAdminDevice(String prefix) {
+  private void openWebAdminDevice(String prefix, String nextUrl) {
 	  
 	  // Open Web Admin
 	  testFuncs.myDebugPrinting("Open Web Admin of device", enumsClass.logModes.NORMAL); 
@@ -174,9 +175,11 @@ public class Test107__system_settings_http_https {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[4]/a"), 20000);
 	  String ip = testFuncs.readFile("ip_1.txt");
 	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
-	  String parentHandle = driver.getWindowHandle();
-	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
-	  driver.switchTo().window((String) tabs.get(1));
+	  
+	  for(String winHandle : driver.getWindowHandles()) {
+	    	
+	        driver.switchTo().window(winHandle);  
+	  }
 	  testFuncs.myWait(100000);
 	
 	  // Verify the url used the given http prefix (http or https)
@@ -190,8 +193,8 @@ public class Test107__system_settings_http_https {
 		  testFuncs.myAssertTrue("URL was not opened in https format !!", url.contains("https://" + ip) || url.contains("chrome-error://chromewebdata/"));  
 	  }
 	  
-	  driver.close();  
-	  driver.switchTo().window(parentHandle);  
+      driver.get(nextUrl);
+      testFuncs.myWait(5000);    
   }
   
   // Search for a device and select it via Select-All checkbox

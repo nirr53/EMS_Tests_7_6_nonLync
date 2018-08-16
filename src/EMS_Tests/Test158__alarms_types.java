@@ -94,7 +94,7 @@ public class Test158__alarms_types {
 	alarmNamesMap.put("IPPHONE WEB SUCCESSIVE LOGIN FAILED TRIALS"   , "gg"); // not work - yields name is 88 
 	alarmNamesMap.put("IPPHONE REQUIRES RESET"						 , "gg"); //not work - no alarm is displayed
 	
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered user using POST method

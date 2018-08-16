@@ -89,7 +89,7 @@ public class Test93__Monitoring_LDAP {
 	 
 	// Login via Monitoring-user (system), an enter the LDAP menu
 	testFuncs.myDebugPrinting("Login via Monitoring-user (system), an enter the LDAP menu");
-	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 
 	// Step 1 - Verify that you cannot edit the LDAP properties
@@ -117,7 +117,7 @@ public class Test93__Monitoring_LDAP {
     
 	// Login via Monitoring-user (tenant), an enter the LDAP menu
 	testFuncs.myDebugPrinting("Login via Monitoring-user (tenant), an enter the LDAP menu");
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 
 	// Step 3 - Verify that you cannot edit the LDAP properties

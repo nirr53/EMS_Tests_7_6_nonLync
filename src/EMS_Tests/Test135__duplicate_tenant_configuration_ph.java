@@ -92,7 +92,7 @@ public class Test135__duplicate_tenant_configuration_ph {
 	 
 	// Login and  Add new Tenant configuration and Tenant PH
 	testFuncs.myDebugPrinting("Login and  Add new Tenant configuration and Tenant PH");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenTenant);
 	testFuncs.addTenantPH(driver, tenPhName, tenPhValue, tenTenant);

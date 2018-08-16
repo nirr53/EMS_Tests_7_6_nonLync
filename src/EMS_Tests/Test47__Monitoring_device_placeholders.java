@@ -92,7 +92,7 @@ public class Test47__Monitoring_device_placeholders {
 	  
 	  // Login via Administrator, create a user with a POST query and add a device-PH to it
 	  testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					  testVars.getIp()           ,
@@ -113,7 +113,7 @@ public class Test47__Monitoring_device_placeholders {
 	  // Log off , re-login via a Monitoring user (system) and enter the device-PH menu
 	  testFuncs.myDebugPrinting("Log off , re-login via a Monitoring user (system) and enter the device-PH menu");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 
 	  // Step 1 - Try to add a device-PH
@@ -138,7 +138,7 @@ public class Test47__Monitoring_device_placeholders {
 	  // Log off , re-login via a Monitoring user (tenant) and enter the device-PH menu
 	  testFuncs.myDebugPrinting("Log off , re-login via a Monitoring user (tenant) and enter the device-PH menu");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 
 	  // Step 4 - Try to add a device-PH
@@ -163,7 +163,7 @@ public class Test47__Monitoring_device_placeholders {
 	  // Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user
 	  testFuncs.myDebugPrinting("Step 7 - Log off, re-login as an Administrator and delete the created device placeholder and created user");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");  
 	  deleteDevicePlaceholder(driver, srcUserName, phName, phValue);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");

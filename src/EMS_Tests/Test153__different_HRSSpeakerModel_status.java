@@ -91,7 +91,7 @@ public class Test153__different_HRSSpeakerModel_status {
 	
 	// Login and check the HRS Speaker Model check-box
 	testFuncs.myDebugPrinting("Login and check the HRS Speaker Model check-box");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 	testFuncs.selectColumn(driver, "//*[@id='HRS_SPEAKER_MODEL']", true);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");

@@ -87,7 +87,7 @@ public class Test139__username_length {
     map.put("startIdx"   ,  String.valueOf(1));
 
 	// login
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Step 1 - Add a new user with 100-characters long name manually
 	testFuncs.myDebugPrinting("Step 1 - Add a new user with 100-characters long name manually");

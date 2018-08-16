@@ -82,7 +82,7 @@ public class Test123__change_status {
 	String chngSttsUsername = testFuncs.getId();
 	String location 		= "myLocation";
 	String phoneNumber		= "+97239764713";
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");

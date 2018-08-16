@@ -82,7 +82,7 @@ public class Test77__full_search {
 	  // Set variables + login
 	  String prefix 		   = "fulsrch";
 	  String srcUserName1      = prefix + "1" + testFuncs.getId();
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 
 	  // Create a user with a POST query

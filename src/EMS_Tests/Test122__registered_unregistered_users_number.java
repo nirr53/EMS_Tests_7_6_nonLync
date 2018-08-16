@@ -85,7 +85,7 @@ public class Test122__registered_unregistered_users_number {
 		// Set variables + login
 		String regDevicesNumber = "";
 		String usersPrefix      = "rgTsts" + testFuncs.getId();
-		testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+		testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	    
 	    // Get registration-data and total devices number
 		testFuncs.myDebugPrinting("Get registration-data and total devices number");

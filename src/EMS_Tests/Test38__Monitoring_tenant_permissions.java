@@ -81,7 +81,7 @@ public class Test38__Monitoring_tenant_permissions {
 	  
 	  // Step 1 - Login with a  Monitoring user (System), check the all tenants are displayed and logout
 	  testFuncs.myDebugPrinting("Step 1 - Login with a  Monitoring user (System), check the all tenants are displayed and logout");
-	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  String bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText, bodyText.contains(tenant1));
@@ -91,7 +91,7 @@ public class Test38__Monitoring_tenant_permissions {
 
 	  // Step 2 - Login with a  Monitoring user (Tenant), check that only the tenant which associate with the user is displayed and logout
 	  testFuncs.myDebugPrinting("Step 2 - Login with a  Monitoring user (Tenant), check that only the tenant which associate with the user is displayed and logout");
-	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_TENANTS, "Tenant List");
 	  bodyText = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Tenant <" + tenant1 + "> was not found !!\nbodyText - " + bodyText,  bodyText.contains(tenant1));

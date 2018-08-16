@@ -113,16 +113,16 @@ public class Test2__invalid_login {
       driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).clear();	      
       if        (i == 0) {
     	  
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysUsername().substring(1));
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysPassword());     
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.USERNAME).substring(1));
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.PASSWORD));     
       } else if (i == 1) {
     	  
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysUsername());
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysPassword().substring(1));   
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.USERNAME));
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.PASSWORD).substring(1));   
       } else if (i == 2) {
       
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysUsername().substring(1));
-	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysPassword().substring(1));
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[1]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.USERNAME).substring(1));
+	      driver.findElement(By.xpath("//*[@id='loginform']/div[2]/input")).sendKeys(testVars.getSysLoginData(enumsClass.loginData.PASSWORD).substring(1));
       }
 	  testFuncs.myClick(driver, By.xpath("//*[@id='loginform']/div[4]/div[2]/button"), 3000);   
 	  

@@ -85,7 +85,7 @@ public class Test50__Monitoring_import {
 	
     // Login via a Monitoring user (system) and enter Import users+devices menu
 	testFuncs.myDebugPrinting("Login via a Monitoring user (system) and enter Import users+devices menu");
-	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	
 	// Step 1 - Verify that you cannot import a zip file
@@ -104,7 +104,7 @@ public class Test50__Monitoring_import {
 	// Logout and re-login via a Monitoring user (tenant) and enter Import users+devices menu
 	testFuncs.myDebugPrinting("Logout and re-login via a Monitoring user (tenant) and enter Import users+devices menu"); 
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 
 	// Step 3 - Verify that you cannot import a zip file

@@ -91,7 +91,7 @@ public class Test156__setup_wizard_configuration_value {
 
 	// Login the system and enter Setup-Wizard menu
 	testFuncs.myDebugPrinting("Login the system and enter Setup-Wizard menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SETUP_WIZARD, "System Properties");
 
 	// Enter the User-configuration menu

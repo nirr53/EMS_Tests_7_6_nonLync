@@ -95,7 +95,7 @@ public class Test65__import_diffrent_langs_users {
 
     // Login and Enter the Import-export users+devices menu
 	testFuncs.myDebugPrinting("Login and Enter the Import-export users+devices menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser); 
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser); 
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	
 	// Step 1 - Import users+devices

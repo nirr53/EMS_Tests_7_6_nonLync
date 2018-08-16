@@ -95,7 +95,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 	
 	// Enter the Site Configuration menu, add new site CFG key and new Site PH and logout
 	testFuncs.myDebugPrinting("Enter the Site Configuration menu, add new site CFG key and new Site PH and logout");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
     testFuncs.addNewSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite);  
 	testFuncs.addSitePH(driver, sitePhName, sitePhValue, sitePHSite, sitePHTenant);
@@ -103,7 +103,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 
 	//  Login via Monitoring user (tenant) and enter the Site configuration menu
 	testFuncs.myDebugPrinting("Login via Monitoring user (tenant) and enter the Site configuration menu");
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration");
 	
 	// Nir 28/1/18 - VI 149365
@@ -154,7 +154,7 @@ public class Test89__Monitoring_tenant_site_configuration {
 	// Step 9 - Logout, re-login as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH 
 	testFuncs.myDebugPrinting("Step 9 - Logout, re-login as Administrator, enter the Site configuration menu and delete the created Site configuration key and and PH");	
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SITE_CONFIGURATION, "Site Configuration"); 
 	testFuncs.deleteSiteCfgKey(driver, siteCfgKeyName, siteCfgKeyValue, tenant, sitePHSite, testVars.getDefSite());
 	testFuncs.selectSite(driver, sitePHSite);

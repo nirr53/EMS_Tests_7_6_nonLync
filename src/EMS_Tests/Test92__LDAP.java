@@ -85,7 +85,7 @@ public class Test92__LDAP {
 	 
 	// Login via Administrator and enter the LDAP menu
 	testFuncs.myDebugPrinting("Login via Administrator and enter the LDAP menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS_SBC_LDAP, "LDAP Configuration");
 
 	// Step 1 - verify headers

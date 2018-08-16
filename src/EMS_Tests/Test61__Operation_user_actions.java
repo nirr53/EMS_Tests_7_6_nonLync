@@ -91,7 +91,7 @@ public class Test61__Operation_user_actions {
 	  
 	  // Step 1- Login via an Operation user (system) and create a user.
 	  testFuncs.myDebugPrinting("Step 1- Login via an Operation user (system) and create a user.");
-	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.addUser(driver, userName, "1q2w3e$r", userName, testVars.getDefTenant());
 	  
 	  // Step 2 - Add a device to the created user
@@ -109,7 +109,7 @@ public class Test61__Operation_user_actions {
 	  // Step 5 - Logout and re-login via an Operation user (system) and create a user
 	  testFuncs.myDebugPrinting("Step 5 - Logout and re-login via an Operation user (system) and create a user");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.addUser(driver, userName, "1q2w3e$r", userName, testVars.getDefTenant());
 	  
 	  // Step 6 - Add a device to the created user

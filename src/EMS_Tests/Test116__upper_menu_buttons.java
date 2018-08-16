@@ -81,7 +81,7 @@ public class Test116__upper_menu_buttons {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Login
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Step 1 - Press the Generate Configuration button
 	testFuncs.myDebugPrinting("Step 1 - Press the Generate Configuration button");

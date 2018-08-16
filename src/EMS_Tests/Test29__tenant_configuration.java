@@ -1,5 +1,8 @@
 package EMS_Tests;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
@@ -69,7 +72,7 @@ public class Test29__tenant_configuration {
 	testVars  = new GlobalVars();
     testFuncs = new GlobalFuncs(); 
     System.setProperty("webdriver.chrome.driver", testVars.getchromeDrvPath());
-	System.setProperty("webdriver.ie.driver"    , testVars.getIeDrvPath());
+	
 	testFuncs.myDebugPrinting("Enter setUp(); usedbrowser - " + this.usedBrowser);
 	driver = testFuncs.defineUsedBrowser(this.usedBrowser);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -82,7 +85,7 @@ public class Test29__tenant_configuration {
 	 
 	// Enter the Add new Tenant configuration menu
 	testFuncs.myDebugPrinting("Enter the Add new Tenant configuration menu");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
 	String Id = testFuncs.getId();
 	String cfgKeyName      = "user_name" + Id;
@@ -92,9 +95,9 @@ public class Test29__tenant_configuration {
 	testFuncs.myDebugPrinting("Step 1 - Add a new CFG key");
 	testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
     
-//	// Step 2 - Delete a CFG key
-//	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
-//	testFuncs.deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
+	// Step 2 - Delete a CFG key
+	testFuncs.myDebugPrinting("Step 2 - Delete a CFG key");
+	deleteCfgKey(driver, cfgKeyName, cfgKeyValue, testVars.getDefTenant());
 	
 	// Step 3 - Copy a CFG key from other tenant
 	testFuncs.myDebugPrinting("Step 3 - Copy a CFG key from other tenant");
@@ -140,6 +143,53 @@ public class Test29__tenant_configuration {
 	  testFuncs.searchStr(driver, cfgKeyName);
 	  testFuncs.searchStr(driver, cfgKeyValue);
   }
+  
+  /**
+   *  Delete Tenant configuration key
+   *  @param driver      - given driver
+   *  @param cfgKeyName  - given configuration tenant name
+   *  @param cfgKeyValue - given configuration tenant value
+   *  @param currTenant  - given configuration tenant
+   */  
+   private void deleteCfgKey(WebDriver driver, String cfgKeyName, String cfgKeyValue, String currTenant) throws IOException {
+ 	  	  
+ 	  // Get idx
+ 	  testFuncs.myDebugPrinting("Get idx", enumsClass.logModes.MINOR);
+ 	  BufferedReader r = new BufferedReader(new StringReader(driver.findElement(By.tagName("body")).getText()));
+ 	  String l = null;
+ 	  int i = 1;
+ 	  Boolean countLines = false;
+ 	  while ((l = r.readLine()) != null) {
+ 				
+ 		  testFuncs.myDebugPrinting("i - " + i + " " + l, enumsClass.logModes.DEBUG);
+ 		  if (l.contains(cfgKeyName)) {
+ 					  
+ 			  testFuncs.myDebugPrinting("i - " + i, enumsClass.logModes.MINOR);
+ 			break;
+ 		  } else if (countLines) {
+ 			
+ 			i++;
+ 		  } else if (l.contains("Configuration Key Configuration Value")) {
+ 			countLines = true;
+ 		  }
+ 	  }
+    
+ 	  // Delete key
+ 	  testFuncs.myDebugPrinting("Delete key", enumsClass.logModes.MINOR);	  
+ 	  testFuncs.myClick(driver, By.xpath("//*[@id='table_keys']/tbody/tr[" + i + "]/td[3]/div/a/i"), 7000);
+ 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
+ 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
+ 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000); 
+ 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currTenant + " )");
+ 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
+ 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+ 			  
+ 	  // Verify delete
+ 	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);	  
+ 	  String txt = driver.findElement(By.tagName("body")).getText();
+ 	  testFuncs.myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyName));
+ 	  testFuncs.myAssertTrue("Delete did not succeeded !!\ntxt - " + txt,  !txt.contains(cfgKeyValue));
+   }
 
   @After
   public void tearDown() throws Exception {

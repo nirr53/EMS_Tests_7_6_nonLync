@@ -94,7 +94,7 @@ public class Test69__Operation_multi_users_devices_permissions {
 	
 	// Login via Administrator, create a user of default Tenant with a POST query
 	testFuncs.myDebugPrinting("Login via Administrator, create a user of default Tenant with a POST query");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
@@ -124,7 +124,7 @@ public class Test69__Operation_multi_users_devices_permissions {
     // Logout, re-login via an Operation user (system)
 	testFuncs.myDebugPrinting("Logout, re-login via an Operation user (system)");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
    
     // Step 1 - Enter Manage multiple devices changes menu and verify that both devices are displayed
   	testFuncs.myDebugPrinting("Enter Manage multiple devices changes menu and verify that both devices are displayed");
@@ -141,7 +141,7 @@ public class Test69__Operation_multi_users_devices_permissions {
     // Logout, re-login via an Operation user (tenant)
    	testFuncs.myDebugPrinting("Logout, re-login via an Operation user (tenant)");
    	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-   	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+   	testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
     
     // Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed
   	testFuncs.myDebugPrinting("Step 3 - Enter Manage multiple devices changes menu and verify that only device of Tenant A is displayed");
@@ -158,7 +158,7 @@ public class Test69__Operation_multi_users_devices_permissions {
     // Step 5 - Logout, re-login as Administrator and delete the created users
   	testFuncs.myDebugPrinting("Step 5 - Logout, re-login as Administrator and delete the created users");
    	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-  	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+  	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
   	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, Id, "2");
     Map<String, String> map = new HashMap<String, String>();

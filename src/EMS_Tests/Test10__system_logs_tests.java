@@ -86,7 +86,7 @@ public class Test10__system_logs_tests {
 	 
     // Step 1 - Enter the System Logs menu & check its appearance
 	testFuncs.myDebugPrinting("Step 1 - Enter the System Logs menu & check its appearance");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.TROUBLESHOOT_SYSTEM_DIAGNOSTICS, "System Logs");
     testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[1]/h3"					  , "System Logs");
     testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div/div[2]/form/table/thead/tr/th", "System Logs");

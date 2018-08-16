@@ -76,7 +76,7 @@ public class Test9__alarms_page_tests {
   public void Alarms() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 
     // Step 1 - Enter the Alarms menu
 	testFuncs.myDebugPrinting("Step 1 - Enter the Alarms menu");

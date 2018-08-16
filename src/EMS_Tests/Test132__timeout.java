@@ -76,7 +76,7 @@ public class Test132__timeout {
 	  
     // Login via HTTPS
     testFuncs.myDebugPrinting("Login via HTTPS");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);  
   
 	// Wait for 10 minutes
     testFuncs.myDebugPrinting("Wait for 10 minutes");

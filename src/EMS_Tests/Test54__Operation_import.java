@@ -97,7 +97,7 @@ public class Test54__Operation_import {
 	
 	  // Login via Operation-user (system )and enter the Import users-devices menu
 	  testFuncs.myDebugPrinting("Login via Operation-user (system )and enter the Import users-devices menu");
-	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	  
 	  // Step 1 - Import users+devices
@@ -137,7 +137,7 @@ public class Test54__Operation_import {
 	  // Logout, and re-login via Operation-user (tenant) and enter the Import users-devices menu
 	  testFuncs.myDebugPrinting("Logout, and re-login via Operation-user (tenant) and enter the Import users-devices menu");	
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 
 	  // Step 4 - Import users+devices
@@ -161,7 +161,7 @@ public class Test54__Operation_import {
 	  // Step 6 - Logout, re-login and delete the created users
 	  testFuncs.myDebugPrinting("Step 6 - Logout, re-login and delete the created users");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");  
 	  testFuncs.selectMultipleUsers(driver, prefixUser, usersNumber);
 	  map.put("usersPrefix"	  , prefixUser + "_");

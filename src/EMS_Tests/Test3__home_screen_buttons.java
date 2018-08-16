@@ -85,12 +85,12 @@ public class Test3__home_screen_buttons {
 	  
     // Step 3.1 - press the Log off button
 	testFuncs.myDebugPrinting("Step 3.1 - press the Log off button");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
     // Step 3.2 - Check version number
 	testFuncs.myDebugPrinting("Step 3.2 - Check version number");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Version <" + testVars.getVersion() + "> was not detected !! (" + txt + ")", txt.contains(testVars.getVersion()));
 	

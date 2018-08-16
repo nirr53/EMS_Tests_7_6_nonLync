@@ -82,7 +82,7 @@ public class Test57__Operation_default_phone_firmware_files {
 	 
     // Login via an Operation user (Tenant) and verify that the Phone firmware files menu
 	testFuncs.myDebugPrinting("Login via an Operation user (Tenant) and enter the Phone firmware files menu");
-	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	
 	// Step 1 - Verify that the Phone firmware files menu is not displayed
 	testFuncs.myDebugPrinting("Step 1 - Verify that the Phone firmware files menu is not displayed");
@@ -91,7 +91,7 @@ public class Test57__Operation_default_phone_firmware_files {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	// Login via an Operation user (System) and enter the Phone firmware files menu
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 
 	// Step 2 - Try to edit a default firmware

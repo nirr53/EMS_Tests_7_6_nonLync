@@ -90,7 +90,7 @@ public class Test163__device_change_data {
 	String phoneNumber		= "+97239764713";
 	String currDispTime		= "";
 	ArrayList<String> times;
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");

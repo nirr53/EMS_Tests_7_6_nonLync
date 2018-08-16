@@ -85,7 +85,7 @@ public class Test27__system_settings {
 	  
     // Enter System settings menu and fill data
 	testFuncs.myDebugPrinting("Enter System settings menu and fill data");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));
 	sysLangs.selectByVisibleText(usedLang);

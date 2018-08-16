@@ -85,7 +85,7 @@ public class Test52__Operation_System_Settings {
 		
 	  // Login via an Operation user (tenant) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Login via an Operation user (tenant) and the enter System settings menu");
-	  testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	  
 	  // Step 1 - Try to edit one of the values
@@ -100,7 +100,7 @@ public class Test52__Operation_System_Settings {
 	  
 	  // Login via an Operation user (system) and the enter System settings menu
 	  testFuncs.myDebugPrinting("Login via an Operation user (system) and the enter System settings menu");
-	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	  testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 
 	  // Step 2 - Try to edit one of the values

@@ -83,7 +83,7 @@ public class Test41__Monitoring_phone_firmware_files {
 	 
     // Login via a Monitoring user (system) and enter the Phone firmware files menu
 	testFuncs.myDebugPrinting("Login via a Monitoring (system) user and enter the Phone firmware files menu");
-	testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 	 
 	// Step 1 - Verify that you cannot upload a Phone firmware
@@ -109,7 +109,7 @@ public class Test41__Monitoring_phone_firmware_files {
     // Step 4 - Logout, re-login via a Monitoring user (tenant) and verify that the Phone firmware files menu is not displayed
 	testFuncs.myDebugPrinting("Step 4 - Logout, re-login via a Monitoring user (tenant) and enter the Phone firmware files menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SECTION, "Phones Configuration");
 	String txt = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Delete-Firmware button is active !!", !txt.contains("Phone firmware files"));	

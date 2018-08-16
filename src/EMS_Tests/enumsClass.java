@@ -1,6 +1,10 @@
 package EMS_Tests;
 
 public class enumsClass {
+	
+	
+	// Login types
+	public enum loginData        { USERNAME, PASSWORD;}
 		
 	// Select types
 	public enum selectTypes      { INDEX, NAME, GIVEN_TEXT;}
@@ -12,7 +16,7 @@ public class enumsClass {
 	public enum vocaModes        { TLS, TCP, UDP;  }
 	
 	// Alarm filter modes
-	public enum alarmFilterModes { DESCRPTION, SEVERITY, TENANT, INFO, REMOTE_HOST, SOURCE, NAME; }
+	public enum alarmFilterModes { DESCRPTION, SEVERITY, TENANT, INFO, REMOTE_HOST, SOURCE, NAME, ALARMS_EVENTS; }
 	
 	// Log modes
 	public enum logModes {

@@ -79,7 +79,7 @@ public class Test7__add_multiple_devices_to_same_user {
 	String Id         = testFuncs.getId();
 	String userName   = "Manual user" + Id;
 	String deviceName = "Device" + Id;
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 
     // Create user manually
 	testFuncs.myDebugPrinting("Create user manually");

@@ -89,7 +89,7 @@ public class Test138__duplicate_phone_firmware_files {
 	 
     // Enter the Phone firmware files menu and add a new IP Phone firmware
 	testFuncs.myDebugPrinting("Enter the Phone firmware files menu and add a new IP Phone firmware");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
 	testFuncs.addNewFirmware(driver, firmName, firmDesc, firmVersion, firmRegion, firmFileName); 	
 	

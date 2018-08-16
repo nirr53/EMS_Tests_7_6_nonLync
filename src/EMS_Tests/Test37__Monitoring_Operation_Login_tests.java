@@ -80,18 +80,18 @@ public class Test37__Monitoring_Operation_Login_tests {
 	  Log.startTestCase(this.getClass().getName());
 	
 //	  // Set invalid username and password
-//	  String monInvUsername = testVars.getMonitUsername().substring(1) ;
-//	  String monInvPassword = testVars.getMonitPassword().substring(1);
-//	  String opInvUsername  = testVars.getOperUsername().substring(1);
-//	  String opInvPassword  = testVars.getOperPassword().substring(1);
+//	  String monInvUsername = testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME).substring(1) ;
+//	  String monInvPassword = testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD).substring(1);
+//	  String opInvUsername  = testVars.getOperSysLoginData(enumsClass.loginData.USERNAME).substring(1);
+//	  String opInvPassword  = testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD).substring(1);
 //    
 //	  // Step 1.1 - invalid login - valid username + invalid password to Monitoring User
 //	  testFuncs.myDebugPrinting("Step 1.1 - invalid login - valid username + invalid password to Monitoring User");
-//	  testFuncs.login(driver, testVars.getMonitUsername(), monInvPassword, testVars.getFailLogStr(), "https://", this.usedBrowser);
+//	  testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), monInvPassword, testVars.getFailLogStr(), "https://", this.usedBrowser);
 //	
 //	  // Step 1.2 - invalid login - invalid username + valid password to Monitoring User
 //	  testFuncs.myDebugPrinting("Step 1.2 - invalid login - invalid username + valid password to Monitoring User");
-//	  testFuncs.login(driver, monInvUsername, testVars.getMonitPassword(), "Invalid user", "https://", this.usedBrowser);
+//	  testFuncs.login(driver, monInvUsername, testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), "Invalid user", "https://", this.usedBrowser);
 //	
 //	  // Step 1.3 - invalid login - invalid username + invalid password to Monitoring User
 //	  testFuncs.myDebugPrinting("Step 1.3 - invalid login - invalid username + invalid password to Monitoring User");
@@ -99,15 +99,15 @@ public class Test37__Monitoring_Operation_Login_tests {
 //	
 //	  // Step 1.4 - valid login - valid username + valid password to Monitoring User
 //	  testFuncs.myDebugPrinting("Step 1.4 - valid login - valid username + valid password to Monitoring User");
-//	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+//	  testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 //	  
 //	  // Step 2.1 - invalid login - valid username + invalid password to Operation User
 //	  testFuncs.myDebugPrinting("Step 2.1 - invalid login - valid username + invalid password to Operation User");
-//	  testFuncs.login(driver, testVars.getOperUsername(), opInvPassword, testVars.getFailLogStr(), "https://", this.usedBrowser);
+//	  testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), opInvPassword, testVars.getFailLogStr(), "https://", this.usedBrowser);
 //	
 //	  // Step 2.2 - invalid login - invalid username + valid password to Operation User
 //	  testFuncs.myDebugPrinting("Step 2.2 - invalid login - invalid username + valid password to Operation User");
-//	  testFuncs.login(driver, opInvUsername, testVars.getOperUsername(), "Invalid user", "https://", this.usedBrowser);
+//	  testFuncs.login(driver, opInvUsername, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), "Invalid user", "https://", this.usedBrowser);
 //	
 //	  // Step 2.3 - invalid login - invalid username + invalid password to Operation User
 //	  testFuncs.myDebugPrinting("Step 2.3 - invalid login - invalid username + invalid password to Operation User");
@@ -115,7 +115,7 @@ public class Test37__Monitoring_Operation_Login_tests {
 //	
 //	  // Step 2.4 - valid login - valid username + valid password to Operation User
 //	  testFuncs.myDebugPrinting("Step 2.4 - valid login - valid username + valid password to Operation User");
-//	  testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);  
+//	  testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);  
   }
 
   @After

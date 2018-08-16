@@ -22,10 +22,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import EMS_Tests.enumsClass.*;
 
 /**
@@ -513,12 +514,12 @@ public class GlobalFuncs {
 		Select firmwareOptions = new Select(driver.findElement(By.xpath("//*[@id='firmware_id']")));
 		firmwareOptions.selectByVisibleText(firmWareType);
 		myWait(5000);
-	    
+				
 		// Submit & verify create
 		myDebugPrinting("Submit & verify create", enumsClass.logModes.MINOR);	
-	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]")   , 7000);
-	    myClick(driver, By.xpath("//*[@id='modalContentId']/button[1]")   , 7000);
-	    myClick(driver, By.xpath("/html/body/div[2]/div/button[2]")   , 7000);
+	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]"), 7000);
+		myClick(driver, By.xpath("//*[@id='modalContentId']/button[2]")   							  , 7000);
+	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[1]"), 7000);
 	    username = username.toLowerCase();
 		searchUser(driver, username);  
 
@@ -843,11 +844,18 @@ public class GlobalFuncs {
 				  break;
 			  }
 			  myDebugPrinting("paths[" + i + "] - " +  paths[i], enumsClass.logModes.MINOR);
-			  myWait(6000);
+			  myWait(1000);
 			  markElemet(driver, driver.findElement(By.xpath(paths[i])));
-			  myWait(6000);
+			  myWait(2000);
 		      driver.findElement(By.xpath(paths[i])).click();
-			  myWait(7000);
+		      
+		      waitForLoad(driver);		      
+			  myWait(9000);
+			  
+			  
+			  
+			  
+			  
 		  }
 		  String title = driver.findElement(By.tagName("body")).getText();
 		  driver.switchTo().defaultContent();
@@ -858,14 +866,26 @@ public class GlobalFuncs {
 		  myWait(9000);
 		  myDebugPrinting("enterMenu  - " +  mainpageDashboardAlarms + " ended successfully !!", enumsClass.logModes.NORMAL);
       }
+	  
+	  
+	  public void waitForLoad(WebDriver driver) {
+		  
+		    new WebDriverWait(driver, 30).until((ExpectedCondition<Boolean>) wd ->
+		            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+		
+	  }
 
 	  /**
 	  * Set a driver according to a given browser name
 	  * @param  usedBrowser - given browser name (Chrome, FireFox or IE)
 	  * @return driver      - driver object (Failure if usedBrowser is not a valid browser name)
 	  */
+	  @SuppressWarnings("incomplete-switch")
 	  public WebDriver defineUsedBrowser(browserTypes usedBrowser) {
 		  
+		  // Clean working directory
+		  deleteFilesByPrefix(System.getProperty("user.dir"), "ip_");
+		  deleteFilesByPrefix(System.getProperty("user.dir"), "mac_");		  
 		  switch (usedBrowser) {  
 			  case CHROME:
 				  ChromeOptions options = new ChromeOptions();			
@@ -877,12 +897,6 @@ public class GlobalFuncs {
 				  System.setProperty("webdriver.gecko.driver", testVars.getGeckoPath());					
 				  System.setProperty("webdriver.firefox.marionette", "false");		
 				  return new FirefoxDriver();			  
-			  
-			  case IE:
-				  DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-				  capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
-				  capabilities.setCapability("requireWindowFocus", true);   	
-				  return new InternetExplorerDriver(capabilities);	
 		  }
 		  
 		return null;
@@ -985,6 +999,7 @@ public class GlobalFuncs {
 				    } else {
 				    	
 				    	waitTillString(driver, "Waiting");
+				    	waitTillString(driver, "Loading");
 				    }
 				    if (usrsPrefix.contains("lang")) {
 				    	
@@ -2641,9 +2656,12 @@ public class GlobalFuncs {
 			  case NAME:	  
 				  myDebugPrinting("Search according to Name <" + alertData + ">", enumsClass.logModes.MINOR);	
 				  mySendKeys(driver, By.xpath("//*[@id='inputAlarm']"), alertData, 2000);
+				  break;
+		
+			  default:
 				  break; 	  
 		  }
-		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[1]"), 5000);
+		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[1]"), 10000);
 
 		  // Search for alerts
 		  for (int i = 0; i < alertsForSearch.length; ++i) {
@@ -3182,7 +3200,7 @@ public class GlobalFuncs {
 	   *  @param driver       - given driver
 	   *  @param usedTemplate - given used template
 	   *  @param usedTenant   - given used tenant
-	   *  @param	confName	 - wanted configuration file name for search
+	   *  @param confName	  - wanted configuration file name for search
 	   */
 	   public void verifyMappingWizard(WebDriver driver, String usedModel, String usedTenant, String confName) {
 	 	  	  
@@ -3204,7 +3222,9 @@ public class GlobalFuncs {
 		   myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);  
 	   }
 	   
-	   // get current time in HH:MM format
+	   /**
+	   *  Get current time in HH:MM format
+	   **/
 	   public ArrayList<String> getCurrHours() {
 	 	  
 	 	  DateFormat timeFormat 	   = new SimpleDateFormat("HH:mm");    
@@ -3222,7 +3242,9 @@ public class GlobalFuncs {
 	 	  return delayTimes;
 	   }
 	   
-	   // Get current data in dd.MM.YYYY format
+	   /**
+	   *  Get current data in dd.MM.YYYY format
+	   **/
 	   public String getCurrdate() {
 	 	  
 	 	  DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");    
@@ -3230,5 +3252,26 @@ public class GlobalFuncs {
 	 	  String myDate     	= dateFormat.format(date);
 	 	  myDebugPrinting("date - " + myDate, enumsClass.logModes.MINOR);
 	 	  return myDate;
+	   }
+	   
+	   /**
+	   *  Delete an alarm from Alarms table by a given parameters without verify
+	   *  @param driver    - given driver
+	   *  @param alertDesc - alert description
+	   **/
+	   public void deleteAlarmNoVerify(WebDriver driver, String alertDesc) {
+			  		  	
+		   // Search for the alert according to description
+		   myDebugPrinting("Search for the alert according to description", enumsClass.logModes.MINOR);		
+		   String[] alertsForSearch = {alertDesc};		
+		   searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertDesc, alertsForSearch); 
+			
+		   // Delete the alarm		
+		   myDebugPrinting("Delete the alarm", enumsClass.logModes.MINOR);
+		   myClick(driver, By.xpath("//*[@id='dl-menu']/a")		   , 3000);
+		   myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[1]/a"), 3000);
+		   verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[1]", "Delete");
+		   verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[2]", "Are you sure you want to delete this IPP?");			
+		   myClick(driver, By.xpath("//*[@id='jqi_state0_buttonDelete']"), 5000);
 	   }
 }

@@ -93,8 +93,8 @@ public class Test111__multiple_browsers {
 	
 	// Fill login data and ask for login
 	for (int i = 0; i < browsersNumber; ++i) {	
-	  	testFuncs.mySendKeys(driver[i], By.xpath("//*[@id='loginform']/div[1]/input"), testVars.getSysUsername(), 500);
-	  	testFuncs.mySendKeys(driver[i], By.xpath("//*[@id='loginform']/div[2]/input"), testVars.getSysPassword(), 500);    	  
+	  	testFuncs.mySendKeys(driver[i], By.xpath("//*[@id='loginform']/div[1]/input"), testVars.getSysLoginData(enumsClass.loginData.USERNAME), 500);
+	  	testFuncs.mySendKeys(driver[i], By.xpath("//*[@id='loginform']/div[2]/input"), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), 500);    	  
 	  	testFuncs.myClick(driver[i]   , By.xpath("//*[@id='loginform']/div[4]/div[2]/button"), 3000);
 	}
 	

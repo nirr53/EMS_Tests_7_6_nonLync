@@ -74,7 +74,7 @@ public class Test81__view_sites {
   public void View_Sites() throws Exception {
 	 
 	Log.startTestCase(this.getClass().getName());
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_SYSTEM_VIEW_SITES, "View Sites");
 		
 	// Step 1 - Check headers of the menu

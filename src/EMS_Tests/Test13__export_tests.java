@@ -74,7 +74,7 @@ public class Test13__export_tests {
 	if (!this.usedBrowser.toString().equals(enumsClass.browserTypes.IE)) {
 				
 		Log.startTestCase(this.getClass().getName());
-		testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+		testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices
 		String downloadedFile = "users.zip";

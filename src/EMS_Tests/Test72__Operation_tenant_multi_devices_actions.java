@@ -94,7 +94,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	
 	// Login via Administrator, create a user with a POST query and logout
 	testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 			  					testVars.getIp()           ,
@@ -110,7 +110,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 		 
     // Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.
 	testFuncs.myDebugPrinting("Re-login via an Operation user (system) and enter Manage multiple devices changes menu.");
-	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
    
     // Step 1 - Verify that Change-IP-phone-type action is active.
@@ -245,7 +245,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
     // Step 10 - Logout, re-login as Administrator and delete the created user
   	testFuncs.myDebugPrinting("Step 10 - Logout, re-login as Administrator and delete the created user");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-  	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+  	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
   	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
     Map<String, String> map = new HashMap<String, String>();

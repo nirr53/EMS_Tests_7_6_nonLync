@@ -23,11 +23,11 @@ $location 		 	= $CmdLine[9]  ; I.e.  myLocation
 ;~ $IP	 			  = "10.21.8.32"
 ;~ $PORT	 		  = "8081"
 ;~ $usersNumber  	  = "1"
-;~ $usersPrefixName  = "usbHdstType_user_status_1"
+;~ $usersPrefixName  = "nonDefTeant123456789"
 ;~ $domainName 	  = "cloudbond365b.com"
 ;~ $createStatus 	  = "registered"
 ;~ $phoneType 		  = "430HD"
-;~ $regionName 	  = "Nir"
+;~ $regionName 	  = "NirTest3"
 ;~ $location 		  = "myLocation"
 
 
@@ -117,7 +117,7 @@ func createUsersViaPost($usersNumber, $usersPrefixName, $domainName, $createStat
 	  writeIPToFile($ipAddress, $i)
 	  myToolTip("$userName - " & $userName, 150, 150, $functionLevel)
 	  createUserViaPost($emsPostUsersPassword, $myMacAddress, $ipAddress, $phoneType, $emsPostVersion, $emsPostUserAgent, $userName,  $userName & "@" & $domainName, $createStatus, $phoneNumber, $domainName, $regionName, $location)
-	  myCountDown(10000,  "Create user " & $userName & " ended !!")
+	  myCountDown(1000,  "Create user " & $userName & " ended !!")
 
    Next
    myToolTip("exit createUsersViaPost()", 150, 150, $testerLevel)

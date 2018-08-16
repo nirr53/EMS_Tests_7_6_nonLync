@@ -86,7 +86,7 @@ public class Test131__delete_device_tests {
 	  String id        = testFuncs.getId();
 	  String userName1 = prefix + "man"  + id;
 	  String userName2 = prefix + "mlti" + id;
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser); 
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser); 
 
 	  // Create first user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");

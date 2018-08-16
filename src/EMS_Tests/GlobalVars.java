@@ -1,4 +1,5 @@
 package EMS_Tests;
+import EMS_Tests.enumsClass.*;
 
 /**
 * This class holds all the data which is used by the tests
@@ -9,7 +10,7 @@ package EMS_Tests;
 public class GlobalVars {
 	
 	/**
-	*  // General data 
+	*  General data 
 	*  ip             - IP of the system
 	*  port           - port for create the users (i.e. 8081)
 	*  domain         - domain for create new users (i.e. onebox3.com)
@@ -23,21 +24,46 @@ public class GlobalVars {
 	*  sysLogsPrefix  - Prefix of the logs of the system
 	*  sysLogsActPre  - Prefix of the logs of the system (Activity)
 	*  shFilesFiName  - Name of sherd-files
-	*  permSuffixes	  - Permitted suffixes list
-	*  
-	*  // Login data
+	*/
+	private  String ip               = "10.21.8.32";
+	private  String port             = "8081";
+	private  String domain           = "cloudbond365b.com";
+    private  String url  		     = ip + "/ipp/admin/AudioCodes_files/login.php";
+	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
+	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
+	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
+	private  String version			 = "7.6.86";
+	private  String downloadsPath    = "";
+	private  String exportAlarms     = "ExportAlarmsStatus.csv";
+	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
+	private  String sysLogsActPre    = "IPP.Manage.Activity.";
+	private  String shFilesFiName    = "Files.zip";
+	
+	/**
+	*  Login data
 	*  mainPageStr    - Main page welcome string (used for detect good login)
-	*  sysUsername    - Default username for access the system
-	*  sysPassword    - Default password for access the system
-	*  monitUsername  - Default username for access the system via a Monitoring user with 'System'
-	*  monitPassword  - Default password for access the system via a Monitoring user with 'System'
-	*  monitTenUsrnme - Default username for access the system via a Monitoring user with 'Tenant'
-	*  monitTenPswd   - Default password for access the system via a Monitoring user with 'Tenant'
-	*  operUsername   - Default username for access the system via an Operation user with 'System'
-	*  operPassword   - Default password for access the system via an Operation user with 'System'
+	*  sysLogin    	  - Default system login data
+	*  monitSysLogin  - Default Monitoring (System) login data
+	*  monitTenLogin  - Default Monitoring (Tenant) login data
+	*  operSysLogin   - Default Operation (System) login data
+	*  operTenLogin   - Default Operation (System) login data
 	*  sysMainStr     - Default string in the welcome page (used for verify access)
+	*  failLogMainStr - Default string for login-error
 	*  sysInvalidStr  - Default string for detect invalid login
-	*  
+	*  browsersList	  - Array of current browsers for run for each Junit
+	*/
+	private  String mainPageStr		 = "Login to IP Phone Manager Pro";
+    private  String [] sysLogin  	 = {"nir"					, "1q2w3e$r"};
+    private  String [] monitSysLogin = {"Nir_Monitoring4"		, "1q2w3e4r5t6y"};
+    private  String [] monitTenLogin = {"Nir_Monitoring_Tenant" , "1q2w3e4r6t"};
+    private  String [] operSysLogin  = {"Nir_Operation_Tenant2"	, "1q2w3e4r6t"};
+    private  String [] operTenLogin  = {"Nir_Operation2"		, "1q2w3e4r6t"};
+	private  String sysMainStr       = "NETWORK TOPOLOGY";
+	private  String failLogMainStr   = "Invalid credentials";
+	private  String sysInvalidStr    = "Wrong username or password";
+	private  Object[][] browsersList = {{enumsClass.browserTypes.CHROME}};
+
+	/**  
 	*  // Create user via POST data
 	*  crUserBatName  - Name of the batch file that call the exe that create the users via POST queries
 	*  crAlrmsBatName - Name of the batch file that call the exe that sends alarms to the system via POST queries
@@ -46,10 +72,25 @@ public class GlobalVars {
 	*  defTenant	  - Default Tenant
 	*  defSite		  - Default Site
 	*  defPhoneModel  - Default phone model
-	*  
-	*  // Source-files names
+	*  nonDefTeanants - Array of non default Tenant
+	*  spclCrsSite	  - Site with special characters
+	*  firmVersion	  - Firmware version
+	*/
+	private  String crUserBatName    = "createUsersViaPost.exe"; 
+    private  String crAlrmsBatName   = "alertEngine.exe";
+    private  String crKpAlvBatName   = "changeStatus.exe";
+	private  String acMacPrefix      = "00908f";	
+	private  String defTenant      	 = "Nir";
+	private  String defSite			 = "AutoDetection";
+	private  String defPhoneModel    = "430HD";
+	private  String nonDefTeanants[] = {"NirTest3", "NirTest2"};
+	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
+	private  String firmVersion      = "UC_2.0.13.121";
+	
+	/**
+	*  Source-files names
+	*  invalidCfg	  - Source File for invalid configuration
 	*  srcImpConf	  - Source File name for import configuration
-	*  srcImpUser  	  - Source File name for import users
 	*  srcImpUserDvcs - Source File name for import users + devices
 	*  srcImp1000Usrs - Source File name for import 1000 users
 	*  srcConfFile    - Source File name for import a configuration
@@ -60,48 +101,11 @@ public class GlobalVars {
 	*  srcLangsFile   - Source File name for import users in different languages
 	*  srcDhcpCnfFile - Source File name for import DHCP configuration file
 	*  srcSbcConfFile - Source File name for import SBC configuration file
+	*  srcFilesPath   - Source of files
 	*/
-	private  String ip               = "10.21.8.32";
-	private  String port             = "8081";
-	private  String domain           = "cloudbond365b.com";
-    private  String url  		     = ip + "/ipp/admin/AudioCodes_files/login.php";
-    private  String crUserBatName    = "createUsersViaPost.exe"; 
-    private  String crAlrmsBatName   = "alertEngine.exe";
-    private  String crKpAlvBatName   = "changeStatus.exe";
-    private  String mainPageStr		 = "Login to IP Phone Manager Pro";
-    private  String sysUsername      = "nir";
-	private  String sysPassword      = "1q2w3e$r";
-    private  String monitUsername    = "Nir_Monitoring4";
-	private  String monitPassword    = "1q2w3e4r5t6y";
-    private  String monitTenUsrnme   = "Nir_Monitoring_Tenant";
-	private  String monitTenPswd     = "1q2w3e4r6t";
-    private  String operTenUsrnme    = "Nir_Operation_Tenant2";
-	private  String operTenPswd      = "1q2w3e4r6t";
-    private  String operUsername     = "Nir_Operation2";
-	private  String operPassword     = "1q2w3e4r6t";
-	private  String sysMainStr       = "NETWORK TOPOLOGY";
-	private  String failLogMainStr   = "Invalid credentials";
-	private  String sysInvalidStr    = "Wrong username or password";
-	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
-	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
-	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
-	private  String srcFilesPath     = "C:\\Users\\nirk\\Desktop\\myEclipseProjects\\EMS_Tests_7_6_nonLync\\sourceFiles\\EMS";	
-	private  String acMacPrefix      = "00908f";	
-	private  String defTenant      	 = "Nir";
-	private  String defSite			 = "AutoDetection";
-	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
-	private  String nonDefTeanants[] = {"NirTest3", "NirTest2"};
-	private  String defPhoneModel    = "430HD";
-	private  String version			 = "7.6.49";
-	private  String firmVersion      = "UC_2.0.13.121";
-	private  String downloadsPath    = "";
-	private  String exportAlarms     = "ExportAlarmsStatus.csv";
-	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
-	private  String sysLogsActPre    = "IPP.Manage.Activity.";
-	private  String shFilesFiName    = "Files.zip";
+	private  String invalidCfg   	 = "users.jpeg";
 	private  String srcImpConf       = "Configuration.zip";
 	private  String srcImpUserDvcs   = "users.csv";
-	private  String invalidCfg   	 = "users.jpeg";
 	private  String srcImp1000Usrs   = "users1000.zip";
 	private  String srcConfFile      = "my.cfg";
 	private  String srcFirmFile      = "430HD.img";
@@ -111,7 +115,7 @@ public class GlobalVars {
 	private  String srcLangsFile     = "nirDdifferentLanguages.zip";
 	private  String srcDhcpCnfFile   = "dhcp_option_template.cfg";
 	private  String srcSbcConfFile   = "proxy_dhcp_option_template.cfg";
-	private  Object[][] browsersList = {{enumsClass.browserTypes.CHROME}};
+	private  String srcFilesPath     = "C:\\Users\\nirk\\Desktop\\myEclipseProjects\\EMS_Tests_7_6_nonLync\\sourceFiles\\EMS";	
 
     /**
     *  Non-default constructor for provide another data
@@ -123,10 +127,10 @@ public class GlobalVars {
 	public GlobalVars(String _url, String _username, String _password, String _mainStr) {
 		
 		System.out.println("GlobalVars constructor is called");
-		this.url 		 = _url;
-		this.sysUsername = _username;
-		this.sysPassword = _password;
-		this.sysMainStr  = _mainStr;
+		this.url 		   = _url;
+		this.sysLogin[0]   = _username;
+		this.sysLogin[1]   = _password;
+		this.sysMainStr    = _mainStr;
     	this.downloadsPath = "C:\\Users\\" + System.getProperty("user.name") + "\\Downloads";
 	}
     
@@ -146,18 +150,6 @@ public class GlobalVars {
     *  @return main string of the system
     */
 	public String getMainPageStr() { return  mainPageStr;      }
-	
-    /**
-    *  Default method for return the username variable
-    *  @return username of the system for Admin
-    */
-	public String getSysUsername() { return  sysUsername; 	   }
-	
-    /**
-    *  Default method for return the password variable
-    *  @return password of the system for Admin
-    */
-	public String getSysPassword() { return  sysPassword;      }
 	
     /**
     *  Default method for return the main-str variable
@@ -372,55 +364,86 @@ public class GlobalVars {
     *  @return ieDrvPath of the system
     */
 	public String getGeckoPath()         { return  geckoPath;      }
-
-    /**
-    *  Default method for return the Monitoring username
-    *  @return monitUsername
-    */
-	public String getMonitUsername()     { return  monitUsername;  }
 	
     /**
-    *  Default method for return the Monitoring password
-    *  @return monitPassword
+    *  Default method for return the System login data
+    *  @param wantedData - wanted data (username or password)
+    *  @return sysLogin  - username or password
     */
-	public String getMonitPassword()     { return  monitPassword;  }
+	public String getSysLoginData(loginData wantedData)     {
+		
+		switch (wantedData) {
+			case USERNAME:
+				return  sysLogin[0];      	
+			case PASSWORD:
+				return  sysLogin[1];
+		}
+		return null;
+	}
 	
     /**
-    *  Default method for return the Monitoring username (with Tenant permission)
-    *  @return monitTenUsrnme
+    *  Default method for return the Monitoring-System login data
+    *  @param wantedData     - wanted data (username or password)
+    *  @return monitSysLogin - username or password
     */
-	public String getMonitTenUsername()  { return  monitTenUsrnme; }
+	public String getMonitSysLoginData(loginData wantedData)     {
+		
+		switch (wantedData) {
+			case USERNAME:
+				return  monitSysLogin[0];      	
+			case PASSWORD:
+				return  monitSysLogin[1];
+		}
+		return null;
+	}
 	
     /**
-    *  Default method for return the Monitoring password (with Tenant permission)
-    *  @return monitTenPswd
+    *  Default method for return the Monitoring-Tenant login data
+    *  @param  wantedData    - wanted data (username or password)
+    *  @return monitTenLogin - username or password
     */
-	public String getMonitTenPassword()  { return  monitTenPswd;   }
+	public String getMonitTenLoginData(loginData wantedData)     {
+		
+		switch (wantedData) {
+			case USERNAME:
+				return  monitTenLogin[0];      	
+			case PASSWORD:
+				return  monitTenLogin[1];
+		}
+		return null;
+	}
 	
     /**
-    *  Default method for return the Operation username
-    *  @return operUsername
+    *  Default method for return the Operation-System login data
+    *  @param  wantedData   - wanted data (username or password)
+    *  @return operSysLogin - username or password
     */
-	public String getOperUsername()      { return  operUsername;   }
+	public String getOperSysLoginData(loginData wantedData)     {
+		
+		switch (wantedData) {
+			case USERNAME:
+				return  operSysLogin[0];      	
+			case PASSWORD:
+				return  operSysLogin[1];
+		}
+		return null;
+	}
 	
     /**
-    *  Default method for return the Operation password
-    *  @return operPassword
+    *  Default method for return the Operation-Tenant login data
+    *  @param wantedData    - wanted data (username or password)
+    *  @return operTenLogin - username or password
     */
-	public String getOperPassword()      { 	return  operPassword;  }
-	
-	
-    /**
-    *  Default method for return the Operation username (with Tenant permission)
-    *  @return operTenUsrnme
-    */
-	public String getOperTenUsername()  { return  operTenUsrnme; }
-	
-    /**
-    *  Default method for return the Operation password (with Tenant permission)
-    *  @return operTenPswd
-    */
-	public String getOperTenPassword()  { return  operTenPswd;   }
+	public String getOperTenLoginData(loginData wantedData)     {
+		
+		switch (wantedData) {
+			case USERNAME:
+				return  operTenLogin[0];      	
+			case PASSWORD:
+				return  operTenLogin[1];
+		}
+		return null;
+	}
 	
     /**
     *  Default method for return the Sharefiles file-name

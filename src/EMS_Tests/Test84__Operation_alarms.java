@@ -82,7 +82,7 @@ public class Test84__Operation_alarms {
 	
 	// Login via Operation-user (system), enter the Alarms menu
 	testFuncs.myDebugPrinting("Login via Operation-user (system), enter the Alarms menu");
-	testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 1 - Test the Export button
@@ -108,7 +108,7 @@ public class Test84__Operation_alarms {
 	// Logout, re-login via Operation-user (tenant), and enter the Alarms menu
 	testFuncs.myDebugPrinting("Logout, re-login via Operation-user (tenant), and enter the Alarms menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_MONITOR_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+	testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");
 	
 	// Step 3 - Test the Export button

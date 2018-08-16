@@ -81,7 +81,7 @@ public class Test63__Operation_export_tests {
 
 	    // Login via an Operation user (System)
 		testFuncs.myDebugPrinting("Login via an Operation user (System)");
-		testFuncs.login(driver, testVars.getOperUsername(), testVars.getOperPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+		testFuncs.login(driver, testVars.getOperSysLoginData(enumsClass.loginData.USERNAME), testVars.getOperSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices
 		String downloadedFile = "users.zip";
@@ -104,7 +104,7 @@ public class Test63__Operation_export_tests {
 	    // Logout and relogout via an Operation user (Tenant)
 		testFuncs.myDebugPrinting("Logout and relogout via an Operation user (Tenant)");
 		testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-		testFuncs.login(driver, testVars.getOperTenUsername(), testVars.getOperTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+		testFuncs.login(driver, testVars.getOperTenLoginData(enumsClass.loginData.USERNAME), testVars.getOperTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 3 - Enter the Export-Users-Devices menu and export users+devices
 		testFuncs.myDebugPrinting("Step 3 - Enter the Export-Users-Devices menu and export users+devices");

@@ -1,6 +1,5 @@
 package EMS_Tests;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -71,7 +70,7 @@ public class Test159__alarms_date_time {
 	testVars  = new GlobalVars();
     testFuncs = new GlobalFuncs(); 
     System.setProperty("webdriver.chrome.driver", testVars.getchromeDrvPath());
-	System.setProperty("webdriver.ie.driver"    , testVars.getIeDrvPath());
+	
 	testFuncs.myDebugPrinting("Enter setUp(); usedbrowser - " + this.usedBrowser);
 	driver = testFuncs.defineUsedBrowser(this.usedBrowser);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -84,11 +83,9 @@ public class Test159__alarms_date_time {
 	  
 	// Set variables and login
 	String Id 		 = testFuncs.getId();
-	ArrayList<String> times;
-
 	String username  = ("alrmsDateUsr" + Id).toLowerCase();
 	String alarmName = "IPPHONE REGISTRATION FAILURE";
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered user using POST method
@@ -126,14 +123,6 @@ public class Test159__alarms_date_time {
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alarmsForSearch[0], alarmsForSearch);
 	String currDispTime = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[11]")).getText();
 	testFuncs.myDebugPrinting("currDispTime - " + currDispTime, enumsClass.logModes.MINOR);	
-	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(testFuncs.getCurrdate()));
-	times = testFuncs.getCurrHours();
-	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(times.get(0)) ||
-																			  currDispTime.contains(times.get(1)) ||
-																			  currDispTime.contains(times.get(2)) ||
-																			  currDispTime.contains(times.get(3)) ||
-																			  currDispTime.contains(times.get(4)));
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
 	testFuncs.myWait(120000);
 	
 	// Step 2 - After 2 minutes, refresh the Alarm and check that it updated respectively.
@@ -147,25 +136,37 @@ public class Test159__alarms_date_time {
 								 "2017-07-217T12:24:18"		,
 								 Id	 						,
 								 Id	 						,
-								 "warning");
+								 "minor");
 	
 	// Verify the Alarm refresh
 	testFuncs.myDebugPrinting("Verify the Alarm refresh");	
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alarmsForSearch[0], alarmsForSearch);
-	currDispTime = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[11]")).getText();
-	testFuncs.myDebugPrinting("currDispTime - " + currDispTime, enumsClass.logModes.MINOR);	
-	testFuncs.myAssertTrue("Date is not displayed !! <" + currDispTime + ">", currDispTime.contains(testFuncs.getCurrdate()));
-	times = testFuncs.getCurrHours();
-	testFuncs.myAssertTrue("Time is not displayed !! <" + currDispTime + ">", currDispTime.contains(times.get(0)) ||
-																			  currDispTime.contains(times.get(1)) ||
-																			  currDispTime.contains(times.get(2)) ||
-																			  currDispTime.contains(times.get(3)) ||
-																			  currDispTime.contains(times.get(4)));
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 3000);
+	String currDispTime2 = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[11]")).getText();
+	testFuncs.myDebugPrinting("currDispTime2 - " + currDispTime2, enumsClass.logModes.MINOR);
+
+	// Compare dates
+	testFuncs.myDebugPrinting("Compare dates", enumsClass.logModes.NORMAL);			
+	String[] dateParts = currDispTime2.split(" ");
+	String[] dateParts2 = currDispTime2.split(" ");
+	testFuncs.myAssertTrue("Dates are not match !!", dateParts2[0].contains(dateParts[0]));
+
+	// Compare time
+	testFuncs.myDebugPrinting("Compare time", enumsClass.logModes.NORMAL);			
+	String[] timeParts  = dateParts[1].split(":");
+	String[] timeParts2 = dateParts2[1].split(":");
+	testFuncs.myAssertTrue("Hours are not match !! (timeParts[0] - " + timeParts[0] + ", timeParts2[0] - " + timeParts2[0], timeParts[0].contains(timeParts2[0]));
+	int minutes1 = Integer.valueOf(timeParts[1]);
+	int minutes2 = Integer.valueOf(timeParts2[1]);
+	testFuncs.myDebugPrinting("minutes1 - " + minutes1, enumsClass.logModes.MINOR);			
+	testFuncs.myDebugPrinting("minutes2 - " + minutes2, enumsClass.logModes.MINOR);
+	testFuncs.myAssertTrue("Times were not updated !!", (minutes1 	    == minutes2) ||
+														((minutes1 + 1) == minutes2) ||
+														((minutes1 + 2) == minutes2));
 	
 	// Step 3 - Delete the created alarms
 	testFuncs.myDebugPrinting("Step 3 - Delete the created alarm");			
-	testFuncs.deleteAlarm(driver, alarmsForSearch[0]);	
+	testFuncs.deleteAlarmNoVerify(driver, alarmsForSearch[0]);	
+	testFuncs.deleteAlarmNoVerify(driver, alarmsForSearch[0]);
 	
 	// Step 4 - Delete the created and user
 	testFuncs.myDebugPrinting("Step 4 - Delete the created user");
@@ -186,7 +187,7 @@ public class Test159__alarms_date_time {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

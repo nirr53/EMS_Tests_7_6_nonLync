@@ -97,14 +97,14 @@ public class Test90__Monitoring_system_tenant_templates {
 	   
 	  // Login, enter the Phone Templates menu, add a Template and logout
 	  testFuncs.myDebugPrinting("Login, enter the Phone Templates menu, add a Template and logout");
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");		
 	  testFuncs.addTemplate(driver, tempName, tempDesc, testVars.getNonDefTenant(0), "420HD", map);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 
 	  // Login via a Monitoring user (system) and enter the Phone Templates menu
 	  testFuncs.myDebugPrinting("Login via a Monitoring user (system) and enter the Phone Templates menu");
-	  testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	  testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 		  
 	  // Step 1 - Verify that Add-Template button is deactivated
@@ -133,7 +133,7 @@ public class Test90__Monitoring_system_tenant_templates {
 	  // Logout, re-login via Monitoring user (tenant) and enter the Phone Templates menu
 	  testFuncs.myDebugPrinting("Logout, re-login via Monitoring user (tenant) and enter the Phone Templates menu");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	  testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 
 	  // Step 4 - Verify that Add-Template button is deactivated
@@ -162,7 +162,7 @@ public class Test90__Monitoring_system_tenant_templates {
 	  // Step 7 - Logout, re-login as Administrator and delete the created Template
 	  testFuncs.myDebugPrinting("Step 7 - Logout, re-login as Administrator and delete the created Template");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-	  testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");		
 	  testFuncs.deleteTemplate(driver, tempName);
   }

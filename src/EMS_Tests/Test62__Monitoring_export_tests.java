@@ -81,7 +81,7 @@ public class Test62__Monitoring_export_tests {
 
 	    // Login via a Monitoring user (System)
 		testFuncs.myDebugPrinting("Login via a Monitoring user (System)");
-		testFuncs.login(driver, testVars.getMonitUsername(), testVars.getMonitPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+		testFuncs.login(driver, testVars.getMonitSysLoginData(enumsClass.loginData.USERNAME), testVars.getMonitSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 1 - Enter the Export-Users-Devices menu and export users+devices
 		String downloadedFile = "users.zip";
@@ -104,7 +104,7 @@ public class Test62__Monitoring_export_tests {
 	    // Logout and re-login via an Monitoring user (Tenant)
 		testFuncs.myDebugPrinting("Logout and re-login via an Monitoring user (Tenant)");
 		testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
-		testFuncs.login(driver, testVars.getMonitTenUsername(), testVars.getMonitTenPassword(), testVars.getSysMainStr(), "https://", this.usedBrowser);
+		testFuncs.login(driver, testVars.getMonitTenLoginData(enumsClass.loginData.USERNAME), testVars.getMonitTenLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 		
 	    // Step 3 - Enter the Export-Users-Devices menu and export users+devices
 		testFuncs.myDebugPrinting("Step 3 - Enter the Export-Users-Devices menu and export users+devices");

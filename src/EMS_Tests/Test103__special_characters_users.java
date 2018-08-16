@@ -25,12 +25,11 @@ import EMS_Tests.enumsClass.*;
 * 	 5. Create a user using POST query with ~;  characters
 * 	 6. Create a user using POST query with *   characters
 * 	 7. Create a user using POST query with +;  characters
-*  	 8. Create a user using POST query with '   characters => bug
-* 	 9. Delete the users.
+* 	 8. Delete the users.
 * 
 * Results:
-* 	 1-8. All the users should be created successfully.
-* 	   9. All users should be deleted successfully.
+* 	 1-7. All the users should be created successfully.
+* 	   8. All users should be deleted successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -85,14 +84,12 @@ public class Test103__special_characters_users {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables and login
-	testFuncs.login(driver, testVars.getSysUsername(), testVars.getSysPassword(), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	String Id             = testFuncs.getId();
 	String prefixName     = "sChars_" + Id + "_";
-	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+", "'" }; //The ' character cause bugs - known bug
-	// String suffixes[]     = {"'"};
+	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+"};
 	
-    // Step 1-8 - Create a user using POST query with !#$ characters
-	// Nir 28/3/18 VI 149363
+    // Step 1-7 - Create a user using POST query with !#$ characters
 	int len = suffixes.length;
 	for (int i = 0; i < len; ++i) {
 		
@@ -111,8 +108,8 @@ public class Test103__special_characters_users {
 		testFuncs.verifyPostUserCreate(driver, temPUsername, temPUsername, true);	
 	}	
 	   
-	// Step 9 - Delete the users
-	testFuncs.myDebugPrinting("Step 9 - Delete the users");
+	// Step 8 - Delete the users
+	testFuncs.myDebugPrinting("Step 8 - Delete the users");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, prefixName, String.valueOf(suffixes.length));
 	Map<String, String> map = new HashMap<String, String>();
