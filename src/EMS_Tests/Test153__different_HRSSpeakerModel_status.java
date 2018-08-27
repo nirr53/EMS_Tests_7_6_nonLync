@@ -18,14 +18,13 @@ import org.openqa.selenium.*;import EMS_Tests.enumsClass.*;
 * Tests:
 * 	 - Enter Manage multiple users changes menu.
 * 	 1. Create a user using POST query with randomize HRSSpeakerModel value
-* 	 2. Create a user using POST query with long (129+ characters) HRSSpeakerModel value
-* 	 3. Create a user using POST query with empty HRSSpeakerModel value
-* 	 4. Create a user using POST query with HRSSpeakerModel value that has special characters
-* 	 5. Delete all the created users.
+* 	 2. Create a user using POST query with empty HRSSpeakerModel value
+* 	 3. Create a user using POST query with HRSSpeakerModel value that has special characters
+* 	 4. Delete all the created users.
 * 
 * Results:
-* 	 1-4. User should be created successfully with the given status.
-* 	   5. Users should be deleted successfully.
+* 	 1-3. User should be created successfully with the given status.
+* 	   4. Users should be deleted successfully.
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -82,10 +81,9 @@ public class Test153__different_HRSSpeakerModel_status {
 	// Set variables
 	String Id                   = testFuncs.getId();
 	String prefixName           = "hrsSpeakerModel";
-	String usersNumber	        = "4";
+	String usersNumber	        = "3";
 	String tempHRSSpeakerModel 	= "";
 	String hrsSpeakerModelStts  = prefixName + "Status" + Id;
-	String hrsSpeakerModelLong  = prefixName + "Long"   + Id;
 	String hrsSpeakerModelEmpty = prefixName + "Empty"  + Id;
 	String hrsSpeakerModelSpec 	= prefixName + "Spec"   + Id;
 	
@@ -112,29 +110,9 @@ public class Test153__different_HRSSpeakerModel_status {
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
-		
-	// Nir 14\5\18 VI 153259
-    // Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with long (129+ characters) HRSSpeakerModel value");
-	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								hrsSpeakerModelLong		   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-								"myLocation");
-	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelLong, hrsSpeakerModelLong, true);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "unknown"); 
-	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
-	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
-	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
 	
-    // Step 3 - Create a user using POST query with empty HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with empty HRSSpeakerModel value");
+    // Step 2 - Create a user using POST query with empty HRSSpeakerModel value
+	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with empty HRSSpeakerModel value");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
@@ -149,8 +127,8 @@ public class Test153__different_HRSSpeakerModel_status {
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelEmpty, hrsSpeakerModelEmpty, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", "");
 
-    // Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters
-	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with HRSSpeakerModel value that has special characters");
+    // Step 3 - Create a user using POST query with HRSSpeakerModel value that has special characters
+	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with HRSSpeakerModel value that has special characters");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
 								testVars.getIp()           ,
@@ -167,8 +145,8 @@ public class Test153__different_HRSSpeakerModel_status {
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", tempHRSSpeakerModel); 
    
-    // Step 5 - Delete the users
-  	testFuncs.myDebugPrinting("Step 5 - Delete the users");
+    // Step 4 - Delete the users
+  	testFuncs.myDebugPrinting("Step 4 - Delete the users");
     Map<String, String> map = new HashMap<String, String>();
     map.put("action"	      , "Delete Users");
     map.put("srcUsername"     , "Finished");
@@ -180,7 +158,6 @@ public class Test153__different_HRSSpeakerModel_status {
     testFuncs.selectMultipleUsers(driver, prefixName, usersNumber);   
     testFuncs.setMultipleUsersAction(driver, map);  
     testFuncs.searchStr(driver, hrsSpeakerModelStts.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
-    testFuncs.searchStr(driver, hrsSpeakerModelLong.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, hrsSpeakerModelEmpty.toLowerCase() + "@" + testVars.getDomain() + " Finished");
     testFuncs.searchStr(driver, hrsSpeakerModelSpec.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
   }
