@@ -102,7 +102,6 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	editPermSuffixesField(permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	  
-	// Nir VI 153180
 	// Step 1 - Try to upload a jpeg file to Firmware menu
 	testFuncs.myDebugPrinting("Step 1 - Try to upload a jpeg file to Firmware menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_FIRM_FILES, "Phone firmware files");
@@ -113,13 +112,11 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
   	uploadNonCfgToTemplates(driver, fullPath); 	
 	
-	// Nir VI 153182
 	// Step 3 - Try to upload a jpeg file to Import-users menu
 	testFuncs.myDebugPrinting("Step 3 - Try to upload a jpeg file to Import-users menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_USRS_DEVICES_IMPORT, "Import Users and Devices information");
 	testFuncs.uploadFile(driver, fullPath, xpathUploadField, xpathUploadButton, confirmMessageStrs);
 	
-	// Nir VI 153182
 	// Step 4 - Try to upload a jpeg file to Import-configuration menu
 	testFuncs.myDebugPrinting("Step 4 - Try to upload a jpeg file to Import-configuration menu");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_IMPORT_EXPORT_CONFIGURATION_IMPORT, "To Import Phone Configuration Files");
