@@ -24,6 +24,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -103,8 +104,9 @@ public class GlobalFuncs {
 	      
 	      // Verify good access
     	  myAssertTrue("Login fails ! (mainStr - " + mainStr + " was not detected !!)", driver.findElement(By.tagName("body")).getText().contains(mainStr));
-	  }
 	  
+	  }
+	
 	  /**
 	  *  Verify string in page based on read the whole page
 	  *  @param driver  - given driver
@@ -847,21 +849,18 @@ public class GlobalFuncs {
 			  myWait(1000);
 			  markElemet(driver, driver.findElement(By.xpath(paths[i])));
 			  myWait(2000);
-		      driver.findElement(By.xpath(paths[i])).click();
-		      
+		      driver.findElement(By.xpath(paths[i])).click();		      
 		      waitForLoad(driver);		      
-			  myWait(9000);
-			  
-			  
-			  
-			  
-			  
+			  myWait(9000);  
 		  }
 		  String title = driver.findElement(By.tagName("body")).getText();
 		  driver.switchTo().defaultContent();
 		  if (!verifyHeader.isEmpty()) {
 			  
-			  Assert.assertTrue("Title was not found (" + title + ")", title.contains(verifyHeader));
+			  Assert.assertTrue("Title (" + verifyHeader + ") was not found !! \n title - " + title, title.contains(verifyHeader));	  
+		  } else {
+			  
+			  myFail("Given header is empty !!");
 		  }
 		  myWait(9000);
 		  myDebugPrinting("enterMenu  - " +  mainpageDashboardAlarms + " ended successfully !!", enumsClass.logModes.NORMAL);
@@ -2104,10 +2103,13 @@ public class GlobalFuncs {
 	  */
 	  public void mySendKeys(WebDriver driver, By byType, String currUsr, int timeOut) {
 		  
-		  driver.findElement(byType).clear();
-		  myWait(3000);
-		  driver.findElement(byType).sendKeys(currUsr);
-		  myWait(timeOut);
+		  WebElement  clickedElem = driver.findElement(byType);
+		  WebDriverWait wait 	  = new WebDriverWait(driver , 20);
+		  clickedElem 			  = wait.until(ExpectedConditions.elementToBeClickable(byType));
+		  clickedElem.clear();
+		  myWait(2000);
+		  clickedElem.sendKeys(currUsr);
+		  myWait(timeOut);	  
 	  }
 	  
 	  /**
@@ -2150,9 +2152,12 @@ public class GlobalFuncs {
 	  *  @param timeout - given timeout value (Integer)
 	  */
 	  public void myClick(WebDriver driver, By byType, int timeout) {
-		  
-	      driver.findElement(byType).click();
-		  myWait(timeout);
+		  		  
+		  WebElement  clickedElem = driver.findElement(byType);
+		  WebDriverWait wait 	  = new WebDriverWait(driver , 20);
+		  clickedElem 			  = wait.until(ExpectedConditions.elementToBeClickable(byType));
+		  clickedElem.click();	      
+		  myWait(timeout);  
 	  }
 	  
 	  /**

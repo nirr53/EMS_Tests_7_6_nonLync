@@ -153,7 +153,7 @@ public class Test3__home_screen_buttons {
 	  
 	  // Verify Help headers
 	  testFuncs.myDebugPrinting("Verify Help headers", enumsClass.logModes.MINOR);
-	  testFuncs.searchStr(driver, "Welcome to AudioCodes Technical Document Library");  
+	  testFuncs.searchStr(driver, "Starting up and Logging in");  
   }
 
   @After
