@@ -10,13 +10,13 @@
 ;~ Internal Parameters
 ;~ $IP	 		 = "10.21.8.35"										; IP of the EMS-IPP manager				    (I.e. 10.21.8.32)
 ;~ $PORT	 	 = "8081"											; Port of the computer that sends the alarm (I.e 8081)
-;~ $MAC		 = "00908f600671"									; MAC of regsisterd phone 					(I.e 00908fdf411a)
+;~ $MAC		 	 = "00908f600671"										; MAC of regsisterd phone 					(I.e 00908fdf411a)
 ;~ $NAME		 = "IPPHONE CONFERENCE SPEAKER CONNECTION FAILURE"	; Name of alarm								(I.e IPPHONE CONFERENCE SPEAKER CONNECTION FAILURE)
-;~ $DESCRIPTION = "sev1"											; Description of alarm						(I.e dateTest)
+;~ $DESCRIPTION  = "sev1"											; Description of alarm						(I.e dateTest)
 ;~ $DATE		 = "2017-07-217T12:24:18"							; Date of alarm 							(I.e 2017-07-217T12:24:18)
 ;~ $INFO1 		 = "empty"											; Description #1 alarm						(I.e. info1)
 ;~ $INFO2 		 = "empty"											; Description #2 alarm						(I.e. info2)
-;~ $SEVERITY    = "warning"										; Sevrity of alarm							(I.e. 5)
+;~ $SEVERITY     = "warning"											; Sevrity of alarm							(I.e. 5)
 
 ;~ External parametsrs
 $IP	 		 = $CmdLine[1]										; IP of the EMS-IPP manager				    (I.e. 10.21.8.32)

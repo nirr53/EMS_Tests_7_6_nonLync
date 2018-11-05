@@ -21,7 +21,7 @@ public class enumsClass {
 	// Log modes
 	public enum logModes {
 		 	 
-		MAJOR(""), NORMAL(" "), MINOR("  "), DEBUG("   ");  		 
+		MAJOR(""), NORMAL("   "), MINOR("      "), DEBUG("         ");  		 
 		private String level = "";
 		
 		private logModes(String level) {		 

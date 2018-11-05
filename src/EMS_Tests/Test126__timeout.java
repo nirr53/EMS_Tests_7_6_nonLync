@@ -88,7 +88,7 @@ public class Test126__timeout {
 	String location 		= "myLocation";
 	String phoneNumber		= "+97239764713";
 	String timeoutMin		= "3";
-	int timeoutInt 			= Integer.valueOf(timeoutMin);
+	int realTimeout 		= Integer.valueOf(timeoutMin) * 1000 * 62;
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
@@ -135,8 +135,8 @@ public class Test126__timeout {
 	
     // Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive
 	testFuncs.myDebugPrinting("Step 1 - Verify that the user is NOT disconnect after less than 180 (3 minutes) seconds from the the last keep-alive");
-	testFuncs.myDebugPrinting("Wait for <"  + ((timeoutInt - 1) * 61 * 1000) + "> milli-seconds" , enumsClass.logModes.MINOR);
-	testFuncs.myWait((timeoutInt - 1) * 61 * 1000);
+	testFuncs.myDebugPrinting("Wait for <"  + realTimeout + "> milli-seconds" , enumsClass.logModes.MINOR);
+	testFuncs.myWait(realTimeout);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[1]/h3/div/a[3]"), 5000);
 	String classTxt = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[7]/i")).getAttribute("class");
 	testFuncs.myAssertTrue("Registered status was not detected !! <" + classTxt + ">", classTxt.contains("fa-check-square"));
@@ -155,7 +155,7 @@ public class Test126__timeout {
 	  
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='disconnected_timeout']"), timeoutValue, 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 5000);	  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");		
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);

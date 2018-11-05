@@ -198,7 +198,6 @@ public class Test100__Monitoring_device_actions_row {
     testFuncs.searchStr(driver, userName + "@" + testVars.getDomain() + " Finished");
   }
  
-  @Ignore
   @Test
   public void Monitoring_tenant_Device_status_actions() throws Exception {
 	 
@@ -429,8 +428,8 @@ public class Test100__Monitoring_device_actions_row {
 
   @After
   public void tearDown() throws Exception {
-	  
-//    driver.quit();
+	    
+	driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -134,10 +134,10 @@ public class Test113__multiple_users_configuration_key_features {
   	testFuncs.myDebugPrinting("Step 4 - Add PIN-lock configuration-keys");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, dispPrefix, usersNumber);
-    map.put("action"    , "User configuration");
-   map.put("confKey"   , "features");
+    map.put("action" , "User configuration");
+    map.put("confKey", "features");
+    map.put("pinLock", "true");
     map.remove("telnet");
-    map.put("pinLock"  , "true");
     testFuncs.setMultipleUsersAction(driver, map);
     
     // Step 5 - Add CAP-profile keys

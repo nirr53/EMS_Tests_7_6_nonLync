@@ -154,8 +154,8 @@ public class Test110__alarms_tests3 {
 	testFuncs.myDebugPrinting("Step 3 - Check The Clear-filter button at Filter menu");
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.TENANT, testVars.getDefTenant().toLowerCase()    , alertsForSearch1);
 	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    , 3000); 
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[2]"), 3000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[4]/div/button[1]"), 5000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[2]/div/button[2]"), 3000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[2]/div/button[1]"), 5000);	
 	testFuncs.searchStr(driver, user1);
 	testFuncs.searchStr(driver, user2);
 

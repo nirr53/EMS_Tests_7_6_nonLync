@@ -95,7 +95,7 @@ public class Test27__system_settings {
 	
 		driver.findElement(By.xpath("//*[@id='SRTP']")).click();
 	}
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 15000);
+	testFuncs.myClickNoWait(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button"), 15000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save general settings");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Server successfully updated.");
 	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]")							, 2000);
@@ -117,7 +117,7 @@ public class Test27__system_settings {
   @After
   public void tearDown() throws Exception {
 	  
-//	// Restore system language to English
+	// Restore system language to English
 	testFuncs.myDebugPrinting("Restore system language to English");	
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
 	Select sysLangs = new Select(driver.findElement(By.xpath("//*[@id='ipplanguage']")));

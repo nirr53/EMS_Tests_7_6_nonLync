@@ -95,16 +95,16 @@ public class Test150__permitted_suffixes {
 	  
 	// Step 2 - Try to delete all the permitted suffixes
 	testFuncs.myDebugPrinting("Step 2 - Try to delete all the permitted suffixes");
-	editPermSuffixesField("", "Save Upload File Extensions", "Please enter the file extension to upload.");
+	testFuncs.editPermSuffixesField(driver, "", "Save Upload File Extensions", "Please enter the file extension to upload.");
 	  
 	// Step 3 - Try to add invalid format string
 	testFuncs.myDebugPrinting("Step 3 - Try to add invalid format string");
 	// Nir 9\5\18 - VI 153160 was inserted
-	editPermSuffixesField("gdggd", "Save Upload File Extensions", "Successful to save file extensions to upload.");
+	testFuncs.editPermSuffixesField(driver, "gdggd", "Save Upload File Extensions", "Successful to save file extensions to upload.");
 
 	// Step 4 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system
 	testFuncs.myDebugPrinting("Step 4 - Add jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
-	editPermSuffixesField(permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
+	testFuncs.editPermSuffixesField(driver, permittedSuffixes + ",.jpeg", "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.jpeg, *.zip. Configuration standard file extension(s): *.cfg");
 	testFuncs.uploadConfigurationFile(driver,  testVars.getSrcFilesPath() + "\\" + usedFile, usedFile);
@@ -113,28 +113,17 @@ public class Test150__permitted_suffixes {
 	// Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system
 	testFuncs.myDebugPrinting("Step 5 - Remove jpeg suffix file to the permitted-list and try to upload a jpeg to the system");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
-	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
+	testFuncs.editPermSuffixesField(driver, permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_CONF_FILES, "Manage Configuration Files");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='trunkTBL']/div[2]/div[2]/div/div/div/strong[2]", "Acceptable file extension(s) to upload : *.cab, *.cfg, *.csv, *.id, *.img, *.zip. Configuration standard file extension(s): *.cfg.");
 	testFuncs.uploadNonCfgToPhoneConfiguration(driver,  testVars.getSrcFilesPath() + "\\" + usedFile); 
-  }
-  
-  // Edit the Permitted-Suffixes menu
-  private void editPermSuffixesField(String permStr, String msgBoxHdr, String msgBoxHdr2) {
-	  
-	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", enumsClass.logModes.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/input"), permStr, 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[4]/button"), 5000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , msgBoxHdr);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", msgBoxHdr2);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
 
   @After
   public void tearDown() throws Exception {
 	  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
-	editPermSuffixesField(permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
+	testFuncs.editPermSuffixesField(driver, permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
     driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");

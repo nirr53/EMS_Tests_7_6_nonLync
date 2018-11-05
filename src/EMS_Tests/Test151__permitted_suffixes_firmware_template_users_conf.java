@@ -128,11 +128,11 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
   private void editPermSuffixesField(String permStr, String msgBoxHdr, String msgBoxHdr2) {
 	  
 	  testFuncs.myDebugPrinting("permStr - <" + permStr + ">", enumsClass.logModes.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/input"), permStr, 2000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[4]/button"), 5000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[2]/input"), permStr, 5000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div/table/tbody/tr/td/table/tbody/tr/td[4]/button")		, 9000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , msgBoxHdr);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", msgBoxHdr2);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
   
   /**
@@ -163,7 +163,7 @@ public class Test151__permitted_suffixes_firmware_template_users_conf {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to reset the IP Phone template?");	    
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000); 				  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update configuration template");
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Succesfull to reset the configuration template to default file content.");	    
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Successful to reset the configuration template to default file content.");	    
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
   }
 

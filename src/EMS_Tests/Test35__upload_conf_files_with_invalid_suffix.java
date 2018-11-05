@@ -35,6 +35,7 @@ public class Test35__upload_conf_files_with_invalid_suffix {
   private browserTypes  usedBrowser;
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
+  String permittedSuffixes = ".cab,.cfg,.csv,.id,.img,.zip";
   
   // Default constructor for print the name of the used browser 
   public Test35__upload_conf_files_with_invalid_suffix(browserTypes browser) {
@@ -78,9 +79,11 @@ public class Test35__upload_conf_files_with_invalid_suffix {
 	// Set variables
 	String nonCfgFile = testVars.getSrcFilesPath() + "\\" + testVars.getImportFile("35.2");
 	  
-    // Login and enter the Phone Templates menu
-	testFuncs.myDebugPrinting("Login and enter the Phone Templates menu");
+    // Login, set suffixes and enter the Phone Templates menu
+	testFuncs.myDebugPrinting("Login, set suffixes and enter the Phone Templates menu");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_SYSTEM_SETTINGS, "System Settings");
+	testFuncs.editPermSuffixesField(driver, permittedSuffixes, "Save Upload File Extensions", "Successful to save file extensions to upload.");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONF_TEMPLATES, "IP Phones Configuration Templates");
 	
 	// Step 1 - Try to Upload non-cfg file to the Template

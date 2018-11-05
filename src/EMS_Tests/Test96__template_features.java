@@ -135,9 +135,9 @@ public class Test96__template_features {
 	  if (isLock) {
 		  
 		  testFuncs.myDebugPrinting("isLock - TRUE", enumsClass.logModes.MINOR);
-		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
+		  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
 	  }  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	  
@@ -219,10 +219,10 @@ public class Test96__template_features {
 	  if (isTelnetAccess) {
 		  
 		  testFuncs.myDebugPrinting("isTelnetAccess - TRUE", enumsClass.logModes.MINOR);
-		  testFuncs.myClick(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);
+		  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);
 	  }
 	  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Successfully to save the template new configuration settings");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);	

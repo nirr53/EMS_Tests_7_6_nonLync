@@ -203,9 +203,9 @@ public class Test109__alarms_tests2 {
 	testFuncs.myDebugPrinting("Step 4 - Delete the created alarms");
 	testFuncs.deleteAlarm(driver, alertsForSearch[0]);
 	testFuncs.deleteAlarm(driver, alertsForSearch[1]);
-	for (int i = 0; i < 5; ++i) {
+	for (String tempAlrmsSvrity : alertsSeverity) {
 		
-		String[] alarmNames   = {"severityTestAlarm_" + Id + "_" +	alertsSeverity[i]};
+		String[] alarmNames   = {"severityTestAlarm_" + Id + "_" +	tempAlrmsSvrity};
 		testFuncs.deleteAlarm(driver, alarmNames[0]);
 	}
 	testFuncs.deleteAlarm(driver, alertsForSearch3[0]);
@@ -230,7 +230,7 @@ public class Test109__alarms_tests2 {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

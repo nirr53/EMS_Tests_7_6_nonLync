@@ -32,7 +32,7 @@ public class GlobalVars {
 	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
 	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
 	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
-	private  String version			 = "7.6.86";
+	private  String version			 = "7.6.132";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
@@ -53,11 +53,11 @@ public class GlobalVars {
 	*  browsersList	  - Array of current browsers for run for each Junit
 	*/
 	private  String mainPageStr		 = "Login to IP Phone Manager Pro";
-    private  String [] sysLogin  	 = {"nir"					, "1q2w3e$r"};
-    private  String [] monitSysLogin = {"Nir_Monitoring4"		, "1q2w3e4r5t6y"};
-    private  String [] monitTenLogin = {"Nir_Monitoring_Tenant" , "1q2w3e4r6t"};
-    private  String [] operSysLogin  = {"Nir_Operation_Tenant2"	, "1q2w3e4r6t"};
-    private  String [] operTenLogin  = {"Nir_Operation2"		, "1q2w3e4r6t"};
+    private  String [] sysLogin  	 = {"nir"					, "1q2w3e$r5t"};
+    private  String [] monitSysLogin = {"Nir_Monitoring4"		, "1q2w3e$r5t"};
+    private  String [] monitTenLogin = {"Nir_Monitoring_Tenant" , "1q2w3e$r5t"};
+    private  String [] operSysLogin  = {"Nir_Operation_Tenant2"	, "1q2w3e$r5t"};
+    private  String [] operTenLogin  = {"Nir_Operation2"		, "1q2w3e$r5t"};
 	private  String sysMainStr       = "NETWORK TOPOLOGY";
 	private  String failLogMainStr   = "Invalid credentials";
 	private  String sysInvalidStr    = "Wrong username or password";

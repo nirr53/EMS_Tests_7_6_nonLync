@@ -243,23 +243,23 @@ public class Test156__setup_wizard_configuration_value {
 	  testFuncs.myDebugPrinting("Edit an existing Tenant configuration value", enumsClass.logModes.NORMAL);			
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , tenConfName , 4000);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), newTenConfValue, 4000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='step-3']/div/div[2]/div/div[1]/div[3]/a/span"), 7000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='step-3']/div/div[2]/div/div[1]/div[3]/a/span"), 7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Add Setting");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "This setting name is already in use.\nAre you sure you want to replace " + tenConfValue + " to " + newTenConfValue);		
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + usedTenant + " )");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");		
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 	  
 	  // Verify edit
 	  // Nir 4\6\18 - bug here, menu return to AutoDetection tenant
 	  testFuncs.myDebugPrinting("Verify edit", enumsClass.logModes.MINOR);			
-	  testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[1]/div[2]/button[1]"), 5000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='smartwizard']/nav[1]/div[2]/button[1]"), 5000);
 	  new Select(driver.findElement(By.xpath("//*[@id='step-2']/div/div[2]/div[1]/select"))).selectByVisibleText(testVars.getNonDefTenant(1));
 	  testFuncs.myWait(4000);
 	  new Select(driver.findElement(By.xpath("//*[@id='step-2']/div/div[2]/div[1]/select"))).selectByVisibleText(usedTenant);
 	  testFuncs.myWait(4000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='step-3']/h2", "Tenant Configuration");
 	  testFuncs.searchStr(driver, tenConfName + " " + newTenConfValue);
   }
@@ -271,20 +271,19 @@ public class Test156__setup_wizard_configuration_value {
 	  testFuncs.myDebugPrinting("Add new Tenant configuration", enumsClass.logModes.NORMAL);			
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , tenConfName , 4000);
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), tenConfValue, 4000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='step-3']/div/div[2]/div/div[1]/div[3]/a/span"), 7000);
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + usedTenant + " )");
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='step-3']/div/div[2]/div/div[1]/div[3]/a/span"), 7000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");		
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
 	  
 	  // Verify create
 	  // Nir 4\6\18 - bug here, menu return to AutoDetection tenant
 	  testFuncs.myDebugPrinting("Verify create", enumsClass.logModes.MINOR);			
-	  testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[1]/div[2]/button[1]"), 5000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='smartwizard']/nav[1]/div[2]/button[1]"), 5000);
 	  new Select(driver.findElement(By.xpath("//*[@id='step-2']/div/div[2]/div[1]/select"))).selectByVisibleText(testVars.getNonDefTenant(1));
 	  testFuncs.myWait(4000);
 	  new Select(driver.findElement(By.xpath("//*[@id='step-2']/div/div[2]/div[1]/select"))).selectByVisibleText(usedTenant);
 	  testFuncs.myWait(4000);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='smartwizard']/nav[2]/div[2]/button[2]"), 4000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='step-3']/h2", "Tenant Configuration");
 	  testFuncs.searchStr(driver, tenConfName + " " + tenConfValue);
   }

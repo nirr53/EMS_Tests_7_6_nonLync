@@ -128,10 +128,10 @@ public class Test98__device_actions_row {
 	searchAndSelectDevice(driver, userName);
 	updateDeviceFirmware(userName, testVars.getDefPhoneModel());
 	
-//	// Step 4 - Open web admin via Device-status menu
-//	testFuncs.myDebugPrinting("Step 4 - Open web admin via Device-status menu");
-//	searchAndSelectDevice(driver, userName);
-//	openWebAdminDevice();
+	// Step 4 - Open web admin via Device-status menu
+	testFuncs.myDebugPrinting("Step 4 - Open web admin via Device-status menu");
+	searchAndSelectDevice(driver, userName);
+	openWebAdminDevice();
 	
 	// Step 5 - Set a nickname via Device-status menu
 	testFuncs.myDebugPrinting("Step 5 - Set a nickname via Device-status menu");

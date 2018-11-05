@@ -117,10 +117,10 @@ public class Test95__site_configuration_features {
 	  if (isTelnetAccess) {
 		  
 		  testFuncs.myDebugPrinting("isTelnetAccess - TRUE", enumsClass.logModes.MINOR);
-		  testFuncs.myClick(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);
+		  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='management_telnet_enabled']"), 3000);
 	  }
 	  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " [" + site + "] / " + tenant + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
@@ -145,9 +145,9 @@ public class Test95__site_configuration_features {
 	  if (isLock) {
 		  
 		  testFuncs.myDebugPrinting("isLock - TRUE", enumsClass.logModes.MINOR);
-		  testFuncs.myClick(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
+		  testFuncs.myClickNoWait(driver, By.xpath("//*[@id='system_pin_lock_enabled']"), 3000);
 	  }  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
+	  testFuncs.myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + site + " [" + site + "] / " + tenant + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Site configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
@@ -205,11 +205,11 @@ public class Test95__site_configuration_features {
 	  
 	  
 	  
-	  int dayLightValuesNumber = dayLightValues.length;
-	  for (int i = 0; i < dayLightValuesNumber; ++i) {
+	  int i = 0;
+	  for (String dayLightValue : dayLightValues) {
 		  
-		  testFuncs.myDebugPrinting(i + ". The searched value is: " + dayLightValues[i], enumsClass.logModes.MINOR);
-		  testFuncs.searchStr(driver, dayLightValues[i]);	  
+		  testFuncs.myDebugPrinting(i++ + ". The searched value is: " + dayLightValue, enumsClass.logModes.MINOR);
+		  testFuncs.searchStr(driver, dayLightValue);	  
 		  testFuncs.myWait(3000); 
 	  }  
   }

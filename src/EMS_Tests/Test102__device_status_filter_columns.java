@@ -97,7 +97,7 @@ public class Test102__device_status_filter_columns {
 		testFuncs.myDebugPrinting("The checkbox xpath is - " + xpath, enumsClass.logModes.MINOR);  
 		if (!driver.findElement(By.xpath(xpath)).isSelected()) {
 			
-			testFuncs.myClick(driver, By.xpath(xpath), 5000);
+			testFuncs.myClickNoWait(driver, By.xpath(xpath), 5000);
 		}
 	}
 	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/a[3]"), 10000);      

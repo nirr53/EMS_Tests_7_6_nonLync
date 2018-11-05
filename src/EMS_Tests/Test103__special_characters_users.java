@@ -86,8 +86,8 @@ public class Test103__special_characters_users {
 	// Set variables and login
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	String Id             = testFuncs.getId();
-	String prefixName     = "sChars_" + Id + "_";
-	String suffixes[]     = {"!#$", "/=?", "^_`", "{|}", "~;", "*", "+"};
+	String prefixName     = "sChars" + Id;
+	String suffixes[]     = {"!#$", "/=?", "^`", "{|}", "~;", "*", "+"};
 	
     // Step 1-7 - Create a user using POST query with !#$ characters
 	int len = suffixes.length;
