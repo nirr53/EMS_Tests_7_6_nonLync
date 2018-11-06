@@ -16,7 +16,7 @@ public class enumsClass {
 	public enum vocaModes        { TLS, TCP, UDP;  }
 	
 	// Alarm filter modes
-	public enum alarmFilterModes { DESCRPTION, SEVERITY, TENANT, INFO, REMOTE_HOST, SOURCE, NAME, ALARMS_EVENTS; }
+	public enum alarmFilterModes { DESCRPTION, SEVERITY, TENANT, INFO, REMOTE_HOST, SOURCE, NAME, ALARMS_AND_EVENTS, ALARMS_ONLY; }
 	
 	// Log modes
 	public enum logModes {

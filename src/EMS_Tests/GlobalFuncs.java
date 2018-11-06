@@ -2640,11 +2640,13 @@ public class GlobalFuncs {
 	  *  @param alertData       - search criteria
 	  *  @param alertsForSearch - array of alert descriptions for search
 	  **/
-	  public void searchAlarm(WebDriver driver, alarmFilterModes info, String alertData, String []alertsForSearch) {
+	  public void searchAlarm(WebDriver driver, alarmFilterModes info, String alertData, String [] alertsForSearch) {
 		  
 		  // Enter the filter menu & clear it before a new search
 		  myClick(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/a")						    	  , 7000);
-		  myClickNoWait(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[2]/div/button[2]"), 7000);		  
+		  myClickNoWait(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[4]/div[2]/div/button[2]"), 7000);	  
+		  new Select(driver.findElement(By.xpath("//*[@id='inputAlarmsAndEvents']"))).selectByVisibleText("Alarms And Events");
+		  myWait(5000);  
 		  switch (info) {
 			  case DESCRPTION:	
 				  myDebugPrinting("Search according to description <" + alertData + ">", enumsClass.logModes.MINOR);
@@ -2682,6 +2684,12 @@ public class GlobalFuncs {
 				  myDebugPrinting("Search according to Name <" + alertData + ">", enumsClass.logModes.MINOR);	
 				  mySendKeys(driver, By.xpath("//*[@id='inputAlarm']"), alertData, 2000);
 				  break;
+				  
+			  case ALARMS_ONLY:
+				  myDebugPrinting("Search according to Alarms and Events <" + alertData + ">", enumsClass.logModes.MINOR);	
+				  new Select(driver.findElement(By.xpath("//*[@id='inputAlarmsAndEvents']"))).selectByVisibleText(alertData);
+				  myWait(5000);
+				  break;
 		
 			  default:
 				  break; 	  
@@ -2714,6 +2722,26 @@ public class GlobalFuncs {
 		  String[] alertsForSearch = {alertDesc};
 		  searchAlarm(driver, enumsClass.alarmFilterModes.DESCRPTION, alertDesc, alertsForSearch); 
 		   
+		  // Delete the alarm
+		  myDebugPrinting("Delete the alarm", enumsClass.logModes.MINOR);
+		  myClick(driver, By.xpath("//*[@id='dl-menu']/a")		   , 3000);
+		  myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[1]/a"), 3000);
+		  verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[1]", "Delete");
+		  verifyStrByXpath(driver, "//*[@id='jqistate_state0']/div[2]", "Are you sure you want to delete this IPP?");
+		  myClick(driver, By.xpath("//*[@id='jqi_state0_buttonDelete']"), 5000);
+		  
+		  // Verify delete
+		  myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);
+		  String bodyText     = driver.findElement(By.tagName("body")).getText();
+		  myAssertTrue("String is not detcetd !!", bodyText.contains("There are no devices that fit this search criteria"));	  
+	  }
+	  
+	  /**
+	  *  Delete an alarm from Alarms table by a given parameters without pre-search
+	  *  @param driver    - given driver
+	  **/
+	  public void deleteAlarmWithoutSearch(WebDriver driver) {
+		  		  		   
 		  // Delete the alarm
 		  myDebugPrinting("Delete the alarm", enumsClass.logModes.MINOR);
 		  myClick(driver, By.xpath("//*[@id='dl-menu']/a")		   , 3000);

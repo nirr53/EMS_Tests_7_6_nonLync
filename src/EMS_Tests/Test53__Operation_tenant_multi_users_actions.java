@@ -178,9 +178,9 @@ public class Test53__Operation_tenant_multi_users_actions {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
   	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("sendMessage");
-    testFuncs.myWait(2000);  
-    testFuncs.mySendKeys(driver, By.xpath("//*[@id='msgText']"), "message", 3000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='sendMessageTR']/td/div/a"), 5000);
+    testFuncs.myWait(5000);  
+    testFuncs.mySendKeys(driver, By.xpath("//*[@id='msgText']"), "message",  7000);
+    testFuncs.myClickNoWait(driver, By.xpath("//*[@id='sendMessageTR']/td/div/a"), 7000);
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Send Message");
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to send the message to the selected user(s) ?");
    	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
