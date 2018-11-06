@@ -2113,7 +2113,7 @@ public class GlobalFuncs {
 		  WebDriverWait wait 	  = new WebDriverWait(driver , 20);
 		  clickedElem 			  = wait.until(ExpectedConditions.elementToBeClickable(byType));
 		  clickedElem.clear();
-		  myWait(2000);
+		  myWait(3000);
 		  clickedElem.sendKeys(currUsr);
 		  myWait(timeOut);	  
 	  }
@@ -2916,16 +2916,16 @@ public class GlobalFuncs {
 		  myWait(20000);
 		  
 		  // Select key, set data and submit
-		  myDebugPrinting("Add cfgKeyName - "  + cfgKeyName, enumsClass.logModes.MINOR);	
+		  myDebugPrinting("Add cfgKeyName - "  + cfgKeyName , enumsClass.logModes.MINOR);	
 		  myDebugPrinting("Add cfgKeyValue - " + cfgKeyValue, enumsClass.logModes.MINOR);	 
-		  mySendKeys(driver, By.xpath("//*[@id='ini_name']"), cfgKeyName  , 7000);
-		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 7000); 
-		  myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 7000);	 
+		  mySendKeys(driver, By.xpath("//*[@id='ini_name']") , cfgKeyName , 8000);
+		  mySendKeys(driver, By.xpath("//*[@id='ini_value']"), cfgKeyValue, 8000); 
+		  myClickNoWait(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[3]/div[2]/div[1]/div[3]/a"), 8000);	 
 		  String txt = driver.findElement(By.tagName("body")).getText();
 		  if (txt.contains("Tenant configuration was saved successfully.")) {
 			  
 			  myDebugPrinting("Confirmbox was detected .. ", enumsClass.logModes.MINOR);	
-			  myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
+			  myClickNoWait(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);	
 		  }   else {
 			  
 			  myWait(7000);			  

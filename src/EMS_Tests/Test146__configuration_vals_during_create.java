@@ -123,7 +123,7 @@ public class Test146__configuration_vals_during_create {
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt"); 
       
- 	// Step 1 - Verify the configuration-file of the new user holds the Tenant-A and Site-A values.
+ 	// Step 1 - Verify the configuration-file of the new user holds the Tenant-A and Site-A values
  	testFuncs.myDebugPrinting("Step 1 - Verify the configuration-file of the new user holds the Tenant-A and Site-A values");
  	currUrl  = driver.getCurrentUrl();
  	testFuncs.myDebugPrinting("currUrl - " + currUrl, enumsClass.logModes.MINOR);
