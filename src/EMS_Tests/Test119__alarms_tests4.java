@@ -89,15 +89,15 @@ public class Test119__alarms_tests4 {
 	
     // Create a registered user using POST method
 	testFuncs.myDebugPrinting("Create a registered user using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 " 1"				    	,
-			 												 prefix 					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()  		  ,
+						  testVars.getPort() 	 	  ,
+						  Integer.valueOf(1)		  ,	
+						  prefix  	  		      	  ,			 
+						  testVars.getDomain()	      ,					
+						  "registered"		  	      ,													
+						  testVars.getDefPhoneModel() ,													
+						  testVars.getDefTenant()     ,												
+						  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, prefix, prefix, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_DASHBOARD_ALARMS, "Export");

@@ -29,10 +29,10 @@ public class GlobalVars {
 	private  String port             = "8081";
 	private  String domain           = "cloudbond365b.com";
     private  String url  		     = ip + "/ipp/admin/AudioCodes_files/login.php";
-	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_4\\chromedriver.exe";
+	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_6\\chromedriver.exe";
 	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
 	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
-	private  String version			 = "7.6.132";
+	private  String version			 = "7.6.158";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";
@@ -75,6 +75,7 @@ public class GlobalVars {
 	*  nonDefTeanants - Array of non default Tenant
 	*  spclCrsSite	  - Site with special characters
 	*  firmVersion	  - Firmware version
+	*  defLocation	  - Default location
 	*/
 	private  String crUserBatName    = "createUsersViaPost.exe"; 
     private  String crAlrmsBatName   = "alertEngine.exe";
@@ -86,6 +87,7 @@ public class GlobalVars {
 	private  String nonDefTeanants[] = {"NirTest3", "NirTest2"};
 	private  String spclCrsSite      = "Nir_()'<>/\\\":*&^%#@!~";
 	private  String firmVersion      = "UC_2.0.13.121";
+	private  String defLocation		 = "Default autoLoad location";
 	
 	/**
 	*  Source-files names
@@ -274,6 +276,12 @@ public class GlobalVars {
     *  @return firmVesrion
     */
 	public String getFirmVersion()   { return  firmVersion;    }
+	
+    /**
+    *  Default method for return a default location for created users
+    *  @return defLocation
+    */
+	public String getDefLocation()   { return  defLocation;    }
 	
     /**
     *  Default method for return the downloads path

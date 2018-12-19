@@ -96,30 +96,28 @@ public class Test69__Operation_multi_users_devices_permissions {
 	testFuncs.myDebugPrinting("Login via Administrator, create a user of default Tenant with a POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-			  					testVars.getIp()           ,
-			  					testVars.getPort()         ,
-			  					"1"		        		   ,
-			  					defTenantUser  		       ,
-			  					testVars.getDomain()       ,
-			  					"registered"               ,
-			  					testVars.getDefPhoneModel(),
-			  					testVars.getDefTenant()    ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()			  ,
+						  testVars.getPort() 	 	  ,
+						  1							  ,	
+						  defTenantUser  		 	  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  testVars.getDefTenant()     ,
+						  testVars.getDefLocation());
 	
 	// Create another user with non-default Tenant with a POST query
 	testFuncs.myDebugPrinting("Create another user with non-default Tenant with a POST query");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-			  					testVars.getIp()           ,
-			  					testVars.getPort()         ,
-			  					"1"		        		   ,
-			  					nonDefTenantUser  		   ,
-			  					testVars.getDomain()       ,
-			  					"registered"               ,
-			  					testVars.getDefPhoneModel(),
-			  					nonDefTenant    		   ,
-				 				"myLocation");	
+	testFuncs.createUsers(testVars.getIp()			  ,
+						  testVars.getPort() 	 	  ,
+						  1							  ,	
+						  nonDefTenantUser  		  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  nonDefTenant     			  ,
+						  testVars.getDefLocation());
 		 
     // Logout, re-login via an Operation user (system)
 	testFuncs.myDebugPrinting("Logout, re-login via an Operation user (system)");

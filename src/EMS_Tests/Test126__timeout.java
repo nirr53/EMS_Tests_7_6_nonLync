@@ -85,7 +85,7 @@ public class Test126__timeout {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables and login
-	String location 		= "myLocation";
+	String location 		= testVars.getDefLocation();
 	String phoneNumber		= "+97239764713";
 	String timeoutMin		= "3";
 	int realTimeout 		= Integer.valueOf(timeoutMin) * 1000 * 62;
@@ -97,15 +97,15 @@ public class Test126__timeout {
 	testFuncs.myDebugPrinting("Set the Timeout value to be 3 minutes and create a registered-user");
 	setTimeout(timeoutMin);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  1							  ,	
+			  userName  		 		  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);
 	
     // Set the status of the users be Offline and than Online Again
@@ -164,30 +164,30 @@ public class Test126__timeout {
   @After
   public void tearDown() throws Exception {
 	    
-	  // Delete the created users & Set timeout to be 10 again
-	  testFuncs.myDebugPrinting("Step 3 - Delete the created users");		
-	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
-	  testFuncs.selectMultipleUsers(driver, userName, "1");
-	  map.put("usersPrefix"	  , userName);  
-	  map.put("usersNumber"	  , "1"); 
-	  map.put("startIdx"   	  , String.valueOf("1"));	  
-	  map.put("srcUsername"	  , "Finished");	    
-	  map.put("action"	 	  , "Delete Users");	  	  
-	  map.put("skipVerifyDelete", "true");  
-	  testFuncs.setMultipleUsersAction(driver, map);	  
-	  userName = userName.toLowerCase();  
-	  testFuncs.searchStr(driver, userName + "@" + testVars.getDomain() + " Finished");
-	  setTimeout("10");  
-	  
-	  // Close session
-	  driver.quit();
-	  System.clearProperty("webdriver.chrome.driver");
-	  System.clearProperty("webdriver.ie.driver");    
-	  String verificationErrorString = verificationErrors.toString();
-
-	  if (!"".equals(verificationErrorString)) {
-    	testFuncs.myFail(verificationErrorString);
-    
-	  }
+//	  // Delete the created users & Set timeout to be 10 again
+//	  testFuncs.myDebugPrinting("Step 3 - Delete the created users");		
+//	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
+//	  testFuncs.selectMultipleUsers(driver, userName, "1");
+//	  map.put("usersPrefix"	  , userName);  
+//	  map.put("usersNumber"	  , "1"); 
+//	  map.put("startIdx"   	  , String.valueOf("1"));	  
+//	  map.put("srcUsername"	  , "Finished");	    
+//	  map.put("action"	 	  , "Delete Users");	  	  
+//	  map.put("skipVerifyDelete", "true");  
+//	  testFuncs.setMultipleUsersAction(driver, map);	  
+//	  userName = userName.toLowerCase();  
+//	  testFuncs.searchStr(driver, userName + "@" + testVars.getDomain() + " Finished");
+//	  setTimeout("10");  
+//	  
+//	  // Close session
+//	  driver.quit();
+//	  System.clearProperty("webdriver.chrome.driver");
+//	  System.clearProperty("webdriver.ie.driver");    
+//	  String verificationErrorString = verificationErrors.toString();
+//
+//	  if (!"".equals(verificationErrorString)) {
+//    	testFuncs.myFail(verificationErrorString);
+//    
+//	  }
   }
 }

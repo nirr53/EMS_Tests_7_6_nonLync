@@ -115,15 +115,15 @@ public class Test100__Monitoring_device_actions_row {
 	testFuncs.myDebugPrinting("Login via Administrator and create a registered user");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  userName  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);  
 	
 	// Logout, re-login via a Monitoring-user (system) and enter the Device-Status menu
@@ -213,15 +213,15 @@ public class Test100__Monitoring_device_actions_row {
 	testFuncs.myDebugPrinting("Login via Administrator and create a registered user");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  userName  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);  
 	
 	// Logout, re-login via a Monitoring-user (tenant) and enter the Device-Status menu

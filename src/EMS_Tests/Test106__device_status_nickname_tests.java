@@ -94,15 +94,15 @@ public class Test106__device_status_nickname_tests {
 	testFuncs.myDebugPrinting("Create a users + devices using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 testVars.getPort()         ,
-			 usersNumberStr		        ,
-			 dispPrefix  		        ,
-			 testVars.getDomain()       ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  3				 			 ,	
+						  dispPrefix  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver,  dispPrefix,  dispPrefix, true);
 	   
 	// Step 1 - Add and edit a nickname for one of the devices

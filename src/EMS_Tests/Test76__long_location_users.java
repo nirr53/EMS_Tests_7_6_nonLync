@@ -88,29 +88,29 @@ public class Test76__long_location_users {
 	
 	  	// Step 1 - Create a user with Location field in 2048 characters
 		testFuncs.myDebugPrinting("Step 1 - Create a user with Location field in 2048 characters");
-		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-				 												 testVars.getPort()     ,
-				 												 "1"				    ,
-				 												 usersPrefix + "2048"   ,
-				 												 testVars.getDomain()   ,
-				 												 "registered"           ,
-				 												 "430HD"                ,
-				 												 testVars.getDefTenant(),
-				 												 "myLocation");
+		testFuncs.createUsers(testVars.getIp()		  	  ,
+							  testVars.getPort() 	 	  ,
+							  1							  ,	
+							  usersPrefix + "2048"  	  ,
+							  testVars.getDomain()		  ,
+							  "registered"		  		  ,
+							  "430HD"					  ,
+							  testVars.getDefTenant()     ,
+							  testVars.getDefLocation());
 	    testFuncs.verifyPostUserCreate(driver, usersPrefix + "2048" + "@" + testVars.getDomain(), usersPrefix + "2048", true);
 	    
 	  	// Step 2 - Create a user with Location field in 2049 characters
 		testFuncs.myDebugPrinting("Step 2 - Create a user with Location field in 2049 characters");
-		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-				 												 testVars.getPort()     ,
-				 												 "1"				    ,
-				 												 usersPrefix + "2049"   ,
-				 												 testVars.getDomain()   ,
-				 												 "registered"           ,
-				 												 "430HD"                ,
-				 												 testVars.getDefTenant(),
-				 												 "myLocation");
+		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");		
+		testFuncs.createUsers(testVars.getIp()		  	  ,
+							  testVars.getPort() 	 	  ,
+							  1							  ,	
+							  usersPrefix + "2049"  	  ,
+							  testVars.getDomain()		  ,
+							  "registered"		  		  ,
+							  "430HD"					  ,
+							  testVars.getDefTenant()     ,
+							  testVars.getDefLocation());
 	    testFuncs.verifyPostUserCreate(driver, usersPrefix + "2049" + "@" + testVars.getDomain(), usersPrefix + "2049", true);
 
 	    // Step 3 - Delete the users

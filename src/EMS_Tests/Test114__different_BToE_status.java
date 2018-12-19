@@ -80,7 +80,7 @@ public class Test114__different_BToE_status {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set variables login
+	// Set variables and login
 	String Id             = testFuncs.getId();
 	String prefixName     = "BToE_user";
 	String usersNumber	  = "4";
@@ -93,60 +93,70 @@ public class Test114__different_BToE_status {
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with \"BToE disabled\" status");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeDisabled		   		,
-			 testVars.getDomain()  		,
-			 "registered"          		,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+    Map<String, String> extraData = new HashMap<String, String>();
+    extraData.put("BToEpairingstatus", "BToE disabled");
+    extraData.put("BToEversion"		 , "UC_2.0.13.121");
+	testFuncs.createUsers(testVars.getIp()	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeDisabled  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);	
 	testFuncs.verifyPostUserCreate(driver, btoeDisabled, btoeDisabled, true);
 	checkBToE("disabled");  
 	
     // Step 2 - Create a user using POST query with "auto paired" status
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with \"auto paired\" status");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeAutoPaired		   		,
-			 testVars.getDomain()  	    ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+    extraData.put("BToEpairingstatus", "auto paired");
+	testFuncs.createUsers(testVars.getIp()	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeAutoPaired  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, btoeAutoPaired, btoeAutoPaired, true);
 	checkBToE("automatic");  
 	
     // Step 3 - Create a user using POST query with "manual paired" status
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with \"manual paired\" status.");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeManPaired		   		,
-			 testVars.getDomain()  	    ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+    extraData.put("BToEpairingstatus", "manual paired");
+	testFuncs.createUsers(testVars.getIp()	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeManPaired  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, btoeManPaired, btoeManPaired, true);
 	checkBToE("manual");  	
 	
     // Step 4 - Create a user using POST query with "not paired" status
 	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with \"not paired\"    status.");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeNotPaired		   		,
-			 testVars.getDomain()  	    ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+    extraData.put("BToEpairingstatus", "not paired");
+	testFuncs.createUsers(testVars.getIp()	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeNotPaired  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, btoeNotPaired, btoeNotPaired, true);
    
    // Step 5 - Delete the users

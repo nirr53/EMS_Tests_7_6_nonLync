@@ -91,15 +91,15 @@ public class Test157__alarms_advanced_filter_tests {
 	
     // Create a registered user using POST method
 	testFuncs.myDebugPrinting("Create a registered user using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 "1"				    	,
-			 												 username 					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+						  testVars.getPort() 	 	  ,
+						  1			  				  ,	
+						  username  		 		  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  testVars.getDefTenant()     ,
+						  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, username, username, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
 
@@ -119,7 +119,7 @@ public class Test157__alarms_advanced_filter_tests {
 															  info1	 									 	 ,
 															  info2	 									 	 ,
 															  "minor");
-		
+	
 	// Search the alerts according to their Info
 	testFuncs.myDebugPrinting("Search the alerts according to their Info", enumsClass.logModes.MINOR);
 	testFuncs.searchAlarm(driver, enumsClass.alarmFilterModes.INFO, info1  , alarmsForSearch);

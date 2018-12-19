@@ -101,15 +101,15 @@ public class Test142__generate_delete_user_configuration_tests {
 	testFuncs.myDebugPrinting("Login, create a registered user and user-configuration value (Add+Save)");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 usersNumber				    ,
-			 												 regPrefix					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  Integer.valueOf(usersNumber),	
+			  regPrefix  		 		  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
  	testFuncs.myDebugPrinting("device mac - " + mac, enumsClass.logModes.MINOR);
@@ -176,7 +176,7 @@ public class Test142__generate_delete_user_configuration_tests {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

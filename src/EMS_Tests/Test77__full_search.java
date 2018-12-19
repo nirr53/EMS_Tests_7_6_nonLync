@@ -87,15 +87,15 @@ public class Test77__full_search {
 
 	  // Create a user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-					 										   testVars.getPort()     ,
-					 									       "1"				      ,
-					 									       srcUserName1            ,
-					 										   testVars.getDomain()   ,
-					 										   "registered"           ,
-					 										   "420HD"                ,
-					 										   testVars.getDefTenant(),
-					 										   "location");
+	  testFuncs.createUsers(testVars.getIp()		  ,
+							testVars.getPort() 	 	  ,
+							1						  ,	
+							srcUserName1  	  		  ,
+							testVars.getDomain()	  ,
+							"registered"		  	  ,
+							"420HD"					  ,
+							testVars.getDefTenant()   ,
+							testVars.getDefLocation());
 	  testFuncs.verifyPostUserCreate(driver, srcUserName1 + "@" + testVars.getDomain(), srcUserName1, true);
 	  String userMacAddr = testFuncs.readFile("mac_1.txt");
 	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, enumsClass.logModes.MINOR);
@@ -110,15 +110,15 @@ public class Test77__full_search {
 	  // Create a user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");
 	  String srcUserName2      = prefix + "2" + testFuncs.getId();
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-					 										   testVars.getPort()     ,
-					 									       "1"				      ,
-					 									       srcUserName2           ,
-					 										   testVars.getDomain()   ,
-					 										   "registered"           ,
-					 										   "430HD"                ,
-					 										   testVars.getDefTenant(),
-					 										   "location");
+	  testFuncs.createUsers(testVars.getIp()		  ,
+							testVars.getPort() 	 	  ,
+							1						  ,	
+							srcUserName2  	  		  ,
+							testVars.getDomain()	  ,
+							"registered"		  	  ,
+							"430HD"					  ,
+							testVars.getDefTenant()   ,
+							testVars.getDefLocation());
 	  testFuncs.verifyPostUserCreate(driver, srcUserName2 + "@" + testVars.getDomain(), srcUserName2, true);
 	  userMacAddr = testFuncs.readFile("mac_1.txt");
 	  testFuncs.myDebugPrinting("userMacAddr - " + userMacAddr, enumsClass.logModes.MINOR);

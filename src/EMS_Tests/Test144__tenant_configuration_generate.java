@@ -97,15 +97,15 @@ public class Test144__tenant_configuration_generate {
 	testFuncs.myDebugPrinting("Login, create a registered user and tenant-configuration value");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 usersNumber				    ,
-			 												 regPrefix					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		  	 	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(usersNumber)	,	
+						  regPrefix  	  		     	,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");

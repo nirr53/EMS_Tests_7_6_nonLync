@@ -21,17 +21,17 @@ $LOCATION 		 	= $CmdLine[9]  ; I.e.  myLocation
 ; Set arguments directly
 ;~ $IP	 			  = "10.21.8.32"
 ;~ $PORT	 		  = "8081"
-;~ $USERS_NUMBER  	  = "10"
-;~ $USERS_PREFIX_NAME = "testWithMark" & Random(0, 100, 1)
+;~ $USERS_NUMBER  	  = "1"
+;~ $USERS_PREFIX_NAME = "ovoc62_site5_" & Random(0, 100, 1)
 ;~ $DOMAIN_NAME 	  = "cloudbond365b.com"
 ;~ $CREATE_STATUS 	  = "registered"
-;~ $PHONE_TYPE 		  = "430HD"
-;~ $REGION_NAME 	  = "Nir"
+;~ $PHONE_TYPE 	  = "430HD"
+;~ $REGION_NAME 	  = "tenForSite2"
 ;~ $LOCATION 		  = "myLocation"
 
 ; POST variables
 Global $EMS_VERSION					= "UC_2.0.13.121"							 							; Version number for users which created via POST query
-Global const $EMS_SUBNET 			= "255.255.255.0"														; Subnet for sending the packet
+Global const $EMS_SUBNET 			= "255.255.255.255"														; Subnet for sending the packet
 Global const $EMS_POST_USERS_PSWD	= "3f6d0199102b53ca0a37a527f0efc221"									; Password for users which created via POST query
 Global const $SESSION_ID   			= "a033bb54"															; Defult session-ID for initiate a packet
 Global const $EMS_USERNAME 			= 'system'																; Defult username

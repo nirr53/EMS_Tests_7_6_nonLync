@@ -105,7 +105,7 @@ public class Test154__different_HRSSpeakerFW_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-			 					"myLocation");
+			 					testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwStts, hrsSpeakerFwStts, true);
 	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, enumsClass.logModes.MINOR);
@@ -123,7 +123,7 @@ public class Test154__different_HRSSpeakerFW_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-						"myLocation");
+						testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwEmpty, hrsSpeakerFwEmpty, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[25]", "");
 
@@ -139,7 +139,7 @@ public class Test154__different_HRSSpeakerFW_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-								"myLocation");
+								testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerFwSpec, hrsSpeakerFwSpec, true);
 	tempHRSSpeakerFW = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerFW - " + tempHRSSpeakerFW, enumsClass.logModes.MINOR);

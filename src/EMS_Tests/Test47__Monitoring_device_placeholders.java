@@ -94,16 +94,15 @@ public class Test47__Monitoring_device_placeholders {
 	  testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
 	  testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-			  					  testVars.getIp()           ,
-			  					  testVars.getPort()         ,
-			  					  "1"		        		 ,
-			  					  srcUserName  		         ,
-			  					  testVars.getDomain()       ,
-			  					  "registered"               ,
-			  					  testVars.getDefPhoneModel(),
-			  					  testVars.getDefTenant()    ,
-				 				  "myLocation");
+	  testFuncs.createUsers(testVars.getIp()			,
+							testVars.getPort() 	 	  	,
+							1							,	
+							srcUserName  		 		,
+							testVars.getDomain()		,
+							"registered"		  		,
+							testVars.getDefPhoneModel() ,
+							testVars.getDefTenant()     ,
+							testVars.getDefLocation());  
 	  testFuncs.verifyPostUserCreate(driver, srcUserName + "@" + testVars.getDomain(), srcUserName, true);
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_PHONE_CONFIGURATION_PHONE_DEVICE_PHS, "Manage Devices Placeholders");
 	  String phName  = "DayLightActivate";

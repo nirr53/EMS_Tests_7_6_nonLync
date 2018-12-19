@@ -94,15 +94,15 @@ public class Test101__device_status_export_tests {
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				usersNumberStr				   			     ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     	 ,
+						  testVars.getPort() 	 	 	 ,
+						  Integer.valueOf(usersNumberStr),	
+						  userName  	  		 	 	 ,			 
+						  testVars.getDomain()	     	 ,					
+						  "registered"		  	     	 ,						
+						  testVars.getDefPhoneModel()	 ,						
+						  testVars.getDefTenant()    	 ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);   
 	
 	// Step 1 - Check no-devices, don't check 'Export-all' check-box, export the devices and verify that all displayed devices are exported

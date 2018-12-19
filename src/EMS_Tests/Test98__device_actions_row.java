@@ -102,15 +102,15 @@ public class Test98__device_actions_row {
 	testFuncs.myDebugPrinting("Login via Administrator and create a user using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  userName  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);   
 	
 	// Step 1 - Check status via Device-status menu
@@ -196,7 +196,7 @@ public class Test98__device_actions_row {
 	  // Verify delete
 	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR); 
 	  testFuncs.searchStr(driver, deviceName + " (" + testFuncs.readFile("mac_1.txt") + ") Finished");
-	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/button[1]"), 10000);
+	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[2]/button[1]"), 7000);
 	  String txt = driver.findElement(By.tagName("body")).getText();
 	  testFuncs.myAssertTrue("Device was not deleted !!\ntxt - " + txt, !txt.contains(deviceName));
   }
@@ -217,7 +217,7 @@ public class Test98__device_actions_row {
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='mtext']"), "message", 3000);  
 	  new Select(driver.findElement(By.xpath("//*[@id='mtime']"))).selectByVisibleText(command);
 	  testFuncs.myWait(2000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -235,7 +235,7 @@ public class Test98__device_actions_row {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[1]/label", "Message Text");  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']/div[2]/label", "Display Time");   
 	  testFuncs.mySendKeys(driver, By.xpath("	//*[@id='mtext']"), "message", 3000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -251,7 +251,7 @@ public class Test98__device_actions_row {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[8]/a"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to update the configuration files of the selected IP phones?\n" + deviceName);  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000); 
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -270,7 +270,7 @@ public class Test98__device_actions_row {
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 4000); 
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IPP IP-Phones Configuration");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Update devices now");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -286,7 +286,7 @@ public class Test98__device_actions_row {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='dl-menu']/ul/li[6]/a"), 2000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart IP-Phones");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to restart the selected IP phones?");  
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -303,7 +303,7 @@ public class Test98__device_actions_row {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Nickname");
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Nickname"); 
 	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='mtext']"), nickname, 3000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000);  
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000);  
 	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -321,7 +321,7 @@ public class Test98__device_actions_row {
 	  testFuncs.myDebugPrinting("ip - " + ip, enumsClass.logModes.MINOR);
 	  String parentHandle = driver.getWindowHandle();
 	  ArrayList<?> tabs = new ArrayList<Object> (driver.getWindowHandles());
-	  testFuncs.myWait(100000);
+	  testFuncs.myWait(70000);
 	  driver.switchTo().window((String) tabs.get(1));
 	
 	  // Verify the correct IP is opened
@@ -362,7 +362,7 @@ public class Test98__device_actions_row {
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please select a tenant:");
 	  new Select(driver.findElement(By.xpath("/html/body/div[4]/div/select"))).selectByVisibleText(nonDefTenant);	
 	  testFuncs.myWait(4000);
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 10000); 
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[4]/div/button[1]"), 7000); 
 	  	  
 	  // Verify change
 	  testFuncs.myDebugPrinting("Verify change", enumsClass.logModes.MINOR); 
@@ -387,9 +387,10 @@ public class Test98__device_actions_row {
 	  // Search device
 	  testFuncs.myDebugPrinting("Search device", enumsClass.logModes.NORMAL);
 	  testFuncs.enterMenu(driver , enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");   
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 7000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input"), "user:" + userName.trim(), 3000);
 	  driver.findElement(By.xpath("//*[@id='trunkTBL']/div/div[2]/div[1]/div[2]/form/div/input")).sendKeys(Keys.ENTER);	        
-	  testFuncs.myWait(7000);
+	  testFuncs.myWait(5000);
+      testFuncs.waitForLoad(driver);		      
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[8]", userName.trim());
 	  
 	  // Select the searched device via check Select-All check-box

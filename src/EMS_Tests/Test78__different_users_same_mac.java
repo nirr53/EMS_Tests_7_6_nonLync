@@ -82,40 +82,45 @@ public class Test78__different_users_same_mac {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set variables login
+	// Set variables and login
 	String Id             = testFuncs.getId();
 	String prefixName     = "sameMac";
 	String firstUsername  = prefixName + "_1_" + Id;
 	String secondUsername = prefixName + "_2_" + Id;
+    Map<String, String> extraData = new HashMap<String, String>();
+    extraData.put("sameMac", "true");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query
-	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 firstUsername		   		,
-			 testVars.getDomain()  		,
-			 "registered"          		,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query"); 
+
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  firstUsername  	  		 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation()	 ,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, firstUsername, firstUsername, true);
 	testFuncs.myWait(10000);
 	
     // Step 2 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 secondUsername		   		,
-			 testVars.getDomain()  	    ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  secondUsername  	  		 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation()  ,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, secondUsername, secondUsername, true);
  
     // Step 3 - Verify that in the Device-Status menu only the second user appears	

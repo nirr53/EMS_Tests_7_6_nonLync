@@ -78,10 +78,11 @@ public class Test115__different_BToE_version_numbers {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set variables login
+	// Set variables and login
 	String Id             = testFuncs.getId();
 	String prefixName     = "BToE_user_version";
 	String usersNumber	  = "2";
+	String version1		  = "UC_2.0.13.1234";
 	String btoeDisabled   = prefixName + "_dis_"    + Id;
 	String btoeAutoPaired = prefixName + "_auto_"   + Id;
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
@@ -89,16 +90,19 @@ public class Test115__different_BToE_version_numbers {
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status with version
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with \"BToE disabled\" status with version.");
-	String version1 = "UC_2.0.13.1234";
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeDisabled		   		,
-			 testVars.getDomain()  		,
-			 "registered"          		,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 version1);
+    Map<String, String> extraData = new HashMap<String, String>();
+    extraData.put("BToEpairingstatus", "BToE disabled");
+    extraData.put("BToEversion"		 , version1);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeDisabled  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, btoeDisabled, btoeDisabled, true);
 	checkBToE("disabled", version1);  
 	
@@ -106,15 +110,18 @@ public class Test115__different_BToE_version_numbers {
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with \"auto paired\" status with characters version");
 	String version2 = "UC_abcdef";
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-			 testVars.getPort()    		,
-			 "1"				   		,
-			 btoeAutoPaired		   		,
-			 testVars.getDomain()  	    ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 version2);
+    extraData.put("BToEpairingstatus", "auto paired");
+    extraData.put("BToEversion"		 , version1);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  btoeAutoPaired  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, btoeAutoPaired, btoeAutoPaired, true);
 	checkBToE("automatic", version2);  
 	

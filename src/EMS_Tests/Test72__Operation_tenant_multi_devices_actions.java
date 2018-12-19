@@ -96,16 +96,15 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	testFuncs.myDebugPrinting("Login via Administrator, create a user with a POST query and add a device-PH to it");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-			  					testVars.getIp()           ,
-			  					testVars.getPort()         ,
-			  					"1"		        		   ,
-			  					srcUserName  		       ,
-			  					testVars.getDomain()       ,
-			  					"registered"               ,
-			  					testVars.getDefPhoneModel(),
-			  					testVars.getDefTenant()    ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()			  ,
+						  testVars.getPort() 	 	  ,
+						  1							  ,	
+						  srcUserName  		 		  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  testVars.getDefTenant()     ,
+						  testVars.getDefLocation());
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MAINPAGE_GEN_INFOR_LOGOUT, testVars.getMainPageStr());
 		 
     // Re-login via an Operation user (tenant) and enter Manage multiple devices changes menu.
@@ -120,10 +119,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.myWait(2000);
 	new Select(driver.findElement(By.xpath("//*[@id='ipptype']"))).selectByVisibleText(tempName);
     testFuncs.myWait(2000); 
-    testFuncs.myClick(driver, By.xpath("//*[@id='changeTypeTR']/td/div[1]/a[2]"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='changeTypeTR']/td/div[1]/a[2]"), 4000);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Template");
 	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the Template of the selected devices?");
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 	
 	// Step 2 - Verify that Change-language action is active.
@@ -134,10 +133,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.myWait(2000);
 	new Select(driver.findElement(By.xpath("//*[@id='deviceLanguage']"))).selectByVisibleText("English");
     testFuncs.myWait(2000);  
-    testFuncs.myClick(driver, By.xpath("//*[@id='changeLanguageTR']/td/div[1]/a[2]"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='changeLanguageTR']/td/div[1]/a[2]"), 4000);
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Language");
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the device's language?");
-   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 	
     // Step 3 - Verify that Restart-devices action is active.
@@ -146,6 +145,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	String resModes[] = {"Graceful", "Force", "Scheduled"};
 	for (String resMode : resModes) {
 		
+		System.out.println("\n");
 		testFuncs.myDebugPrinting("resMode - " + resMode, enumsClass.logModes.NORMAL);
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
 	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
@@ -153,10 +153,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	    testFuncs.myWait(2000);
 		new Select(driver.findElement(By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/select"))).selectByVisibleText(resMode);
 	    testFuncs.myWait(2000);
-	    testFuncs.myClick(driver, By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/a"), 5000);
+	    testFuncs.myClick(driver, By.xpath("//*[@id='resetIpPhonesTR']/td/div[1]/a"), 4000);
 	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Restart Devices");
 	   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Note: restart command will work only on supported IP Phones.\nAre you sure you want to restart the selected IP Phones?");
-	   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
 	    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 	}
    	
@@ -166,10 +166,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
 	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("setIpPhones");
     testFuncs.myWait(2000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='setIpPhonesTR']/td/div/div/a"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='setIpPhonesTR']/td/div/div/a"), 4000);
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate IP Phones Configuration Files");
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "The configuration files will be generated to the location defined in the template (destinationDir).\nDo you want to continue?");
-   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+   	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 
     // Step 5 - Verify that Update-configuration-users action is active.
@@ -178,10 +178,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
  	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("updateConfigFiles");
     testFuncs.myWait(2000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='updateConfigFilesTR']/td/div/a"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='updateConfigFilesTR']/td/div/a"), 4000);
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update Configuration file");
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Note: update configuration command will work only on supported IP Phones.\nAre you sure you want to update the selected IP Phones files?");
-    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
   
     // Step 6 - Verify that Send-message action is active.
@@ -191,10 +191,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
  	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("sendMessage");
     testFuncs.myWait(2000);
     testFuncs.mySendKeys(driver, By.xpath("//*[@id='sendMessageTR']/td/div/input"), "message", 3000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='sendMessageTR']/td/div/a"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='sendMessageTR']/td/div/a"), 4000);
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Send Message");
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to send message to the selected devices?");
-    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 
 	// Step 7 - Verify that Change-firmware action is active.
@@ -205,10 +205,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.myWait(2000);
  	new Select(driver.findElement(By.xpath("//*[@id='firmware_id']"))).selectByVisibleText("430HD");
     testFuncs.myWait(2000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='updateFirmwareTR']/td/div[1]/a[2]"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='updateFirmwareTR']/td/div[1]/a[2]"), 4000);
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change Firmware");
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the device's firmware?");
-    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 
 	// Step 8 - Verify that Change-VLAN action is active.
@@ -216,6 +216,7 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	String vlanModes[] = {"Disabled", "Manual Configuration", "Automatic - CDP", "Automatic - LLDP", "Automatic - CDP LLDP"};
 	for (String vlanMode : vlanModes) {
 
+		System.out.println("\n");
 		testFuncs.myDebugPrinting("vlanMode - " + vlanMode, enumsClass.logModes.NORMAL);
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");
 	    testFuncs.selectMultipleUsers(driver, srcUserName, "1");
@@ -223,10 +224,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
 	    testFuncs.myWait(2000);
 	 	new Select(driver.findElement(By.xpath("//*[@id='changeVlanTR']/td/div[1]/select"))).selectByVisibleText(vlanMode);
 	    testFuncs.myWait(2000);
-	    testFuncs.myClick(driver, By.xpath("//*[@id='changeVlanTR']/td/div[1]/a[2]"), 5000);
+	    testFuncs.myClick(driver, By.xpath("//*[@id='changeVlanTR']/td/div[1]/a[2]"), 4000);
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Change VLAN Discovery Mode");
 	    testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to change the device's VLAN discovery mode?");
-	    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
 	    testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
 	}
 	
@@ -236,10 +237,10 @@ public class Test72__Operation_tenant_multi_devices_actions {
     testFuncs.selectMultipleUsers(driver, srcUserName, "1");
  	new Select(driver.findElement(By.xpath("//*[@id='action']"))).selectByValue("deleteDevices");
     testFuncs.myWait(2000);
-    testFuncs.myClick(driver, By.xpath("//*[@id='deleteDevicesTR']/td/div/a"), 5000);
+    testFuncs.myClick(driver, By.xpath("//*[@id='deleteDevicesTR']/td/div/a"), 4000);
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Delete Devices");
     testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the selected devices?");
-    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+    testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 6000);
     testFuncs.searchStr(driver, srcUserName + "@" + testVars.getDomain() + " " + testFuncs.readFile("mac_1.txt"));
   
     // Step 10 - Logout, re-login as Administrator and delete the created user

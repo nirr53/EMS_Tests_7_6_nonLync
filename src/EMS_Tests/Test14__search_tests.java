@@ -95,15 +95,15 @@ public class Test14__search_tests {
 	testFuncs.myDebugPrinting("Step 1 - Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()         ,
-			 												 usersNumber		        ,
-			 												 dispPrefix  		        ,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()			  ,
+						  testVars.getPort() 	 	  ,
+						  Integer.valueOf(usersNumber),	
+						  dispPrefix  		 		  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  testVars.getDefTenant()     ,
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUsersCreate(driver,  dispPrefix,  dispPrefix, true, Integer.valueOf(usersNumber));	
     String macs[] = {testFuncs.readFile("mac_1.txt"),
     				 testFuncs.readFile("mac_2.txt"),

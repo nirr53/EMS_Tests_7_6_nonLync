@@ -95,7 +95,6 @@ public class Test132__timeout {
 		
 		testFuncs.myClick(driver, By.xpath("//*[@id='navbar-collapse']/ul[1]/li[2]/a"), 7000); 
 		testFuncs.searchStr(driver, testVars.getMainPageStr());
-
 	}
   }
 

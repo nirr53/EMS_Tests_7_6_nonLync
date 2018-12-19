@@ -21,7 +21,7 @@ public class enumsClass {
 	// Log modes
 	public enum logModes {
 		 	 
-		MAJOR(""), NORMAL("   "), MINOR("      "), DEBUG("         ");  		 
+		MAJOR(""), NORMAL("    "), MINOR("        "), DEBUG("            ");  		 
 		private String level = "";
 		
 		private logModes(String level) {		 
@@ -30,7 +30,13 @@ public class enumsClass {
 		public String getLevel() {   		 
 			return level;    
 		}
-	 }
+	}
+	
+	// Modes of Send POST query
+	public enum sendPOSTModes {
+		 	 
+		CREATE_USER_DEVICE,
+	}	
 	
 	// Menu names
 	public enum menuNames {

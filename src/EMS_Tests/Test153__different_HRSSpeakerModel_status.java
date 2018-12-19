@@ -105,7 +105,7 @@ public class Test153__different_HRSSpeakerModel_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-			 					"myLocation");
+			 					testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelStts, hrsSpeakerModelStts, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
@@ -123,7 +123,7 @@ public class Test153__different_HRSSpeakerModel_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-						"myLocation");
+						testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelEmpty, hrsSpeakerModelEmpty, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", "");
 
@@ -139,7 +139,7 @@ public class Test153__different_HRSSpeakerModel_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-								"myLocation");
+								testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelSpec, hrsSpeakerModelSpec, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);

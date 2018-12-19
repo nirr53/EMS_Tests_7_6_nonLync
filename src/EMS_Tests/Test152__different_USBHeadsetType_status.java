@@ -79,7 +79,7 @@ public class Test152__different_USBHeadsetType_status {
 	 
 	Log.startTestCase(this.getClass().getName());
 	
-	// Set variables login
+	// Set variables and login
 	String Id                 = testFuncs.getId();
 	String prefixName         = "usbHdstTypeuser";
 	String usersNumber	      = "4";
@@ -102,7 +102,7 @@ public class Test152__different_USBHeadsetType_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-			 					"myLocation");
+			 					testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeStts, usbHdstTypeStts, true);
 	String tempUSBHeadsetType = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempUSBHeadsetType - " + tempUSBHeadsetType, enumsClass.logModes.MINOR);
@@ -120,7 +120,7 @@ public class Test152__different_USBHeadsetType_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-								"myLocation");
+								testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeUnknown, usbHdstTypeUnknown, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "unknown"); 
 	
@@ -136,7 +136,7 @@ public class Test152__different_USBHeadsetType_status {
 			"registered"          	   ,
 			testVars.getDefPhoneModel(),
 			testVars.getDefTenant()    ,
-			"myLocation");
+			testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeWithout, usbHdstTypeWithout, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "");
 
@@ -152,7 +152,7 @@ public class Test152__different_USBHeadsetType_status {
 								"registered"          	   ,
 								testVars.getDefPhoneModel(),
 								testVars.getDefTenant()    ,
-								"myLocation");
+								testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeLong, usbHdstTypeLong, true);
 	String tempLongUSBHeadsetType = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempLongUSBHeadsetType - " + tempLongUSBHeadsetType, enumsClass.logModes.MINOR);
@@ -179,7 +179,7 @@ public class Test152__different_USBHeadsetType_status {
   @After
   public void tearDown() throws Exception {
 	  
-    driver.quit();
+//    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

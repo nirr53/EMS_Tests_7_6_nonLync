@@ -87,7 +87,7 @@ public class Test29__tenant_configuration {
 	testFuncs.myDebugPrinting("Enter the Add new Tenant configuration menu");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "https://", this.usedBrowser);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_TENANT_CONFIGURATION, "Tenant Configuration");
-	String Id = testFuncs.getId();
+	String Id 			   = testFuncs.getId();
 	String cfgKeyName      = "user_name" + Id;
 	String cfgKeyValue     = "userValue" + Id;
 
@@ -115,13 +115,13 @@ public class Test29__tenant_configuration {
 	
 	  // Create a new CFG key on other Tenant
 	  testFuncs.addNewCfgKey(driver, cfgKeyName, cfgKeyValue, tenWeCopyFrom);
-	  testFuncs.myWait(60000);
+	  testFuncs.myWait(7000);
 
 	  // Select a new tenant
 	  testFuncs.myDebugPrinting("Select a new tenant (" + tenWeCopyTo + ")", enumsClass.logModes.MINOR);	  
 	  Select currentTenant = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 	  currentTenant.selectByVisibleText(tenWeCopyTo);
-	  testFuncs.myWait(10000);
+	  testFuncs.myWait(5);
 	  
 	  // Copy values from other tenant
 	  testFuncs.myDebugPrinting("Copy values from other tenant", enumsClass.logModes.NORMAL);
@@ -130,12 +130,12 @@ public class Test29__tenant_configuration {
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Copy Configuration ( " + tenWeCopyTo + " )");
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Please select configuration setting to copy from.");
 	  new Select(driver.findElement(By.xpath("/html/body/div[2]/div/select"))).selectByVisibleText("AutoDetection");
-	  testFuncs.myWait(5000);
+	  testFuncs.myWait(4000);
 	  new Select(driver.findElement(By.xpath("/html/body/div[2]/div/select"))).selectByVisibleText(tenWeCopyFrom);
-	  testFuncs.myWait(15000);
+	  testFuncs.myWait(7000);
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 15000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + testVars.getDefTenant() + " )");
-	  testFuncs.myWait(10000);
+	  testFuncs.myWait(7000);
 	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);	  
 			  
@@ -176,13 +176,13 @@ public class Test29__tenant_configuration {
     
  	  // Delete key
  	  testFuncs.myDebugPrinting("Delete key", enumsClass.logModes.MINOR);	  
- 	  testFuncs.myClick(driver, By.xpath("//*[@id='table_keys']/tbody/tr[" + i + "]/td[3]/div/a/i"), 7000);
+ 	  testFuncs.myClick(driver, By.xpath("//*[@id='table_keys']/tbody/tr[" + i + "]/td[3]/div/a/i"), 4000);
  	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Delete configuration setting");
  	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Are you sure you want to delete the " + cfgKeyName + " from the configuration settings?");
- 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000); 
+ 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000); 
  	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + currTenant + " )");
  	  testFuncs.verifyStrByXpathContains(driver, "//*[@id='modalContentId']", "Tenant configuration was saved successfully.");
- 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
+ 	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
  			  
  	  // Verify delete
  	  testFuncs.myDebugPrinting("Verify delete", enumsClass.logModes.MINOR);	  
@@ -194,7 +194,7 @@ public class Test29__tenant_configuration {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

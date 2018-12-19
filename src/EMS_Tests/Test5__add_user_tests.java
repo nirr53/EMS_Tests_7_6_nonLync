@@ -42,7 +42,7 @@ public class Test5__add_user_tests {
   GlobalVars 			testVars;
   GlobalFuncs			testFuncs;
   Map<String, String> 	map;
-  String 				Id, prefix;
+  String 				Id, prefix, rePrefix, unregPrefix, manPrefix;
   
   // Default constructor for print the name of the used browser 
   public Test5__add_user_tests(browserTypes browser) {
@@ -90,42 +90,45 @@ public class Test5__add_user_tests {
     map.put("usersNumber",  "1"); 
     map.put("startIdx"   ,  String.valueOf(1));
 	String mac				= "";
-
+	manPrefix 				= prefix + "0_" + Id;
+	rePrefix 				= prefix + "1_" + Id;
+	unregPrefix 			= prefix + "2_" + Id;
+	
 	// login
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	
     // Step 1 - Create user manually
 	testFuncs.myDebugPrinting("Step 1 - Create user manually");
-	testFuncs.addUser(driver, prefix + "0_" + Id, "1q2w3e$r", prefix + "0_" + Id, testVars.getDefTenant());
+	testFuncs.addUser(driver, manPrefix, "1q2w3e$r", manPrefix, testVars.getDefTenant());
 	testFuncs.myWait(2000);
 
     // Step 2 - Create a registered user using POST method
 	testFuncs.myDebugPrinting("Step 2 - Create a registered user using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 " 1"				    	,
-			 												 prefix + "1_" + Id 		,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
-    testFuncs.verifyPostUserCreate(driver, prefix + "1_" + Id, prefix + "1_" + Id, true);
+	testFuncs.createUsers(testVars.getIp()	  		 ,
+						  testVars.getPort() 	 	 ,
+						  1					  		 ,
+						  rePrefix  		 		 ,
+						  testVars.getDomain()		 ,
+						  "registered"		  		 ,
+						  testVars.getDefPhoneModel(),
+						  testVars.getDefTenant()    ,
+						  testVars.getDefLocation());
+    testFuncs.verifyPostUserCreate(driver,rePrefix, rePrefix, true);
     testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     
     // Step 3 - Create an unregistered user using POST method
 	testFuncs.myDebugPrinting("Step 3 - Create an unregistered user using POST method");  
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()    	    ,
-			 												 " 1"				   	    ,
-			 												 prefix + "2_" + Id     ,
-			 												 testVars.getDomain()       ,
-			 												 "unregistered"             ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()	  		 ,
+						  testVars.getPort() 	 	 ,
+						  1					  		 ,
+						  unregPrefix 		 		 ,
+						  testVars.getDomain()		 ,
+						  "unregistered"		  	 ,
+						  testVars.getDefPhoneModel(),
+						  testVars.getDefTenant()    ,
+						  testVars.getDefLocation());
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
-    testFuncs.verifyPostUserCreate(driver, prefix + "2_" + Id, prefix + "2_" + Id, false);
+    testFuncs.verifyPostUserCreate(driver, unregPrefix, unregPrefix, false);
     
     // Step 4 - Verify that configuration file is not created for unregistered user
  	testFuncs.myDebugPrinting("Step 4 - Verify that configuration file is not created for unregistered user");  
@@ -148,8 +151,8 @@ public class Test5__add_user_tests {
 	  map.put("skipVerifyDelete", "true");	  
 	  testFuncs.setMultipleUsersAction(driver, map);  
 	  prefix = prefix.toLowerCase();  
-	  testFuncs.searchStr(driver, prefix + "0_" + Id + " Finished");
-	  testFuncs.searchStr(driver, prefix + "1_" + Id + "@" + testVars.getDomain() + " Finished");
+	  testFuncs.searchStr(driver, manPrefix + " Finished");
+	  testFuncs.searchStr(driver, rePrefix  + "@" + testVars.getDomain() + " Finished");
     
 	  // Close session
 	  driver.quit();

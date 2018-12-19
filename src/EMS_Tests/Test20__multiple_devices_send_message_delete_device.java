@@ -82,26 +82,27 @@ public class Test20__multiple_devices_send_message_delete_device {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String usersNumber   = "4";
-	String dispPrefix    = "sMsgDlDvUsr" + testFuncs.getId();
-	int usStartIdx 		 = 1;
+	String usersNumber    = "3";
+	int    intUsersNumber = Integer.valueOf(usersNumber);
+	String dispPrefix     = "sMsgDlDvUsr" + testFuncs.getId();
+	int   usStartIdx 	  = 1;
     Map<String, String> map = new HashMap<String, String>();
-
+    
     // Create several users using POST query
 	testFuncs.myDebugPrinting("Create several users using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 testVars.getPort()         ,
-			 usersNumber		        ,
-			 dispPrefix  		        ,
-			 testVars.getDomain()       ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
-	testFuncs.verifyPostUserCreate(driver,  dispPrefix,  dispPrefix, true);
-    
+	testFuncs.createUsers(testVars.getIp()			  ,
+						  testVars.getPort() 	 	  ,
+						  Integer.valueOf(usersNumber),	
+						  dispPrefix  		 		  ,
+						  testVars.getDomain()		  ,
+						  "registered"		  		  ,
+						  testVars.getDefPhoneModel() ,
+						  testVars.getDefTenant()     ,
+						  testVars.getDefLocation());
+	testFuncs.verifyPostUsersCreate(driver,  dispPrefix,  dispPrefix, true, intUsersNumber);
+		
     // Step 1 - send message
   	testFuncs.myDebugPrinting("Step 1 - send message");  	
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_DEVICES, "Manage Multiple Devices");

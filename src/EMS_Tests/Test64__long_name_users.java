@@ -95,15 +95,15 @@ public class Test64__long_name_users {
 
     // Step 2 - Create a registered user with a long name using POST method
 	testFuncs.myDebugPrinting("Step 2 - Create a registered user with a long name using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()         ,
-			 												 "1"				        ,
-			 												 postLongName               ,
-			 												 testVars.getDomain()       ,
-			 												 "registered"          	    ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  1							  ,	
+			  postLongName  		 		  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, postLongName, postLongName, true);
   }
 

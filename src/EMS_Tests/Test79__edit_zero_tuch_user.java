@@ -93,15 +93,15 @@ public class Test79__edit_zero_tuch_user {
 		
 	// Step 1 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1						     ,	
+						  userName  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);
     
     // Step 2 - Try to edit its username and display name
@@ -112,13 +112,13 @@ public class Test79__edit_zero_tuch_user {
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div/div[2]/div[1]/h3/label", "Edit User " + userName);
 	String edDispName = "editedDN" + Id;
 	testFuncs.mySendKeys(driver, By.xpath("//*[@id='displayname']"), edDispName ,2000);				
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[1]"), 10000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[1]"), 7000);
   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Update User");
    	testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "User " + userFullName + " successfully updated.");
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 10000);
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
   	testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Generate Configuration Files");
-	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[2]")							   , 5000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 5000);
+	testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[2]")							   , 4000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[2]/div[3]/button[2]"), 4000);
 	testFuncs.searchUser(driver, userFullName); 
 	testFuncs.searchStr(driver , edDispName);
 	
@@ -129,9 +129,9 @@ public class Test79__edit_zero_tuch_user {
 	edDispName = "edited DN22" + Id;
 	testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/form/div/div[2]/div[1]/h3", "Edit device of user " + userFullName);
 	testFuncs.mySendKeys(driver, By.xpath("	//*[@id='display_name']"), edDispName ,2000);	
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]"), 5000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='modalContentId']/button[2]")								, 5000);
-	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[1]"), 5000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]"), 4000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='modalContentId']/button[2]")								, 4000);
+	testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[1]"), 4000);
 	testFuncs.searchUser(driver, userName); 	
 	testFuncs.myClick(driver, By.xpath("//*[@id='"   + userFullName + "tree']")		  												   , 3000);
 	testFuncs.searchStr(driver , edDispName);

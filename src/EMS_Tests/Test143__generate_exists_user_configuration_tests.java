@@ -99,15 +99,15 @@ public class Test143__generate_exists_user_configuration_tests {
 	testFuncs.myDebugPrinting("Login, create a registered user and user-configuration value (Add+Save)");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 usersNumber				    ,
-			 												 regPrefix					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  Integer.valueOf(usersNumber),	
+			  regPrefix  		 		  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt");
  	testFuncs.myDebugPrinting("device mac - " + mac, enumsClass.logModes.MINOR);
@@ -184,22 +184,22 @@ public class Test143__generate_exists_user_configuration_tests {
 		 
 	  // Enter the configuration-value menu of the user
 	  testFuncs.myDebugPrinting("Enter the configuration-value menu of the user", enumsClass.logModes.MINOR);
-	  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a"), 5000);	  
+	  testFuncs.myClick(driver, By.xpath("//*[@id='results']/tbody/tr[1]/td[4]/a"), 4000);	  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/div[2]/div/div[1]", "User configuration (" + userName + ")");			  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[1]", confName);			  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='table_keys']/tbody/tr/td[2]", confValue);			  
 
 	  // Edit the user
 	  testFuncs.myDebugPrinting("Edit the user", enumsClass.logModes.MINOR);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confName    , 4000);
-	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), newConfValue, 4000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_name']") , confName    , 2000);
+	  testFuncs.mySendKeys(driver, By.xpath("//*[@id='ini_value']"), newConfValue, 2000);
 	  testFuncs.myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div[2]/div/div[2]/div[1]/div[3]/a/span"), 5000);	  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Add Setting");			  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "This setting name is already in use.\nAre you sure you want to replace " + confValue + " to " + newConfValue); 
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Save Configuration ( " + userName + " )");			  
 	  testFuncs.verifyStrByXpath(driver, "//*[@id='modalContentId']", "User configuration was saved successfully."); 
-	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 5000);
+	  testFuncs.myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 4000);
 	  
 	  // Verify the edit
 	  testFuncs.myDebugPrinting("Verify the edit", enumsClass.logModes.MINOR);

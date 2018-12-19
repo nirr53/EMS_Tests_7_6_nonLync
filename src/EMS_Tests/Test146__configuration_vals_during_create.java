@@ -111,15 +111,15 @@ public class Test146__configuration_vals_during_create {
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 usersNumber				    ,
-			 												 regPrefix					,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		  	 	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(usersNumber)	,	
+						  regPrefix  	  		     	,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation());
     testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
     mac = testFuncs.readFile("mac_1.txt"); 
       

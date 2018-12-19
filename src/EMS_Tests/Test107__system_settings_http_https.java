@@ -95,15 +95,15 @@ public class Test107__system_settings_http_https {
 		
 	// Create a user using POST query
 	testFuncs.myDebugPrinting("Create a user using POST query");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp(),
-				 				testVars.getPort()    						 ,
-				 				"1"				   							 ,
-				 				userName		   						     ,
-				 				testVars.getDomain()  						 ,
-				 				"registered"          						 ,
-				 				testVars.getDefPhoneModel()              	 ,
-				 				testVars.getDefTenant()               		 ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1				 			 ,	
+						  userName  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, userName, userName, true);
 	  
     // Enter the system settings menu and set the system to work with HTTPS

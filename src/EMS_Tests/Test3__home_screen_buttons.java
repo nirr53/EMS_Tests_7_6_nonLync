@@ -128,14 +128,14 @@ public class Test3__home_screen_buttons {
   private void pressAudcProductsButton(WebDriver driver2) {
 	
 	  String winHandleBefore = driver.getWindowHandle();
-	  testFuncs.myClick(driver, By.xpath("//*[@id='GuideBanner']/a/img"), 2000);    
+	  testFuncs.myClick(driver, By.xpath("//*[@id='GuideBanner']/a/img"), 5000);    
 	  for(String winHandle : driver.getWindowHandles()) {
 	    	
 	        driver.switchTo().window(winHandle);  
 	  }
 	  
 	  // Verify login to the Products page
-//	  testFuncs.searchStr(driver, "Management Products & Solutions");   
+	  testFuncs.searchStr(driver, "Management Products & Solutions");   
 	  driver.close();
 	  driver.switchTo().window(winHandleBefore);
   }

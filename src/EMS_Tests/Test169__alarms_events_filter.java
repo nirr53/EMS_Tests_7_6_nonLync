@@ -14,22 +14,22 @@ import EMS_Tests.enumsClass.*;
 
 /**
 * ----------------
-* This test tests the Events & Alarms filter at Alarms-filter   <br>
+* This test tests the Events & Alarms filter at Alarms-filter
 * ----------------
-* @category Tests:  <br>
-* 	- Create a registered user via POST query  <br>
-* 	- Create an Alarm associate with the user  <br>
-* 	- Create an Event associate with the user  <br>
-*   1. Filter the Alarms by 'Alarms only'  <br>
-*   2. Filter the Alarms by 'Events & Alarms'  <br>
-*   3. Delete the created Event & Alarm  <br>
-*   4. Delete the created user  <br>
+* @category Tests:
+* 	- Create a registered user via POST query
+* 	- Create an Alarm associate with the user
+* 	- Create an Event associate with the user
+*   1. Filter the Alarms by 'Alarms only'
+*   2. Filter the Alarms by 'Events & Alarms'
+*   3. Delete the created Event & Alarm
+*   4. Delete the created user
 *   
-*  @category Results:   <br>
-* 	 1. Only Alarms should be filtered   <br>
-* 	 2. All the Alarms should be filtered   <br>
-* 	 3. The created Event & Alarm should be deleted successfully.   <br>
-* 	 4. The user should be created successfully.    <br>
+*  @category Results:
+* 	 1. Only Alarms should be filtered
+* 	 2. All the Alarms should be filtered
+* 	 3. The created Event & Alarm should be deleted successfully.
+* 	 4. The user should be created successfully. 
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -95,16 +95,15 @@ public class Test169__alarms_events_filter {
 		
 	// Create a registered user using POST method
 	testFuncs.myDebugPrinting("Create a registered user using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()       	   ,
-								testVars.getPort()     	   ,
-								userNumber				   ,
-								username 				   ,
-								testVars.getDomain()       ,
-				 				"registered"               ,
-				 				testVars.getDefPhoneModel(),
-				 				testVars.getDefTenant()    ,
-				 				"myLocation");
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  Integer.valueOf(userNumber)							  ,	
+			  username  		 	  	  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
 	    
 	testFuncs.verifyPostUserCreate(driver, username, username, true);
 	String [] macs = {testFuncs.readFile("mac_1.txt"), testFuncs.readFile("mac_2.txt")};
@@ -171,7 +170,7 @@ public class Test169__alarms_events_filter {
   @After
   public void tearDown() throws Exception { 
 	    
-	driver.quit();
+//	driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

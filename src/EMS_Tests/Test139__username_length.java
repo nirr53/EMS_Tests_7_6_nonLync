@@ -98,15 +98,15 @@ public class Test139__username_length {
     // Step 2 - Create a registered user using POST method
 	testFuncs.myDebugPrinting("Step 2 - Create a registered user using POST method");
 	String userNamePost = getUserName(prefix, 46);
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 "1"				    	,
-			 												 userNamePost 		,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.createUsers(testVars.getIp()  		   ,
+							testVars.getPort() 	 	   ,
+							1						   ,	
+							userNamePost  	  		   ,			 
+							testVars.getDomain()	   ,					
+							"registered"		  	   ,						
+							testVars.getDefPhoneModel(),						
+							testVars.getDefTenant()    ,					
+							testVars.getDefLocation()); 
     testFuncs.verifyPostUserCreate(driver, userNamePost, userNamePost, true);
     testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     

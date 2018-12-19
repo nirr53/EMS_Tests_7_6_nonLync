@@ -96,15 +96,15 @@ public class Test103__special_characters_users {
 		testFuncs.myDebugPrinting("Step " + i + " - Create a user using POST query with " + suffixes[i] + " characters");
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		String temPUsername  = prefixName + suffixes[i];
-		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()      ,
-				 testVars.getPort()    		,
-				 "1"				   		,
-				 temPUsername		   		,
-				 testVars.getDomain()  		,
-				 "registered"          		,
-				 testVars.getDefPhoneModel(),
-				 testVars.getDefTenant()    ,
-				 "myLocation");
+		testFuncs.createUsers(testVars.getIp()		     ,
+							  testVars.getPort() 	 	 ,
+							  1						     ,	
+							  temPUsername  	  		 ,			 
+							  testVars.getDomain()	     ,					
+							  "registered"		  	     ,						
+							  testVars.getDefPhoneModel(),						
+							  testVars.getDefTenant()    ,					
+							  testVars.getDefLocation());
 		testFuncs.verifyPostUserCreate(driver, temPUsername, temPUsername, true);	
 	}	
 	   

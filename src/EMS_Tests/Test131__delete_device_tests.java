@@ -91,29 +91,29 @@ public class Test131__delete_device_tests {
 	  // Create first user with a POST query
 	  testFuncs.myDebugPrinting("Create a user with a POST query");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-					 										   testVars.getPort()     ,
-					 									       "1"				      ,
-					 									       userName1            ,
-					 										   testVars.getDomain()   ,
-					 										   "registered"           ,
-					 										   "420HD"                ,
-					 										   testVars.getDefTenant(),
-					 										   "location");
+	  testFuncs.createUsers(testVars.getIp()		  ,
+							testVars.getPort() 	 	  ,
+							Integer.valueOf("1")	  ,	
+							userName1  	  		      ,			 
+							testVars.getDomain()	  ,					
+							"registered"		  	  ,													
+							"420HD" 				  ,													
+							testVars.getDefTenant()   ,												
+							testVars.getDefLocation());
 	  testFuncs.verifyPostUserCreate(driver, userName1 + "@" + testVars.getDomain(), userName1, true);
 	  
 	  // Create second user with a POST query
 	  testFuncs.myDebugPrinting("Create second user with a POST query");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-					 										   testVars.getPort()     ,
-					 									       "1"				      ,
-					 									       userName2            ,
-					 										   testVars.getDomain()   ,
-					 										   "registered"           ,
-					 										   "420HD"                ,
-					 										   testVars.getDefTenant(),
-					 										   "location");
+	  testFuncs.createUsers(testVars.getIp()		  ,
+							testVars.getPort() 	 	  ,
+							Integer.valueOf("1")	  ,	
+							userName2  	  		      ,			 
+							testVars.getDomain()	  ,					
+							"registered"		  	  ,													
+							"420HD" 				  ,													
+							testVars.getDefTenant()   ,												
+							testVars.getDefLocation());
 	  testFuncs.verifyPostUserCreate(driver, userName2 + "@" + testVars.getDomain(), userName2, true);
 
 	  // Step 1 - Delete a device via Manage user page

@@ -93,16 +93,15 @@ public class Test161__device_advanced_filter_options2 {
 	testFuncs.myDebugPrinting("Login and create user using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()         ,
-								"1"		        		   ,
-								userName  		           ,
-								testVars.getDomain()       ,
-								"registered"               ,
-								newModel[0]				   ,
-								newTenant	   			   ,
-								"myLocation");
+	testFuncs.createUsers(testVars.getIp()		  	 	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  userName  	  				,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  newModel[0]					,
+						  newTenant    					,												
+						  testVars.getDefLocation());
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 
     // Step 1 - Search device by Tenant

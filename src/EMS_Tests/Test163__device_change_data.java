@@ -86,7 +86,7 @@ public class Test163__device_change_data {
 	// Set variables and login
 	testFuncs.myDebugPrinting("// Set variables and login");
 	String chngSttsUsername = "cStts" + testFuncs.getId();
-	String location 		= "myLocation";
+	String location 		= testVars.getDefLocation();
 	String phoneNumber		= "+97239764713";
 	String currDispTime		= "";
 	ArrayList<String> times;
@@ -95,15 +95,15 @@ public class Test163__device_change_data {
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");
 	times = testFuncs.getCurrHours();
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()         ,
-			 												 "1"				        ,
-			 												 chngSttsUsername           ,
-			 												 testVars.getDomain()       ,
-			 												 "registered"          	    ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 location);
+	testFuncs.createUsers(testVars.getIp()		  	 	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  chngSttsUsername  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  location);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     testFuncs.verifyPostUserCreate(driver, chngSttsUsername, chngSttsUsername, true); 
 	currDispTime = driver.findElement(By.xpath("//*[@id='table']/tbody[1]/tr/td[10]")).getText();

@@ -92,29 +92,29 @@ public class Test110__alarms_tests3 {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered users from two different tenants
-	testFuncs.myDebugPrinting("Create a registered users from two different tenants");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 "1"				    	,
-			 												 user1 						,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
+	testFuncs.myDebugPrinting("Create a registered users from two different tenants");	
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1				 			 ,	
+						  user1  	  		 	 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
+	
     testFuncs.verifyPostUserCreate(driver, user1, user1, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()         ,
-			 												 "1"				        ,
-			 												 user2 			,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getNonDefTenant(0),
-			 												 "myLocation");
-
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  1				 			 ,	
+						  user2  	  		 	 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getNonDefTenant(0),					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver, user2, user2, true);
 	String mac2 = testFuncs.readFile("mac_1.txt");
 	

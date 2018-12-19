@@ -97,15 +97,15 @@ public class Test122__registered_unregistered_users_number {
 	  	// Step 1 - Create a registered
 		testFuncs.myDebugPrinting("Step 1 - Create a registered user");
 		String regUserName = usersPrefix + "_1";
-		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-				 												 testVars.getPort()     	,
-				 												 "1"				    	,
-				 												 regUserName     			,
-				 												 testVars.getDomain()   	,
-				 												 "registered"           	,
-				 												 testVars.getDefPhoneModel(),
-				 												 testVars.getDefTenant()	,
-				 												 "myLocation");
+		testFuncs.createUsers(testVars.getIp()		  	 	,
+							  testVars.getPort() 	 	 	,
+							  Integer.valueOf(1)			,	
+							  regUserName  	  		     	,			 
+							  testVars.getDomain()	     	,					
+							  "registered"		  	     	,						
+							  testVars.getDefPhoneModel()	,
+							  testVars.getDefTenant()    	,												
+							  testVars.getDefLocation());
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	    testFuncs.verifyPostUserCreate(driver, regUserName, regUserName, true);
 		testFuncs.pressHomeButton(driver);
@@ -133,15 +133,15 @@ public class Test122__registered_unregistered_users_number {
 	  	// Step 2 - Create an unregistered user
 		testFuncs.myDebugPrinting("Step 2 - Create an unregistered user");
 		String unRegUserName = usersPrefix + "_2";
-		testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-				 												 testVars.getPort()     	,
-				 												 "1"				    	,
-				 												 unRegUserName     			,
-				 												 testVars.getDomain()   	,
-				 												 "unregistered"             ,
-				 												 testVars.getDefPhoneModel(),
-				 												 testVars.getDefTenant()	,
-				 												 "myLocation");
+		testFuncs.createUsers(testVars.getIp()		  	 	,
+							  testVars.getPort() 	 	 	,
+							  Integer.valueOf(1)			,	
+							  unRegUserName  	  		   	,			 
+							  testVars.getDomain()	     	,					
+							  "unregistered"		  	   	,						
+							  testVars.getDefPhoneModel()	,
+							  testVars.getDefTenant()    	,												
+							  testVars.getDefLocation());
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 		testFuncs.pressHomeButton(driver);	
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
@@ -170,7 +170,7 @@ public class Test122__registered_unregistered_users_number {
 				  					  testVars.getDefPhoneModel()	 ,
 				  					  testVars.getDomain()        	 ,
 				  					  "offline"						 ,
-				  					  "myLocation"					 ,
+				  					  testVars.getDefLocation()					 ,
 				  					  "+97239764713"				 ,
 				  					  testVars.getFirmVersion());
 		String newUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();

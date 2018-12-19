@@ -80,21 +80,21 @@ public class Test123__change_status {
 	// Set variables and login
 	testFuncs.myDebugPrinting("// Set variables and login");
 	String chngSttsUsername = testFuncs.getId();
-	String location 		= "myLocation";
+	String location 		= testVars.getDefLocation();
 	String phoneNumber		= "+97239764713";
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 
     // Create a registered user
 	testFuncs.myDebugPrinting("Create a registered user");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()         ,
-			 												 "1"				        ,
-			 												 chngSttsUsername               ,
-			 												 testVars.getDomain()       ,
-			 												 "registered"          	    ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 location);
+	testFuncs.createUsers(testVars.getIp()		  	 	,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  chngSttsUsername  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  location);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     testFuncs.verifyPostUserCreate(driver, chngSttsUsername, chngSttsUsername, true);
     

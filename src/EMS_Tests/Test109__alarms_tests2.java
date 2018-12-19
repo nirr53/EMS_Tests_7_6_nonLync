@@ -34,7 +34,6 @@ import EMS_Tests.enumsClass.*;
 *   3.2  Only the first 67 characters of the description should be displayed.
 *     4. All the alerts should be created successfully.
 *     5. All created data should be deleted.
-
 * 
 * @author Nir Klieman
 * @version 1.00
@@ -89,34 +88,36 @@ public class Test109__alarms_tests2 {
 	Log.startTestCase(this.getClass().getName());
 	  
 	// Set variables and login
-	String Id = testFuncs.getId();
+	String Id 		   = testFuncs.getId();
+	String regPrefix   = "regAlert"   + Id;
+	String unregPrefix = "unRegAlert" + Id;
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Create a registered and un-registered users using POST method
 	testFuncs.myDebugPrinting("Create a registered and un-registered users using POST method");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       	,
-			 												 testVars.getPort()     	,
-			 												 "1"				    	,
-			 												 "regAlert" + Id			,
-			 												 testVars.getDomain()       ,
-			 												 "registered"               ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
-    testFuncs.verifyPostUserCreate(driver, "regAlert" + Id, "regAlert" + Id, true);
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  1							  ,	
+			  regPrefix  		 	  	  ,
+			  testVars.getDomain()		  ,
+			  "registered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
+    testFuncs.verifyPostUserCreate(driver, regPrefix, regPrefix, true);
 	String mac1 = testFuncs.readFile("mac_1.txt");
     testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 												 testVars.getPort()    	    ,
-			 												 "1"				   	    ,
-			 												 "unRegAlert" + Id     		,
-			 												 testVars.getDomain()       ,
-			 												 "unregistered"             ,
-			 												 testVars.getDefPhoneModel(),
-			 												 testVars.getDefTenant()    ,
-			 												 "myLocation");
-    testFuncs.verifyPostUserCreate(driver, "unRegAlert" + Id, "unRegAlert" + Id, false);
+	testFuncs.createUsers(testVars.getIp(),
+			  testVars.getPort() 	 	  ,
+			  1							  ,	
+			  unregPrefix  		 	  	  ,
+			  testVars.getDomain()		  ,
+			  "unregistered"		  		  ,
+			  testVars.getDefPhoneModel() ,
+			  testVars.getDefTenant()     ,
+			  testVars.getDefLocation());
+    testFuncs.verifyPostUserCreate(driver, unregPrefix, unregPrefix, false);
 	String mac2 = testFuncs.readFile("mac_1.txt");
 
 	// Step 1 - Enter the alarms menu and create alarms that sent from a registered / un-registered user
@@ -211,8 +212,8 @@ public class Test109__alarms_tests2 {
 	testFuncs.deleteAlarm(driver, alertsForSearch3[0]);
 	testFuncs.deleteAlarm(driver, alertsForSearch2[0]);
 	
-	// Step 6 - Delete the created users
-	testFuncs.myDebugPrinting("Step 6 - Delete the created users");
+	// Step 5 - Delete the created users
+	testFuncs.myDebugPrinting("Step 5 - Delete the created users");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");    
 	testFuncs.selectMultipleUsers(driver, Id, "1");
 	Map<String, String> map = new HashMap<String, String>();

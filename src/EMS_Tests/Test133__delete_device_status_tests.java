@@ -88,15 +88,15 @@ public class Test133__delete_device_status_tests {
 	  // Create users with a POST query
 	  testFuncs.myDebugPrinting("Create users with a POST query");
 	  testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	  testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()       ,
-					 										   testVars.getPort()     ,
-					 									       "2"				      ,
-					 									       prefix            ,
-					 										   testVars.getDomain()   ,
-					 										   "registered"           ,
-					 										   "420HD"                ,
-					 										   testVars.getDefTenant(),
-					 										   "location");
+	  testFuncs.createUsers(testVars.getIp()		  ,
+							testVars.getPort() 	 	  ,
+							2						  ,	
+							prefix  	  		 	  ,			 
+							testVars.getDomain()	  ,					
+							"registered"		  	  ,						
+							"420HD" 				  ,				
+							testVars.getDefTenant()   ,					
+							testVars.getDefLocation());
 	  testFuncs.verifyPostUsersCreate(driver,  prefix,  prefix, true, Integer.valueOf(usersNumber));
 
 	  // Step 1 - Delete a user via Manage user page

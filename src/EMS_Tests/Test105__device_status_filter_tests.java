@@ -99,15 +99,15 @@ public class Test105__device_status_filter_tests {
 	testFuncs.myDebugPrinting("Create a user+device on default tenant using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 testVars.getPort()         ,
-			 usersNumberStr		        ,
-			 dispPrefix  		        ,
-			 testVars.getDomain()       ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getDefTenant()    ,
-			 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  usersNumber				 ,	
+						  dispPrefix  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getDefTenant()    ,					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver,  dispPrefix,  dispPrefix, true); 
 	testFuncs.myWait(10000);
 	
@@ -115,15 +115,15 @@ public class Test105__device_status_filter_tests {
 	testFuncs.myDebugPrinting("Create a user+device on non-default tenant using POST query");
 	String dispPrefix2 = "__nnDfTnUsr" + testFuncs.getId();
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(), testVars.getIp()           ,
-			 testVars.getPort()         ,
-			 usersNumberStr		        ,
-			 dispPrefix2  		        ,
-			 testVars.getDomain()       ,
-			 "registered"               ,
-			 testVars.getDefPhoneModel(),
-			 testVars.getNonDefTenant(0),
-			 "myLocation");
+	testFuncs.createUsers(testVars.getIp()		     ,
+						  testVars.getPort() 	 	 ,
+						  usersNumber				 ,	
+						  dispPrefix2  	  		 	 ,			 
+						  testVars.getDomain()	     ,					
+						  "registered"		  	     ,						
+						  testVars.getDefPhoneModel(),						
+						  testVars.getNonDefTenant(0),					
+						  testVars.getDefLocation());
 	testFuncs.verifyPostUserCreate(driver,  dispPrefix2,  dispPrefix2, true); 
 	   
 	// Step 1 - Filter by Site and Tenant
