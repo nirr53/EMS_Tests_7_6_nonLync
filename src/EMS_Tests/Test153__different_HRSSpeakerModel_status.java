@@ -79,13 +79,14 @@ public class Test153__different_HRSSpeakerModel_status {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables
-	String Id                   = testFuncs.getId();
-	String prefixName           = "hrsSpeakerModel";
-	String usersNumber	        = "3";
-	String tempHRSSpeakerModel 	= "";
-	String hrsSpeakerModelStts  = prefixName + "Status" + Id;
-	String hrsSpeakerModelEmpty = prefixName + "Empty"  + Id;
-	String hrsSpeakerModelSpec 	= prefixName + "Spec"   + Id;
+	String Id                     = testFuncs.getId();
+	String prefixName             = "hrsSpeakerModel";
+	String usersNumber	          = "3";
+	String tempHRSSpeakerModel 	  = "";
+	String hrsSpeakerModelStts    = prefixName + "Status" + Id;
+	String hrsSpeakerModelEmpty   = prefixName + "Empty"  + Id;
+	String hrsSpeakerModelSpec 	  = prefixName + "Spec"   + Id;
+    Map<String, String> extraData = new HashMap<String, String>();
 	
 	// Login and check the HRS Speaker Model check-box
 	testFuncs.myDebugPrinting("Login and check the HRS Speaker Model check-box");
@@ -95,17 +96,19 @@ public class Test153__different_HRSSpeakerModel_status {
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with randomize HRSSpeakerModel value
-	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize HRSSpeakerModel value");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								hrsSpeakerModelStts		   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-			 					testVars.getDefLocation());
+	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize HRSSpeakerModel value");	
+    extraData.put("HRSSpeakerModel"		 , Id);
+	testFuncs.writeFile("ip_1.txt"		 , Id);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  hrsSpeakerModelStts  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelStts, hrsSpeakerModelStts, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);
@@ -114,32 +117,37 @@ public class Test153__different_HRSSpeakerModel_status {
     // Step 2 - Create a user using POST query with empty HRSSpeakerModel value
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with empty HRSSpeakerModel value");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								hrsSpeakerModelEmpty	   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-						testVars.getDefLocation());
+    extraData.put("HRSSpeakerModel"		 , "");
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  hrsSpeakerModelEmpty  	  	,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelEmpty, hrsSpeakerModelEmpty, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[24]", "");
 
     // Step 3 - Create a user using POST query with HRSSpeakerModel value that has special characters
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query with HRSSpeakerModel value that has special characters");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								hrsSpeakerModelSpec		   	   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-								testVars.getDefLocation());
+	String spChars	=  "~!@#$%^&*()+<>,'_";
+    testFuncs.deleteFilesByPrefix(System.getProperty("user.dir"), "ip_1.txt");
+    extraData.put("HRSSpeakerModel"		 , spChars);
+	testFuncs.writeFile("ip_1.txt"		 , spChars);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  hrsSpeakerModelSpec  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, hrsSpeakerModelSpec, hrsSpeakerModelSpec, true);
 	tempHRSSpeakerModel = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempHRSSpeakerModel - " + tempHRSSpeakerModel, enumsClass.logModes.MINOR);

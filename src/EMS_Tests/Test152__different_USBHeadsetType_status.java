@@ -80,29 +80,30 @@ public class Test152__different_USBHeadsetType_status {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables and login
-	String Id                 = testFuncs.getId();
-	String prefixName         = "usbHdstTypeuser";
-	String usersNumber	      = "4";
-	String usbHdstTypeStts    = prefixName + "status"  + Id;
-	String usbHdstTypeUnknown = prefixName + "unknown" + Id;
-	String usbHdstTypeWithout = prefixName + "empty" + Id;
-	String usbHdstTypeLong 	  = prefixName + "long"    + Id;
-
+	String Id                 	  = testFuncs.getId();
+	String prefixName         	  =	"usbHdstTypeuser";
+	String usersNumber	      	  = "4";
+	String usbHdstTypeStts    	  = prefixName + "status"  + Id;
+	String usbHdstTypeUnknown 	  = prefixName + "unknown" + Id;
+	String usbHdstTypeWithout 	  = prefixName + "empty" + Id;
+	String usbHdstTypeLong 	  	  = prefixName + "long"    + Id;
+    Map<String, String> extraData = new HashMap<String, String>();
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with randomize USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with randomize USBHeadsetType status");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								usbHdstTypeStts		   	   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-			 					testVars.getDefLocation());
+    extraData.put("USBHeadsetType"		 , Id);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  usbHdstTypeStts  	  		    ,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeStts, usbHdstTypeStts, true);
 	String tempUSBHeadsetType = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempUSBHeadsetType - " + tempUSBHeadsetType, enumsClass.logModes.MINOR);
@@ -111,48 +112,53 @@ public class Test152__different_USBHeadsetType_status {
     // Step 2 - Create a user using POST query with unknown USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 2 - Create a user using POST query with unknown USBHeadsetType status");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								usbHdstTypeUnknown		   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-								testVars.getDefLocation());
+    extraData.put("USBHeadsetType"		 , "unknown");
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  usbHdstTypeUnknown  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeUnknown, usbHdstTypeUnknown, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "unknown"); 
 	
     // Step 3 - Create a user using POST query without USBHeadsetType status
 	testFuncs.myDebugPrinting("Step 3 - Create a user using POST query without USBHeadsetType status");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-			testVars.getIp()           ,
-			testVars.getPort()    	   ,
-			"1"				   		   ,
-			usbHdstTypeWithout		   ,
-			testVars.getDomain()  	   ,
-			"registered"          	   ,
-			testVars.getDefPhoneModel(),
-			testVars.getDefTenant()    ,
-			testVars.getDefLocation());
+    extraData.put("USBHeadsetType"		 , "");
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  usbHdstTypeWithout  	  		,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeWithout, usbHdstTypeWithout, true);
 	testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[23]", "");
 
     // Step 4 - Create a user using POST query with randomize USBHeadsetType value 129 characters long
 	testFuncs.myDebugPrinting("Step 4 - Create a user using POST query with randomize USBHeadsetType value 129 characters long");
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
-	testFuncs.createUserViaPost(testVars.getCrUserBatName(),
-								testVars.getIp()           ,
-								testVars.getPort()    	   ,
-								"1"				   		   ,
-								usbHdstTypeLong		   ,
-								testVars.getDomain()  	   ,
-								"registered"          	   ,
-								testVars.getDefPhoneModel(),
-								testVars.getDefTenant()    ,
-								testVars.getDefLocation());
+	String longString = testFuncs.getRandomString(130);
+    extraData.put("USBHeadsetType", longString);
+	testFuncs.writeFile("ip_1.txt", longString);
+	testFuncs.createUsers(testVars.getIp()				,
+						  testVars.getPort() 	 	 	,
+						  Integer.valueOf(1)			,	
+						  usbHdstTypeLong  	  			,			 
+						  testVars.getDomain()	     	,					
+						  "registered"		  	     	,						
+						  testVars.getDefPhoneModel()	,
+						  testVars.getDefTenant()    	,												
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.verifyPostUserCreate(driver, usbHdstTypeLong, usbHdstTypeLong, true);
 	String tempLongUSBHeadsetType = testFuncs.readFile("ip_1.txt");
 	testFuncs.myDebugPrinting("tempLongUSBHeadsetType - " + tempLongUSBHeadsetType, enumsClass.logModes.MINOR);
@@ -179,7 +185,7 @@ public class Test152__different_USBHeadsetType_status {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

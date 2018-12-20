@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,6 +56,20 @@ public class BasicFuncs {
 			  //myDebugPrinting("<" + strName + "> was NOT detected !!",  enumsClass.logModes.DEBUG);
 			  myFail("<" + strName + "> was not detected !! \nbodyText - " + bodyText);
 		  }
+	  }
+	  
+	  /**
+	  *  Generate a random in given length
+	  *  @param  length - given length
+	  *  @return str    - wanted string in given length
+	  */
+	  public String getRandomString(int length) {
+		  
+		  byte[] array = new byte[length];
+		  new Random().nextBytes(array);
+		  String generatedString = new String(array, Charset.forName("UTF-8"));
+			
+		  return generatedString;	
 	  }
 	  
 	  /**
@@ -502,6 +517,7 @@ public class BasicFuncs {
 		  clickedElem.clear();
 		  myWait(1000);
 		  clickedElem.sendKeys(currUsr);
+		  waitForLoad(driver);
 		  myWait(timeOut);	
 		  wait = null;
 	  }

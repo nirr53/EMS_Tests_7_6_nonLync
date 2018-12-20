@@ -79,18 +79,18 @@ public class Test115__different_BToE_version_numbers {
 	Log.startTestCase(this.getClass().getName());
 	
 	// Set variables and login
-	String Id             = testFuncs.getId();
-	String prefixName     = "BToE_user_version";
-	String usersNumber	  = "2";
-	String version1		  = "UC_2.0.13.1234";
-	String btoeDisabled   = prefixName + "_dis_"    + Id;
-	String btoeAutoPaired = prefixName + "_auto_"   + Id;
+	String Id             		  = testFuncs.getId();
+	String prefixName     		  = "BToE_user_version";
+	String usersNumber	  		  = "2";
+	String version1		  		  = "UC_2.0.13.1234";
+	String btoeDisabled   		  = prefixName + "_dis_"    + Id;
+	String btoeAutoPaired 		  = prefixName + "_auto_"   + Id;
+    Map<String, String> extraData = new HashMap<String, String>();
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	
     // Step 1 - Create a user using POST query with "BToE disabled" status with version
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query with \"BToE disabled\" status with version.");
-    Map<String, String> extraData = new HashMap<String, String>();
     extraData.put("BToEpairingstatus", "BToE disabled");
     extraData.put("BToEversion"		 , version1);
 	testFuncs.createUsers(testVars.getIp()				,

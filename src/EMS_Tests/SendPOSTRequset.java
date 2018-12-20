@@ -230,12 +230,11 @@ public class SendPOSTRequset {
 				String urlForConf = "http://" + this.ip + "/ipp/region/" + data.get("region") + "/" + data.get("mac") +  ".cfg";
 				sendRequest(urlForConf, reqMode.GET_CONF, data);
 				
-				// Add extra data to map
-				data.put("userName"		  , crDeviceData.get("userName"));
-				data.put("userId"		  , crDeviceData.get("userId"));
-				data.put("phoneNumber"	  , crDeviceData.get("phoneNumber"));
-				data.put("sipProxy"		  , crDeviceData.get("sipProxy"));
-				data.put("status"		  , crDeviceData.get("status"));
+				// Add extra data to map	
+				for (String key : crDeviceData.keySet()) {			
+					
+					data.put(key, crDeviceData.get(key));					
+				}
 				sendRequest(url, reqMode.CREATE_USR_DVC, data);		
 				break;
 

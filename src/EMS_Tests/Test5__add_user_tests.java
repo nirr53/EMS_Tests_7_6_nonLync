@@ -151,8 +151,8 @@ public class Test5__add_user_tests {
 	  map.put("skipVerifyDelete", "true");	  
 	  testFuncs.setMultipleUsersAction(driver, map);  
 	  prefix = prefix.toLowerCase();  
-	  testFuncs.searchStr(driver, manPrefix + " Finished");
-	  testFuncs.searchStr(driver, rePrefix  + "@" + testVars.getDomain() + " Finished");
+	  testFuncs.searchStr(driver, manPrefix.toLowerCase() + " Finished");
+	  testFuncs.searchStr(driver, rePrefix.toLowerCase()  + "@" + testVars.getDomain() + " Finished");
     
 	  // Close session
 	  driver.quit();

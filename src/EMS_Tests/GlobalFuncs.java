@@ -95,7 +95,7 @@ public class GlobalFuncs extends BasicFuncs {
     	  myClick(driver, By.xpath("//*[@id='loginform']/div[4]/div[2]/button"), 3000);
 	      
 	      // Verify good access
-    	  myAssertTrue("Login fails ! (mainStr - " + mainStr + " was not detected !!)", driver.findElement(By.tagName("body")).getText().contains(mainStr)); 
+    	  myAssertTrue("Login fails !!!! (mainStr - " + mainStr + " was not detected !!)", driver.findElement(By.tagName("body")).getText().contains(mainStr)); 
 	  }
 	  
 	  /**
@@ -215,9 +215,20 @@ public class GlobalFuncs extends BasicFuncs {
 	    			myFail("No users were found for <" + dispName + "> !!");
 	    		}
 			    searchStr(driver, dispName.trim()); 
-			    String txt = driver.findElement(By.tagName("body")).getText();
-			    myAssertTrue("Approve button is displayed !! \ntxt - " + txt, !txt.contains("Approve"));
-			    
+			    for (int i = 0; i < 3; ++i) {
+			    	
+				    String txt = driver.findElement(By.tagName("body")).getText();
+				    if (txt.contains("Approve")) {
+				    	if (i > 3) {
+				    		
+				    		myFail("Approve button is displayed !!");
+				    	} 
+				    } else {
+				    	
+				    	break;
+				    }
+				    myWait(10000);
+			    } 
 	    	} else {
 	    		
 	    		searchStr(driver, "There are no devices that fit this search criteria");
@@ -1305,13 +1316,18 @@ public class GlobalFuncs extends BasicFuncs {
 	  */
 	  public void copyPlaceholder(WebDriver driver, String tenThatCopy, String tenPhName, String tenValue, String tenTenant) {
 		 
-		  // Move to new Tenant
+		 // Copy PH
+		 myDebugPrinting("Copy PH", enumsClass.logModes.NORMAL);
+		  
+		 // Select new Tenant
+		 myDebugPrinting("Select new Tenant", enumsClass.logModes.MINOR);		  
 		 Select tenId = new Select(driver.findElement(By.xpath("//*[@id='tenant_id']")));
 		 tenId.selectByVisibleText(tenThatCopy);
 		 myWait(5000);
 		 
 		 // Copy the PH from original tenant
-		 myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[1]/a"), 3000);
+		 myDebugPrinting("Copy the PH from original tenant", enumsClass.logModes.MINOR);		  
+		 myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/div[4]/div[2]/div/span[1]/a"), 5000);
 		 verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Copy Tenant Placeholders From");  
 		 verifyStrByXpath(driver, "//*[@id='modalContentId']", "Please select the Tenant Placeholders to copy.");  
 		 Select tenFromCopy = new Select(driver.findElement(By.xpath("/html/body/div[2]/div/select")));
@@ -1321,8 +1337,8 @@ public class GlobalFuncs extends BasicFuncs {
 		 verifyStrByXpath(driver, "//*[@id='modalTitleId']"  , "Copy Tenant Placeholders From");  
 		 myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 		  
-		 // verify copy
-		 myDebugPrinting("verify copy", enumsClass.logModes.MINOR);
+		 // Verify copy
+		 myDebugPrinting("Verify copy", enumsClass.logModes.MINOR);
 		 mySendKeys(driver, By.xpath("//*[@id='tenants1-filtering']"), tenPhName , 6000);
 		 searchStr(driver, tenPhName);
 		 searchStr(driver, tenValue);
@@ -1806,7 +1822,11 @@ public class GlobalFuncs extends BasicFuncs {
 			  data.put("model"   			, phoneType);	  
 			  data.put("location"			, location);		 
 			  data.put("mac"	 			, tmpMac);
-			  data.put("ip"	 	 			, getRandomIp());
+			  data.put("ip"	 	 			, getRandomIp());	
+			  for (String key : extraData.keySet()) {			
+					
+				  crDeviceData.put(key, extraData.get(key));								
+			  }
 			  crDeviceData.put("userName"	, dispName + tmpIdxSuffix);
 			  crDeviceData.put("userId"		, crDeviceData.get("userName") + "@" + domain);	
 			  crDeviceData.put("phoneNumber", String.valueOf(getNum(100000)));
@@ -1825,6 +1845,7 @@ public class GlobalFuncs extends BasicFuncs {
 			  myWait(3000);
 		  }  
 		  spr = null;
+		  myWait(5000);		  
 	  }
 	  
 	  /**
@@ -1851,7 +1872,7 @@ public class GlobalFuncs extends BasicFuncs {
 					  usersNumber				 ,
 					  dispName  		 		 ,
 					  testVars.getDomain()		 ,
-					  "registered"		  		 ,
+					  crStatus		  		 	 ,
 					  testVars.getDefPhoneModel(),
 					  testVars.getDefTenant()    ,
 					  location				 ,
