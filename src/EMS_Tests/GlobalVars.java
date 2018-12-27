@@ -32,7 +32,7 @@ public class GlobalVars {
 	private  String chromeDrvPath    = "C:\\Users\\nirk\\Desktop\\Selenium\\chromedriver_win32_6\\chromedriver.exe";
 	private  String ieDrvPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\IEDriverServer_x64_2.53.1\\IEDriverServer.exe";	
 	private  String geckoPath        = "C:\\Users\\nirk\\Desktop\\Selenium\\geckodriver-v0.11.1-win64\\geckodriver.exe";
-	private  String version			 = "7.6.158";
+	private  String version			 = "7.6.161";
 	private  String downloadsPath    = "";
 	private  String exportAlarms     = "ExportAlarmsStatus.csv";
 	private  String sysLogsPrefix    = "IPP.Manage.Web.Admin.";

@@ -124,10 +124,11 @@ public class Test140__empty_password_bug {
 	String bodyText     = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Password is still empty !!", !bodyText.contains("ems_server/user_password= "));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
  	
 	// Step 3 - Delete all created users
  	testFuncs.myDebugPrinting("Step 3 - Delete all created users");
-	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, " Manage Multiple Users");
+	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_MULTIPE_USERS, "Manage Multiple Users");
     testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
     map.put("usersPrefix"	  , regPrefix);
     map.put("usersNumber"	  , usersNumber); 

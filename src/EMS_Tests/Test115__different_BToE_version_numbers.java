@@ -111,7 +111,7 @@ public class Test115__different_BToE_version_numbers {
 	String version2 = "UC_abcdef";
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
     extraData.put("BToEpairingstatus", "auto paired");
-    extraData.put("BToEversion"		 , version1);
+    extraData.put("BToEversion"		 , version2);
 	testFuncs.createUsers(testVars.getIp()				,
 						  testVars.getPort() 	 	 	,
 						  Integer.valueOf(1)			,	
@@ -173,8 +173,8 @@ public class Test115__different_BToE_version_numbers {
 	  }; 
 	  
 	  // Check version
-	  testFuncs.myDebugPrinting("Check version", enumsClass.logModes.NORMAL);  
-	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[14]", version);	  
+	  testFuncs.myDebugPrinting("Check version", enumsClass.logModes.NORMAL); 
+	  testFuncs.verifyStrByXpath(driver, "//*[@id='table']/tbody[1]/tr/td[22]", version);	  
   }
 
   @After

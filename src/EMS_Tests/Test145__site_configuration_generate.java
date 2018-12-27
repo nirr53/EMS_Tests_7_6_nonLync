@@ -123,6 +123,7 @@ public class Test145__site_configuration_generate {
 	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Site-configuration-value was added before generate !!", !bodyText.contains(siteCfgKeyName));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 2 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 2 - Generate the user configuration");
@@ -140,6 +141,7 @@ public class Test145__site_configuration_generate {
 	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Site-configuration-value was added before generate !!", bodyText.contains(siteCfgKeyName + " = " + siteCfgKeyValue));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 4 - Delete Site configuration value
 	testFuncs.myDebugPrinting("Step 4 - Delete Site configuration value");

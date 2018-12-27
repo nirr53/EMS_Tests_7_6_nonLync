@@ -135,6 +135,7 @@ public class Test146__configuration_vals_during_create {
 	testFuncs.myAssertTrue("Site-configuration-value was not added during create !! <"  + siteCfgSearch + ">", bodyText.contains(siteCfgSearch));
 	testFuncs.myAssertTrue("Tenant-configuration-value was not added during create !! <"+ tenCfgSearch  + ">", bodyText.contains(tenCfgSearch));
 	driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 2 - Delete Site and Tenant configuration value
 	testFuncs.myDebugPrinting("Step 2 - Delete Site and Tenant configuration value");

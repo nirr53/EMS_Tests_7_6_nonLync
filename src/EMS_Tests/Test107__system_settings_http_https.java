@@ -182,7 +182,7 @@ public class Test107__system_settings_http_https {
 	  }
 	  testFuncs.myWait(100000);
 	
-	  // Verify the url used the given http prefix (http or https)
+	  // Verify the url used the given http prefix (HTTP or HTTPS)
 	  String url = driver.getCurrentUrl();
 	  testFuncs.myDebugPrinting("url - " + url, enumsClass.logModes.MINOR); 
 	  if (prefix.equals("http")) {
@@ -213,7 +213,7 @@ public class Test107__system_settings_http_https {
 	  testFuncs.myClick(driver, By.xpath("//*[@id='table']/tbody[1]/tr/td[2]/input"), 3000);  
   }
   
-  // Set http or https according to given string
+  // Set HTTP or HTTPS according to given string
   private void setHttpOrhttps(Boolean isHttps) {
 	  
 	  WebElement devHttps  		   = driver.findElement(By.xpath("//*[@id='using_https']"));

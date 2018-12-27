@@ -140,6 +140,7 @@ public class Test142__generate_delete_user_configuration_tests {
 	bodyText     = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Congiuration value was deleted without generate !!", bodyText.contains(confName + " = " + confValue));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 3 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 3 - Generate the user configuration");
@@ -157,6 +158,7 @@ public class Test142__generate_delete_user_configuration_tests {
 	bodyText     = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Congiuration value was not deleted after generate !!", !bodyText.contains(confName + " = " + confValue));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 5 - Delete the created user
  	testFuncs.myDebugPrinting("Step 5 - Delete the created user");

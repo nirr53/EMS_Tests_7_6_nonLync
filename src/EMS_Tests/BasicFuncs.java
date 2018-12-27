@@ -339,6 +339,7 @@ public class BasicFuncs {
 	    	    	int retNum = 0;
 	    	    	while (dirFiles[i].getName().contains("crdownload")) {
 	    	    		
+		    	    	myDebugPrinting("dirFiles[i].getName() \n" + dirFiles[i].getName(),  enumsClass.logModes.MINOR);
 		    	    	myDebugPrinting("crdownload suffix is detected. Waiting for another 10 seconds.",  enumsClass.logModes.MINOR);
 	    	    		myWait(10000);
 	    	    		if (retNum > 20) {
@@ -346,6 +347,8 @@ public class BasicFuncs {
 	    	    			myFail("After 20 retries, crdownload suffix is still detected !!");
 	    	    		}
 	    	    		retNum++;
+	    	    		dirFiles = null;
+	    		    	dirFiles = new File(dir).listFiles();
 	    	    	}
 	    	    	myDebugPrinting("Find a file ! (" + dirFiles[i].getName() + ")",  enumsClass.logModes.MINOR);
 	    	        return true;

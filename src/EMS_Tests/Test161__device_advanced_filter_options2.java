@@ -85,14 +85,14 @@ public class Test161__device_advanced_filter_options2 {
 	String newTenant	= testVars.getNonDefTenant(0);
 	String newVersion	= "UC_3.1.0.478";
 	String newModel[]	= {"405", "audiocodes_405_lync"};
-
-
+    Map<String, String> extraData = new HashMap<String, String>();
     Map<String, String> map = new HashMap<String, String>();
 
     // Login and create user using POST query
 	testFuncs.myDebugPrinting("Login and create user using POST query");
 	testFuncs.login(driver, testVars.getSysLoginData(enumsClass.loginData.USERNAME), testVars.getSysLoginData(enumsClass.loginData.PASSWORD), testVars.getSysMainStr(), "http://", this.usedBrowser);  
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
+    extraData.put("fwVersion", newVersion);
 	testFuncs.createUsers(testVars.getIp()		  	 	,
 						  testVars.getPort() 	 	 	,
 						  Integer.valueOf(1)			,	
@@ -101,7 +101,8 @@ public class Test161__device_advanced_filter_options2 {
 						  "registered"		  	     	,						
 						  newModel[0]					,
 						  newTenant    					,												
-						  testVars.getDefLocation());
+						  testVars.getDefLocation()		,
+						  extraData);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.MONITOR_DEVICE_STATUS, "Devices Status");
 
     // Step 1 - Search device by Tenant
@@ -137,7 +138,7 @@ public class Test161__device_advanced_filter_options2 {
   @After
   public void tearDown() throws Exception {
 	  
-//    driver.quit();
+    driver.quit();
     System.clearProperty("webdriver.chrome.driver");
 	System.clearProperty("webdriver.ie.driver");
     String verificationErrorString = verificationErrors.toString();

@@ -120,6 +120,7 @@ public class Test144__tenant_configuration_generate {
 	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Tenant-configuration-value was added before generate !!", !bodyText.contains(cfgKeyName));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 2 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 2 - Generate the user configuration");
@@ -137,6 +138,7 @@ public class Test144__tenant_configuration_generate {
 	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Tenant-configuration-value was added before generate !!", bodyText.contains(cfgKeyName + " = " + cfgKeyValue));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 4 - Delete Tenant configuration value
 	testFuncs.myDebugPrinting("Step 4 - Delete Tenant configuration value");

@@ -107,7 +107,7 @@ public class Test121__network_topology {
 						  Integer.valueOf(usersNumber),	
 						  unregPrefix  	  		      ,			 
 						  testVars.getDomain()	      ,					
-						  "registered"		  	      ,													
+						  "unregistered"		  	  ,													
 						  testVars.getDefPhoneModel() ,													
 						  testVars.getDefTenant()     ,												
 						  testVars.getDefLocation());

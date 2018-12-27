@@ -109,11 +109,12 @@ public class Test122__registered_unregistered_users_number {
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "New User");
 	    testFuncs.verifyPostUserCreate(driver, regUserName, regUserName, true);
 		testFuncs.pressHomeButton(driver);
+		testFuncs.myWait(7000);
 		
 		// Verify change in number at main page
 		testFuncs.myDebugPrinting("Verify change in number at main page", enumsClass.logModes.NORMAL);
 	    String regDevicesNumberNew = driver.findElement(By.xpath("//*[@id='card']/div/article/div[1]/div[2]")).getText();
-		testFuncs.myDebugPrinting("\nregDevicesNumberNew - " + regDevicesNumberNew + "\n", enumsClass.logModes.MINOR);
+	    testFuncs.myDebugPrinting("\nregDevicesNumberNew - " + regDevicesNumberNew + "\n", enumsClass.logModes.MINOR);
 		testFuncs.myAssertTrue("Registered users number was not increased !! <" + regDevicesNumberNew + ">", (Integer.valueOf(regDevicesNumber) + 1) == Integer.valueOf(regDevicesNumberNew));
 	    
 	  	// Verify change at Registered users menu
@@ -147,6 +148,7 @@ public class Test122__registered_unregistered_users_number {
 		testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_MANAGE_USERS, "Manage Users");
 	    testFuncs.verifyPostUserCreate(driver, unRegUserName, unRegUserName, false);
 		testFuncs.pressHomeButton(driver);	
+		testFuncs.myWait(7000);
 
 		// Verify that there is no change in number at main page
 		testFuncs.myDebugPrinting("Verify that there is no change in number at main page", enumsClass.logModes.NORMAL);
@@ -175,7 +177,8 @@ public class Test122__registered_unregistered_users_number {
 				  					  testVars.getFirmVersion());
 		String newUnregDeviceNumber	    = getTotalUnregistsredDvicesNumber();
 		testFuncs.myAssertTrue("Unregistered device number was not changed !!", (Integer.valueOf(totalUnregDeviceNumber) + 1) == Integer.valueOf(newUnregDeviceNumber));
-		
+		testFuncs.myWait(7000);
+
 	  	// Verify no change at Total devices menu		
 		testFuncs.myDebugPrinting("Verify no change at Total devices menu", enumsClass.logModes.NORMAL); 
 		totalDeviceNumberNew = getTotalDevicesNumber();

@@ -94,7 +94,6 @@ public class Test78__different_users_same_mac {
 	
     // Step 1 - Create a user using POST query
 	testFuncs.myDebugPrinting("Step 1 - Create a user using POST query"); 
-
 	testFuncs.createUsers(testVars.getIp()		     ,
 						  testVars.getPort() 	 	 ,
 						  1						     ,	

@@ -134,8 +134,12 @@ public class Test3__home_screen_buttons {
 	        driver.switchTo().window(winHandle);  
 	  }
 	  
-	  // Verify login to the Products page
-	  testFuncs.searchStr(driver, "Management Products & Solutions");   
+	  // Verify login to the Products page  
+	  String bodyText     = driver.findElement(By.tagName("body")).getText();
+	  if (!bodyText.contains("Management Products & Solutions") && !bodyText.contains("Request unsuccessful. Incapsula incident ID")) {
+		  
+		  testFuncs.myFail("Login to the Products page failed !");
+	  }
 	  driver.close();
 	  driver.switchTo().window(winHandleBefore);
   }

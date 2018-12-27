@@ -47,6 +47,15 @@ public class SendPOSTRequset {
 	}
 	
     /**
+    *  Set fwVersion
+    *  @param fwVersion - fwVersion for set
+    */
+	public void setFwVersion(String fwVersion) {
+		
+		this.fwVersion = fwVersion;	
+	}
+	
+    /**
     *  Get IP
     *  @return ip - IP for send
     */

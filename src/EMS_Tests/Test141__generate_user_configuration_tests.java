@@ -119,6 +119,7 @@ public class Test141__generate_user_configuration_tests {
 	
     // Step 2 - Create a user-configuration value (Add+Save)
 	testFuncs.myDebugPrinting("Step 2 - Create a user-configuration value (Add+Save)");
+	testFuncs.pressHomeButton(driver);
 	testFuncs.enterMenu(driver, enumsClass.menuNames.SETUP_USER_CONFIGURATION, "Manage Multiple Users - User Configuration");
 	testFuncs.selectMultipleUsers(driver, regPrefix, usersNumber);
 	testFuncs.createNewConfValue(driver, confName, confValue);
@@ -133,6 +134,7 @@ public class Test141__generate_user_configuration_tests {
 	bodyText = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Congiuration value was added before generate !!", !bodyText.contains(confName));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
     
 	// Step 4 - Generate the user configuration
  	testFuncs.myDebugPrinting("Step 4 - Generate the user configuration");
@@ -150,6 +152,7 @@ public class Test141__generate_user_configuration_tests {
 	bodyText     = driver.findElement(By.tagName("body")).getText();
 	testFuncs.myAssertTrue("Congiuration value was not added successfully !!", bodyText.contains(confName + " = " + confValue));
     driver.get(currUrl);
+ 	testFuncs.myWait(5000);
  	
 	// Step 6 - Delete the created user
  	testFuncs.myDebugPrinting("Step 6 - Delete the created user");

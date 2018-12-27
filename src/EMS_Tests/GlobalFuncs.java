@@ -90,9 +90,9 @@ public class GlobalFuncs extends BasicFuncs {
     	  searchStr(driver, testVars.getMainPageStr());  
 	      myDebugPrinting("username - " + username ,enumsClass.logModes.MINOR);
     	  myDebugPrinting("password - " + password ,enumsClass.logModes.MINOR);
-    	  mySendKeys(driver, By.xpath("//*[@id='loginform']/div[1]/input")	   , username, 1000);
-    	  mySendKeys(driver, By.xpath("//*[@id='loginform']/div[2]/input")	   , password, 1000);    	  
-    	  myClick(driver, By.xpath("//*[@id='loginform']/div[4]/div[2]/button"), 3000);
+    	  mySendKeys(driver, By.xpath("//*[@id='loginform']/div[1]/input")	   , username, 1500);
+    	  mySendKeys(driver, By.xpath("//*[@id='loginform']/div[2]/input")	   , password, 1500);    	  
+    	  myClick(driver, By.xpath("//*[@id='loginform']/div[4]/div[2]/button"), 5000);
 	      
 	      // Verify good access
     	  myAssertTrue("Login fails !!!! (mainStr - " + mainStr + " was not detected !!)", driver.findElement(By.tagName("body")).getText().contains(mainStr)); 
@@ -252,7 +252,7 @@ public class GlobalFuncs extends BasicFuncs {
 	  public void addDevice(WebDriver driver, String username, String deviceName, String phoneType, String macAddName, String firmWareType) {
 		  
 		myClick(driver, By.xpath("//*[@id='searchusersform']/div/div/div/div/span/a/button/span"), 5000); 
-		myClick(driver, By.xpath("//*[@id='results']/tbody/tr/td[9]/a[1]"), 5000);
+		myClick(driver, By.xpath("//*[@id='results']/tbody/tr/td[9]/a[1]"), 4000);
 		verifyStrByXpath(driver, "//*[@id='contentwrapper']/section/form/div/div[2]/div[1]/h3", "Add new device to " + username.toLowerCase());
 		
 		// Set device name
@@ -279,9 +279,9 @@ public class GlobalFuncs extends BasicFuncs {
 				
 		// Submit & verify create
 		myDebugPrinting("Submit & verify create", enumsClass.logModes.MINOR);	
-	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]"), 7000);
-		myClick(driver, By.xpath("//*[@id='modalContentId']/button[2]")   							  , 7000);
-	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[1]"), 7000);
+	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[2]"), 6000);
+		myClick(driver, By.xpath("//*[@id='modalContentId']/button[2]")   							  , 6000);
+	    myClick(driver, By.xpath("//*[@id='contentwrapper']/section/form/div/div[2]/div[3]/button[1]"), 6000);
 	    username = username.toLowerCase();
 		searchUser(driver, username);  
 
@@ -356,8 +356,8 @@ public class GlobalFuncs extends BasicFuncs {
 	  public void selectMultipleDevices(WebDriver driver, String prefix, String expNumber) {
 		    		
 		myDebugPrinting("selectMultipleDevices() - prefix - " + prefix + " expNumber - " + expNumber, enumsClass.logModes.NORMAL);
-		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 5000);
-		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 5000);
+		mySendKeys(driver, By.xpath("//*[@id='filterinput']"), prefix, 4000);
+		myClick(driver, By.xpath("//*[@id='contentwrapper']/section/div/form/div/div[2]/div/table/tbody/tr[2]/td/div/div/a/span"), 9000);
 		if (Integer.parseInt(expNumber) == 0) {
 	    	
 	      	myDebugPrinting("verify delete", enumsClass.logModes.NORMAL);
@@ -365,7 +365,7 @@ public class GlobalFuncs extends BasicFuncs {
 			myClick(driver, By.xpath("/html/body/div[2]/div/button[1]"), 7000);
 	    	return;
 	    }
-		myClick(driver, By.xpath("//*[@id='maintable']/tbody/tr[1]/td/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td/a"), 7000);
+		myClick(driver, By.xpath("//*[@id='maintable']/tbody/tr[1]/td/table/tbody/tr[2]/td[2]/table/tbody/tr[4]/td/a"), 9000);
 	    if (Integer.parseInt(expNumber) > 500) {
 	    	
 			myClick(driver, By.xpath("//*[@id='left_total_id']/a[1]"), 2000);		    
@@ -1814,15 +1814,20 @@ public class GlobalFuncs extends BasicFuncs {
 			      
 			  // Build data maps
 			  myDebugPrinting("Build data maps for user <" + i + ">", enumsClass.logModes.MINOR);
-			  String tmpIdxSuffix = (usersNumber == 1) 				   ? "" 								  :  "_" + String.valueOf(i);	  
-			  String tmpMac       = (extraData.containsKey("samaMac")) ? testVars.getAcMacPrefix() + "123456" : getMacAddress();
+			  String tmpIdxSuffix = (usersNumber == 1) 				     ? "" 								    :  "_" + String.valueOf(i);	  
+			  String tmpMac       = (extraData.containsKey("sameMac"))   ? testVars.getAcMacPrefix() + "123456" : getMacAddress();
+			  if (extraData.containsKey("fwVersion")) {
+				  
+				  spr.setFwVersion(extraData.get("fwVersion"));
+			  }
+			  String tmpIp        = getRandomIp();
 			  Map<String, String> data 		   = new HashMap<String, String>();
 			  Map<String, String> crDeviceData = new HashMap<String, String>();
 			  data.put("region"  			, tenant);		  
 			  data.put("model"   			, phoneType);	  
 			  data.put("location"			, location);		 
 			  data.put("mac"	 			, tmpMac);
-			  data.put("ip"	 	 			, getRandomIp());	
+			  data.put("ip"	 	 			, tmpIp);	
 			  for (String key : extraData.keySet()) {			
 					
 				  crDeviceData.put(key, extraData.get(key));								
@@ -1833,16 +1838,22 @@ public class GlobalFuncs extends BasicFuncs {
 			  crDeviceData.put("sipProxy"	, domain);
 			  crDeviceData.put("status"		, crStatus);
 			  
-			  // Write MAC to file
-			  myDebugPrinting("Write MAC to file", enumsClass.logModes.MINOR);
+			  // Write MAC and IP to file
+			  myDebugPrinting("Write MAC and IP to file", enumsClass.logModes.MINOR);
 			  writeFile("mac_" + i + ".txt", tmpMac);
+			  writeFile("ip_"  + i + ".txt", tmpIp);
 			  
 			  // Send Query
 			  myDebugPrinting("Send Query", enumsClass.logModes.MINOR);
 			  spr.manageRequests(enumsClass.sendPOSTModes.CREATE_USER_DEVICE, data, crDeviceData);
 			  data 		   = null;
 			  crDeviceData = null;
-			  myWait(3000);
+			  
+			  // Timeout after the create
+			  if (!dispName.contains("load")) {
+				  
+				  myWait(3000);
+			  }
 		  }  
 		  spr = null;
 		  myWait(5000);		  
@@ -1867,15 +1878,15 @@ public class GlobalFuncs extends BasicFuncs {
 			
 		  // Call createUsers() with null extraData hashMap
 		  myDebugPrinting("Call createUsers() with null extraData hashMap", enumsClass.logModes.MINOR);
-		  createUsers(testVars.getIp()	  		 ,
-					  testVars.getPort() 	 	 ,
+		  createUsers(ip	  		 			 ,
+					  port 	 	 				 ,
 					  usersNumber				 ,
 					  dispName  		 		 ,
-					  testVars.getDomain()		 ,
+					  domain		 			 ,
 					  crStatus		  		 	 ,
-					  testVars.getDefPhoneModel(),
-					  testVars.getDefTenant()    ,
-					  location				 ,
+					  phoneType					 ,
+					  tenant    				 ,
+					  location				 	 ,
 					  new HashMap<String, String>());	  
 	  }
 	    
